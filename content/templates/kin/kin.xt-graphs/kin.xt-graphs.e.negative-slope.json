@@ -1,0 +1,169 @@
+{
+  "id": "kin.xt-graphs.e.negative-slope",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.xt-graphs"
+  ],
+  "primarySkillId": "kin.xt-graphs",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "x0": {
+      "kind": "choice",
+      "values": [
+        8,
+        10,
+        12
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        1,
+        2
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.xtNegativeSlope",
+  "intro": "A quick check.",
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        5
+      ],
+      "yRange": [
+        0,
+        14
+      ],
+      "xLabel": "t (s)",
+      "yLabel": "x (m)",
+      "functions": [
+        {
+          "id": "x",
+          "expr": "{{x0}} - {{v}}*x",
+          "label": "x–t"
+        }
+      ]
+    },
+    "instructions": "The line is the car's position at each time."
+  },
+  "stem": [
+    "The position–time graph of a toy car is a straight line sloping downwards.",
+    "What is the car doing?"
+  ],
+  "options": [
+    {
+      "id": "towards",
+      "text": "Moving at a constant velocity in the −x direction"
+    },
+    {
+      "id": "slowing",
+      "text": "Slowing down",
+      "tags": [
+        "negative-slope-slowing"
+      ],
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "x",
+          "x1": 3,
+          "x2": 4,
+          "tone": "bad"
+        }
+      }
+    },
+    {
+      "id": "downhill",
+      "text": "Rolling down a slope",
+      "tags": [
+        "xt-graph-as-path"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "The vertical axis is position x; the horizontal axis is time."
+        }
+      }
+    }
+  ],
+  "answerText": "Constant velocity towards −x",
+  "hints": [
+    {
+      "text": "What does the slope of an x–t graph tell you?",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "x",
+          "x1": 1,
+          "x2": 3
+        }
+      }
+    },
+    {
+      "text": "The line is straight, so its slope is the same everywhere."
+    },
+    {
+      "text": "The slope is negative: position decreases as time goes on."
+    }
+  ],
+  "feedback": {
+    "negative-slope-slowing": {
+      "text": "A straight line has a constant slope, so the velocity doesn't change. The negative slope means it moves towards −x."
+    },
+    "xt-graph-as-path": {
+      "text": "The graph shows position against time, not the shape of the route."
+    },
+    "generic": {
+      "text": "Slope is velocity; a straight line means constant velocity."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The slope (Δx ÷ Δt) is the velocity: here {{v}} m/s towards −x.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "x",
+          "x1": 1,
+          "x2": 3
+        }
+      }
+    },
+    {
+      "text": "It is straight, so the velocity is constant: no speeding up or slowing down."
+    }
+  ],
+  "flashcards": {
+    "negative-slope-slowing": {
+      "front": "A straight x–t line sloping down: what is happening?",
+      "back": "Constant velocity in the −x direction. Slope is velocity; a straight line means it doesn't change."
+    },
+    "xt-graph-as-path": {
+      "front": "Is an x–t graph a picture of the route?",
+      "back": "No. It shows position against time; its slope is the velocity."
+    },
+    "generic": {
+      "front": "Straight x–t line sloping down?",
+      "back": "Constant velocity in the −x direction."
+    }
+  },
+  "accessibility": {
+    "altText": "A straight line graph of position against time sloping downwards.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

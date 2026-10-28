@@ -1,0 +1,163 @@
+{
+  "id": "osc.energy.m.ke-at-x",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.energy"
+  ],
+  "primarySkillId": "osc.energy",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "k": {
+      "kind": "choice",
+      "values": [
+        100,
+        200,
+        400
+      ]
+    },
+    "Acm": {
+      "kind": "choice",
+      "values": [
+        10,
+        20
+      ]
+    },
+    "xcm": {
+      "kind": "choice",
+      "values": [
+        4,
+        6,
+        8
+      ]
+    }
+  },
+  "constraints": [
+    "xcm < Acm"
+  ],
+  "solver": "osc.keAtX",
+  "intro": "Sharing the energy.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "pe-for-ke-shm"
+      ],
+      "match": {
+        "buggySolver": "peInstead"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": "{{k}}",
+      "amplitude": "{{A}}"
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "energy"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A spring–mass oscillator has k = {{k}} N/m and amplitude {{Acm}} cm.",
+    "What is its kinetic energy when the displacement is {{xcm}} cm?"
+  ],
+  "input": {
+    "label": "Kinetic energy",
+    "placeholder": "for example 0.8 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "Total energy stays ½kA².",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    },
+    {
+      "text": "At x, the spring holds ½kx²."
+    },
+    {
+      "text": "KE = ½k(A² − x²)."
+    }
+  ],
+  "feedback": {
+    "pe-for-ke-shm": {
+      "text": "That is the spring's potential energy at that point. KE is what remains: ½kA² − ½kx²."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "KE = ½k(A² − x²)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Total {{E}} J; PE at x = {{U}} J."
+    },
+    {
+      "text": "KE = {{E}} − {{U}} = {{ans}} J.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "pe-for-ke-shm": {
+      "front": "KE at displacement x in SHM?",
+      "back": "½k(A² − x²)."
+    },
+    "generic": {
+      "front": "KE at displacement x in SHM?",
+      "back": "½k(A² − x²)."
+    }
+  },
+  "accessibility": {
+    "altText": "A spring oscillator with energy bars.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "id": "f.force-intro.e.mass-weight",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.force-intro"
+  ],
+  "primarySkillId": "f.force-intro",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        5,
+        8,
+        10,
+        15,
+        20
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.massWeight",
+  "intro": "A foundation check.",
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "free",
+      "maxMagnitude": "{{m*12}}",
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight on Earth",
+          "agent": "Earth",
+          "magnitude": "{{m*9.8}}",
+          "angleDeg": -90,
+          "locked": true
+        }
+      ],
+      "body": {
+        "label": "rock",
+        "mass": "{{m}}"
+      }
+    },
+    "instructions": "The arrow is the rock's weight on Earth."
+  },
+  "stem": [
+    "A {{m}} kg rock is taken from the Earth to the Moon.",
+    "Which stays the same?"
+  ],
+  "options": [
+    {
+      "id": "mass",
+      "text": "Its mass"
+    },
+    {
+      "id": "weight",
+      "text": "Its weight",
+      "tags": [
+        "mass-is-weight"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Weight = mg depends on g."
+        }
+      }
+    }
+  ],
+  "answerText": "Its mass",
+  "hints": [
+    {
+      "text": "Mass measures the amount of matter.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Weight is the pull of gravity, mg."
+    },
+    {
+      "text": "Which depends on where you are?"
+    }
+  ],
+  "feedback": {
+    "mass-is-weight": {
+      "text": "Weight is the gravitational force mg, and g on the Moon is about one sixth of Earth's. Mass, the amount of matter, stays the same."
+    },
+    "generic": {
+      "text": "Mass is constant; weight = mg changes with g."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Mass is the amount of matter: unchanged.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Weight = mg falls because g is smaller on the Moon."
+    }
+  ],
+  "flashcards": {
+    "mass-is-weight": {
+      "front": "On the Moon, which stays the same: mass or weight?",
+      "back": "Mass. Weight (mg) depends on g."
+    },
+    "generic": {
+      "front": "Moon vs Earth: mass or weight unchanged?",
+      "back": "Mass."
+    }
+  },
+  "accessibility": {
+    "altText": "A rock with its weight drawn.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

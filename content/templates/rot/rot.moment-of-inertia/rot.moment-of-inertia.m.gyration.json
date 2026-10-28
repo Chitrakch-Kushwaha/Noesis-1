@@ -1,0 +1,167 @@
+{
+  "id": "rot.moment-of-inertia.m.gyration",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.moment-of-inertia"
+  ],
+  "primarySkillId": "rot.moment-of-inertia",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "M": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "L": {
+      "kind": "choice",
+      "values": [
+        0.6,
+        1.2,
+        1.8,
+        2.4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.gyrationRod",
+  "intro": "Radius of gyration.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "gyration-root"
+      ],
+      "match": {
+        "buggySolver": "forgotRoot"
+      }
+    },
+    {
+      "tags": [
+        "gyration-half-length"
+      ],
+      "match": {
+        "buggySolver": "halfLength"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "rod-centre",
+        "mass": "{{M}}",
+        "size": "{{L}}",
+        "torque": 1,
+        "omega0": 0,
+        "duration": 3
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "The radius of gyration is where all the mass could sit and give the same I."
+      }
+    }
+  ],
+  "stem": [
+    "A uniform rod of mass {{M}} kg and length {{L}} m rotates about a perpendicular axis through its centre (I = ML²/12).",
+    "What is its radius of gyration?"
+  ],
+  "input": {
+    "label": "Radius of gyration",
+    "placeholder": "for example 0.35 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Radius of gyration k satisfies I = Mk².",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "rod"
+          ]
+        }
+      }
+    },
+    {
+      "text": "k = √(I ÷ M)."
+    },
+    {
+      "text": "Here I ÷ M = L²/12."
+    }
+  ],
+  "feedback": {
+    "gyration-root": {
+      "text": "k² = I ÷ M = L²/12, so k = L ÷ √12."
+    },
+    "gyration-half-length": {
+      "text": "The mass is spread along the rod, so its effective distance is less than L/2."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "k = √(I ÷ M) = L ÷ √12."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "I ÷ M = {{L}}² ÷ 12."
+    },
+    {
+      "text": "k = {{L}} ÷ √12 = {{ans}} m.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "gyration-root": {
+      "front": "Radius of gyration?",
+      "back": "k = √(I ÷ M)."
+    },
+    "gyration-half-length": {
+      "front": "Radius of gyration of a rod about its centre?",
+      "back": "L ÷ √12."
+    },
+    "generic": {
+      "front": "Radius of gyration?",
+      "back": "k = √(I ÷ M)."
+    }
+  },
+  "accessibility": {
+    "altText": "A rod turning about its centre.",
+    "nonDragAlternative": "Use the torque slider to explore; type your answer in the box."
+  }
+}

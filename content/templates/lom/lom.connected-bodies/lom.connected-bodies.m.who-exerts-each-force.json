@@ -1,0 +1,312 @@
+{
+  "id": "lom.connected-bodies.m.who-exerts-each-force",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.connected-bodies",
+    "lom.fbd"
+  ],
+  "primarySkillId": "lom.connected-bodies",
+  "difficulty": "medium",
+  "format": "mapping",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "mA": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "mB": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "F": {
+      "kind": "int",
+      "min": 6,
+      "max": 18
+    }
+  },
+  "constraints": [],
+  "solver": "lom.connectedAgents",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "accepted": {
+      "wA": [
+        "earth"
+      ],
+      "nA": [
+        "table"
+      ],
+      "tA": [
+        "string"
+      ]
+    },
+    "rules": [
+      {
+        "item": "tA",
+        "target": "hand",
+        "tags": [
+          "tension-from-hand"
+        ]
+      },
+      {
+        "item": "tA",
+        "target": "blockB",
+        "tags": [
+          "tension-agent-confusion"
+        ]
+      },
+      {
+        "item": "nA",
+        "target": "earth",
+        "tags": [
+          "normal-from-earth"
+        ]
+      },
+      {
+        "item": "wA",
+        "target": "table",
+        "tags": [
+          "weight-from-surface"
+        ]
+      }
+    ]
+  },
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The board shows the three forces on block A and the motion they predict. Press Play to watch block A accelerate.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "A",
+        "mass": "{{mA}}"
+      },
+      "maxMagnitude": "{{WA+4}}",
+      "allowEdit": false,
+      "showAgents": false,
+      "predict": true,
+      "predictSeconds": 1.5,
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{WA}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "table",
+          "magnitude": "{{WA}}",
+          "angleDeg": 90,
+          "locked": true
+        },
+        {
+          "id": "T",
+          "kind": "tension",
+          "label": "Tension",
+          "agent": "string",
+          "magnitude": "{{T}}",
+          "angleDeg": 0,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "stem": [
+    "Block A ({{mA}} kg) is tied by a light string to block B ({{mB}} kg). A hand pulls B with {{F}} N along a smooth table, so both blocks accelerate together.",
+    "Match each force acting on block A to the body that exerts it."
+  ],
+  "items": [
+    {
+      "id": "wA",
+      "text": "Weight of A"
+    },
+    {
+      "id": "nA",
+      "text": "Normal force on A"
+    },
+    {
+      "id": "tA",
+      "text": "Tension on A"
+    }
+  ],
+  "targets": [
+    {
+      "id": "earth",
+      "text": "the Earth"
+    },
+    {
+      "id": "table",
+      "text": "the table"
+    },
+    {
+      "id": "string",
+      "text": "the string"
+    },
+    {
+      "id": "hand",
+      "text": "the hand"
+    },
+    {
+      "id": "blockB",
+      "text": "block B"
+    }
+  ],
+  "answerText": "Weight → the Earth; normal force → the table; tension → the string",
+  "hints": [
+    {
+      "text": "A force on A must come from something touching A, or from the Earth's gravity."
+    },
+    {
+      "text": "What is actually attached to block A? The hand isn't touching it.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "T"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The string pulls A with tension T = {{T}} N, which is less than the hand's {{F}} N."
+    }
+  ],
+  "feedback": {
+    "tension-from-hand": {
+      "text": "The hand touches block B, not A. Block A is pulled by the string, and that pull ({{T}} N) is smaller than the hand's {{F}} N because the string only has to accelerate A.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "T"
+          ]
+        }
+      }
+    },
+    "tension-agent-confusion": {
+      "text": "Block B doesn't touch block A: the string between them does the pulling. The string pulls A forward and pulls B backward.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "T"
+          ]
+        }
+      }
+    },
+    "normal-from-earth": {
+      "text": "The normal force is a contact force from the surface A rests on: the table.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N"
+          ]
+        }
+      }
+    },
+    "weight-from-surface": {
+      "text": "Weight is the Earth's gravitational pull. The table pushes up with the normal force instead.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W"
+          ]
+        }
+      }
+    },
+    "generic": {
+      "text": "For each force, name the one body in contact with A (or the Earth) that produces it."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Weight: the Earth's gravitational pull on A, {{WA}} N downward.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Normal force: the table pushes up on A.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Tension: the string pulls A forward. Both blocks share the acceleration a = {{F}} ÷ ({{mA}} + {{mB}}) = {{a}} m/s², so T = m_A a = {{T}} N. Press Play to watch A accelerate.",
+      "cue": [
+        {
+          "cue": "highlight",
+          "args": {
+            "ids": [
+              "T"
+            ]
+          }
+        },
+        {
+          "cue": "predict"
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "tension-from-hand": {
+      "front": "A hand pulls block B, which pulls block A by a string. Who exerts the forward force on A?",
+      "back": "The string. Its tension is smaller than the hand's pull (T = m_A a)."
+    },
+    "tension-agent-confusion": {
+      "front": "Two blocks joined by a string: does block B push or pull block A directly?",
+      "back": "No. They don't touch. The string pulls each block toward the other."
+    },
+    "normal-from-earth": {
+      "front": "Which body exerts the normal force on a block resting on a table?",
+      "back": "The table (a contact force from the surface)."
+    },
+    "weight-from-surface": {
+      "front": "Which body exerts a block's weight?",
+      "back": "The Earth, by gravity."
+    },
+    "generic": {
+      "front": "How do you name a force's agent?",
+      "back": "Find the one body in contact with it (or the Earth, for weight) that produces the force."
+    }
+  },
+  "accessibility": {
+    "altText": "Block A on a table with its weight, the normal force and the string's tension ({{T}} N, to the right) drawn on it.",
+    "nonDragAlternative": "Each force has a list to choose its source from; dragging the cards is optional."
+  }
+}

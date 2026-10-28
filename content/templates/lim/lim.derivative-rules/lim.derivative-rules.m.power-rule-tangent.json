@@ -1,0 +1,267 @@
+{
+  "id": "lim.derivative-rules.m.power-rule-tangent",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lim",
+  "skillIds": [
+    "lim.derivative-rules",
+    "lim.first-principles"
+  ],
+  "primarySkillId": "lim.derivative-rules",
+  "difficulty": "medium",
+  "format": "expression",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        -3,
+        -2,
+        2,
+        3,
+        4
+      ]
+    },
+    "b": {
+      "kind": "int",
+      "min": -5,
+      "max": 5
+    }
+  },
+  "constraints": [
+    "b != 0"
+  ],
+  "solver": "lim.powerRule",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "variables": [
+      "x"
+    ],
+    "domain": {
+      "x": [
+        -4,
+        4
+      ]
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "power-rule-forgot-multiply"
+      ],
+      "match": {
+        "buggySolver": "forgotMultiply"
+      }
+    },
+    {
+      "tags": [
+        "dropped-linear-term"
+      ],
+      "match": {
+        "buggySolver": "droppedLinear"
+      }
+    },
+    {
+      "tags": [
+        "power-not-reduced"
+      ],
+      "match": {
+        "buggySolver": "keptPower"
+      }
+    }
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "instructions": "Drag point P along the curve, or focus it and use the arrow keys. The tangent and its slope update as you go: the derivative gives that slope at every x.",
+    "config": {
+      "xRange": [
+        -4,
+        4
+      ],
+      "yRange": [
+        "{{ylo}}",
+        "{{yhi}}"
+      ],
+      "functions": [
+        {
+          "id": "f",
+          "expr": "{{a|raw}}*x^2 + {{b|raw}}*x"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "label": "P",
+          "on": "f",
+          "x": 1,
+          "draggable": true,
+          "step": 0.25
+        }
+      ],
+      "tangent": {
+        "at": "P"
+      },
+      "equation": {
+        "fn": "f"
+      }
+    }
+  },
+  "consequence": [
+    {
+      "cue": "add-function",
+      "args": {
+        "id": "student",
+        "expr": "$input",
+        "tone": "bad",
+        "label": "your f′(x)"
+      }
+    },
+    {
+      "cue": "student-tangent",
+      "args": {
+        "point": "P",
+        "expr": "$input"
+      }
+    }
+  ],
+  "stem": [
+    "f(x) = {{a}}x² {{b|signed}}x",
+    "Find f′(x)."
+  ],
+  "input": {
+    "label": "f′(x)",
+    "placeholder": "for example 6x − 2",
+    "keypad": "maths"
+  },
+  "answerText": "f′(x) = {{dref}}",
+  "hints": [
+    {
+      "text": "Move P to a few places and note the slope of the tangent. What pattern do you see?",
+      "cue": [
+        {
+          "cue": "move-point",
+          "args": {
+            "point": "P",
+            "x": 2
+          }
+        },
+        {
+          "cue": "tangent",
+          "args": {
+            "point": "P"
+          }
+        }
+      ]
+    },
+    {
+      "text": "The derivative's value at each x is the tangent's slope there. The dots mark those slopes.",
+      "cue": {
+        "cue": "derivative-dots",
+        "args": {
+          "fn": "f",
+          "count": 7
+        }
+      }
+    },
+    {
+      "text": "Use d/dx(xⁿ) = n xⁿ⁻¹ on each term."
+    }
+  ],
+  "feedback": {
+    "power-rule-forgot-multiply": {
+      "text": "When you differentiate x², bring the power down as a multiplier: d/dx(x²) = 2x. The dashed line uses your f′ as the tangent at P: it cuts across the curve instead of just touching it."
+    },
+    "dropped-linear-term": {
+      "text": "The term {{b}}x also changes with x; its derivative is {{b}}. The dashed line uses your f′ as the tangent at P: it doesn't just touch the curve."
+    },
+    "power-not-reduced": {
+      "text": "After bringing the power down, reduce it by one: d/dx(x²) = 2x¹, not 2x²."
+    },
+    "generic": {
+      "text": "The dashed line uses your f′(x) as the slope at P. A correct derivative gives a line that just touches the curve there. Move P and look again."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The derivative at each x is the slope of the tangent there.",
+      "cue": {
+        "cue": "tangent",
+        "args": {
+          "point": "P"
+        }
+      }
+    },
+    {
+      "text": "Power rule: d/dx({{a}}x²) = {{two_a}}x and d/dx({{b}}x) = {{b}}.",
+      "cue": {
+        "cue": "derivative-dots",
+        "args": {
+          "fn": "f",
+          "count": 7
+        }
+      }
+    },
+    {
+      "text": "So f′(x) = {{dref}}. Its graph passes through every slope dot.",
+      "cue": {
+        "cue": "add-function",
+        "args": {
+          "id": "true",
+          "expr": "{{dref}}",
+          "tone": "good",
+          "label": "f′(x)"
+        }
+      }
+    }
+  ],
+  "alternativeSolution": {
+    "title": "From first principles",
+    "steps": [
+      {
+        "text": "f′(x) = lim (h → 0) [f(x + h) − f(x)] ÷ h. Watch the secant become the tangent at x = 1.",
+        "cue": {
+          "cue": "secant-to-tangent",
+          "args": {
+            "fn": "f",
+            "x": 1,
+            "h0": 2
+          }
+        }
+      },
+      {
+        "text": "[{{a}}(x + h)² + {{b}}(x + h) − {{a}}x² − {{b}}x] ÷ h = {{two_a}}x + {{b}} + {{a}}h → {{dref}} as h → 0."
+      }
+    ]
+  },
+  "flashcards": {
+    "power-rule-forgot-multiply": {
+      "front": "d/dx(ax²)?",
+      "back": "2ax: bring the power down and reduce it by one."
+    },
+    "dropped-linear-term": {
+      "front": "d/dx(bx)?",
+      "back": "b, a constant (the slope of the line y = bx)."
+    },
+    "power-not-reduced": {
+      "front": "Power rule?",
+      "back": "d/dx(xⁿ) = n xⁿ⁻¹."
+    },
+    "generic": {
+      "front": "What does f′(a) mean on the graph of f?",
+      "back": "The slope of the tangent at x = a."
+    }
+  },
+  "accessibility": {
+    "altText": "Graph of f(x) = {{a}}x² {{b|signed}}x with a point P on the curve and its tangent line.",
+    "nonDragAlternative": "Type an x value for P in Precise controls, or focus P and use the arrow keys."
+  }
+}

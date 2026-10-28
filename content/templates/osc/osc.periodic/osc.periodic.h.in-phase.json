@@ -1,0 +1,160 @@
+{
+  "id": "osc.periodic.h.in-phase",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.periodic"
+  ],
+  "primarySkillId": "osc.periodic",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "T1": {
+      "kind": "choice",
+      "values": [
+        1.8,
+        2
+      ]
+    },
+    "T2": {
+      "kind": "choice",
+      "values": [
+        2.25,
+        2.4,
+        2.5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.inPhaseAgain",
+  "intro": "Two oscillators drift apart.",
+  "answer": {
+    "dimension": "time",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "in-phase-difference"
+      ],
+      "match": {
+        "buggySolver": "differenceOnly"
+      }
+    },
+    {
+      "tags": [
+        "in-phase-difference"
+      ],
+      "match": {
+        "buggySolver": "product"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} s"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 6,
+      "showValues": false,
+      "system": "pendulum",
+      "length": "{{9.8*T1^2/(4*pi^2)}}",
+      "amplitude": 0.05
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "ghost",
+      "args": {
+        "key": "length",
+        "value": "{{9.8*T2^2/(4*pi^2)}}",
+        "label": "second pendulum"
+      }
+    }
+  ],
+  "stem": [
+    "Two pendulums with periods {{T1}} s and {{T2}} s are released together, in phase.",
+    "After how long are they next in phase?"
+  ],
+  "input": {
+    "label": "Time",
+    "placeholder": "for example 18 s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} s",
+  "hints": [
+    {
+      "text": "The faster pendulum gains on the slower one every swing.",
+      "cue": {
+        "cue": "ghost",
+        "args": {
+          "key": "length",
+          "value": "{{9.8*T2^2/(4*pi^2)}}",
+          "label": "second pendulum"
+        }
+      }
+    },
+    {
+      "text": "They are in phase again when it has gained one full oscillation."
+    },
+    {
+      "text": "Solve t ÷ T₁ − t ÷ T₂ = 1."
+    }
+  ],
+  "feedback": {
+    "in-phase-difference": {
+      "text": "Find the time when the faster pendulum has made one extra oscillation: t ÷ T₁ − t ÷ T₂ = 1."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a time."
+    },
+    "generic": {
+      "text": "t = T₁T₂ ÷ (T₂ − T₁)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "t ÷ {{T1}} − t ÷ {{T2}} = 1."
+    },
+    {
+      "text": "t = {{T1}} × {{T2}} ÷ ({{T2}} − {{T1}}) = {{ans}} s (after {{n}} swings of the slower one).",
+      "cue": {
+        "cue": "ghost",
+        "args": {
+          "key": "length",
+          "value": "{{9.8*T2^2/(4*pi^2)}}",
+          "label": "second pendulum"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "in-phase-difference": {
+      "front": "Two pendulums T₁ < T₂: next time in phase?",
+      "back": "When the faster one has made one extra oscillation: T₁T₂ ÷ (T₂ − T₁)."
+    },
+    "generic": {
+      "front": "Two pendulums next in phase?",
+      "back": "t = T₁T₂ ÷ (T₂ − T₁)."
+    }
+  },
+  "accessibility": {
+    "altText": "A pendulum's x–t graph, with a second pendulum shown dashed.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

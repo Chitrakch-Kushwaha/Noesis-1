@@ -1,0 +1,194 @@
+{
+  "id": "lom.connected-bodies.h.atwood",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.connected-bodies",
+    "lom.second-law",
+    "lom.fbd"
+  ],
+  "primarySkillId": "lom.connected-bodies",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 180,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "constraints": [
+    "m1 > m2"
+  ],
+  "solver": "lom.atwood",
+  "intro": "Over the pulley.",
+  "answer": {
+    "dimension": "acceleration",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "connected-only-one-mass"
+      ],
+      "match": {
+        "buggySolver": "onlyHeavyMass"
+      }
+    },
+    {
+      "tags": [
+        "atwood-free-fall"
+      ],
+      "match": {
+        "buggySolver": "freeFall"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{a|raw}} m/s^2"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The board shows the forces along the string's direction for the whole system: the heavier weight pulls one way, the lighter the other.",
+    "config": {
+      "scene": "free",
+      "body": {
+        "label": "both masses",
+        "mass": "{{M}}"
+      },
+      "predict": true,
+      "predictSeconds": 1.2,
+      "maxMagnitude": "{{W1+5}}",
+      "showResultant": true,
+      "vectors": [
+        {
+          "id": "W1",
+          "kind": "weight",
+          "label": "Weight of heavier mass",
+          "agent": "Earth",
+          "magnitude": "{{W1}}",
+          "angleDeg": 0,
+          "locked": true
+        },
+        {
+          "id": "W2",
+          "kind": "weight",
+          "label": "Weight of lighter mass",
+          "agent": "Earth",
+          "magnitude": "{{W2}}",
+          "angleDeg": 180,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "The difference of the weights accelerates both masses."
+      }
+    }
+  ],
+  "stem": [
+    "Masses of {{m1}} kg and {{m2}} kg hang on either side of a light, frictionless pulley, joined by a light string. They are released from rest. Take g = 9.8 m/s².",
+    "What is the size of their acceleration?"
+  ],
+  "input": {
+    "label": "Acceleration",
+    "placeholder": "for example 3 m/s^2",
+    "keypad": "none"
+  },
+  "answerText": "{{a}} m/s²",
+  "hints": [
+    {
+      "text": "Both masses move together, one up and one down, with the same size of acceleration.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "Along the string, the net force on the system is the difference of the two weights. The tension is internal."
+    },
+    {
+      "text": "a = (m₁ − m₂) g ÷ (m₁ + m₂)."
+    }
+  ],
+  "feedback": {
+    "connected-only-one-mass": {
+      "text": "The net force moves both masses, so divide by m₁ + m₂, not by one mass."
+    },
+    "atwood-free-fall": {
+      "text": "The lighter mass holds the heavier one back through the string, so the acceleration is less than g."
+    },
+    "dimension-mismatch": {
+      "text": "Acceleration is in m/s²."
+    },
+    "generic": {
+      "text": "Net force along the string ÷ total mass."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Along the string, the heavier weight ({{W1}} N) pulls one way and the lighter ({{W2}} N) the other. Net force: {{dW}} N.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W1",
+            "W2"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Both masses ({{M}} kg) accelerate together: a = {{dW}} ÷ {{M}} = {{a}} m/s². The tension is {{T}} N.",
+      "cue": {
+        "cue": "predict"
+      }
+    }
+  ],
+  "flashcards": {
+    "connected-only-one-mass": {
+      "front": "A pull on A drags B by a string. Which mass sets the acceleration?",
+      "back": "The total m_A + m_B."
+    },
+    "atwood-free-fall": {
+      "front": "Do the masses on a pulley fall with acceleration g?",
+      "back": "No: a = (m₁ − m₂) g ÷ (m₁ + m₂), less than g."
+    },
+    "generic": {
+      "front": "Atwood machine acceleration?",
+      "back": "a = (m₁ − m₂) g ÷ (m₁ + m₂)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two weights drawn in opposite directions along the string, representing the two hanging masses.",
+    "nonDragAlternative": "Press Play to see the motion; type your answer in the box."
+  }
+}

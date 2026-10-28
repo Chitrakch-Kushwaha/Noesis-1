@@ -1,0 +1,268 @@
+{
+  "id": "kin.suvat.m.braking-distance",
+  "version": 2,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": [],
+    "migratedFrom": "src/questions/templates.ts kin.suvat.m.braking-distance@1 (Phase 1 diagnostic; same review status)"
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.suvat"
+  ],
+  "primarySkillId": "kin.suvat",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "k": {
+      "kind": "int",
+      "min": 6,
+      "max": 15
+    },
+    "a": {
+      "kind": "choice",
+      "values": [
+        2,
+        2.5,
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.brakingDistance",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.01
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "missing-half"
+      ],
+      "match": {
+        "buggySolver": "missingHalf"
+      }
+    },
+    {
+      "tags": [
+        "dropped-square"
+      ],
+      "match": {
+        "buggySolver": "droppedSquare"
+      }
+    },
+    {
+      "tags": [
+        "time-instead-of-distance"
+      ],
+      "match": {
+        "buggySolver": "timeInsteadOfDistance"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{s/1000|raw}} km"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "instructions": "Press Play to watch the car brake. Pause, step or scrub the timeline; dots mark equal time intervals and bunch up as it slows.",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "car",
+          "label": "Car",
+          "x0": 0,
+          "v0": "{{u}}",
+          "a": "{{-a}}"
+        }
+      ],
+      "stopAtRest": true,
+      "xRange": [
+        0,
+        "{{xmax}}"
+      ],
+      "hideNumbers": true
+    }
+  },
+  "consequence": [
+    {
+      "cue": "flag",
+      "args": {
+        "x": "$value",
+        "label": "your answer",
+        "tone": "bad"
+      }
+    },
+    {
+      "cue": "stop-at",
+      "args": {
+        "x": "$value"
+      }
+    }
+  ],
+  "stem": [
+    "A car moving at {{u}} m/s brakes with a steady deceleration of {{a}} m/s².",
+    "How far does it travel from the moment the brakes are applied until it stops?"
+  ],
+  "input": {
+    "label": "Stopping distance",
+    "placeholder": "for example 30 m",
+    "keypad": "none"
+  },
+  "answerText": "{{s}} m",
+  "hints": [
+    {
+      "text": "You know the starting speed, the final speed and the deceleration. Which equation links those three with distance and leaves out time?"
+    },
+    {
+      "text": "The distance is the area under the velocity–time graph. Use v² = u² − 2as, with v = 0 when the car stops.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "t": "{{T}}"
+        }
+      }
+    },
+    {
+      "text": "0 = {{u}}² − 2 × {{a}} × s. Solve for s."
+    }
+  ],
+  "feedback": {
+    "missing-half": {
+      "text": "That distance is twice too large: it is what the car would cover at {{u}} m/s for the whole stopping time (the dashed car). The real car slows down, so its average speed is only half the starting speed.",
+      "cue": {
+        "cue": "ghost-lane",
+        "args": {
+          "lane": {
+            "id": "const",
+            "label": "at {{u}} m/s throughout",
+            "x0": 0,
+            "v0": "{{u}}",
+            "a": 0
+          }
+        }
+      }
+    },
+    "dropped-square": {
+      "text": "The starting speed should be squared. Stopping distance grows with the square of speed."
+    },
+    "time-instead-of-distance": {
+      "text": "That number is the stopping time (u ÷ a), not the distance."
+    },
+    "dimension-mismatch": {
+      "text": "Distance is a length. Check your unit."
+    },
+    "unit-conversion-error": {
+      "text": "Check your unit conversion: the speeds are in metres per second."
+    },
+    "generic": {
+      "text": "Try the equation that links speeds, deceleration and distance without time. The car now brakes so that it stops at your flag: compare the deceleration that needs with the {{a}} m/s² the brakes really give."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The car stops, so its final speed v = 0. Time isn't given, so use v² = u² − 2as.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "0 = {{u}}² − 2 × {{a}} × s"
+    },
+    {
+      "text": "s = {{u}}² ÷ (2 × {{a}}) = {{u*u}} ÷ {{2*a}} = {{s}} m.",
+      "cue": [
+        {
+          "cue": "reveal"
+        },
+        {
+          "cue": "flag",
+          "args": {
+            "x": "{{s}}",
+            "label": "stops at {{s}} m",
+            "tone": "good"
+          }
+        },
+        {
+          "cue": "area",
+          "args": {
+            "t": "{{T}}"
+          }
+        },
+        {
+          "cue": "play"
+        }
+      ]
+    },
+    {
+      "text": "Check: it stops after t = u/a = {{T}} s at an average speed of {{half}} m/s, and {{half}} × {{T}} = {{s}} m."
+    }
+  ],
+  "alternativeSolution": {
+    "title": "Using the time to stop",
+    "steps": [
+      {
+        "text": "Time to stop: t = u ÷ a = {{u}} ÷ {{a}} = {{T}} s.",
+        "cue": [
+          {
+            "cue": "reveal"
+          },
+          {
+            "cue": "tangent",
+            "args": {
+              "t": "{{T/2}}"
+            }
+          }
+        ]
+      },
+      {
+        "text": "Distance = area under the v–t graph = ½ × {{u}} × {{T}} = {{s}} m.",
+        "cue": [
+          {
+            "cue": "area",
+            "args": {
+              "t": "{{T}}"
+            }
+          },
+          {
+            "cue": "play"
+          }
+        ]
+      }
+    ]
+  },
+  "flashcards": {
+    "missing-half": {
+      "front": "Braking from u to rest: is the distance u × t?",
+      "back": "No. The speed falls steadily, so the average speed is u/2 and the distance is u²/(2a)."
+    },
+    "dropped-square": {
+      "front": "If a car's speed doubles, what happens to its stopping distance at the same deceleration?",
+      "back": "It becomes four times as large: s = u²/(2a)."
+    },
+    "time-instead-of-distance": {
+      "front": "What do u/a and u²/(2a) give for a car braking to rest?",
+      "back": "u/a is the stopping time; u²/(2a) is the stopping distance."
+    },
+    "generic": {
+      "front": "Which equation gives stopping distance without the time?",
+      "back": "v² = u² − 2as with v = 0, so s = u²/(2a)."
+    }
+  },
+  "accessibility": {
+    "altText": "A car on a straight road, starting at {{u}} m/s and braking at {{a}} m/s², with position–time and velocity–time graphs.",
+    "nonDragAlternative": "Use the Play, Step and timeline controls; nothing needs dragging."
+  }
+}

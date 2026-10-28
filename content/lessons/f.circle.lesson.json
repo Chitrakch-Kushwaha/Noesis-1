@@ -1,0 +1,128 @@
+{
+  "id": "f.circle.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.circle",
+  "kind": "micro-lesson",
+  "title": "Circle measurement: arc length and area",
+  "minutes": 5,
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -6,
+        6
+      ],
+      "yRange": [
+        -6,
+        6
+      ],
+      "functions": [
+        {
+          "id": "top",
+          "expr": "sqrt(16 - x^2)"
+        },
+        {
+          "id": "bot",
+          "expr": "-sqrt(16 - x^2)"
+        }
+      ]
+    },
+    "instructions": "Drag points or sliders where you see them; the description below names every value."
+  },
+  "steps": [
+    {
+      "text": "This circle has radius 4. Its circumference is 2πr ≈ 25.1.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "top",
+            "bot"
+          ]
+        }
+      }
+    },
+    {
+      "text": "An angle at the centre measured in radians gives the arc length directly: s = rθ. A quarter turn is π/2 rad, so the arc is 4 × π/2 ≈ 6.28.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "x": 0,
+          "y": 4,
+          "label": "quarter arc"
+        }
+      }
+    },
+    {
+      "text": "Degrees must be converted: θ (rad) = θ (deg) × π ÷ 180.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "180° = π rad"
+        }
+      }
+    },
+    {
+      "text": "The area inside is πr² ≈ 50.3 square units.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "A = πr²"
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "Unrolling the circle",
+    "steps": [
+      {
+        "text": "Roll the circle along a line: one turn covers 2πr, the circumference.",
+        "cue": {
+          "cue": "note",
+          "args": {
+            "text": "one turn = 2πr"
+          }
+        }
+      },
+      {
+        "text": "A fraction of a turn covers the same fraction of 2πr: that is s = rθ.",
+        "cue": {
+          "cue": "marker",
+          "args": {
+            "x": 4,
+            "y": 0,
+            "label": "start"
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: C = 2πr, s = rθ (θ in radians), A = πr².",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "top",
+            "bot"
+          ]
+        }
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A circle of radius 4 on a grid.",
+    "nonDragAlternative": "The graph is for reference; the steps describe every quantity."
+  }
+}

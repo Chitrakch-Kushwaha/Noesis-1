@@ -1,0 +1,154 @@
+{
+  "id": "mip.ucm.h.scaling",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.ucm"
+  ],
+  "primarySkillId": "mip.ucm",
+  "difficulty": "hard",
+  "format": "number",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "kv": {
+      "kind": "choice",
+      "values": [
+        2,
+        3
+      ]
+    },
+    "kr": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        2,
+        3
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.centripetalScaling",
+  "intro": "How the acceleration scales.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "centripetal-scaling"
+      ],
+      "match": {
+        "buggySolver": "linearInV"
+      }
+    },
+    {
+      "tags": [
+        "centripetal-scaling"
+      ],
+      "match": {
+        "buggySolver": "ignoredRadius"
+      }
+    }
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "circle",
+      "circle": {
+        "radius": 5,
+        "speed": 5
+      },
+      "showValues": false
+    },
+    "instructions": "Press Play: the orange arrow is the velocity and the peach arrow the acceleration."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "a = v² ÷ r: square the speed factor, then divide by the radius factor."
+      }
+    }
+  ],
+  "stem": [
+    "A car's speed round a circular bend changes by a factor of {{kv}}, and the bend's radius changes by a factor of {{kr}}.",
+    "By what factor does its centripetal acceleration change?"
+  ],
+  "input": {
+    "label": "Factor",
+    "placeholder": "for example 4",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Write a = v² ÷ r and change each factor in turn.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Speed × {{kv}} multiplies v² by {{kv}}²."
+    },
+    {
+      "text": "Radius × {{kr}} divides the acceleration by {{kr}}."
+    }
+  ],
+  "feedback": {
+    "centripetal-scaling": {
+      "text": "The radius changes too: a ∝ v² ÷ r."
+    },
+    "generic": {
+      "text": "a ∝ v² ÷ r."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "New a ÷ old a = ({{kv}})² ÷ {{kr}}."
+    },
+    {
+      "text": "= {{ans}}.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "v"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "centripetal-scaling": {
+      "front": "Double the speed and halve the radius: centripetal acceleration?",
+      "back": "8 times: a ∝ v² ÷ r."
+    },
+    "generic": {
+      "front": "Scaling of centripetal acceleration?",
+      "back": "a ∝ v² ÷ r."
+    }
+  },
+  "accessibility": {
+    "altText": "A body moving round a circle.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

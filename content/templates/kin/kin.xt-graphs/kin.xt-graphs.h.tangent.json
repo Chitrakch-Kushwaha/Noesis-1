@@ -1,0 +1,213 @@
+{
+  "id": "kin.xt-graphs.h.tangent",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.xt-graphs"
+  ],
+  "primarySkillId": "kin.xt-graphs",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        1.5
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        0,
+        1,
+        2
+      ]
+    },
+    "t1": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.xtTangent",
+  "intro": "Velocity at an instant.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "average-for-instantaneous"
+      ],
+      "match": {
+        "buggySolver": "averageFromStart"
+      }
+    },
+    {
+      "tags": [
+        "position-for-velocity"
+      ],
+      "match": {
+        "buggySolver": "positionInstead"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        5
+      ],
+      "yRange": [
+        0,
+        "{{ymax}}"
+      ],
+      "xLabel": "t (s)",
+      "yLabel": "x (m)",
+      "functions": [
+        {
+          "id": "x",
+          "expr": "{{a}}*x^2 + {{b}}*x"
+        },
+        {
+          "id": "you",
+          "expr": "{{x1}} + m*(x - {{t1}})",
+          "label": "line through P with your slope",
+          "tone": "muted"
+        }
+      ],
+      "params": {
+        "m": {
+          "value": 0,
+          "min": -5,
+          "max": 20,
+          "step": 0.5,
+          "label": "trial slope"
+        }
+      },
+      "points": [
+        {
+          "id": "P",
+          "label": "P",
+          "on": "x",
+          "x": "{{t1}}"
+        }
+      ]
+    },
+    "instructions": "Point P marks the instant asked about. The slider draws a line through P with any trial slope: the tangent just touches the curve."
+  },
+  "consequence": [
+    {
+      "cue": "set-param",
+      "args": {
+        "name": "m",
+        "value": "$value"
+      }
+    }
+  ],
+  "stem": [
+    "A ball's position is x = {{a}}t² + {{b}}t (x in m, t in s), so its x–t graph curves upward.",
+    "What is its instantaneous velocity at t = {{t1}} s?"
+  ],
+  "input": {
+    "label": "Velocity",
+    "placeholder": "for example 6 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "On a curved x–t graph, which line's slope is the velocity at P?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "P"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The tangent at P: the derivative dx/dt at that instant."
+    },
+    {
+      "text": "dx/dt = 2at + b."
+    }
+  ],
+  "feedback": {
+    "average-for-instantaneous": {
+      "text": "That is the average velocity from t = 0, x ÷ t. The instantaneous velocity is the slope of the tangent at that instant.",
+      "cue": {
+        "cue": "tangent",
+        "args": {
+          "point": "P"
+        }
+      }
+    },
+    "position-for-velocity": {
+      "text": "That is the position at t = {{t1}} s. Velocity is how fast the position changes: the slope."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "Velocity is the slope of the tangent: dx/dt at that instant."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "v = dx/dt = 2 × {{a}} × t + {{b}}.",
+      "cue": {
+        "cue": "tangent",
+        "args": {
+          "point": "P"
+        }
+      }
+    },
+    {
+      "text": "At t = {{t1}} s: v = {{ans}} m/s (the average from t = 0 is only {{avg}} m/s)."
+    }
+  ],
+  "flashcards": {
+    "average-for-instantaneous": {
+      "front": "Instantaneous velocity on a curved x–t graph?",
+      "back": "The slope of the tangent at that instant, not x ÷ t."
+    },
+    "position-for-velocity": {
+      "front": "On an x–t graph, is the height of the curve the velocity?",
+      "back": "No. The height is the position; the slope is the velocity."
+    },
+    "generic": {
+      "front": "Instantaneous velocity from x(t)?",
+      "back": "v = dx/dt, the slope of the tangent at that instant."
+    }
+  },
+  "accessibility": {
+    "altText": "A curved x–t graph with a point P at t = {{t1}} s.",
+    "nonDragAlternative": "The graph is for reading; type your answer in the box."
+  }
+}

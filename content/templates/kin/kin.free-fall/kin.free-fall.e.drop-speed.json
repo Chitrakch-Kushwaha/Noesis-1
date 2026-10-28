@@ -1,0 +1,151 @@
+{
+  "id": "kin.free-fall.e.drop-speed",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.free-fall"
+  ],
+  "primarySkillId": "kin.free-fall",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "t": {
+      "kind": "choice",
+      "values": [
+        1,
+        1.5,
+        2,
+        2.5,
+        3
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.dropSpeed",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "fall-distance-for-speed"
+      ],
+      "match": {
+        "buggySolver": "distanceInstead"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "s",
+          "label": "stone (downward positive)",
+          "x0": 0,
+          "v0": 0,
+          "a": 9.8
+        }
+      ],
+      "duration": "{{t}}",
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "you",
+          "label": "steady at your speed",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A stone is dropped from rest from a tall bridge. Ignore air resistance and take g = 9.8 m/s².",
+    "How fast is it falling after {{t}} s?"
+  ],
+  "input": {
+    "label": "Speed",
+    "placeholder": "for example 15 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "The stone starts from rest and gains speed at a steady rate.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Its speed grows by the same amount every second: that is what g measures."
+    },
+    {
+      "text": "v = u + gt with u = 0."
+    }
+  ],
+  "feedback": {
+    "fall-distance-for-speed": {
+      "text": "That is how far it has fallen, ½gt². The speed is g × t."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "v = gt for a body dropped from rest."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "From rest, v = u + gt with u = 0."
+    },
+    {
+      "text": "v = 9.8 × {{t}} = {{ans}} m/s (it has fallen {{h}} m).",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "fall-distance-for-speed": {
+      "front": "Speed after falling for t seconds from rest?",
+      "back": "v = g t (the distance is ½ g t²)."
+    },
+    "generic": {
+      "front": "Speed after falling for t s from rest?",
+      "back": "v = g t."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane showing the stone's downward position against time.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

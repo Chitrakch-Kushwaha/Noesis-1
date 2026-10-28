@@ -1,0 +1,199 @@
+{
+  "id": "lom.first-law.e.puck-on-ice",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.first-law"
+  ],
+  "primarySkillId": "lom.first-law",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.5,
+        1
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        5
+      ]
+    }
+  },
+  "solver": "lom.noNetForce",
+  "intro": "A quick check on inertia.",
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The puck slides on frictionless ice. Press Play to see how it moves with the forces drawn.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "puck",
+        "mass": "{{m}}"
+      },
+      "initialVelocity": {
+        "x": "{{v}}",
+        "y": 0
+      },
+      "predict": true,
+      "predictSeconds": 1.5,
+      "maxMagnitude": "{{W*2+2}}",
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "ice",
+          "magnitude": "{{W}}",
+          "angleDeg": 90,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "stem": [
+    "An ice-hockey puck slides across perfectly smooth ice at a steady {{v}} m/s.",
+    "What net (resultant) force is needed to keep it moving at this speed?"
+  ],
+  "options": [
+    {
+      "id": "zero",
+      "text": "No net force: the forces on it balance"
+    },
+    {
+      "id": "forward",
+      "text": "A small forward force, to keep it going",
+      "tags": [
+        "motion-needs-net-force"
+      ],
+      "cue": [
+        {
+          "cue": "compare",
+          "args": {
+            "vectors": [
+              {
+                "kind": "weight",
+                "magnitude": "{{W}}",
+                "angleDeg": -90
+              },
+              {
+                "kind": "normal",
+                "magnitude": "{{W}}",
+                "angleDeg": 90
+              },
+              {
+                "kind": "applied",
+                "magnitude": 1,
+                "angleDeg": 0
+              }
+            ],
+            "label": "with a forward force"
+          }
+        },
+        {
+          "cue": "predict"
+        }
+      ]
+    },
+    {
+      "id": "speed",
+      "text": "A forward force proportional to its speed",
+      "tags": [
+        "motion-needs-net-force"
+      ]
+    },
+    {
+      "id": "back",
+      "text": "A backward force, because moving things slow down",
+      "tags": [
+        "motion-needs-net-force"
+      ]
+    }
+  ],
+  "answerText": "No net force",
+  "hints": [
+    {
+      "text": "What happens to the speed if the net force is zero? Press Play.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "A net force would change the velocity: speed it up, slow it down or turn it."
+    },
+    {
+      "text": "Constant velocity means the net force is zero (Newton's first law)."
+    }
+  ],
+  "feedback": {
+    "motion-needs-net-force": {
+      "text": "A net force changes velocity. With your force the puck would speed up, as the dashed puck shows. At a steady speed the forces balance; no force is needed just to keep moving.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    "generic": {
+      "text": "Ask what a net force would do to the motion."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Vertically the weight and the normal force balance. On smooth ice there is no friction.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W",
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The net force is zero, so the velocity doesn't change: the puck keeps sliding at {{v}} m/s. Press Play.",
+      "cue": {
+        "cue": "predict"
+      }
+    }
+  ],
+  "flashcards": {
+    "motion-needs-net-force": {
+      "front": "Does a body need a net force to keep moving at constant velocity?",
+      "back": "No. Zero net force means constant velocity (Newton's first law)."
+    },
+    "generic": {
+      "front": "Constant velocity: net force?",
+      "back": "Zero."
+    }
+  },
+  "accessibility": {
+    "altText": "A puck sliding right on ice, with its weight and the normal force drawn. They balance.",
+    "nonDragAlternative": "Choose an answer with the radio buttons; press Play to see the motion."
+  }
+}

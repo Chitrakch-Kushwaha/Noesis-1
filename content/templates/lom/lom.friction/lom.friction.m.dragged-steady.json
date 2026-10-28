@@ -1,0 +1,223 @@
+{
+  "id": "lom.friction.m.dragged-steady",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.friction",
+    "lom.first-law"
+  ],
+  "primarySkillId": "lom.friction",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5,
+        6,
+        8
+      ]
+    },
+    "mu": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.25,
+        0.3,
+        0.4
+      ]
+    }
+  },
+  "solver": "lom.draggedConstantSpeed",
+  "intro": "Steady speed, rough floor.",
+  "answer": {
+    "dimension": "force",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "mass-instead-of-weight"
+      ],
+      "match": {
+        "buggySolver": "massNotWeight"
+      }
+    },
+    {
+      "tags": [
+        "tension-equals-weight"
+      ],
+      "match": {
+        "buggySolver": "tensionEqualsWeight"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{T|raw}} N"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Set the rope's pull and press Play: at the right value the crate keeps a steady speed.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "crate",
+        "mass": "{{m}}"
+      },
+      "initialVelocity": {
+        "x": 1,
+        "y": 0
+      },
+      "predict": true,
+      "predictSeconds": 1.5,
+      "maxMagnitude": "{{maxM}}",
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "floor",
+          "magnitude": "{{W}}",
+          "angleDeg": 90,
+          "locked": true
+        },
+        {
+          "id": "f",
+          "kind": "friction",
+          "label": "Friction",
+          "agent": "floor",
+          "magnitude": "{{T}}",
+          "angleDeg": 180,
+          "locked": true
+        },
+        {
+          "id": "T",
+          "kind": "tension",
+          "label": "Rope pull",
+          "agent": "rope",
+          "magnitude": 1,
+          "angleDeg": 0
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "set",
+      "args": {
+        "id": "T",
+        "magnitude": "$value",
+        "play": true
+      }
+    }
+  ],
+  "stem": [
+    "A {{m}} kg crate is dragged across a rough floor at a constant speed by a horizontal rope. The coefficient of kinetic friction is {{mu}}. Take g = 9.8 m/s².",
+    "What is the tension in the rope?"
+  ],
+  "input": {
+    "label": "Tension",
+    "placeholder": "for example 12 N",
+    "keypad": "none"
+  },
+  "answerText": "{{T}} N",
+  "hints": [
+    {
+      "text": "Constant speed: what is the net force? Press Play with different pulls.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "Horizontally, the rope's pull balances kinetic friction. Kinetic friction = μ_k N."
+    },
+    {
+      "text": "N = mg on a level floor, so T = μ_k m g."
+    }
+  ],
+  "feedback": {
+    "mass-instead-of-weight": {
+      "text": "Friction is μ times the normal force, which is a force (m g, in newtons), not the mass."
+    },
+    "tension-equals-weight": {
+      "text": "The rope is horizontal: it balances friction, not the weight. The floor holds the weight up. Watch your value: the crate speeds up."
+    },
+    "dimension-mismatch": {
+      "text": "Tension is a force, in newtons."
+    },
+    "generic": {
+      "text": "At constant speed the forces balance: tension = kinetic friction."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Vertically: N = m g = {{W}} N.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N",
+            "W"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Constant speed, so horizontally T = μ_k N = {{mu}} × {{W}} = {{T}} N. Press Play: the speed stays steady.",
+      "cue": [
+        {
+          "cue": "set",
+          "args": {
+            "id": "T",
+            "magnitude": "{{T}}"
+          }
+        },
+        {
+          "cue": "predict"
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "mass-instead-of-weight": {
+      "front": "Kinetic friction on a crate of mass m on a level floor?",
+      "back": "μ_k m g: μ times the normal force, a force in newtons."
+    },
+    "tension-equals-weight": {
+      "front": "A horizontal rope drags a crate at constant speed. What does the tension balance?",
+      "back": "Kinetic friction, not the weight."
+    },
+    "generic": {
+      "front": "Dragging at constant speed on a level floor?",
+      "back": "T = μ_k m g."
+    }
+  },
+  "accessibility": {
+    "altText": "A crate on a floor with its weight, normal force, friction and a small rope pull drawn.",
+    "nonDragAlternative": "Select the rope pull and type its size in Precise controls, then press Play."
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "id": "kin.displacement.e.walk-and-back",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.displacement"
+  ],
+  "primarySkillId": "kin.displacement",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        8,
+        10,
+        12,
+        15
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.netWalk",
+  "intro": "A quick check.",
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 16,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "walk east",
+          "agent": "none",
+          "magnitude": "{{a}}",
+          "angleDeg": 0,
+          "tone": "a"
+        },
+        {
+          "id": "b",
+          "kind": "vector",
+          "label": "walk back",
+          "agent": "none",
+          "magnitude": "{{b}}",
+          "angleDeg": 180,
+          "tone": "b"
+        }
+      ],
+      "showResultant": false,
+      "unit": "m"
+    },
+    "instructions": "The two arrows are your two walks, tip to tail. Displacement runs from your start to your finish."
+  },
+  "stem": [
+    "You walk {{a}} m east along a straight road, then {{b}} m back west.",
+    "What is your displacement?"
+  ],
+  "options": [
+    {
+      "id": "net",
+      "text": "{{net}} m east"
+    },
+    {
+      "id": "path",
+      "text": "{{path}} m east",
+      "tags": [
+        "path-length-for-displacement"
+      ],
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "y",
+            "kind": "vector",
+            "label": "your answer",
+            "agent": "none",
+            "magnitude": "{{path}}",
+            "angleDeg": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "west",
+      "text": "{{net}} m west",
+      "tags": [
+        "displacement-sign"
+      ],
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "y",
+            "kind": "vector",
+            "label": "your answer",
+            "agent": "none",
+            "magnitude": "{{net}}",
+            "angleDeg": 180
+          }
+        }
+      }
+    }
+  ],
+  "answerText": "{{net}} m east",
+  "hints": [
+    {
+      "text": "Where do you finish compared with where you started?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Walking back west undoes part of the eastward walk."
+    },
+    {
+      "text": "Displacement = final position − initial position, with its direction."
+    }
+  ],
+  "feedback": {
+    "path-length-for-displacement": {
+      "text": "That is the total distance walked, the path length. Displacement compares only where you started and finished."
+    },
+    "displacement-sign": {
+      "text": "You finish east of the start, so the displacement points east."
+    },
+    "generic": {
+      "text": "Compare only the start and the end of the walk."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "You end {{a}} − {{b}} = {{net}} m east of where you began."
+    },
+    {
+      "text": "So the displacement is {{net}} m east, while the path length is {{path}} m.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "d",
+            "kind": "vector",
+            "label": "displacement",
+            "agent": "none",
+            "magnitude": "{{net}}",
+            "angleDeg": 0
+          }
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "path-length-for-displacement": {
+      "front": "Is displacement the total distance travelled?",
+      "back": "No. Displacement is the change in position (final − initial), with a direction; path length is the total distance covered."
+    },
+    "displacement-sign": {
+      "front": "Can a displacement be negative?",
+      "back": "Yes. Its sign gives its direction along the axis: negative means towards −x."
+    },
+    "generic": {
+      "front": "Displacement vs path length?",
+      "back": "Displacement: change in position (with direction). Path length: total distance covered."
+    }
+  },
+  "accessibility": {
+    "altText": "Two arrows on a grid: {{a}} m to the east, then {{b}} m back to the west.",
+    "nonDragAlternative": "Choose an answer with the radio buttons; the board only illustrates the walk."
+  }
+}

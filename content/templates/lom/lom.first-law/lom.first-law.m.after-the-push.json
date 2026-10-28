@@ -1,0 +1,310 @@
+{
+  "id": "lom.first-law.m.after-the-push",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.first-law",
+    "lom.fbd"
+  ],
+  "primarySkillId": "lom.first-law",
+  "difficulty": "medium",
+  "format": "single-choice",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "v0": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "mu": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.3,
+        0.4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "lom.afterPush",
+  "intro": "This question helps us find the best place for you to begin.",
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The board shows the box's weight and the normal force. Add other forces with Precise controls, drag their tips, then press Play to see how the moving box would respond.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "box",
+        "mass": "{{m}}"
+      },
+      "initialVelocity": {
+        "x": "{{v0}}",
+        "y": 0
+      },
+      "predict": true,
+      "predictSeconds": "{{T}}",
+      "maxMagnitude": "{{W+6}}",
+      "allowAdd": true,
+      "agents": [
+        "floor",
+        "hand",
+        "none"
+      ],
+      "kinds": [
+        {
+          "kind": "friction",
+          "label": "Friction"
+        },
+        {
+          "kind": "applied",
+          "label": "Push"
+        },
+        {
+          "kind": "motion",
+          "label": "Force of motion"
+        }
+      ],
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "floor",
+          "magnitude": "{{W}}",
+          "angleDeg": 90,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "stem": [
+    "A {{m}} kg box slides to the right at {{v0}} m/s across a rough floor. Your push has already ended.",
+    "Which forces act on the box now?"
+  ],
+  "options": [
+    {
+      "id": "a",
+      "text": "Its weight (from the Earth), the normal force (from the floor) and friction from the floor, pointing left"
+    },
+    {
+      "id": "b",
+      "text": "Its weight, the normal force, friction pointing left, and the force of your push pointing right",
+      "tags": [
+        "extra-force-of-motion"
+      ],
+      "cue": {
+        "cue": "compare",
+        "args": {
+          "vectors": [
+            {
+              "kind": "weight",
+              "magnitude": "{{W}}",
+              "angleDeg": -90
+            },
+            {
+              "kind": "normal",
+              "magnitude": "{{W}}",
+              "angleDeg": 90
+            },
+            {
+              "kind": "friction",
+              "label": "Friction",
+              "agent": "floor",
+              "magnitude": "{{f}}",
+              "angleDeg": 180
+            },
+            {
+              "kind": "applied",
+              "magnitude": "{{push}}",
+              "angleDeg": 0
+            }
+          ],
+          "label": "with a push still acting"
+        }
+      }
+    },
+    {
+      "id": "c",
+      "text": "Its weight, the normal force and a forward “force of motion” that keeps it going",
+      "tags": [
+        "extra-force-of-motion",
+        "missing-friction"
+      ],
+      "cue": {
+        "cue": "compare",
+        "args": {
+          "vectors": [
+            {
+              "kind": "weight",
+              "magnitude": "{{W}}",
+              "angleDeg": -90
+            },
+            {
+              "kind": "normal",
+              "magnitude": "{{W}}",
+              "angleDeg": 90
+            },
+            {
+              "kind": "motion",
+              "magnitude": "{{f}}",
+              "angleDeg": 0
+            }
+          ],
+          "label": "with a forward force of motion"
+        }
+      }
+    },
+    {
+      "id": "d",
+      "text": "Only its weight and the normal force: nothing acts along the floor",
+      "tags": [
+        "missing-friction"
+      ],
+      "cue": {
+        "cue": "compare",
+        "args": {
+          "vectors": [
+            {
+              "kind": "weight",
+              "magnitude": "{{W}}",
+              "angleDeg": -90
+            },
+            {
+              "kind": "normal",
+              "magnitude": "{{W}}",
+              "angleDeg": 90
+            }
+          ],
+          "label": "with no friction"
+        }
+      }
+    }
+  ],
+  "resolution": {
+    "cue": "compare",
+    "args": {
+      "vectors": [
+        {
+          "kind": "weight",
+          "magnitude": "{{W}}",
+          "angleDeg": -90
+        },
+        {
+          "kind": "normal",
+          "magnitude": "{{W}}",
+          "angleDeg": 90
+        },
+        {
+          "kind": "friction",
+          "label": "Friction",
+          "agent": "floor",
+          "magnitude": "{{f}}",
+          "angleDeg": 180
+        }
+      ],
+      "label": "the forces acting now"
+    }
+  },
+  "answerText": "Weight, the normal force and friction pointing left",
+  "hints": [
+    {
+      "text": "A force needs an agent: something touching the box, or the Earth's gravity. What is touching the box now?"
+    },
+    {
+      "text": "Add a Push to the right, press Play, and watch the speed. Does a sliding box on a rough floor really speed up?",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "The box is slowing down. Slowing down needs a net force pointing backwards."
+    }
+  ],
+  "feedback": {
+    "extra-force-of-motion": {
+      "text": "Once your hand leaves the box, your push stops acting. Nothing pushes the box forward: it keeps moving because of inertia. The dashed box shows what your choice predicts; a real box slows down."
+    },
+    "missing-friction": {
+      "text": "Without friction, nothing would slow the box: the dashed box keeps sliding at a constant speed. The rough floor exerts friction against the motion."
+    },
+    "generic": {
+      "text": "List only forces with an agent touching the box now, plus gravity. Then ask whether those forces explain the box slowing down."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Agents acting on the box now: the Earth (gravity) and the floor (contact). Your hand is no longer touching it."
+    },
+    {
+      "text": "The floor pushes up (normal force) and rubs against the motion (friction, pointing left).",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "F",
+            "kind": "friction",
+            "label": "Friction",
+            "agent": "floor",
+            "magnitude": "{{f}}",
+            "angleDeg": 180
+          }
+        }
+      }
+    },
+    {
+      "text": "Net force: friction of {{f}} N to the left, so the box decelerates at {{f/m}} m/s² and slows down. Press Play to watch.",
+      "cue": {
+        "cue": "predict"
+      }
+    }
+  ],
+  "flashcards": {
+    "extra-force-of-motion": {
+      "front": "A box slides after you stop pushing. Is your push still a force on it?",
+      "back": "No. Every force needs an agent in contact (or a field). The box keeps moving because of inertia, and friction slows it."
+    },
+    "missing-friction": {
+      "front": "What slows a box sliding across a rough floor?",
+      "back": "Kinetic friction from the floor, pointing opposite the motion."
+    },
+    "generic": {
+      "front": "How do you decide which forces act on a body?",
+      "back": "Find each agent: things in contact with it, plus gravity. No agent, no force."
+    }
+  },
+  "accessibility": {
+    "altText": "A box on a floor moving right at {{v0}} m/s, with its weight drawn down and the normal force drawn up.",
+    "nonDragAlternative": "Use Add force, then type the size and direction of each force in Precise controls."
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "id": "lom.resolve-forces.m.pushed-up-incline",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.resolve-forces",
+    "lom.fbd"
+  ],
+  "primarySkillId": "lom.resolve-forces",
+  "difficulty": "medium",
+  "format": "diagram",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "theta": {
+      "kind": "choice",
+      "values": [
+        20,
+        30,
+        40
+      ]
+    }
+  },
+  "solver": "lom.pushedUpIncline",
+  "intro": "Build the diagram, then let the model test it.",
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Add each force with Precise controls, choose who exerts it, then set its size and direction. The block slides up at a steady speed; press Play to see what your diagram predicts.",
+    "config": {
+      "scene": "incline",
+      "inclineDeg": "{{theta}}",
+      "body": {
+        "label": "block",
+        "mass": "{{m}}"
+      },
+      "predict": true,
+      "predictSeconds": 1.5,
+      "maxMagnitude": "{{maxF}}",
+      "magnitudeStep": 0.5,
+      "allowAdd": true,
+      "allowAxesToggle": true,
+      "agents": [
+        "Earth",
+        "plank",
+        "hand",
+        "none"
+      ],
+      "kinds": [
+        {
+          "kind": "weight",
+          "label": "Weight"
+        },
+        {
+          "kind": "normal",
+          "label": "Normal"
+        },
+        {
+          "kind": "applied",
+          "label": "Push"
+        },
+        {
+          "kind": "friction",
+          "label": "Friction"
+        },
+        {
+          "kind": "motion",
+          "label": "Force of motion"
+        }
+      ],
+      "vectors": []
+    }
+  },
+  "resolution": {
+    "cue": "student-diagram",
+    "args": {
+      "correct": [
+        {
+          "id": "sW",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90
+        },
+        {
+          "id": "sN",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "plank",
+          "magnitude": "{{N}}",
+          "angleDeg": "{{angN}}"
+        },
+        {
+          "id": "sP",
+          "kind": "applied",
+          "label": "Push",
+          "agent": "hand",
+          "magnitude": "{{P}}",
+          "angleDeg": "{{theta}}"
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "predict"
+    }
+  ],
+  "stem": [
+    "A {{m}} kg block is pushed up a smooth (frictionless) plank tilted at {{theta}}°. Your hand pushes parallel to the plank and the block moves up at a constant speed. Take g = 9.8 m/s².",
+    "Draw every force acting on the block, with its size and direction."
+  ],
+  "answerText": "Weight {{W}} N down; normal {{N}} N perpendicular to the plank; push {{P}} N up the plank.",
+  "hints": [
+    {
+      "text": "What touches the block? The plank and your hand. Gravity acts too. Is anything else pushing it?"
+    },
+    {
+      "text": "Constant speed means the net force is zero. Tilt the axes and balance the forces along and across the plank.",
+      "cue": [
+        {
+          "cue": "tilted-axes"
+        },
+        {
+          "cue": "predict"
+        }
+      ]
+    },
+    {
+      "text": "Across the plank: N = mg cos θ. Along it: push = mg sin θ. There is no separate force for the motion itself."
+    }
+  ],
+  "feedback": {
+    "extra-force-of-motion": {
+      "text": "There is no separate 'force of motion'. The block keeps moving at a steady speed because the forces balance. Ask of each arrow: what is pushing or pulling?",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Every force needs an agent: Earth, plank or hand."
+        }
+      }
+    },
+    "normal-equals-weight": {
+      "text": "On a slope the plank pushes back only against the part of the weight pressing into it: N = mg cos θ, not mg.",
+      "cue": [
+        {
+          "cue": "add-vector",
+          "args": {
+            "vector": {
+              "id": "sW",
+              "kind": "weight",
+              "label": "Weight",
+              "agent": "Earth",
+              "magnitude": "{{W}}",
+              "angleDeg": -90
+            }
+          }
+        },
+        {
+          "cue": "tilted-axes"
+        },
+        {
+          "cue": "decompose",
+          "args": {
+            "id": "sW",
+            "axes": "tilted",
+            "values": false
+          }
+        }
+      ]
+    },
+    "constant-velocity-unbalanced": {
+      "text": "At constant speed the push along the plank must exactly balance the weight's component down the plank, mg sin θ. Your diagram predicts the block speeding up or slowing down."
+    },
+    "missing-weight": {
+      "text": "Every body near the Earth has a weight, mg, straight down."
+    },
+    "missing-normal": {
+      "text": "The plank pushes on the block, perpendicular to its surface. Without it the block would sink into the plank."
+    },
+    "missing-push": {
+      "text": "Your hand pushes the block up along the plank."
+    },
+    "normal-direction": {
+      "text": "The normal force is perpendicular to the plank, not straight up."
+    },
+    "push-direction": {
+      "text": "The push is parallel to the plank, up the slope."
+    },
+    "weight-magnitude": {
+      "text": "Weight = mg = {{m}} × 9.8 = {{W}} N."
+    },
+    "double-counted-force": {
+      "text": "Each agent here gives one force. Remove the duplicate."
+    },
+    "generic": {
+      "text": "List the agents (Earth, plank, hand), give each one force, and check that the net force is zero for a steady speed."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Weight: {{W}} N straight down, from the Earth.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "sW",
+            "kind": "weight",
+            "label": "Weight",
+            "agent": "Earth",
+            "magnitude": "{{W}}",
+            "angleDeg": -90
+          }
+        }
+      }
+    },
+    {
+      "text": "Use axes along and across the plank. Across it, nothing accelerates: N = mg cos {{theta}}° = {{N}} N.",
+      "cue": [
+        {
+          "cue": "tilted-axes"
+        },
+        {
+          "cue": "add-vector",
+          "args": {
+            "vector": {
+              "id": "sN",
+              "kind": "normal",
+              "label": "Normal",
+              "agent": "plank",
+              "magnitude": "{{N}}",
+              "angleDeg": "{{angN}}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "text": "Along it, the speed is constant, so the push balances mg sin {{theta}}° = {{P}} N. No other force acts; press Play to see the steady motion.",
+      "cue": [
+        {
+          "cue": "add-vector",
+          "args": {
+            "vector": {
+              "id": "sP",
+              "kind": "applied",
+              "label": "Push",
+              "agent": "hand",
+              "magnitude": "{{P}}",
+              "angleDeg": "{{theta}}"
+            }
+          }
+        },
+        {
+          "cue": "predict"
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "generic": {
+      "front": "A block pushed up a smooth slope at constant speed: which forces act?",
+      "back": "Weight (down), normal (perpendicular to the slope) and the push (along it). No 'force of motion'."
+    }
+  },
+  "accessibility": {
+    "altText": "A block on a plank tilted at {{theta}}°. No forces are drawn yet.",
+    "nonDragAlternative": "Use Add force with a type and an agent, then type each size and direction in Precise controls."
+  }
+}

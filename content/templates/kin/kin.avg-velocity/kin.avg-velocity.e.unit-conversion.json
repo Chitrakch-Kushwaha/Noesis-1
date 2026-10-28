@@ -1,0 +1,160 @@
+{
+  "id": "kin.avg-velocity.e.unit-conversion",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.avg-velocity"
+  ],
+  "primarySkillId": "kin.avg-velocity",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "d": {
+      "kind": "choice",
+      "values": [
+        240,
+        300,
+        360,
+        480,
+        600
+      ]
+    },
+    "tmin": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.averageSpeedUnits",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "unit-not-converted"
+      ],
+      "match": {
+        "buggySolver": "notConverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "c",
+          "label": "cyclist",
+          "x0": 0,
+          "v0": "{{ans}}",
+          "a": 0
+        }
+      ],
+      "duration": "{{tsec}}",
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "you",
+          "label": "cyclist at your speed",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A cyclist rides {{d}} m in {{tmin}} min at a steady pace.",
+    "What is the cyclist's average speed in m/s?"
+  ],
+  "input": {
+    "label": "Average speed",
+    "placeholder": "for example 4 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "Average speed = distance ÷ time. Which units must the time be in?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "1 min = 60 s."
+    },
+    {
+      "text": "Convert {{tmin}} min to seconds first."
+    }
+  ],
+  "feedback": {
+    "unit-not-converted": {
+      "text": "That is metres per minute. Convert the time to seconds before dividing."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "Divide the distance in metres by the time in seconds."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Time: {{tmin}} × 60 = {{tsec}} s."
+    },
+    {
+      "text": "Average speed = {{d}} ÷ {{tsec}} = {{ans}} m/s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "unit-not-converted": {
+      "front": "Distance in m, time in min: is d ÷ t in m/s?",
+      "back": "No. Convert minutes to seconds first (× 60)."
+    },
+    "generic": {
+      "front": "Speed in m/s from metres and minutes?",
+      "back": "Convert minutes to seconds (× 60) before dividing."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with a cyclist moving at a steady speed.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

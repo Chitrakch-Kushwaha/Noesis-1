@@ -1,0 +1,167 @@
+{
+  "id": "kin.relative-1d.m.meet",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.relative-1d"
+  ],
+  "primarySkillId": "kin.relative-1d",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "d": {
+      "kind": "choice",
+      "values": [
+        300,
+        400,
+        600,
+        800
+      ]
+    },
+    "vA": {
+      "kind": "choice",
+      "values": [
+        15,
+        20,
+        25
+      ]
+    },
+    "vB": {
+      "kind": "choice",
+      "values": [
+        10,
+        15,
+        20
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.meetTime",
+  "intro": "Two cars, one road.",
+  "answer": {
+    "dimension": "time",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "relative-subtracted-opposite"
+      ],
+      "match": {
+        "buggySolver": "subtracted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "A",
+          "label": "car A",
+          "x0": 0,
+          "v0": "{{vA}}",
+          "a": 0
+        },
+        {
+          "id": "B",
+          "label": "car B",
+          "x0": "{{d}}",
+          "v0": "{{-vB}}",
+          "a": 0
+        }
+      ],
+      "duration": "{{ans*1.2}}",
+      "xRange": [
+        0,
+        "{{d}}"
+      ],
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion; scrub the time slider to inspect any instant."
+  },
+  "stem": [
+    "Two cars start {{d}} m apart and drive towards each other at {{vA}} m/s and {{vB}} m/s.",
+    "After how long do they meet?"
+  ],
+  "input": {
+    "label": "Time",
+    "placeholder": "for example 12 s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} s",
+  "hints": [
+    {
+      "text": "How fast does the gap between them shrink?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Approaching each other: closing speed = v_A + v_B."
+    },
+    {
+      "text": "Time = gap ÷ closing speed."
+    }
+  ],
+  "feedback": {
+    "relative-subtracted-opposite": {
+      "text": "They move towards each other, so the gap closes at the sum of their speeds.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a time."
+    },
+    "generic": {
+      "text": "Time to meet = initial gap ÷ (v_A + v_B)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Closing speed: {{vA}} + {{vB}} = {{closing}} m/s."
+    },
+    {
+      "text": "t = {{d}} ÷ {{closing}} = {{ans}} s.",
+      "cue": {
+        "cue": "flag",
+        "args": {
+          "x": "{{xMeet}}",
+          "label": "meet"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "relative-subtracted-opposite": {
+      "front": "Two cars approaching head-on: closing speed?",
+      "back": "The sum of their speeds."
+    },
+    "generic": {
+      "front": "Two bodies approaching each other: time to meet?",
+      "back": "Gap ÷ (sum of speeds)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes: car A moving right from 0 and car B moving left from {{d}} m.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

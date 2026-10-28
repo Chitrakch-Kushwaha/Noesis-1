@@ -1,0 +1,155 @@
+{
+  "id": "f.trig-ratios.e.component-ratio",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.trig-ratios",
+    "mip.resolution"
+  ],
+  "primarySkillId": "f.trig-ratios",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 40,
+  "parameters": {
+    "ang": {
+      "kind": "choice",
+      "values": [
+        25,
+        30,
+        40,
+        50,
+        60
+      ]
+    }
+  },
+  "solver": "f.componentRatio",
+  "intro": "Which ratio?",
+  "widget": {
+    "type": "triangle-explorer",
+    "instructions": "The vector's shadows on the axes are its components.",
+    "config": {
+      "mode": "vector",
+      "hypotenuse": 5,
+      "angleDeg": "{{ang}}",
+      "marked": "A",
+      "editable": false,
+      "showRoles": true
+    }
+  },
+  "stem": [
+    "A vector of length r points at {{ang}}° above the x-axis.",
+    "Its x-component equals r times which ratio of {{ang}}°?"
+  ],
+  "options": [
+    {
+      "id": "cos",
+      "text": "cos {{ang}}°"
+    },
+    {
+      "id": "sin",
+      "text": "sin {{ang}}°",
+      "tags": [
+        "sin-cos-swap"
+      ],
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite"
+          ]
+        }
+      }
+    },
+    {
+      "id": "tan",
+      "text": "tan {{ang}}°",
+      "tags": [
+        "tan-for-component"
+      ]
+    }
+  ],
+  "answerText": "cos {{ang}}°",
+  "hints": [
+    {
+      "text": "Look at the x-shadow: is it opposite the angle or adjacent to it?",
+      "cue": {
+        "cue": "shadows"
+      }
+    },
+    {
+      "text": "The x-shadow touches the angle at the origin, so it is adjacent."
+    },
+    {
+      "text": "adjacent = hypotenuse × cos θ."
+    }
+  ],
+  "feedback": {
+    "sin-cos-swap": {
+      "text": "sin gives the side opposite the angle: here the y-component. The x-component is adjacent, so it uses cos.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite",
+            "adjacent"
+          ]
+        }
+      }
+    },
+    "tan-for-component": {
+      "text": "tan compares the two components (y ÷ x). It doesn't give a component from r."
+    },
+    "generic": {
+      "text": "Decide whether the x-component is opposite or adjacent to the angle."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The vector is the hypotenuse; its x-shadow is adjacent to the angle at the origin.",
+      "cue": [
+        {
+          "cue": "shadows"
+        },
+        {
+          "cue": "highlight-side",
+          "args": {
+            "sides": [
+              "adjacent"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "text": "adjacent = hypotenuse × cos θ, so x-component = r cos {{ang}}°."
+    }
+  ],
+  "flashcards": {
+    "sin-cos-swap": {
+      "front": "Vector r at θ above the x-axis: which ratio gives its x-component?",
+      "back": "cos θ: x = r cos θ (adjacent). y = r sin θ."
+    },
+    "tan-for-component": {
+      "front": "What does tan θ tell you about a vector's components?",
+      "back": "tan θ = y ÷ x: it compares the components."
+    },
+    "generic": {
+      "front": "x-component of a vector at θ?",
+      "back": "r cos θ."
+    }
+  },
+  "accessibility": {
+    "altText": "A vector from the origin at {{ang}}° above the x-axis with its side roles labelled.",
+    "nonDragAlternative": "Choose an answer with the radio buttons; the figure cannot be changed in this question."
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "id": "lom.fbd.h.lamp-two-strings",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.fbd",
+    "lom.resolve-forces"
+  ],
+  "primarySkillId": "lom.fbd",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "th": {
+      "kind": "choice",
+      "values": [
+        30,
+        45,
+        60
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "lom.lampTwoStrings",
+  "intro": "Equilibrium of a particle.",
+  "answer": {
+    "dimension": "force",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "tension-ignores-angle"
+      ],
+      "match": {
+        "buggySolver": "ignoresAngle"
+      }
+    },
+    {
+      "tags": [
+        "sin-cos-swap"
+      ],
+      "match": {
+        "buggySolver": "usedSin"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} N"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "hanging",
+      "maxMagnitude": "{{maxF}}",
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "L",
+          "kind": "tension",
+          "label": "Left string",
+          "agent": "string",
+          "magnitude": "{{half}}",
+          "angleDeg": "{{angL}}",
+          "locked": true
+        },
+        {
+          "id": "R",
+          "kind": "tension",
+          "label": "Right string",
+          "agent": "string",
+          "magnitude": "{{half}}",
+          "angleDeg": "{{angR}}",
+          "locked": true
+        }
+      ],
+      "body": {
+        "label": "lamp",
+        "mass": "{{m}}"
+      },
+      "predict": true
+    },
+    "instructions": "Press Play to see whether these forces keep the lamp still."
+  },
+  "consequence": [
+    {
+      "cue": "set",
+      "args": {
+        "id": "L",
+        "magnitude": "$value"
+      }
+    },
+    {
+      "cue": "set",
+      "args": {
+        "id": "R",
+        "magnitude": "$value",
+        "play": true
+      }
+    }
+  ],
+  "stem": [
+    "A {{m}} kg lamp hangs at rest from two identical strings, each making {{th}}° with the vertical. Take g = 9.8 m/s².",
+    "What is the tension in each string?"
+  ],
+  "input": {
+    "label": "Tension",
+    "placeholder": "for example 15 N",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} N",
+  "hints": [
+    {
+      "text": "Draw the three forces: weight and two tensions.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W",
+            "L",
+            "R"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Resolve vertically: the vertical parts of the tensions balance the weight."
+    },
+    {
+      "text": "2T cos θ = mg."
+    }
+  ],
+  "feedback": {
+    "tension-ignores-angle": {
+      "text": "Each string pulls along itself, at {{th}}° to the vertical. Only its vertical part, T cos {{th}}°, holds the lamp up, so T is more than half the weight.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "L",
+          "axes": "standard",
+          "values": false
+        }
+      }
+    },
+    "sin-cos-swap": {
+      "text": "The angle is measured from the vertical, so the vertical part of each tension is T cos θ."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a force."
+    },
+    "generic": {
+      "text": "2T cos θ = mg, with θ from the vertical."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Horizontally the two tensions cancel by symmetry.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "L",
+          "axes": "standard"
+        }
+      }
+    },
+    {
+      "text": "Vertically: 2T cos {{th}}° = {{W}} N, so T = {{ans}} N. Press Play: the lamp stays still.",
+      "cue": [
+        {
+          "cue": "set",
+          "args": {
+            "id": "L",
+            "magnitude": "{{ans}}"
+          }
+        },
+        {
+          "cue": "set",
+          "args": {
+            "id": "R",
+            "magnitude": "{{ans}}",
+            "play": true
+          }
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "tension-ignores-angle": {
+      "front": "Lamp hung from two strings at θ to the vertical: tension?",
+      "back": "T = W ÷ (2 cos θ): only the vertical parts hold the lamp up."
+    },
+    "sin-cos-swap": {
+      "front": "Force F at θ above the x-axis: x-component?",
+      "back": "F cos θ (adjacent). The y-component is F sin θ."
+    },
+    "generic": {
+      "front": "Lamp from two strings at θ to the vertical?",
+      "back": "T = mg ÷ (2 cos θ)."
+    }
+  },
+  "accessibility": {
+    "altText": "A lamp hanging from two strings, with its weight and the two tensions drawn.",
+    "nonDragAlternative": "The board shows the forces; type your answer in the box."
+  }
+}

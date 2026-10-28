@@ -1,0 +1,116 @@
+{
+  "id": "f.trig-identity.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.trig-identity",
+  "kind": "micro-lesson",
+  "title": "Standard angles and sin²θ + cos²θ = 1",
+  "minutes": 5,
+  "widget": {
+    "type": "triangle-explorer",
+    "config": {
+      "mode": "triangle",
+      "hypotenuse": 1,
+      "angleDeg": 37,
+      "editable": true,
+      "showRoles": true,
+      "showValues": true,
+      "showRatios": true
+    },
+    "instructions": "Drag corner B or use the slider to change the angles."
+  },
+  "steps": [
+    {
+      "text": "With a hypotenuse of 1, the opposite side is sin θ and the adjacent side is cos θ.",
+      "cue": [
+        {
+          "cue": "show-ratios"
+        },
+        {
+          "cue": "highlight-side",
+          "args": {
+            "sides": [
+              "opposite",
+              "adjacent"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "text": "Pythagoras then says sin²θ + cos²θ = 1, for every angle.",
+      "cue": {
+        "cue": "sweep",
+        "args": {
+          "from": 20,
+          "to": 70
+        }
+      }
+    },
+    {
+      "text": "At 30°: sin = ½, cos = √3/2. At 45°: both 1/√2. At 60°: sin = √3/2, cos = ½.",
+      "cue": {
+        "cue": "set-angle",
+        "args": {
+          "deg": 30
+        }
+      }
+    },
+    {
+      "text": "So if you know sin θ for an acute angle, cos θ = √(1 − sin²θ).",
+      "cue": {
+        "cue": "set-angle",
+        "args": {
+          "deg": 37
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "Half an equilateral triangle",
+    "steps": [
+      {
+        "text": "Cut an equilateral triangle of side 2 in half: the sides are 1, √3 and 2, with angles 30°, 60°, 90°.",
+        "cue": {
+          "cue": "set-angle",
+          "args": {
+            "deg": 30
+          }
+        }
+      },
+      {
+        "text": "Read the ratios from these sides: sin 30° = 1/2, cos 30° = √3/2.",
+        "cue": {
+          "cue": "highlight-side",
+          "args": {
+            "sides": [
+              "opposite",
+              "hypotenuse"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: sin²θ + cos²θ = 1; sin 30° = ½, sin 45° = 1/√2, sin 60° = √3/2.",
+      "cue": {
+        "cue": "show-ratios"
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A right triangle with hypotenuse 1 and its sine and cosine shown.",
+    "nonDragAlternative": "Use the angle slider and the Mark θ buttons; the description gives every ratio."
+  }
+}

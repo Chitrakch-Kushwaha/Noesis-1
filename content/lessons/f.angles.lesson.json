@@ -1,0 +1,98 @@
+{
+  "id": "f.angles.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.angles",
+  "kind": "micro-lesson",
+  "title": "Angles in triangles and with parallel lines",
+  "minutes": 4,
+  "widget": {
+    "type": "triangle-explorer",
+    "config": {
+      "mode": "triangle",
+      "hypotenuse": 5,
+      "angleDeg": 37,
+      "editable": true,
+      "showRoles": false
+    },
+    "instructions": "Drag corner B or use the slider to change the angles."
+  },
+  "steps": [
+    {
+      "text": "Change the angle at A: the angle at B changes too, because the three angles of a triangle always add to 180°.",
+      "cue": {
+        "cue": "sweep",
+        "args": {
+          "from": 25,
+          "to": 60
+        }
+      }
+    },
+    {
+      "text": "Here C is 90°, so A + B = 90°.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "A + B + C = 180°"
+        }
+      }
+    },
+    {
+      "text": "When a line crosses two parallel lines, alternate angles (a Z shape) are equal and co-interior angles (a C shape) add to 180°.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Z: equal; C: add to 180°"
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "Tearing off the corners",
+    "steps": [
+      {
+        "text": "Tear off the three corners of any triangle and put them side by side: they make a straight line, 180°.",
+        "cue": {
+          "cue": "sweep",
+          "args": {
+            "from": 30,
+            "to": 50
+          }
+        }
+      },
+      {
+        "text": "That is why the third angle is 180° minus the other two.",
+        "cue": {
+          "cue": "note",
+          "args": {
+            "text": "third angle = 180° − (A + B)"
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: triangle angles add to 180°; alternate angles are equal.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "180°"
+        }
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A right triangle whose angle can be changed.",
+    "nonDragAlternative": "Use the angle slider and the buttons; the description gives every angle."
+  }
+}

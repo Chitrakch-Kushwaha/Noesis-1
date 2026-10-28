@@ -1,0 +1,234 @@
+{
+  "id": "lom.momentum-conservation.m.carts-stick",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.momentum-conservation"
+  ],
+  "primarySkillId": "lom.momentum-conservation",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "u1": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        6,
+        8
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        5
+      ]
+    }
+  },
+  "constraints": [
+    "m1 != m2"
+  ],
+  "solver": "lom.cartsStick",
+  "intro": "Two carts, one collision.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "averages-velocities"
+      ],
+      "match": {
+        "buggySolver": "averagedVelocities"
+      }
+    },
+    {
+      "tags": [
+        "velocity-unchanged"
+      ],
+      "match": {
+        "buggySolver": "velocityUnchanged"
+      }
+    },
+    {
+      "tags": [
+        "wrong-mass-after-collision"
+      ],
+      "match": {
+        "buggySolver": "onlyOtherMass"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{v|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "instructions": "Press Play to watch cart A roll towards cart B. After they stick, they move together: that shared speed is your answer.",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "A",
+          "label": "cart A",
+          "x0": -10,
+          "v0": "{{u1}}",
+          "a": 0
+        },
+        {
+          "id": "B",
+          "label": "cart B (at rest)",
+          "x0": 0,
+          "v0": 0,
+          "a": 0
+        }
+      ],
+      "duration": 2,
+      "xRange": [
+        -12,
+        16
+      ],
+      "hideNumbers": true
+    }
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "ty",
+          "label": "A + B at your speed",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "Cart A ({{m1}} kg) rolls at {{u1}} m/s and hits cart B ({{m2}} kg), which is at rest. The carts stick together.",
+    "How fast do they move just after the collision?"
+  ],
+  "input": {
+    "label": "Shared speed",
+    "placeholder": "for example 2.5 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{v}} m/s",
+  "hints": [
+    {
+      "text": "During the collision the carts push on each other equally and oppositely, so their total momentum doesn't change.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Momentum before = m_A × u_A (B is at rest). After, both carts move together with one shared speed."
+    },
+    {
+      "text": "(m_A + m_B) v = m_A u_A. Divide by the total mass."
+    }
+  ],
+  "feedback": {
+    "averages-velocities": {
+      "text": "Averaging the speeds ignores the masses. Momentum is shared: (m_A + m_B) v = m_A u_A.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Compare momentum before and after."
+        }
+      }
+    },
+    "velocity-unchanged": {
+      "text": "Cart A now has to drag cart B along, so the pair moves more slowly than A did. Watch your value: momentum would grow."
+    },
+    "wrong-mass-after-collision": {
+      "text": "After sticking, both masses move together: divide by m_A + m_B, not by one cart's mass."
+    },
+    "dimension-mismatch": {
+      "text": "Give a speed in m/s."
+    },
+    "generic": {
+      "text": "Write momentum before and after; the total is conserved."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Before: p = {{m1}} × {{u1}} = {{p1}} kg m/s (cart B has none).",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "After: both carts, {{M}} kg in all, move together at v. Conservation: {{M}} v = {{p1}}, so v = {{v}} m/s.",
+      "cue": [
+        {
+          "cue": "ghost-lane",
+          "args": {
+            "lane": {
+              "id": "ts",
+              "label": "A + B together",
+              "x0": 0,
+              "v0": "{{v}}",
+              "a": 0
+            }
+          }
+        },
+        {
+          "cue": "play"
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "averages-velocities": {
+      "front": "Two carts stick together. Is their speed the average of the two speeds?",
+      "back": "No. Use momentum: (m₁ + m₂) v = m₁u₁ + m₂u₂."
+    },
+    "velocity-unchanged": {
+      "front": "A moving cart sticks to one at rest. Same speed afterwards?",
+      "back": "No, slower: the same momentum is shared by more mass."
+    },
+    "wrong-mass-after-collision": {
+      "front": "After a sticking collision, which mass moves?",
+      "back": "Both together: m₁ + m₂."
+    },
+    "generic": {
+      "front": "Perfectly inelastic collision speed?",
+      "back": "v = (m₁u₁ + m₂u₂) ÷ (m₁ + m₂)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes: cart A moving right towards cart B, which is at rest.",
+    "nonDragAlternative": "Use Play, Step and the time slider to run the animation; type your answer in the box."
+  }
+}

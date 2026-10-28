@@ -1,0 +1,182 @@
+{
+  "id": "rot.angular-momentum.h.coupled-discs",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.angular-momentum",
+    "rot.moment-of-inertia"
+  ],
+  "primarySkillId": "rot.angular-momentum",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "M1": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "M2": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        4
+      ]
+    },
+    "R": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.3
+      ]
+    },
+    "w1": {
+      "kind": "choice",
+      "values": [
+        10,
+        12,
+        20
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.discDrop",
+  "intro": "Two discs couple.",
+  "answer": {
+    "dimension": "angular-velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "averages-angular-velocities"
+      ],
+      "match": {
+        "buggySolver": "averaged"
+      }
+    },
+    {
+      "tags": [
+        "rot-ke-conserved"
+      ],
+      "match": {
+        "buggySolver": "keConserved"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} rad/s"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "disc",
+        "mass": "{{M1}}",
+        "size": "{{R}}",
+        "torque": 0,
+        "omega0": "{{w1}}",
+        "duration": 3
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "set-rotor",
+      "args": {
+        "key": "omega0",
+        "value": "$value"
+      }
+    }
+  ],
+  "stem": [
+    "A {{M1}} kg disc of radius {{R}} m spins at {{w1}} rad/s. An identical-radius {{M2}} kg disc, not spinning, is dropped onto it on the same axis and they turn together.",
+    "What is their common angular speed?"
+  ],
+  "input": {
+    "label": "Angular speed",
+    "placeholder": "for example 6 rad/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} rad/s",
+  "hints": [
+    {
+      "text": "Friction between the discs is internal: no external torque.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "I₁ω₁ = (I₁ + I₂)ω."
+    },
+    {
+      "text": "Both are discs of the same radius: I = ½MR²."
+    }
+  ],
+  "feedback": {
+    "averages-angular-velocities": {
+      "text": "Conserve angular momentum: I₁ω₁ = (I₁ + I₂)ω, which depends on the masses."
+    },
+    "rot-ke-conserved": {
+      "text": "Kinetic energy isn't conserved when the discs grip each other; angular momentum is."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a angular velocity."
+    },
+    "generic": {
+      "text": "ω = I₁ω₁ ÷ (I₁ + I₂)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "I₁ = {{I1}} kg m², I₂ = {{I2}} kg m²."
+    },
+    {
+      "text": "ω = {{I1}} × {{w1}} ÷ ({{I1}} + {{I2}}) = {{ans}} rad/s.",
+      "cue": {
+        "cue": "set-rotor",
+        "args": {
+          "key": "omega0",
+          "value": "{{ans}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "averages-angular-velocities": {
+      "front": "Two discs coupled: final ω?",
+      "back": "I₁ω₁ ÷ (I₁ + I₂), from conservation of angular momentum."
+    },
+    "rot-ke-conserved": {
+      "front": "Is rotational KE conserved when two discs couple?",
+      "back": "No: angular momentum is conserved; KE is lost."
+    },
+    "generic": {
+      "front": "Two discs couple: final ω?",
+      "back": "I₁ω₁ ÷ (I₁ + I₂)."
+    }
+  },
+  "accessibility": {
+    "altText": "A spinning disc.",
+    "nonDragAlternative": "Use Play; type your answer in the box."
+  }
+}

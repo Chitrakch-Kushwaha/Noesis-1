@@ -1,0 +1,199 @@
+{
+  "id": "wep.collisions.m.elastic",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.collisions"
+  ],
+  "primarySkillId": "wep.collisions",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        6
+      ]
+    },
+    "u": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        6
+      ]
+    }
+  },
+  "constraints": [
+    "m1 != m2"
+  ],
+  "solver": "wep.elasticSecond",
+  "intro": "An elastic collision.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "inelastic-for-elastic"
+      ],
+      "match": {
+        "buggySolver": "inelastic"
+      }
+    },
+    {
+      "tags": [
+        "elastic-same-speed"
+      ],
+      "match": {
+        "buggySolver": "sameSpeed"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "a",
+          "label": "ball 1",
+          "x0": -6,
+          "v0": "{{u}}",
+          "a": 0
+        },
+        {
+          "id": "b",
+          "label": "ball 2",
+          "x0": 0,
+          "v0": 0,
+          "a": 0
+        }
+      ],
+      "duration": 3,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "you",
+          "label": "ball 2 at your speed",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A {{m1}} kg ball moving at {{u}} m/s collides head-on and elastically with a {{m2}} kg ball at rest.",
+    "How fast does the second ball move off?"
+  ],
+  "input": {
+    "label": "Speed of the second ball",
+    "placeholder": "for example 2 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "Both momentum and kinetic energy are conserved.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "For a target at rest: v₂ = 2m₁u ÷ (m₁ + m₂)."
+    },
+    {
+      "text": "Substitute the masses."
+    }
+  ],
+  "feedback": {
+    "inelastic-for-elastic": {
+      "text": "That is the shared speed if the balls stuck together. In an elastic collision kinetic energy is conserved too."
+    },
+    "elastic-same-speed": {
+      "text": "The struck ball takes the full speed only if the masses are equal."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "v₂ = 2m₁u ÷ (m₁ + m₂)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Conserving momentum and KE gives v₂ = 2m₁u ÷ (m₁ + m₂)."
+    },
+    {
+      "text": "v₂ = 2 × {{m1}} × {{u}} ÷ ({{m1}} + {{m2}}) = {{ans}} m/s (ball 1 moves at {{v1}} m/s).",
+      "cue": {
+        "cue": "ghost-lane",
+        "args": {
+          "lane": {
+            "id": "b2",
+            "label": "ball 2 after",
+            "x0": 0,
+            "v0": "{{ans}}",
+            "a": 0
+          }
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "inelastic-for-elastic": {
+      "front": "Elastic collision, m₁ at u hits m₂ at rest: v₂?",
+      "back": "2m₁u ÷ (m₁ + m₂)."
+    },
+    "elastic-same-speed": {
+      "front": "When does the struck ball take the full incoming speed?",
+      "back": "Only for equal masses in an elastic collision."
+    },
+    "generic": {
+      "front": "Elastic collision with a target at rest: v₂?",
+      "back": "2m₁u ÷ (m₁ + m₂)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes: ball 1 moving towards ball 2, which is at rest.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

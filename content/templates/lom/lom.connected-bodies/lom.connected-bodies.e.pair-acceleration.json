@@ -1,0 +1,188 @@
+{
+  "id": "lom.connected-bodies.e.pair-acceleration",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.connected-bodies",
+    "lom.second-law"
+  ],
+  "primarySkillId": "lom.connected-bodies",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 60,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        12,
+        18,
+        24,
+        30
+      ]
+    },
+    "m1": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "solver": "lom.pairAcceleration",
+  "intro": "Two blocks, one string.",
+  "answer": {
+    "dimension": "acceleration",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "connected-only-one-mass"
+      ],
+      "match": {
+        "buggySolver": "onlyPulledMass"
+      }
+    },
+    {
+      "tags": [
+        "force-times-mass"
+      ],
+      "match": {
+        "buggySolver": "addedNotDivided"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{a|raw}} m/s^2"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Treat both blocks and the string as one body: the pull is the only horizontal external force. Press Play.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "A + B",
+        "mass": "{{M}}"
+      },
+      "predict": true,
+      "predictSeconds": 1.5,
+      "maxMagnitude": "{{maxM}}",
+      "showResultant": false,
+      "vectors": [
+        {
+          "id": "F",
+          "kind": "applied",
+          "label": "Pull on A",
+          "agent": "hand",
+          "magnitude": "{{F}}",
+          "angleDeg": 0,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Both blocks share one acceleration."
+      }
+    }
+  ],
+  "stem": [
+    "Blocks A ({{m1}} kg) and B ({{m2}} kg) on a smooth floor are joined by a light string. A horizontal pull of {{F}} N acts on A, and both move together.",
+    "What is their acceleration?"
+  ],
+  "input": {
+    "label": "Acceleration",
+    "placeholder": "for example 2 m/s^2",
+    "keypad": "none"
+  },
+  "answerText": "{{a}} m/s²",
+  "hints": [
+    {
+      "text": "The string keeps the blocks together, so they share one acceleration.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "Treat A, B and the string as one system. The tension is internal; the only external horizontal force is the pull."
+    },
+    {
+      "text": "a = F ÷ (m_A + m_B)."
+    }
+  ],
+  "feedback": {
+    "connected-only-one-mass": {
+      "text": "The pull has to accelerate both blocks, because the string drags B along. Use the total mass."
+    },
+    "force-times-mass": {
+      "text": "Multiplying gives the wrong units. a = F ÷ total mass."
+    },
+    "dimension-mismatch": {
+      "text": "Acceleration is in m/s²."
+    },
+    "generic": {
+      "text": "One system, one acceleration: divide the external force by the total mass."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "System A + B: external horizontal force {{F}} N, total mass {{M}} kg.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "F"
+          ]
+        }
+      }
+    },
+    {
+      "text": "a = {{F}} ÷ {{M}} = {{a}} m/s². (The string's tension, {{T}} N, only matters if you look at B alone.)",
+      "cue": {
+        "cue": "predict"
+      }
+    }
+  ],
+  "flashcards": {
+    "connected-only-one-mass": {
+      "front": "A pull on A drags B by a string. Which mass sets the acceleration?",
+      "back": "The total m_A + m_B."
+    },
+    "force-times-mass": {
+      "front": "Net force F on mass m: acceleration?",
+      "back": "a = F ÷ m, not F × m."
+    },
+    "generic": {
+      "front": "Connected bodies on a smooth floor?",
+      "back": "a = F ÷ (m₁ + m₂)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two blocks, treated as one, with a {{F}} N pull to the right.",
+    "nonDragAlternative": "Press Play to see the motion; type your answer in the box."
+  }
+}

@@ -1,0 +1,566 @@
+{
+  "$comment": "Misconception catalogue. 'implicates' lists skills whose weakness this misconception is evidence of; the detour planner (src/engine/planner.ts) intersects it with the prerequisite closure of the failed skill. Awaiting named human review with the templates that use these tags.",
+  "chapter": "lom",
+  "status": "in-review",
+  "misconceptions": [
+    {
+      "tag": "normal-equals-weight",
+      "description": "Assumes the normal force always equals mg, including on an incline or when other forces have perpendicular components.",
+      "implicates": [
+        "lom.resolve-forces",
+        "lom.fbd"
+      ],
+      "visualCue": "vector-board:decompose-weight",
+      "flashcard": {
+        "front": "On a 30° incline, is the normal force on a resting block equal to its weight?",
+        "back": "No. The normal force balances only the component of weight perpendicular to the surface: N = mg cos θ (when nothing else pushes into the surface)."
+      }
+    },
+    {
+      "tag": "sin-cos-swap-incline",
+      "description": "Uses mg sin θ for the perpendicular component and mg cos θ for the component along the incline.",
+      "implicates": [
+        "lom.resolve-forces",
+        "mip.resolution",
+        "f.trig-ratios"
+      ],
+      "visualCue": "vector-board:highlight-angle-between-weight-and-normal",
+      "flashcard": {
+        "front": "Which component of weight acts along a slope of angle θ?",
+        "back": "mg sin θ along the slope; mg cos θ perpendicular to it. The angle between the weight and the perpendicular to the slope equals θ."
+      }
+    },
+    {
+      "tag": "extra-force-of-motion",
+      "description": "Adds a 'force of motion' or 'force of the push' that has no agent after contact has ended.",
+      "implicates": [
+        "lom.fbd",
+        "lom.first-law"
+      ],
+      "visualCue": "vector-board:ask-for-agent",
+      "flashcard": {
+        "front": "A box slides after you stop pushing. Is your push still a force on it?",
+        "back": "No. Every force needs an agent in contact (or a field). The box keeps moving because of inertia, and friction slows it."
+      }
+    },
+    {
+      "tag": "static-friction-always-max",
+      "description": "Sets static friction equal to μs·N even when a smaller force would keep the body at rest.",
+      "implicates": [
+        "lom.friction"
+      ],
+      "visualCue": "vector-board:friction-meter",
+      "flashcard": {
+        "front": "Is static friction always μs N?",
+        "back": "No. μs N is the maximum. Static friction is only as large as needed to prevent slipping, up to that maximum."
+      }
+    },
+    {
+      "tag": "friction-direction-opposes-force",
+      "description": "Points friction opposite the applied force rather than opposite the (tendency of) relative motion.",
+      "implicates": [
+        "lom.friction",
+        "lom.fbd"
+      ],
+      "visualCue": "vector-board:show-relative-motion",
+      "flashcard": {
+        "front": "Friction opposes what, exactly?",
+        "back": "Relative motion (or the tendency of relative motion) between the surfaces in contact, not necessarily the applied force."
+      }
+    },
+    {
+      "tag": "third-law-pair-on-same-body",
+      "description": "Treats weight and normal force as a Newton's third law pair acting on the same body.",
+      "implicates": [
+        "lom.third-law",
+        "lom.fbd"
+      ],
+      "visualCue": "vector-board:split-bodies",
+      "flashcard": {
+        "front": "Are weight and normal force on a book an action–reaction pair?",
+        "back": "No. Third-law pairs act on different bodies and are the same type of interaction. The pair of the book's weight is the book's pull on the Earth."
+      }
+    },
+    {
+      "tag": "dimension-mismatch",
+      "description": "Answer has units of a different physical quantity (e.g. kg instead of N).",
+      "implicates": [
+        "f.si-units"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Weight in newtons or kilograms?",
+        "back": "Mass is in kg; weight is a force, W = mg, in newtons."
+      }
+    },
+    {
+      "tag": "whole-weight-along-slope",
+      "description": "Treats the whole weight as acting along a slope.",
+      "implicates": [
+        "lom.resolve-forces",
+        "mip.resolution"
+      ],
+      "visualCue": "vector-board:decompose-weight",
+      "flashcard": {
+        "front": "Does all of a block's weight pull it down a slope?",
+        "back": "No. Only W sin θ acts along the slope; W cos θ presses into it."
+      }
+    },
+    {
+      "tag": "horizontal-push-treated-as-parallel",
+      "description": "Resolves a horizontal push as if it acted along the incline.",
+      "implicates": [
+        "lom.resolve-forces",
+        "mip.resolution"
+      ],
+      "visualCue": "vector-board:decompose",
+      "flashcard": {
+        "front": "A horizontal push F on a θ slope: how much acts along the slope?",
+        "back": "F cos θ (and F sin θ presses into the slope)."
+      }
+    },
+    {
+      "tag": "tan-inverted",
+      "description": "Inverts a tangent ratio when dividing two component equations.",
+      "implicates": [
+        "lom.resolve-forces",
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "F cos θ = mg sin θ. What is F?",
+        "back": "F = mg tan θ."
+      }
+    },
+    {
+      "tag": "constant-velocity-unbalanced",
+      "description": "Draws unbalanced forces for a body moving at constant velocity.",
+      "implicates": [
+        "lom.first-law",
+        "lom.fbd"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Constant velocity: what is the net force?",
+        "back": "Zero. All forces balance (Newton's first law)."
+      }
+    },
+    {
+      "tag": "motion-needs-net-force",
+      "description": "Believes a net force is needed to keep a body moving at constant velocity.",
+      "implicates": [
+        "lom.first-law",
+        "f.force-intro"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Does a body need a net force to keep moving at constant velocity?",
+        "back": "No. Zero net force means constant velocity (Newton's first law)."
+      }
+    },
+    {
+      "tag": "force-times-mass",
+      "description": "Multiplies force by mass to get acceleration.",
+      "implicates": [
+        "lom.second-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Net force F on mass m: acceleration?",
+        "back": "a = F ÷ m, not F × m."
+      }
+    },
+    {
+      "tag": "second-law-inverted",
+      "description": "Writes a = m ÷ F.",
+      "implicates": [
+        "lom.second-law",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Doubling the force on a body does what to its acceleration?",
+        "back": "Doubles it: a = F ÷ m."
+      }
+    },
+    {
+      "tag": "impulse-one-velocity",
+      "description": "Uses only one momentum when finding an impulse.",
+      "implicates": [
+        "lom.second-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Impulse on a bouncing ball: only the incoming momentum?",
+        "back": "No. Impulse = final momentum − initial momentum, both with signs."
+      }
+    },
+    {
+      "tag": "momentum-direction-ignored",
+      "description": "Adds or subtracts momenta without signs for direction.",
+      "implicates": [
+        "lom.momentum-conservation",
+        "lom.second-law",
+        "mip.vector-basics"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Two carts move towards each other. Do their momenta add?",
+        "back": "They partly cancel: momentum is a vector, so give each a sign."
+      }
+    },
+    {
+      "tag": "recoil-same-speed",
+      "description": "Expects recoiling bodies to share speeds rather than momenta.",
+      "implicates": [
+        "lom.momentum-conservation",
+        "lom.third-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A gun fires a bullet. Do they move apart at the same speed?",
+        "back": "No. Their momenta are equal and opposite; the heavy gun moves slowly."
+      }
+    },
+    {
+      "tag": "momentum-not-velocity",
+      "description": "Confuses momentum with velocity.",
+      "implicates": [
+        "lom.momentum-conservation",
+        "lom.second-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Momentum or velocity: which is shared equally (and oppositely) in a recoil?",
+        "back": "Momentum. Divide by each mass to find each speed."
+      }
+    },
+    {
+      "tag": "mass-ratio-inverted",
+      "description": "Inverts the mass ratio in a recoil.",
+      "implicates": [
+        "lom.momentum-conservation"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Recoil speed of a gun of mass M firing mass m at v?",
+        "back": "V = m v ÷ M."
+      }
+    },
+    {
+      "tag": "averages-velocities",
+      "description": "Averages velocities in a collision instead of conserving momentum.",
+      "implicates": [
+        "lom.momentum-conservation"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Two carts stick together. Is their speed the average of the two speeds?",
+        "back": "No. Use momentum: (m₁ + m₂) v = m₁u₁ + m₂u₂."
+      }
+    },
+    {
+      "tag": "velocity-unchanged",
+      "description": "Expects a moving body to keep its speed after picking up a second body.",
+      "implicates": [
+        "lom.momentum-conservation"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A moving cart sticks to one at rest. Same speed afterwards?",
+        "back": "No, slower: the same momentum is shared by more mass."
+      }
+    },
+    {
+      "tag": "wrong-mass-after-collision",
+      "description": "Divides by only one body's mass after a sticking collision.",
+      "implicates": [
+        "lom.momentum-conservation"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "After a sticking collision, which mass moves?",
+        "back": "Both together: m₁ + m₂."
+      }
+    },
+    {
+      "tag": "centrifugal-force-real",
+      "description": "Treats centrifugal force as a real outward force with an agent.",
+      "implicates": [
+        "lom.circular-dynamics",
+        "lom.fbd",
+        "mip.ucm"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is there an outward 'centrifugal force' on a turning car?",
+        "back": "Not in the road's frame: no agent supplies it. The inward friction turns the car."
+      }
+    },
+    {
+      "tag": "tangential-force-provides-centripetal",
+      "description": "Thinks a force along the motion makes a body turn.",
+      "implicates": [
+        "lom.circular-dynamics",
+        "mip.ucm"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Can a forward driving force make a car turn?",
+        "back": "No. A force along the motion changes speed; turning needs a force towards the centre."
+      }
+    },
+    {
+      "tag": "normal-provides-centripetal",
+      "description": "Expects the vertical normal force to turn a car on a level road.",
+      "implicates": [
+        "lom.circular-dynamics",
+        "lom.fbd"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "On a level curve, does the normal force turn the car?",
+        "back": "No, it is vertical. Sideways friction does."
+      }
+    },
+    {
+      "tag": "forgot-square-root",
+      "description": "Stops at v² and forgets the square root.",
+      "implicates": [
+        "lom.circular-dynamics",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "μ g r for a level bend gives what?",
+        "back": "v², the square of the greatest speed. Take the square root."
+      }
+    },
+    {
+      "tag": "centripetal-without-friction",
+      "description": "Ignores the friction limit when finding the greatest speed on a level bend.",
+      "implicates": [
+        "lom.circular-dynamics",
+        "lom.friction"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "What limits the speed on a level bend?",
+        "back": "Friction: v_max = √(μ g r)."
+      }
+    },
+    {
+      "tag": "banked-used-sin",
+      "description": "Uses sin θ instead of tan θ for a frictionless banked curve.",
+      "implicates": [
+        "lom.circular-dynamics",
+        "lom.resolve-forces"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Banked curve, no friction: which trig ratio links v and θ?",
+        "back": "tan θ = v² ÷ (r g)."
+      }
+    },
+    {
+      "tag": "third-law-wrong-interaction",
+      "description": "Pairs a gravitational force with a contact force as a third-law pair.",
+      "implicates": [
+        "lom.third-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "The partner of a gravitational force is…?",
+        "back": "Another gravitational force, on the other body."
+      }
+    },
+    {
+      "tag": "third-law-only-when-moving",
+      "description": "Believes third-law pairs need motion.",
+      "implicates": [
+        "lom.third-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Do third-law pairs need motion?",
+        "back": "No: any interaction between two bodies gives a pair."
+      }
+    },
+    {
+      "tag": "mass-instead-of-weight",
+      "description": "Uses the mass where the weight (a force) is needed.",
+      "implicates": [
+        "lom.friction",
+        "f.si-units"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Kinetic friction on a crate of mass m on a level floor?",
+        "back": "μ_k m g: μ times the normal force, a force in newtons."
+      }
+    },
+    {
+      "tag": "tension-equals-weight",
+      "description": "Sets a horizontal rope's tension equal to the weight.",
+      "implicates": [
+        "lom.friction",
+        "lom.fbd"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A horizontal rope drags a crate at constant speed. What does the tension balance?",
+        "back": "Kinetic friction, not the weight."
+      }
+    },
+    {
+      "tag": "connected-only-one-mass",
+      "description": "Divides the net force by only one of the connected masses.",
+      "implicates": [
+        "lom.connected-bodies",
+        "lom.second-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A pull on A drags B by a string. Which mass sets the acceleration?",
+        "back": "The total m_A + m_B."
+      }
+    },
+    {
+      "tag": "atwood-free-fall",
+      "description": "Expects masses on a pulley to fall freely with acceleration g.",
+      "implicates": [
+        "lom.connected-bodies",
+        "lom.fbd"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Do the masses on a pulley fall with acceleration g?",
+        "back": "No: a = (m₁ − m₂) g ÷ (m₁ + m₂), less than g."
+      }
+    },
+    {
+      "tag": "acceleration-ignores-mass",
+      "description": "Ranks accelerations by force alone.",
+      "implicates": [
+        "lom.second-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Bigger force, bigger acceleration?",
+        "back": "Only for the same mass: a = F ÷ m."
+      }
+    },
+    {
+      "tag": "missing-friction",
+      "description": "Leaves friction out of a diagram for a body sliding on a rough surface.",
+      "implicates": [
+        "lom.fbd",
+        "lom.friction"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A box pulled at constant speed on a rough floor: what balances the pull?",
+        "back": "Kinetic friction from the floor, opposite the motion."
+      }
+    },
+    {
+      "tag": "ignores-mass",
+      "description": "Ranks accelerations ignoring the masses.",
+      "implicates": [
+        "lom.second-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Cart X: 8 N on 4 kg. Cart Y: 6 N on 2 kg. Which accelerates faster?",
+        "back": "Y: 3 m/s² against 2 m/s². Compare F/m, not F alone."
+      }
+    },
+    {
+      "tag": "ignores-force",
+      "description": "Ranks accelerations ignoring the forces.",
+      "implicates": [
+        "lom.second-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Does the lightest cart always accelerate fastest?",
+        "back": "No. a = F/m: a larger force can beat a smaller mass."
+      }
+    },
+    {
+      "tag": "third-law-different-interaction",
+      "description": "Pairs two forces from different interactions as a third-law pair.",
+      "implicates": [
+        "lom.third-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "What do the two forces of a third-law pair have in common?",
+        "back": "Same interaction and type, equal size, opposite directions, acting on the two different bodies."
+      }
+    },
+    {
+      "tag": "heavier-pushes-harder",
+      "description": "Thinks the heavier body exerts the larger force in an interaction.",
+      "implicates": [
+        "lom.third-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "In a truck–car collision, which pushes harder on the other?",
+        "back": "Neither: the forces are equal and opposite. The car accelerates more because it is lighter."
+      }
+    },
+    {
+      "tag": "third-law-forces-cancel",
+      "description": "Thinks a third-law pair cancels because the forces are equal and opposite.",
+      "implicates": [
+        "lom.third-law",
+        "lom.first-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Do the two forces of a third-law pair cancel?",
+        "back": "No. They act on different bodies."
+      }
+    },
+    {
+      "tag": "centrifugal-flyout",
+      "description": "Thinks a body released from circular motion flies radially outward.",
+      "implicates": [
+        "lom.first-law",
+        "mip.ucm"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A whirled stone's string breaks. Which way does it go?",
+        "back": "Along the tangent, in a straight line: no force acts sideways any more."
+      }
+    },
+    {
+      "tag": "curved-after-release",
+      "description": "Thinks a body keeps curving after the inward force stops.",
+      "implicates": [
+        "lom.first-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Does a released stone keep curving?",
+        "back": "No. With no inward force it moves in a straight line (first law)."
+      }
+    },
+    {
+      "tag": "tension-ignores-angle",
+      "description": "Shares a weight equally between two angled strings as if they were vertical.",
+      "implicates": [
+        "lom.resolve-forces",
+        "lom.fbd"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Lamp hung from two strings at θ to the vertical: tension?",
+        "back": "T = W ÷ (2 cos θ): only the vertical parts hold the lamp up."
+      }
+    }
+  ]
+}

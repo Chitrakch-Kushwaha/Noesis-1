@@ -1,0 +1,141 @@
+{
+  "id": "f.number-systems.e.irrational",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.number-systems"
+  ],
+  "primarySkillId": "f.number-systems",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "n": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.whichIrrational",
+  "intro": "A foundation check.",
+  "widget": {
+    "type": "number-line",
+    "config": {
+      "range": [
+        -5,
+        5
+      ],
+      "editable": false,
+      "pieces": []
+    },
+    "instructions": "Press Play to send a point along the number line."
+  },
+  "stem": [
+    "Which of these numbers is irrational?"
+  ],
+  "options": [
+    {
+      "id": "root",
+      "text": "√{{n}}"
+    },
+    {
+      "id": "frac",
+      "text": "22/7",
+      "tags": [
+        "rational-irrational-confusion"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Rational: p ÷ q with integers p, q."
+        }
+      }
+    },
+    {
+      "id": "dec",
+      "text": "0.75",
+      "tags": [
+        "rational-irrational-confusion"
+      ]
+    },
+    {
+      "id": "neg",
+      "text": "−4",
+      "tags": [
+        "rational-irrational-confusion"
+      ]
+    }
+  ],
+  "answerText": "√{{n}}",
+  "hints": [
+    {
+      "text": "A rational number can be written as p ÷ q with integers p and q.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Rational: p ÷ q."
+        }
+      }
+    },
+    {
+      "text": "Terminating and repeating decimals are rational."
+    },
+    {
+      "text": "Square roots of non-square whole numbers are irrational."
+    }
+  ],
+  "feedback": {
+    "rational-irrational-confusion": {
+      "text": "22/7 is a ratio of two integers, so it is rational (it only approximates π)."
+    },
+    "generic": {
+      "text": "Irrational numbers can't be written as a ratio of integers."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "{{n}} is not a perfect square, so √{{n}} can't be a fraction p ÷ q.",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": 0,
+          "to": "{{sqrt(n)}}"
+        }
+      }
+    },
+    {
+      "text": "22/7, 0.75 and −4 are all ratios of integers."
+    }
+  ],
+  "flashcards": {
+    "rational-irrational-confusion": {
+      "front": "Is 22/7 irrational?",
+      "back": "No: it is a ratio of integers. √2 is irrational."
+    },
+    "generic": {
+      "front": "Rational or irrational: √2, 22/7, 0.75?",
+      "back": "√2 is irrational; 22/7 and 0.75 are rational."
+    }
+  },
+  "accessibility": {
+    "altText": "A number line from −5 to 5.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

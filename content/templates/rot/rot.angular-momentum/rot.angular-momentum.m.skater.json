@@ -1,0 +1,159 @@
+{
+  "id": "rot.angular-momentum.m.skater",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.angular-momentum"
+  ],
+  "primarySkillId": "rot.angular-momentum",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "I1": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5
+      ]
+    },
+    "I2": {
+      "kind": "choice",
+      "values": [
+        1,
+        1.5,
+        2
+      ]
+    },
+    "w1": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.skater",
+  "intro": "Pulling the arms in.",
+  "answer": {
+    "dimension": "angular-velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "am-ratio-inverted"
+      ],
+      "match": {
+        "buggySolver": "inverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} rad/s"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "disc",
+        "mass": 1,
+        "size": 0.5,
+        "torque": 0,
+        "omega0": "{{w1}}",
+        "duration": 3
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "set-rotor",
+      "args": {
+        "key": "omega0",
+        "value": "$value"
+      }
+    }
+  ],
+  "stem": [
+    "A skater spins at {{w1}} rad/s with her arms out (I = {{I1}} kg m²). She pulls her arms in, reducing I to {{I2}} kg m².",
+    "What is her new angular speed?"
+  ],
+  "input": {
+    "label": "Angular speed",
+    "placeholder": "for example 9 rad/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} rad/s",
+  "hints": [
+    {
+      "text": "No external torque acts about her axis.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "So I₁ω₁ = I₂ω₂."
+    },
+    {
+      "text": "Solve for ω₂."
+    }
+  ],
+  "feedback": {
+    "am-ratio-inverted": {
+      "text": "With less I, she must spin faster to keep L = Iω the same."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a angular velocity."
+    },
+    "generic": {
+      "text": "I₁ω₁ = I₂ω₂."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Angular momentum conserved: {{I1}} × {{w1}} = {{I2}} × ω₂."
+    },
+    {
+      "text": "ω₂ = {{ans}} rad/s.",
+      "cue": {
+        "cue": "set-rotor",
+        "args": {
+          "key": "omega0",
+          "value": "{{ans}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "am-ratio-inverted": {
+      "front": "Skater pulls in arms (I falls): ω?",
+      "back": "Rises: ω₂ = I₁ω₁ ÷ I₂."
+    },
+    "generic": {
+      "front": "Skater pulls arms in: ω?",
+      "back": "ω₂ = I₁ω₁ ÷ I₂ (faster)."
+    }
+  },
+  "accessibility": {
+    "altText": "A spinning body representing the skater.",
+    "nonDragAlternative": "Use Play; type your answer in the box."
+  }
+}

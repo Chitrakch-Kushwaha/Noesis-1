@@ -1,0 +1,198 @@
+{
+  "id": "mip.vector-addition.m.perpendicular-resultant",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.vector-addition"
+  ],
+  "primarySkillId": "mip.vector-addition",
+  "difficulty": "medium",
+  "format": "number",
+  "estimatedSeconds": 80,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        3,
+        5,
+        6,
+        8,
+        9
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        4,
+        12,
+        8,
+        6,
+        12
+      ]
+    }
+  },
+  "constraints": [
+    "a != b"
+  ],
+  "solver": "mip.perpendicularResultant",
+  "intro": "Adding vectors that point different ways.",
+  "answer": {
+    "tolerance": {
+      "absolute": 0.05
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "magnitudes-added"
+      ],
+      "match": {
+        "buggySolver": "addedMagnitudes"
+      }
+    },
+    {
+      "tags": [
+        "magnitudes-subtracted"
+      ],
+      "match": {
+        "buggySolver": "subtractedMagnitudes"
+      }
+    }
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The amber arrow is a + b, drawn tip to tail. Drag the tips to explore; Reset restores the question's vectors.",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 15,
+      "unit": "units",
+      "showResultant": true,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "a",
+          "agent": "none",
+          "magnitude": "{{a}}",
+          "angleDeg": 0,
+          "tone": "a"
+        },
+        {
+          "id": "b",
+          "kind": "vector",
+          "label": "b",
+          "agent": "none",
+          "magnitude": "{{b}}",
+          "angleDeg": 90,
+          "tone": "b"
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "a",
+          "b"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "Vector a has magnitude {{a}} units pointing east. Vector b has magnitude {{b}} units pointing north.",
+    "What is the magnitude of a + b?"
+  ],
+  "input": {
+    "label": "Magnitude of a + b",
+    "placeholder": "for example 7.5",
+    "keypad": "maths"
+  },
+  "answerText": "{{R}} units",
+  "hints": [
+    {
+      "text": "Place b's tail at a's tip. The resultant runs from a's tail to b's tip.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The two vectors are at right angles, so they form the two shorter sides of a right triangle."
+    },
+    {
+      "text": "Use Pythagoras: |a + b| = √(a² + b²)."
+    }
+  ],
+  "feedback": {
+    "magnitudes-added": {
+      "text": "Magnitudes only add when the vectors point the same way. These are at right angles: use Pythagoras.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    },
+    "magnitudes-subtracted": {
+      "text": "Subtracting magnitudes works only for opposite vectors. These are perpendicular."
+    },
+    "generic": {
+      "text": "Draw them tip to tail and find the length of the hypotenuse."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Tip to tail, a and b form a right triangle with the resultant as its hypotenuse.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    },
+    {
+      "text": "|a + b| = √({{a}}² + {{b}}²) = √{{ss}} = {{R}} units, at {{ang}}° north of east."
+    }
+  ],
+  "flashcards": {
+    "magnitudes-added": {
+      "front": "Do vector magnitudes add when the vectors are perpendicular?",
+      "back": "No. |a + b| = √(a² + b²) for perpendicular vectors."
+    },
+    "magnitudes-subtracted": {
+      "front": "When does |a + b| = |a| − |b|?",
+      "back": "Only when a and b point in opposite directions."
+    },
+    "generic": {
+      "front": "Resultant of perpendicular vectors?",
+      "back": "√(a² + b²)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two vectors on a grid: a pointing east and b pointing north, with their sum drawn.",
+    "nonDragAlternative": "Select a vector and type its size and direction in Precise controls."
+  }
+}

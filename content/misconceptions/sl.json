@@ -1,0 +1,169 @@
+{
+  "$comment": "Misconception catalogue. 'implicates' lists skills whose weakness this misconception is evidence of; the detour planner (src/engine/planner.ts) intersects it with the prerequisite closure of the failed skill. Awaiting named human review with the templates that use these tags.",
+  "chapter": "sl",
+  "status": "in-review",
+  "misconceptions": [
+    {
+      "tag": "slope-inverted",
+      "description": "Uses run over rise for a slope.",
+      "implicates": [
+        "sl.slope",
+        "f.slope"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Slope of a line?",
+        "back": "Rise over run: Δy ÷ Δx."
+      }
+    },
+    {
+      "tag": "intercept-sign-error",
+      "description": "Gets the sign of the y-intercept wrong.",
+      "implicates": [
+        "sl.forms",
+        "f.linear-graph"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "y = mx + c: where does the line cross the y-axis?",
+        "back": "At (0, c)."
+      }
+    },
+    {
+      "tag": "parallel-for-perpendicular",
+      "description": "Uses equal slopes for perpendicular lines.",
+      "implicates": [
+        "sl.slope"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Slopes of perpendicular lines?",
+        "back": "They multiply to −1."
+      }
+    },
+    {
+      "tag": "perpendicular-missing-negative",
+      "description": "Flips a slope for a perpendicular line but keeps its sign.",
+      "implicates": [
+        "sl.slope"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A line has slope 2/3. Slope of a perpendicular line?",
+        "back": "−3/2."
+      }
+    },
+    {
+      "tag": "perpendicular-not-reciprocal",
+      "description": "Negates a slope for a perpendicular line without flipping it.",
+      "implicates": [
+        "sl.slope"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is the perpendicular slope to m just −m?",
+        "back": "No: it is −1/m."
+      }
+    },
+    {
+      "tag": "angle-formula-missing-modulus",
+      "description": "Omits the modulus in the angle-between-lines formula, giving the obtuse angle.",
+      "implicates": [
+        "sl.angle-between"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Why the modulus in tan θ = |(m₂ − m₁)/(1 + m₁m₂)|?",
+        "back": "Without it you may get the obtuse angle's tangent (negative)."
+      }
+    },
+    {
+      "tag": "angle-formula-sign",
+      "description": "Uses 1 − m₁m₂ in the angle-between-lines formula.",
+      "implicates": [
+        "sl.angle-between"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Denominator of the angle-between-lines formula?",
+        "back": "1 + m₁m₂."
+      }
+    },
+    {
+      "tag": "general-form-slope-sign",
+      "description": "Reads the slope of Ax + By + C = 0 as A/B.",
+      "implicates": [
+        "sl.general-form",
+        "sl.forms"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Slope of Ax + By + C = 0?",
+        "back": "−A ÷ B."
+      }
+    },
+    {
+      "tag": "distance-missing-denominator",
+      "description": "Omits √(A² + B²) from a distance formula.",
+      "implicates": [
+        "sl.distance"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Distance between Ax + By + C₁ = 0 and Ax + By + C₂ = 0?",
+        "back": "|C₁ − C₂| ÷ √(A² + B²)."
+      }
+    },
+    {
+      "tag": "distance-missing-root",
+      "description": "Divides by A² + B² instead of its square root.",
+      "implicates": [
+        "sl.distance",
+        "f.pythagoras"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Denominator in the point–line distance formula?",
+        "back": "√(A² + B²)."
+      }
+    },
+    {
+      "tag": "distance-constant-sign",
+      "description": "Adds the constants instead of subtracting them.",
+      "implicates": [
+        "sl.distance",
+        "sl.general-form"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Parallel-line distance: |C₁ − C₂| or |C₁ + C₂|?",
+        "back": "|C₁ − C₂|, with both equations in the same form."
+      }
+    },
+    {
+      "tag": "intercepts-opposite-sign",
+      "description": "Writes x − y = a for equal intercepts.",
+      "implicates": [
+        "sl.forms"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A line with equal intercepts a on both axes?",
+        "back": "x + y = a (slope −1)."
+      }
+    },
+    {
+      "tag": "point-as-intercepts",
+      "description": "Uses a point's coordinates as the line's intercepts.",
+      "implicates": [
+        "sl.forms",
+        "f.coord"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is a point on a line the same as its intercepts?",
+        "back": "No: intercepts are where the line cuts the axes."
+      }
+    }
+  ]
+}

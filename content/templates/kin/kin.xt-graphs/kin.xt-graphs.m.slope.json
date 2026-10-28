@@ -1,0 +1,231 @@
+{
+  "id": "kin.xt-graphs.m.slope",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.xt-graphs"
+  ],
+  "primarySkillId": "kin.xt-graphs",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "x0": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        6
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        1.5,
+        2,
+        2.5,
+        3
+      ]
+    },
+    "t1": {
+      "kind": "choice",
+      "values": [
+        1,
+        2
+      ]
+    },
+    "t2": {
+      "kind": "choice",
+      "values": [
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.xtSlope",
+  "intro": "Read the velocity from the graph.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "slope-through-origin"
+      ],
+      "match": {
+        "buggySolver": "throughOrigin"
+      }
+    },
+    {
+      "tags": [
+        "slope-inverted"
+      ],
+      "match": {
+        "buggySolver": "inverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        6
+      ],
+      "yRange": [
+        0,
+        "{{top}}"
+      ],
+      "xLabel": "t (s)",
+      "yLabel": "x (m)",
+      "functions": [
+        {
+          "id": "x",
+          "expr": "{{x0}} + {{v}}*x"
+        },
+        {
+          "id": "you",
+          "expr": "{{xa}} + m*(x - {{t1}})",
+          "label": "line with your velocity",
+          "tone": "muted"
+        }
+      ],
+      "params": {
+        "m": {
+          "value": 0,
+          "min": -10,
+          "max": 10,
+          "step": 0.1,
+          "label": "trial velocity"
+        }
+      },
+      "points": [
+        {
+          "id": "A",
+          "label": "A",
+          "x": "{{t1}}",
+          "y": "{{xa}}"
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "x": "{{t2}}",
+          "y": "{{xb}}"
+        }
+      ]
+    },
+    "instructions": "Points A and B lie on the cyclist's x–t line. The slider draws a line through A with any trial velocity."
+  },
+  "consequence": [
+    {
+      "cue": "set-param",
+      "args": {
+        "name": "m",
+        "value": "$value"
+      }
+    }
+  ],
+  "stem": [
+    "A cyclist's x–t graph is a straight line through ({{t1}} s, {{xa}} m) and ({{t2}} s, {{xb}} m).",
+    "What is the cyclist's velocity?"
+  ],
+  "input": {
+    "label": "Velocity",
+    "placeholder": "for example 2 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "Velocity is the slope of the x–t graph.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "A",
+            "B"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Slope = (change in x) ÷ (change in t) between the two points."
+    },
+    {
+      "text": "Δx = {{xb}} − {{xa}} m over Δt = {{t2}} − {{t1}} s."
+    }
+  ],
+  "feedback": {
+    "slope-through-origin": {
+      "text": "You divided one position by one time. The line doesn't start at the origin; use the change in x over the change in t.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "x",
+          "x1": "{{t1}}",
+          "x2": "{{t2}}"
+        }
+      }
+    },
+    "slope-inverted": {
+      "text": "That is Δt ÷ Δx. Velocity is Δx ÷ Δt."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "Slope = Δx ÷ Δt."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Δx = {{xb}} − {{xa}} = {{dx}} m over Δt = {{dt}} s.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "x",
+          "x1": "{{t1}}",
+          "x2": "{{t2}}"
+        }
+      }
+    },
+    {
+      "text": "v = {{dx}} ÷ {{dt}} = {{ans}} m/s."
+    }
+  ],
+  "flashcards": {
+    "slope-through-origin": {
+      "front": "Velocity from an x–t line?",
+      "back": "Slope = Δx ÷ Δt between two points, not x ÷ t at one point."
+    },
+    "slope-inverted": {
+      "front": "Slope of a straight-line graph?",
+      "back": "Rise over run: change in the vertical quantity ÷ change in the horizontal one."
+    },
+    "generic": {
+      "front": "Velocity from an x–t graph?",
+      "back": "The slope: Δx ÷ Δt."
+    }
+  },
+  "accessibility": {
+    "altText": "A straight x–t line through points A and B.",
+    "nonDragAlternative": "The graph is for reading; type your answer in the box."
+  }
+}

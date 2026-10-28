@@ -1,0 +1,173 @@
+{
+  "id": "lom.second-law.e.acceleration-from-force",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.second-law"
+  ],
+  "primarySkillId": "lom.second-law",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 45,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        6,
+        8,
+        12,
+        15,
+        20
+      ]
+    },
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "solver": "lom.accelerationFromForce",
+  "intro": "A quick check on F = ma.",
+  "answer": {
+    "dimension": "acceleration",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "force-times-mass"
+      ],
+      "match": {
+        "buggySolver": "multiplied"
+      }
+    },
+    {
+      "tags": [
+        "second-law-inverted"
+      ],
+      "match": {
+        "buggySolver": "inverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{a|raw}} m/s^2"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The net force acts on the cart on a smooth floor. Press Play to see it speed up.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "cart",
+        "mass": "{{m}}"
+      },
+      "predict": true,
+      "predictSeconds": 1.5,
+      "maxMagnitude": "{{maxM}}",
+      "showResultant": false,
+      "vectors": [
+        {
+          "id": "F",
+          "kind": "applied",
+          "label": "Net force",
+          "agent": "hand",
+          "magnitude": "{{F}}",
+          "angleDeg": 0,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Compare your acceleration with what the simulation shows."
+      }
+    }
+  ],
+  "stem": [
+    "A net force of {{F}} N acts on a {{m}} kg cart.",
+    "What is its acceleration?"
+  ],
+  "input": {
+    "label": "Acceleration",
+    "placeholder": "for example 3 m/s^2",
+    "keypad": "none"
+  },
+  "answerText": "{{a}} m/s²",
+  "hints": [
+    {
+      "text": "Newton's second law links net force, mass and acceleration.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "F = m a. Which quantity are you finding?"
+    },
+    {
+      "text": "a = F ÷ m."
+    }
+  ],
+  "feedback": {
+    "force-times-mass": {
+      "text": "Multiplying gives units of kg N. A bigger mass should make the acceleration smaller: a = F ÷ m."
+    },
+    "second-law-inverted": {
+      "text": "Your ratio is upside down: a larger force must give a larger acceleration, so a = F ÷ m."
+    },
+    "dimension-mismatch": {
+      "text": "Acceleration is in m/s²."
+    },
+    "generic": {
+      "text": "Use F = m a and rearrange for a."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Newton's second law: F = m a, so a = F ÷ m.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "a = {{F}} ÷ {{m}} = {{a}} m/s²."
+    }
+  ],
+  "flashcards": {
+    "force-times-mass": {
+      "front": "Net force F on mass m: acceleration?",
+      "back": "a = F ÷ m, not F × m."
+    },
+    "second-law-inverted": {
+      "front": "Doubling the force on a body does what to its acceleration?",
+      "back": "Doubles it: a = F ÷ m."
+    },
+    "generic": {
+      "front": "Newton's second law?",
+      "back": "F_net = m a."
+    }
+  },
+  "accessibility": {
+    "altText": "A cart on a smooth floor with a {{F}} N net force drawn to the right.",
+    "nonDragAlternative": "Press Play to see the motion; type your answer in the box."
+  }
+}

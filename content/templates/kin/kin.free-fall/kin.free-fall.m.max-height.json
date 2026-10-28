@@ -1,0 +1,151 @@
+{
+  "id": "kin.free-fall.m.max-height",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.free-fall"
+  ],
+  "primarySkillId": "kin.free-fall",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "u": {
+      "kind": "choice",
+      "values": [
+        7,
+        9.8,
+        14,
+        19.6,
+        24.5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.maxHeight",
+  "intro": "Up, then down.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "missing-half-suvat"
+      ],
+      "match": {
+        "buggySolver": "missingHalf"
+      }
+    },
+    {
+      "tags": [
+        "time-for-height"
+      ],
+      "match": {
+        "buggySolver": "timeInstead"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "2d",
+      "projectile": {
+        "speed": "{{u}}",
+        "angleDeg": 89.9
+      },
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to watch the ball rise and fall."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "At the top the ball stops for an instant: its height there is what was asked."
+      }
+    }
+  ],
+  "stem": [
+    "A ball is thrown straight up at {{u}} m/s. Take g = 9.8 m/s² and ignore air resistance.",
+    "How high does it rise above the launch point?"
+  ],
+  "input": {
+    "label": "Maximum height",
+    "placeholder": "for example 10 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "What is the ball's velocity at the highest point?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Use v² = u² − 2gh with v = 0 at the top."
+    },
+    {
+      "text": "Rearrange for h."
+    }
+  ],
+  "feedback": {
+    "missing-half-suvat": {
+      "text": "At the top v = 0, so 0 = u² − 2gh and h = u² ÷ (2g). You dropped the 2."
+    },
+    "time-for-height": {
+      "text": "That is the time to reach the top, in seconds. The question asks how high."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "At the top v = 0: h = u² ÷ (2g)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "At the top the velocity is zero: 0 = u² − 2gh."
+    },
+    {
+      "text": "h = {{u}}² ÷ (2 × 9.8) = {{ans}} m (reached after {{tUp}} s).",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "missing-half-suvat": {
+      "front": "Braking distance from u at deceleration a?",
+      "back": "u² ÷ (2a): the 2 comes from v² = u² + 2as."
+    },
+    "time-for-height": {
+      "front": "Maximum height of a ball thrown up at u?",
+      "back": "u² ÷ (2g); the time to the top is u ÷ g."
+    },
+    "generic": {
+      "front": "Maximum height of a ball thrown up at u?",
+      "back": "h = u² ÷ (2g)."
+    }
+  },
+  "accessibility": {
+    "altText": "A ball launched straight up.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

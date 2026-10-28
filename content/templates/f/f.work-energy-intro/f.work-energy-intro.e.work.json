@@ -1,0 +1,150 @@
+{
+  "id": "f.work-energy-intro.e.work",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.work-energy-intro"
+  ],
+  "primarySkillId": "f.work-energy-intro",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        10,
+        20,
+        25,
+        50
+      ]
+    },
+    "d": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.workFd",
+  "intro": "A foundation check.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "work-divided"
+      ],
+      "match": {
+        "buggySolver": "divided"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "b",
+          "label": "box",
+          "x0": 0,
+          "v0": 0,
+          "a": 2
+        }
+      ],
+      "duration": 2,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to see the box pushed along."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Check the unit: N × m = J."
+      }
+    }
+  ],
+  "stem": [
+    "A constant {{F}} N force pushes a box {{d}} m in the direction of the force.",
+    "How much work does it do?"
+  ],
+  "input": {
+    "label": "Work",
+    "placeholder": "for example 60 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "Work measures force × distance.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "W = F × d."
+    },
+    {
+      "text": "1 N × 1 m = 1 J."
+    }
+  ],
+  "feedback": {
+    "work-divided": {
+      "text": "Work = force × distance moved along the force."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "W = F d."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "W = {{F}} × {{d}}."
+    },
+    {
+      "text": "= {{ans}} J.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "work-divided": {
+      "front": "Work done by a force F moving its point d along itself?",
+      "back": "W = F × d."
+    },
+    "generic": {
+      "front": "Work by a force along the motion?",
+      "back": "W = F × d."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with a box being pushed.",
+    "nonDragAlternative": "Use Play; type your answer in the box."
+  }
+}

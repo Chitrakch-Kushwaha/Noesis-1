@@ -1,0 +1,327 @@
+{
+  "id": "lom.second-law.m.rank-accelerations",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.second-law"
+  ],
+  "primarySkillId": "lom.second-law",
+  "difficulty": "medium",
+  "format": "ordering",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "k": {
+      "kind": "int",
+      "min": 1,
+      "max": 999999
+    }
+  },
+  "constraints": [],
+  "solver": "lom.rankAccelerations",
+  "intro": "This question helps us find the best place for you to begin.",
+  "misconceptionRules": [
+    {
+      "tags": [
+        "ignores-mass"
+      ],
+      "match": {
+        "buggySolver": "byForce"
+      }
+    },
+    {
+      "tags": [
+        "ignores-force"
+      ],
+      "match": {
+        "buggySolver": "byLightest"
+      }
+    }
+  ],
+  "widget": {
+    "type": "motion-track",
+    "instructions": "Each lane holds one cart, waiting at the start. After you answer, the carts are released so you can compare your order with the race.",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "P",
+          "label": "Cart P · {{FP}} N on {{mP}} kg",
+          "x0": 0,
+          "v0": 0,
+          "a": 0
+        },
+        {
+          "id": "Q",
+          "label": "Cart Q · {{FQ}} N on {{mQ}} kg",
+          "x0": 0,
+          "v0": 0,
+          "a": 0
+        },
+        {
+          "id": "R",
+          "label": "Cart R · {{FR}} N on {{mR}} kg",
+          "x0": 0,
+          "v0": 0,
+          "a": 0
+        },
+        {
+          "id": "S",
+          "label": "Cart S · {{FS}} N on {{mS}} kg",
+          "x0": 0,
+          "v0": 0,
+          "a": 0
+        }
+      ],
+      "duration": 2,
+      "xRange": [
+        0,
+        14
+      ]
+    }
+  },
+  "consequence": [],
+  "resolution": [
+    {
+      "cue": "set-lane",
+      "args": {
+        "lane": "P",
+        "key": "a",
+        "value": "{{aP}}"
+      }
+    },
+    {
+      "cue": "set-lane",
+      "args": {
+        "lane": "Q",
+        "key": "a",
+        "value": "{{aQ}}"
+      }
+    },
+    {
+      "cue": "set-lane",
+      "args": {
+        "lane": "R",
+        "key": "a",
+        "value": "{{aR}}"
+      }
+    },
+    {
+      "cue": "set-lane",
+      "args": {
+        "lane": "S",
+        "key": "a",
+        "value": "{{aS}}"
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "Four carts start from rest on a smooth track. Each is pulled by a steady force.",
+    "Put them in order of acceleration, greatest first."
+  ],
+  "items": [
+    {
+      "id": "P",
+      "text": "Cart P: {{FP}} N on {{mP}} kg"
+    },
+    {
+      "id": "Q",
+      "text": "Cart Q: {{FQ}} N on {{mQ}} kg"
+    },
+    {
+      "id": "R",
+      "text": "Cart R: {{FR}} N on {{mR}} kg"
+    },
+    {
+      "id": "S",
+      "text": "Cart S: {{FS}} N on {{mS}} kg"
+    }
+  ],
+  "answerText": "{{order}}",
+  "hints": [
+    {
+      "text": "Newton's second law links force, mass and acceleration. Which one do you need to compare?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Work out a = F ÷ m for each cart."
+    },
+    {
+      "text": "Cart P: {{FP}} ÷ {{mP}}. Do the same for Q, R and S, then order them."
+    }
+  ],
+  "feedback": {
+    "ignores-mass": {
+      "text": "You ordered the carts by force alone. The race now gives every cart the same mass, so only the force matters: that is the world your order describes. Real carts differ in mass, and a heavier cart needs more force for the same acceleration: compare F ÷ m.",
+      "cue": [
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "P",
+            "key": "a",
+            "value": "{{FP/2}}"
+          }
+        },
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "Q",
+            "key": "a",
+            "value": "{{FQ/2}}"
+          }
+        },
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "R",
+            "key": "a",
+            "value": "{{FR/2}}"
+          }
+        },
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "S",
+            "key": "a",
+            "value": "{{FS/2}}"
+          }
+        },
+        {
+          "cue": "note",
+          "args": {
+            "text": "Race with every cart given the same 2 kg mass."
+          }
+        }
+      ]
+    },
+    "ignores-force": {
+      "text": "You ordered the carts by mass alone. The race now pulls every cart with the same force, so only the mass matters: that is the world your order describes. Real carts are pulled by different forces, and a bigger force can outweigh a bigger mass: compare F ÷ m.",
+      "cue": [
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "P",
+            "key": "a",
+            "value": "{{6/mP}}"
+          }
+        },
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "Q",
+            "key": "a",
+            "value": "{{6/mQ}}"
+          }
+        },
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "R",
+            "key": "a",
+            "value": "{{6/mR}}"
+          }
+        },
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "S",
+            "key": "a",
+            "value": "{{6/mS}}"
+          }
+        },
+        {
+          "cue": "note",
+          "args": {
+            "text": "Race with every cart pulled by the same 6 N force."
+          }
+        }
+      ]
+    },
+    "reversed-order": {
+      "text": "That's the reverse order: greatest acceleration goes first."
+    },
+    "generic": {
+      "text": "Compare a = F ÷ m for each cart, then order them."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Newton's second law: a = F ÷ m."
+    },
+    {
+      "text": "P: {{aP}} m/s²; Q: {{aQ}} m/s²; R: {{aR}} m/s²; S: {{aS}} m/s².",
+      "cue": [
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "P",
+            "key": "a",
+            "value": "{{aP}}"
+          }
+        },
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "Q",
+            "key": "a",
+            "value": "{{aQ}}"
+          }
+        },
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "R",
+            "key": "a",
+            "value": "{{aR}}"
+          }
+        },
+        {
+          "cue": "set-lane",
+          "args": {
+            "lane": "S",
+            "key": "a",
+            "value": "{{aS}}"
+          }
+        },
+        {
+          "cue": "play"
+        }
+      ]
+    },
+    {
+      "text": "Greatest first: {{order}}."
+    }
+  ],
+  "flashcards": {
+    "ignores-mass": {
+      "front": "Cart X: 8 N on 4 kg. Cart Y: 6 N on 2 kg. Which accelerates faster?",
+      "back": "Y: 3 m/s² against 2 m/s². Compare F/m, not F alone."
+    },
+    "ignores-force": {
+      "front": "Does the lightest cart always accelerate fastest?",
+      "back": "No. a = F/m: a larger force can beat a smaller mass."
+    },
+    "generic": {
+      "front": "Newton's second law for acceleration?",
+      "back": "a = F_net / m."
+    }
+  },
+  "accessibility": {
+    "altText": "Four lanes, each with a cart at the start line, labelled with its force and mass.",
+    "nonDragAlternative": "Use the Move up and Move down buttons beside each cart."
+  }
+}

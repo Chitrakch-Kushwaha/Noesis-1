@@ -1,0 +1,149 @@
+{
+  "id": "f.speed-time.e.speed",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.speed-time"
+  ],
+  "primarySkillId": "f.speed-time",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "d": {
+      "kind": "choice",
+      "values": [
+        60,
+        90,
+        150,
+        240
+      ]
+    },
+    "t": {
+      "kind": "choice",
+      "values": [
+        10,
+        15,
+        30
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.speedFromDistance",
+  "intro": "A foundation check.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "speed-time-multiply"
+      ],
+      "match": {
+        "buggySolver": "multiplied"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "c",
+          "label": "toy car",
+          "x0": 0,
+          "v0": "{{ans}}",
+          "a": 0
+        }
+      ],
+      "duration": "{{t}}",
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Speed is metres per second: divide."
+      }
+    }
+  ],
+  "stem": [
+    "A toy car travels {{d}} m in {{t}} s at a steady speed.",
+    "What is its speed?"
+  ],
+  "input": {
+    "label": "Speed",
+    "placeholder": "for example 5 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "Speed is the distance covered each second.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Share {{d}} m equally over {{t}} s."
+    },
+    {
+      "text": "speed = distance ÷ time."
+    }
+  ],
+  "feedback": {
+    "speed-time-multiply": {
+      "text": "speed = distance ÷ time."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "v = d ÷ t."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "v = {{d}} ÷ {{t}}."
+    },
+    {
+      "text": "= {{ans}} m/s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "speed-time-multiply": {
+      "front": "Time from distance and speed?",
+      "back": "time = distance ÷ speed."
+    },
+    "generic": {
+      "front": "Speed?",
+      "back": "distance ÷ time."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with a toy car at steady speed.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

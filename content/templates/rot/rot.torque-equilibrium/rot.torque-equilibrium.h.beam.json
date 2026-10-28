@@ -1,0 +1,188 @@
+{
+  "id": "rot.torque-equilibrium.h.beam",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.torque-equilibrium",
+    "lom.fbd"
+  ],
+  "primarySkillId": "rot.torque-equilibrium",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "L": {
+      "kind": "choice",
+      "values": [
+        4,
+        6,
+        8
+      ]
+    },
+    "pv": {
+      "kind": "choice",
+      "values": [
+        1,
+        1.5
+      ]
+    },
+    "Wb": {
+      "kind": "choice",
+      "values": [
+        100,
+        150,
+        200
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.beamBalance",
+  "intro": "A beam with its own weight.",
+  "answer": {
+    "dimension": "force",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "beam-arm-from-end"
+      ],
+      "match": {
+        "buggySolver": "halfLengthArm"
+      }
+    },
+    {
+      "tags": [
+        "beam-weight-ignored"
+      ],
+      "match": {
+        "buggySolver": "beamIgnored"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} N"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "lever",
+      "lever": {
+        "length": "{{L}}",
+        "pivot": "{{pv}}",
+        "beamWeight": "{{Wb}}",
+        "loads": [
+          {
+            "id": "F",
+            "label": "push",
+            "x": 0,
+            "force": 10,
+            "editable": true
+          }
+        ]
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "set-load",
+      "args": {
+        "id": "F",
+        "x": 0,
+        "force": "$value"
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A uniform plank {{L}} m long weighing {{Wb}} N rests on a pivot {{pv}} m from its left end.",
+    "What downward force at the left end keeps it level?"
+  ],
+  "input": {
+    "label": "Force",
+    "placeholder": "for example 200 N",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} N",
+  "hints": [
+    {
+      "text": "Where does the plank's weight act?",
+      "cue": {
+        "cue": "arms"
+      }
+    },
+    {
+      "text": "At its centre, {{arm}} m to the right of the pivot."
+    },
+    {
+      "text": "Moments about the pivot: F × {{pv}} = {{Wb}} × {{arm}}."
+    }
+  ],
+  "feedback": {
+    "beam-arm-from-end": {
+      "text": "The plank's weight acts at its centre, {{half}} m from the left end, which is {{arm}} m from the pivot.",
+      "cue": {
+        "cue": "arms"
+      }
+    },
+    "beam-weight-ignored": {
+      "text": "The plank's own weight acts at its centre, which is not over the pivot, so it has a moment."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a force."
+    },
+    "generic": {
+      "text": "F × (pivot distance) = W_beam × (centre-to-pivot distance)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The weight acts {{arm}} m right of the pivot."
+    },
+    {
+      "text": "F × {{pv}} = {{Wb}} × {{arm}}, so F = {{ans}} N. The plank balances.",
+      "cue": {
+        "cue": "set-load",
+        "args": {
+          "id": "F",
+          "x": 0,
+          "force": "{{ans}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "beam-arm-from-end": {
+      "front": "Moment arm of a uniform beam's weight?",
+      "back": "From the pivot to the beam's centre."
+    },
+    "beam-weight-ignored": {
+      "front": "Does a uniform beam's own weight have a moment about an off-centre pivot?",
+      "back": "Yes: its weight acts at the centre."
+    },
+    "generic": {
+      "front": "Moment of a uniform beam's weight?",
+      "back": "W × (distance from pivot to the centre)."
+    }
+  },
+  "accessibility": {
+    "altText": "A plank on a pivot near its left end with a push at the left end.",
+    "nonDragAlternative": "Type the force in the load controls, or type your answer in the box."
+  }
+}

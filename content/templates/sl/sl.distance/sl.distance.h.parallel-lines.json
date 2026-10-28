@@ -1,0 +1,202 @@
+{
+  "id": "sl.distance.h.parallel-lines",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "sl",
+  "skillIds": [
+    "sl.distance",
+    "sl.general-form"
+  ],
+  "primarySkillId": "sl.distance",
+  "difficulty": "hard",
+  "format": "number",
+  "estimatedSeconds": 110,
+  "parameters": {
+    "ab": {
+      "kind": "choice",
+      "values": [
+        "3,4",
+        "4,3",
+        "5,12",
+        "6,8",
+        "8,6"
+      ]
+    },
+    "c1": {
+      "kind": "int",
+      "min": -9,
+      "max": 9
+    },
+    "c2": {
+      "kind": "int",
+      "min": -9,
+      "max": 9
+    }
+  },
+  "constraints": [
+    "c1 != c2",
+    "c1 + c2 != 0"
+  ],
+  "solver": "sl.parallelDistance",
+  "intro": "Distance between parallel lines.",
+  "answer": {
+    "tolerance": {
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "distance-missing-denominator"
+      ],
+      "match": {
+        "buggySolver": "missingDenominator"
+      }
+    },
+    {
+      "tags": [
+        "distance-missing-root"
+      ],
+      "match": {
+        "buggySolver": "missingRoot"
+      }
+    },
+    {
+      "tags": [
+        "distance-constant-sign"
+      ],
+      "match": {
+        "buggySolver": "constantSign"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{d|raw}}"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "instructions": "The two parallel lines are drawn. Their distance is measured along a common perpendicular, not vertically.",
+    "config": {
+      "xRange": [
+        -8,
+        8
+      ],
+      "yRange": [
+        -8,
+        8
+      ],
+      "functions": [
+        {
+          "id": "L1",
+          "expr": "{{slope|raw}}*x + {{y1|raw}}",
+          "label": "first line"
+        },
+        {
+          "id": "L2",
+          "expr": "{{slope|raw}}*x + {{y2|raw}}",
+          "label": "second line"
+        }
+      ],
+      "points": []
+    }
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Distance is measured perpendicular to both lines."
+      }
+    }
+  ],
+  "stem": [
+    "Find the distance between the parallel lines {{a}}x + {{b}}y + {{c1}} = 0 and {{a}}x + {{b}}y + {{c2}} = 0."
+  ],
+  "input": {
+    "label": "Distance",
+    "placeholder": "for example 1.4",
+    "keypad": "maths"
+  },
+  "answerText": "{{d}}",
+  "hints": [
+    {
+      "text": "The distance between parallel lines is measured along a perpendicular to both.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "L1",
+            "L2"
+          ]
+        }
+      }
+    },
+    {
+      "text": "For Ax + By + C₁ = 0 and Ax + By + C₂ = 0, d = |C₁ − C₂| ÷ √(A² + B²)."
+    },
+    {
+      "text": "Here √(A² + B²) is a whole number."
+    }
+  ],
+  "feedback": {
+    "distance-missing-denominator": {
+      "text": "|C₁ − C₂| alone isn't a distance: divide by √(A² + B²) to measure along the perpendicular."
+    },
+    "distance-missing-root": {
+      "text": "The denominator is √(A² + B²), the length of the normal vector (A, B), not A² + B²."
+    },
+    "distance-constant-sign": {
+      "text": "Use the difference of the constants, |C₁ − C₂|, written with both lines in the same form."
+    },
+    "generic": {
+      "text": "Use d = |C₁ − C₂| ÷ √(A² + B²)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Same A = {{a}} and B = {{b}}, so the lines are parallel.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "L1",
+            "L2"
+          ]
+        }
+      }
+    },
+    {
+      "text": "d = |{{c1}} − ({{c2}})| ÷ √({{a}}² + {{b}}²) = {{diff}} ÷ {{n}} = {{d}}."
+    }
+  ],
+  "flashcards": {
+    "distance-missing-denominator": {
+      "front": "Distance between Ax + By + C₁ = 0 and Ax + By + C₂ = 0?",
+      "back": "|C₁ − C₂| ÷ √(A² + B²)."
+    },
+    "distance-missing-root": {
+      "front": "Denominator in the point–line distance formula?",
+      "back": "√(A² + B²)."
+    },
+    "distance-constant-sign": {
+      "front": "Parallel-line distance: |C₁ − C₂| or |C₁ + C₂|?",
+      "back": "|C₁ − C₂|, with both equations in the same form."
+    },
+    "generic": {
+      "front": "Distance between parallel lines?",
+      "back": "|C₁ − C₂| ÷ √(A² + B²)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two parallel lines {{a}}x + {{b}}y + {{c1}} = 0 and {{a}}x + {{b}}y + {{c2}} = 0.",
+    "nonDragAlternative": "The graph is for exploring; type your answer in the box."
+  }
+}

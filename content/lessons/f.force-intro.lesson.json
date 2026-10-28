@@ -1,0 +1,141 @@
+{
+  "id": "f.force-intro.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.force-intro",
+  "kind": "micro-lesson",
+  "title": "Forces and motion",
+  "minutes": 4,
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "floor",
+      "maxMagnitude": 30,
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": 9.8,
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "ice",
+          "magnitude": 9.8,
+          "angleDeg": 90,
+          "locked": true
+        },
+        {
+          "id": "P",
+          "kind": "applied",
+          "label": "Push",
+          "agent": "hand",
+          "magnitude": 3,
+          "angleDeg": 0
+        }
+      ],
+      "body": {
+        "label": "puck",
+        "mass": 1
+      },
+      "predict": true,
+      "allowEdit": true
+    },
+    "instructions": "Change a force with Precise controls and press Play to see the motion it predicts."
+  },
+  "steps": [
+    {
+      "text": "A force is a push or a pull with a size and a direction. Here the weight and the normal force balance.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W",
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The push is unbalanced, so the puck accelerates. Press Play.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "Remove the push and the puck would keep its velocity: no force is needed just to keep moving.",
+      "cue": {
+        "cue": "set",
+        "args": {
+          "id": "P",
+          "magnitude": 0,
+          "play": true
+        }
+      }
+    },
+    {
+      "text": "Mass is the amount of matter (kg); weight is the pull of gravity on it, mg (N).",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W"
+          ]
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "Balanced and unbalanced",
+    "steps": [
+      {
+        "text": "Balanced forces: no change in motion. Unbalanced: the velocity changes in the direction of the net force.",
+        "cue": {
+          "cue": "set",
+          "args": {
+            "id": "P",
+            "magnitude": 5,
+            "play": true
+          }
+        }
+      },
+      {
+        "text": "A bigger unbalanced force gives a bigger acceleration.",
+        "cue": {
+          "cue": "set",
+          "args": {
+            "id": "P",
+            "magnitude": 10,
+            "play": true
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: unbalanced force → acceleration; balanced → constant velocity; weight = mg.",
+      "cue": {
+        "cue": "predict"
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A puck on ice with its weight, the normal force and a push.",
+    "nonDragAlternative": "Select a force and type its size in Precise controls, then press Play."
+  }
+}

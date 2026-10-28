@@ -1,0 +1,155 @@
+{
+  "id": "osc.spring-pendulum.e.period",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.spring-pendulum"
+  ],
+  "primarySkillId": "osc.spring-pendulum",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "L": {
+      "kind": "choice",
+      "values": [
+        0.25,
+        0.4,
+        0.5,
+        0.8,
+        1,
+        1.5,
+        2
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.pendulumPeriod",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "time",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "pendulum-inverted"
+      ],
+      "match": {
+        "buggySolver": "inverted"
+      }
+    },
+    {
+      "tags": [
+        "pendulum-no-root"
+      ],
+      "match": {
+        "buggySolver": "noRoot"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} s"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "pendulum",
+      "length": "{{L}}",
+      "amplitude": "{{0.05*L}}",
+      "editable": [
+        "length"
+      ]
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Change the length: does a longer pendulum swing faster or slower?"
+      }
+    }
+  ],
+  "stem": [
+    "A simple pendulum is {{L}} m long and swings with small amplitude. Take g = 9.8 m/s².",
+    "What is its period?"
+  ],
+  "input": {
+    "label": "Period",
+    "placeholder": "for example 1.4 s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} s",
+  "hints": [
+    {
+      "text": "The period depends on length and g, not on the mass.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "T = 2π√(L ÷ g)."
+    },
+    {
+      "text": "Substitute L = {{L}} m."
+    }
+  ],
+  "feedback": {
+    "pendulum-inverted": {
+      "text": "A longer pendulum swings more slowly: T = 2π√(L ÷ g)."
+    },
+    "pendulum-no-root": {
+      "text": "T = 2π√(L ÷ g): include the square root."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a time."
+    },
+    "generic": {
+      "text": "T = 2π√(L ÷ g)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "T = 2π√({{L}} ÷ 9.8)."
+    },
+    {
+      "text": "= {{ans}} s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "pendulum-inverted": {
+      "front": "Period of a simple pendulum?",
+      "back": "T = 2π√(L ÷ g)."
+    },
+    "pendulum-no-root": {
+      "front": "Quadruple L: period?",
+      "back": "Doubles: T ∝ √L."
+    },
+    "generic": {
+      "front": "Period of a simple pendulum?",
+      "back": "2π√(L ÷ g)."
+    }
+  },
+  "accessibility": {
+    "altText": "A pendulum with its x–t graph.",
+    "nonDragAlternative": "Type a length in the length box; type your answer in the box."
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "id": "osc.periodic.e.frequency",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.periodic"
+  ],
+  "primarySkillId": "osc.periodic",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "T": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.25,
+        0.5,
+        2,
+        4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.frequency",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "frequency",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "period-for-frequency"
+      ],
+      "match": {
+        "buggySolver": "periodInstead"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} Hz"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": "{{4*pi^2/T^2}}",
+      "amplitude": 0.1
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Count how many oscillations fit into one second of the graph."
+      }
+    }
+  ],
+  "stem": [
+    "A swing completes one full oscillation every {{T}} s.",
+    "What is its frequency?"
+  ],
+  "input": {
+    "label": "Frequency",
+    "placeholder": "for example 0.5 Hz",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} Hz",
+  "hints": [
+    {
+      "text": "Frequency counts oscillations per second.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "One oscillation takes {{T}} s."
+    },
+    {
+      "text": "f = 1 ÷ T."
+    }
+  ],
+  "feedback": {
+    "period-for-frequency": {
+      "text": "That is the period. Frequency is oscillations per second: f = 1 ÷ T."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a frequency."
+    },
+    "generic": {
+      "text": "f = 1 ÷ T."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "f = 1 ÷ {{T}}."
+    },
+    {
+      "text": "= {{ans}} Hz.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "period-for-frequency": {
+      "front": "Frequency from period?",
+      "back": "f = 1 ÷ T."
+    },
+    "generic": {
+      "front": "Frequency from period?",
+      "back": "f = 1 ÷ T."
+    }
+  },
+  "accessibility": {
+    "altText": "A spring–mass oscillator with its x–t graph.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

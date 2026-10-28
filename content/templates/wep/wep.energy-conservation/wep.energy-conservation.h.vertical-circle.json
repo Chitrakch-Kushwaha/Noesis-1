@@ -1,0 +1,163 @@
+{
+  "id": "wep.energy-conservation.h.vertical-circle",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.energy-conservation",
+    "lom.circular-dynamics"
+  ],
+  "primarySkillId": "wep.energy-conservation",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "R": {
+      "kind": "choice",
+      "values": [
+        0.4,
+        0.5,
+        0.8,
+        1,
+        1.6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.loopBottomSpeed",
+  "intro": "Motion in a vertical circle.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "loop-top-condition"
+      ],
+      "match": {
+        "buggySolver": "topCondition"
+      }
+    },
+    {
+      "tags": [
+        "loop-zero-top"
+      ],
+      "match": {
+        "buggySolver": "zeroAtTop"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "circle",
+      "circle": {
+        "radius": "{{R}}",
+        "speed": "{{ans}}"
+      },
+      "showValues": false
+    },
+    "instructions": "The diagram shows circular motion; in a vertical circle the speed changes as the stone climbs."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Check the top first: the string stays taut only if mv²/R ≥ mg there."
+      }
+    }
+  ],
+  "stem": [
+    "A small stone on a light string of length {{R}} m is whirled in a vertical circle. Take g = 9.8 m/s².",
+    "What is the least speed it must have at the bottom so that the string stays taut all the way round?"
+  ],
+  "input": {
+    "label": "Speed at the bottom",
+    "placeholder": "for example 6 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "At the top, the least speed makes the tension zero: gravity alone gives the centripetal force.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a"
+          ]
+        }
+      }
+    },
+    {
+      "text": "So v_top² = gR."
+    },
+    {
+      "text": "Energy: ½mv_bottom² = ½mv_top² + mg(2R)."
+    }
+  ],
+  "feedback": {
+    "loop-top-condition": {
+      "text": "√(gR) is the least speed at the top. The stone loses speed climbing 2R, so it needs more at the bottom."
+    },
+    "loop-zero-top": {
+      "text": "At the top the stone can't be at rest: the string would go slack. It needs at least √(gR) there."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "v_bottom = √(5gR)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "At the top: mg = mv_top²/R, so v_top² = gR."
+    },
+    {
+      "text": "Energy: v_bottom² = gR + 4gR = 5gR, so v = √(5 × 9.8 × {{R}}) = {{ans}} m/s.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "v",
+            "a"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "loop-top-condition": {
+      "front": "Minimum speed at the bottom of a vertical circle on a string?",
+      "back": "√(5gR): √(gR) at the top plus the energy for the 2R climb."
+    },
+    "loop-zero-top": {
+      "front": "Can a body on a string be at rest at the top of a vertical circle?",
+      "back": "No: the string would go slack. It needs at least √(gR) there."
+    },
+    "generic": {
+      "front": "Least speed at the bottom of a vertical circle on a string?",
+      "back": "√(5gR)."
+    }
+  },
+  "accessibility": {
+    "altText": "A body moving round a circle.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

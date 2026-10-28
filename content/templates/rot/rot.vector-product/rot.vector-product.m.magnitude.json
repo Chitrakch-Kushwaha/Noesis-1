@@ -1,0 +1,193 @@
+{
+  "id": "rot.vector-product.m.magnitude",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.vector-product"
+  ],
+  "primarySkillId": "rot.vector-product",
+  "difficulty": "medium",
+  "format": "number",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "A": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "B": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        6
+      ]
+    },
+    "th": {
+      "kind": "choice",
+      "values": [
+        30,
+        90,
+        150,
+        60
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.crossMagnitude",
+  "intro": "The size of a cross product.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "cross-uses-cos"
+      ],
+      "match": {
+        "buggySolver": "usedCos"
+      }
+    },
+    {
+      "tags": [
+        "cross-ignores-angle"
+      ],
+      "match": {
+        "buggySolver": "ignoredAngle"
+      }
+    }
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 8,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "a",
+          "agent": "none",
+          "magnitude": "{{A}}",
+          "angleDeg": 0,
+          "tone": "a"
+        },
+        {
+          "id": "b",
+          "kind": "vector",
+          "label": "b",
+          "agent": "none",
+          "magnitude": "{{B}}",
+          "angleDeg": "{{th}}",
+          "tone": "b"
+        }
+      ],
+      "showResultant": false
+    },
+    "instructions": "The vectors lie in the plane of the screen; their cross product points into or out of the screen."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "a",
+          "b"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "Vectors a and b have magnitudes {{A}} and {{B}} with {{th}}° between them.",
+    "What is |a × b|?"
+  ],
+  "input": {
+    "label": "|a × b|",
+    "placeholder": "for example 6",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "The cross product's magnitude is the area of the parallelogram on a and b.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Area = base × perpendicular height."
+    },
+    {
+      "text": "|a × b| = |a||b| sin θ."
+    }
+  ],
+  "feedback": {
+    "cross-uses-cos": {
+      "text": "|a × b| uses sin θ; cos θ belongs to the scalar product."
+    },
+    "cross-ignores-angle": {
+      "text": "Include sin θ: only the perpendicular part of b counts."
+    },
+    "generic": {
+      "text": "|a × b| = |a||b| sin θ."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "|a × b| = {{A}} × {{B}} × sin {{th}}°."
+    },
+    {
+      "text": "= {{ans}}.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "cross-uses-cos": {
+      "front": "|a × b| = ?",
+      "back": "|a||b| sin θ."
+    },
+    "cross-ignores-angle": {
+      "front": "Cross product of parallel vectors?",
+      "back": "Zero: sin 0° = 0."
+    },
+    "generic": {
+      "front": "|a × b|?",
+      "back": "|a||b| sin θ."
+    }
+  },
+  "accessibility": {
+    "altText": "Two vectors at {{th}}° to each other.",
+    "nonDragAlternative": "Type your answer in the box."
+  }
+}

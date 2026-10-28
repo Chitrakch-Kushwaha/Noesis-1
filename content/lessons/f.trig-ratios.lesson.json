@@ -1,0 +1,50 @@
+{
+  "id": "f.trig-ratios.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.trig-ratios",
+  "kind": "micro-lesson",
+  "title": "Trigonometric ratios in a right triangle",
+  "minutes": 6,
+  "widget": {
+    "type": "triangle-explorer",
+    "instructions": "Drag corner B (or use the slider) to change the angle, and mark θ at A or B to see which sides are opposite and adjacent.",
+    "config": { "mode": "triangle", "hypotenuse": 5, "angleDeg": 37, "marked": "A", "editable": true, "showRoles": true }
+  },
+  "steps": [
+    { "text": "This is a right triangle with the right angle at C. The longest side, AB, is across from the right angle: it is always the **hypotenuse**.", "cue": { "cue": "highlight-side", "args": { "sides": ["hypotenuse"] } } },
+    { "text": "θ is the angle at A. The side across from θ is **opposite**. The other side that touches θ is **adjacent**.", "cue": { "cue": "highlight-side", "args": { "sides": ["opposite", "adjacent"] } } },
+    { "text": "Now move θ to corner B. Watch the labels: opposite and adjacent swap places, while the hypotenuse stays the same.", "cue": [{ "cue": "mark-angle", "args": { "at": "B" } }, { "cue": "highlight-side", "args": { "sides": ["opposite", "adjacent"] } }] },
+    { "text": "Back at A, the ratios: sin θ = opposite ÷ hypotenuse, cos θ = adjacent ÷ hypotenuse, tan θ = opposite ÷ adjacent. Watch them change as θ sweeps.", "cue": [{ "cue": "mark-angle", "args": { "at": "A" } }, { "cue": "show-values" }, { "cue": "show-ratios" }, { "cue": "sweep", "args": { "from": 20, "to": 60 } }] },
+    { "text": "Your turn: drag corner B or use the slider, and mark θ at A or at B. Say which side is adjacent before you look at the labels.", "cue": [{ "cue": "highlight-side", "args": { "sides": [] } }, { "cue": "note", "args": { "text": "Your turn: mark θ, then name the sides." } }] }
+  ],
+  "alternate": {
+    "title": "Shadows of a vector",
+    "widget": {
+      "type": "triangle-explorer",
+      "instructions": "A lamp shines straight down and straight across. Drag the vector's tip (or use the slider) and watch its shadows on the axes.",
+      "config": { "mode": "vector", "hypotenuse": 5, "angleDeg": 37, "marked": "A", "editable": true, "showRoles": true }
+    },
+    "steps": [
+      { "text": "Here is a vector of length r at θ above the x-axis. Its shadow on the x-axis (lamp overhead) and on the y-axis (lamp to the side) are its two components.", "cue": { "cue": "shadows" } },
+      { "text": "The x-shadow touches the angle θ at the origin: it is **adjacent**. So x = r cos θ.", "cue": { "cue": "highlight-side", "args": { "sides": ["adjacent"] } } },
+      { "text": "The y-shadow sits across from θ: it is **opposite**. So y = r sin θ. Sweep θ and watch the two shadows trade length.", "cue": [{ "cue": "highlight-side", "args": { "sides": ["opposite"] } }, { "cue": "sweep", "args": { "from": 15, "to": 75 } }] }
+    ]
+  },
+  "recap": [
+    { "text": "Recap: the hypotenuse is across from the right angle, the opposite side is across from θ, and the adjacent side touches θ. sin = opposite ÷ hypotenuse, cos = adjacent ÷ hypotenuse, tan = opposite ÷ adjacent.", "cue": [{ "cue": "highlight-side", "args": { "sides": ["opposite", "adjacent", "hypotenuse"] } }, { "cue": "show-ratios" }] }
+  ],
+  "accessibility": {
+    "altText": "A right triangle ABC with the right angle at C and the angle θ marked at A. Each side is labelled opposite, adjacent or hypotenuse.",
+    "nonDragAlternative": "Use the angle slider and the Mark θ at A or Mark θ at B buttons; the description below the figure names each side."
+  }
+}

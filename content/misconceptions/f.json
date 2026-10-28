@@ -1,0 +1,437 @@
+{
+  "$comment": "Misconception catalogue. 'implicates' lists skills whose weakness this misconception is evidence of; the detour planner (src/engine/planner.ts) intersects it with the prerequisite closure of the failed skill. Awaiting named human review with the templates that use these tags.",
+  "chapter": "f",
+  "status": "in-review",
+  "misconceptions": [
+    {
+      "tag": "opposite-adjacent-confusion",
+      "description": "Swaps the sides opposite and adjacent to an angle.",
+      "implicates": [
+        "f.trig-ratios"
+      ],
+      "visualCue": "triangle-explorer:mark-angle",
+      "flashcard": {
+        "front": "In a right triangle, which side is adjacent to an angle?",
+        "back": "The side that touches the angle and isn't the hypotenuse. The opposite side is across from it."
+      }
+    },
+    {
+      "tag": "hypotenuse-confusion",
+      "description": "Calls the hypotenuse the adjacent side.",
+      "implicates": [
+        "f.trig-ratios",
+        "f.pythagoras"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is the hypotenuse ever 'adjacent'?",
+        "back": "No: the hypotenuse is the longest side, opposite the right angle."
+      }
+    },
+    {
+      "tag": "ratio-swap",
+      "description": "Uses sin for cos (or the reverse).",
+      "implicates": [
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "sin θ or cos θ: which uses the side adjacent to θ?",
+        "back": "cos θ = adjacent ÷ hypotenuse; sin θ = opposite ÷ hypotenuse."
+      }
+    },
+    {
+      "tag": "ratio-inverted",
+      "description": "Writes a trigonometric ratio upside down.",
+      "implicates": [
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is sin θ = hypotenuse ÷ opposite?",
+        "back": "No: sin θ = opposite ÷ hypotenuse (always at most 1)."
+      }
+    },
+    {
+      "tag": "rational-irrational-confusion",
+      "description": "Classifies a terminating decimal or a fraction as irrational (or the reverse).",
+      "implicates": [
+        "f.number-systems"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is 22/7 irrational?",
+        "back": "No: it is a ratio of integers. √2 is irrational."
+      }
+    },
+    {
+      "tag": "negative-subtraction-sign",
+      "description": "Subtracts the magnitudes when finding the distance from a negative to a positive number.",
+      "implicates": [
+        "f.number-systems"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Distance from −3 to 5 on a number line?",
+        "back": "5 − (−3) = 8."
+      }
+    },
+    {
+      "tag": "speed-time-multiply",
+      "description": "Multiplies distance by speed to get time.",
+      "implicates": [
+        "f.speed-time"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Time from distance and speed?",
+        "back": "time = distance ÷ speed."
+      }
+    },
+    {
+      "tag": "speed-time-inverted",
+      "description": "Divides speed by distance for time.",
+      "implicates": [
+        "f.speed-time",
+        "f.ratio"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Units check: km ÷ (km/h) gives?",
+        "back": "hours: so time = d ÷ v."
+      }
+    },
+    {
+      "tag": "slope-run-over-rise",
+      "description": "Divides the change in x by the change in y.",
+      "implicates": [
+        "f.slope"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Slope of a line?",
+        "back": "Rise ÷ run: Δy ÷ Δx."
+      }
+    },
+    {
+      "tag": "slope-sign-ignored",
+      "description": "Judges steepness by the signed slope rather than its size.",
+      "implicates": [
+        "f.slope"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Which is steeper: slope −3 or slope 2?",
+        "back": "Slope −3: steepness is |m|."
+      }
+    },
+    {
+      "tag": "area-end-height",
+      "description": "Uses the height at one end for the area under a sloping line.",
+      "implicates": [
+        "f.area-graph",
+        "f.mensuration"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Area under a sloping straight line?",
+        "back": "A trapezium: ½(y₁ + y₂) × width."
+      }
+    },
+    {
+      "tag": "triangle-no-half",
+      "description": "Forgets the ½ in the area of a triangle.",
+      "implicates": [
+        "f.mensuration"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Area of a triangle?",
+        "back": "½ × base × height."
+      }
+    },
+    {
+      "tag": "rearrange-sign",
+      "description": "Changes the sign wrongly when moving a term across the equals sign.",
+      "implicates": [
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Solve 3x + 4 = 19.",
+        "back": "Subtract 4 from both sides first: 3x = 15, x = 5."
+      }
+    },
+    {
+      "tag": "rearrange-order",
+      "description": "Divides before removing the added term.",
+      "implicates": [
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "ax + b = c: first step?",
+        "back": "Subtract b from both sides, then divide by a."
+      }
+    },
+    {
+      "tag": "subject-sign",
+      "description": "Keeps the wrong sign when making a variable the subject.",
+      "implicates": [
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Make a the subject of v = u + at.",
+        "back": "a = (v − u) ÷ t."
+      }
+    },
+    {
+      "tag": "subject-inverted",
+      "description": "Multiplies instead of dividing when isolating a variable.",
+      "implicates": [
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Undo multiplying by t?",
+        "back": "Divide both sides by t."
+      }
+    },
+    {
+      "tag": "root-sign",
+      "description": "Takes the roots of x² − (p + q)x + pq = 0 as −p and −q.",
+      "implicates": [
+        "f.quadratic",
+        "f.factorise"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Roots of (x − p)(x − q) = 0?",
+        "back": "x = p and x = q."
+      }
+    },
+    {
+      "tag": "discriminant-sign",
+      "description": "Uses b² + 4ac for the discriminant.",
+      "implicates": [
+        "f.quadratic"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Discriminant of ax² + bx + c?",
+        "back": "b² − 4ac."
+      }
+    },
+    {
+      "tag": "discriminant-square",
+      "description": "Forgets to square b in the discriminant.",
+      "implicates": [
+        "f.quadratic"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Discriminant?",
+        "back": "b² − 4ac."
+      }
+    },
+    {
+      "tag": "distance-added-legs",
+      "description": "Adds the horizontal and vertical gaps for a distance.",
+      "implicates": [
+        "f.coord",
+        "f.pythagoras"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Distance between two points?",
+        "back": "√(Δx² + Δy²)."
+      }
+    },
+    {
+      "tag": "midpoint-half-difference",
+      "description": "Halves the difference of the coordinates instead of averaging them.",
+      "implicates": [
+        "f.coord"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Midpoint x-coordinate?",
+        "back": "(x₁ + x₂) ÷ 2."
+      }
+    },
+    {
+      "tag": "angle-sum-full-turn",
+      "description": "Uses 360° as the angle sum of a triangle.",
+      "implicates": [
+        "f.angles"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Angles of a triangle add to?",
+        "back": "180°."
+      }
+    },
+    {
+      "tag": "alternate-supplementary",
+      "description": "Thinks alternate angles add to 180°.",
+      "implicates": [
+        "f.angles"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Alternate angles between parallel lines?",
+        "back": "Equal."
+      }
+    },
+    {
+      "tag": "pythag-added-sides",
+      "description": "Adds the two shorter sides to get the hypotenuse.",
+      "implicates": [
+        "f.pythagoras"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Hypotenuse from legs a and b?",
+        "back": "√(a² + b²)."
+      }
+    },
+    {
+      "tag": "pythag-missing-leg-added",
+      "description": "Adds the squares when finding a shorter side.",
+      "implicates": [
+        "f.pythagoras"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Shorter side from c and a?",
+        "back": "√(c² − a²)."
+      }
+    },
+    {
+      "tag": "arc-degrees",
+      "description": "Uses degrees in s = rθ.",
+      "implicates": [
+        "f.circle",
+        "trg.radian"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Arc length s = rθ: θ in?",
+        "back": "Radians."
+      }
+    },
+    {
+      "tag": "area-circumference-confusion",
+      "description": "Uses the circumference formula for the area of a circle.",
+      "implicates": [
+        "f.circle",
+        "f.mensuration"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Area of a circle?",
+        "back": "πr² (2πr is the circumference)."
+      }
+    },
+    {
+      "tag": "area-diameter",
+      "description": "Uses the diameter in πr².",
+      "implicates": [
+        "f.circle",
+        "f.mensuration"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Area of a circle of diameter d?",
+        "back": "π(d/2)²."
+      }
+    },
+    {
+      "tag": "force-needed-for-motion",
+      "description": "Believes a steady force keeps a body moving at constant speed on a frictionless surface.",
+      "implicates": [
+        "f.force-intro"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Unbalanced force on a body: effect?",
+        "back": "It accelerates: speeds up, slows down or turns."
+      }
+    },
+    {
+      "tag": "mass-is-weight",
+      "description": "Treats mass and weight as the same quantity.",
+      "implicates": [
+        "f.force-intro",
+        "f.si-units"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "On the Moon, which stays the same: mass or weight?",
+        "back": "Mass. Weight (mg) depends on g."
+      }
+    },
+    {
+      "tag": "work-divided",
+      "description": "Divides force by distance for work.",
+      "implicates": [
+        "f.work-energy-intro"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Work done by a force F moving its point d along itself?",
+        "back": "W = F × d."
+      }
+    },
+    {
+      "tag": "energy-destroyed",
+      "description": "Thinks energy disappears as a ball falls.",
+      "implicates": [
+        "f.work-energy-intro"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A falling ball loses height. Where does the energy go?",
+        "back": "Into kinetic energy (and a little into heat with air resistance)."
+      }
+    },
+    {
+      "tag": "identity-linear",
+      "description": "Uses cos θ = 1 − sin θ.",
+      "implicates": [
+        "f.trig-identity"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "From sin θ to cos θ?",
+        "back": "cos θ = √(1 − sin²θ) for an acute angle."
+      }
+    },
+    {
+      "tag": "identity-no-root",
+      "description": "Forgets the square root in cos θ = √(1 − sin²θ).",
+      "implicates": [
+        "f.trig-identity"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "sin²θ + cos²θ = 1 gives cos θ = ?",
+        "back": "√(1 − sin²θ)."
+      }
+    },
+    {
+      "tag": "standard-value-swap",
+      "description": "Swaps the standard values of sin 30° and sin 60°.",
+      "implicates": [
+        "f.trig-identity",
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "sin 30°?",
+        "back": "½ (sin 60° = √3/2)."
+      }
+    }
+  ]
+}

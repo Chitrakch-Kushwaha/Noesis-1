@@ -1,0 +1,211 @@
+{
+  "id": "lom.second-law.h.bounce-impulse",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.second-law",
+    "lom.momentum-conservation"
+  ],
+  "primarySkillId": "lom.second-law",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        50,
+        100,
+        150,
+        200
+      ]
+    },
+    "u": {
+      "kind": "choice",
+      "values": [
+        6,
+        8,
+        10,
+        12
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        6,
+        8
+      ]
+    }
+  },
+  "solver": "lom.bounceImpulse",
+  "intro": "Impulse, with a change of direction.",
+  "answer": {
+    "dimension": "momentum",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "momentum-direction-ignored"
+      ],
+      "match": {
+        "buggySolver": "directionIgnored"
+      }
+    },
+    {
+      "tags": [
+        "impulse-one-velocity"
+      ],
+      "match": {
+        "buggySolver": "oneVelocity"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{J|raw}} kg m/s",
+    "{{J|raw}} N s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "instructions": "Press Play: the ball moves towards the wall, and the ghost lane shows it moving away after the bounce.",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "in",
+          "label": "ball before",
+          "x0": -10,
+          "v0": "{{u}}",
+          "a": 0
+        }
+      ],
+      "duration": 1.5,
+      "xRange": [
+        -12,
+        6
+      ],
+      "hideNumbers": true
+    }
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Impulse is the change in momentum, with direction."
+      }
+    }
+  ],
+  "stem": [
+    "A {{m}} g ball hits a wall at {{u}} m/s and bounces straight back at {{v}} m/s.",
+    "What is the magnitude of the impulse the wall gives the ball?"
+  ],
+  "input": {
+    "label": "Impulse",
+    "placeholder": "for example 1.2 kg m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{J}} N s",
+  "hints": [
+    {
+      "text": "Impulse equals the change in momentum. Momentum has a direction: choose one direction as positive.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Taking the bounce-back direction as positive, the momentum before is negative and after is positive."
+    },
+    {
+      "text": "Change = m v − (−m u) = m (u + v)."
+    }
+  ],
+  "feedback": {
+    "momentum-direction-ignored": {
+      "text": "You subtracted the speeds as if the ball kept going the same way. It reverses, so the change is m(u + v), not m(u − v).",
+      "cue": {
+        "cue": "ghost-lane",
+        "args": {
+          "lane": {
+            "id": "out",
+            "label": "ball after",
+            "x0": 0,
+            "v0": "{{-v}}",
+            "a": 0
+          }
+        }
+      }
+    },
+    "impulse-one-velocity": {
+      "text": "That is only the momentum before. The wall first stops the ball and then sends it back, so both momenta count."
+    },
+    "dimension-mismatch": {
+      "text": "Impulse is in N s (the same as kg m/s)."
+    },
+    "generic": {
+      "text": "Impulse = change in momentum. Take signs for the two directions."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Take the bounce-back direction as positive. Before: p = −{{mkg}} × {{u}} = −{{pin}} kg m/s.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "After: p = +{{mkg}} × {{v}} = {{pout}} kg m/s.",
+      "cue": [
+        {
+          "cue": "ghost-lane",
+          "args": {
+            "lane": {
+              "id": "out",
+              "label": "ball after",
+              "x0": 0,
+              "v0": "{{-v}}",
+              "a": 0
+            }
+          }
+        },
+        {
+          "cue": "play"
+        }
+      ]
+    },
+    {
+      "text": "Impulse = change in momentum = {{pout}} − (−{{pin}}) = {{J}} N s, away from the wall."
+    }
+  ],
+  "flashcards": {
+    "momentum-direction-ignored": {
+      "front": "A ball bounces straight back. Is the momentum change m(u − v)?",
+      "back": "No: m(u + v). The direction reverses."
+    },
+    "impulse-one-velocity": {
+      "front": "Impulse on a bouncing ball: only the incoming momentum?",
+      "back": "No. Impulse = final momentum − initial momentum, both with signs."
+    },
+    "generic": {
+      "front": "Impulse?",
+      "back": "J = F Δt = Δp."
+    }
+  },
+  "accessibility": {
+    "altText": "A ball moving right towards a wall in one lane.",
+    "nonDragAlternative": "Use Play, Step and the time slider to run the animation; type your answer in the box."
+  }
+}

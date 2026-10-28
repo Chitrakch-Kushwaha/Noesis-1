@@ -1,0 +1,139 @@
+{
+  "id": "osc.spring-pendulum.m.length",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.spring-pendulum"
+  ],
+  "primarySkillId": "osc.spring-pendulum",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "T": {
+      "kind": "choice",
+      "values": [
+        0.8,
+        1,
+        1.2,
+        1.5,
+        2,
+        2.5,
+        3
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.pendulumLength",
+  "intro": "Designing a pendulum.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "pendulum-length-not-squared"
+      ],
+      "match": {
+        "buggySolver": "notSquared"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "pendulum",
+      "length": "{{ans}}",
+      "amplitude": 0.04
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "ghost",
+      "args": {
+        "key": "length",
+        "value": "$value",
+        "label": "your length"
+      }
+    }
+  ],
+  "stem": [
+    "A clockmaker wants a simple pendulum with a period of {{T}} s. Take g = 9.8 m/s².",
+    "How long must it be?"
+  ],
+  "input": {
+    "label": "Length",
+    "placeholder": "for example 0.5 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Start from T = 2π√(L ÷ g).",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Square both sides to remove the root."
+    },
+    {
+      "text": "L = gT² ÷ (4π²)."
+    }
+  ],
+  "feedback": {
+    "pendulum-length-not-squared": {
+      "text": "Square both sides of T = 2π√(L ÷ g): L = gT² ÷ (4π²)."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "L = gT² ÷ (4π²)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "T² = 4π² L ÷ g."
+    },
+    {
+      "text": "L = 9.8 × {{T}}² ÷ (4π²) = {{ans}} m.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "pendulum-length-not-squared": {
+      "front": "Length for a period T?",
+      "back": "L = gT² ÷ (4π²)."
+    },
+    "generic": {
+      "front": "Length for a pendulum of period T?",
+      "back": "gT² ÷ (4π²)."
+    }
+  },
+  "accessibility": {
+    "altText": "A pendulum with its x–t graph.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

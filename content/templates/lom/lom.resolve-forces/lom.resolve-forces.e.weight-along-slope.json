@@ -1,0 +1,241 @@
+{
+  "id": "lom.resolve-forces.e.weight-along-slope",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.resolve-forces"
+  ],
+  "primarySkillId": "lom.resolve-forces",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 60,
+  "parameters": {
+    "W": {
+      "kind": "choice",
+      "values": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ]
+    },
+    "theta": {
+      "kind": "choice",
+      "values": [
+        30,
+        37,
+        45,
+        53,
+        60
+      ]
+    }
+  },
+  "solver": "lom.weightAlongSlope",
+  "intro": "A quick check on splitting a force into parts.",
+  "answer": {
+    "dimension": "force",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "sin-cos-swap-incline"
+      ],
+      "match": {
+        "buggySolver": "usedCos"
+      }
+    },
+    {
+      "tags": [
+        "whole-weight-along-slope"
+      ],
+      "match": {
+        "buggySolver": "wholeWeight"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{along|raw}} N"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Tick Tilted axes to measure forces along and across the slope. The weight is fixed; you can explore its components before answering.",
+    "config": {
+      "scene": "incline",
+      "inclineDeg": "{{theta}}",
+      "body": {
+        "label": "block",
+        "mass": 1
+      },
+      "maxMagnitude": "{{maxM}}",
+      "allowAxesToggle": true,
+      "showResultant": false,
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "tilted-axes"
+    },
+    {
+      "cue": "decompose",
+      "args": {
+        "id": "W",
+        "axes": "tilted",
+        "values": false
+      }
+    }
+  ],
+  "stem": [
+    "A block on a slope inclined at {{theta}}° has a weight of {{W}} N.",
+    "What is the component of its weight along the slope (down the slope)?"
+  ],
+  "input": {
+    "label": "Component along the slope",
+    "placeholder": "for example 12 N",
+    "keypad": "none"
+  },
+  "answerText": "{{along}} N",
+  "hints": [
+    {
+      "text": "Turn on the tilted axes: one runs along the slope, the other straight out of it.",
+      "cue": {
+        "cue": "tilted-axes"
+      }
+    },
+    {
+      "text": "The angle between the weight and the line perpendicular to the slope equals the slope angle θ. Which side of that triangle lies along the slope?",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "W",
+          "axes": "tilted",
+          "values": false
+        }
+      }
+    },
+    {
+      "text": "The part along the slope is opposite θ in the triangle, so it is W sin θ."
+    }
+  ],
+  "feedback": {
+    "sin-cos-swap-incline": {
+      "text": "That is the part pressing into the slope, W cos θ. The angle θ sits between the weight and the slope's perpendicular, so the part along the slope is the side opposite θ: W sin θ.",
+      "cue": [
+        {
+          "cue": "decompose",
+          "args": {
+            "id": "W",
+            "axes": "tilted",
+            "values": false
+          }
+        },
+        {
+          "cue": "highlight",
+          "args": {
+            "ids": [
+              "W"
+            ]
+          }
+        }
+      ]
+    },
+    "whole-weight-along-slope": {
+      "text": "Only part of the weight acts along the slope; the rest presses into it. Split the weight along the tilted axes.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "W",
+          "axes": "tilted",
+          "values": false
+        }
+      }
+    },
+    "dimension-mismatch": {
+      "text": "A component of a force is itself a force, in newtons."
+    },
+    "generic": {
+      "text": "Split the weight along the slope and perpendicular to it, then pick the part that lies along the slope.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "W",
+          "axes": "tilted",
+          "values": false
+        }
+      }
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Use axes along and perpendicular to the slope.",
+      "cue": [
+        {
+          "cue": "tilted-axes"
+        },
+        {
+          "cue": "decompose",
+          "args": {
+            "id": "W",
+            "axes": "tilted"
+          }
+        }
+      ]
+    },
+    {
+      "text": "The angle between the weight and the perpendicular to the slope is θ = {{theta}}°, so along the slope: W sin θ = {{W}} × sin {{theta}}° = {{along}} N."
+    },
+    {
+      "text": "Into the slope: W cos θ = {{perp}} N. Together the two parts rebuild the {{W}} N weight.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "sin-cos-swap-incline": {
+      "front": "Which component of weight acts along a slope of angle θ?",
+      "back": "W sin θ along the slope; W cos θ into it."
+    },
+    "whole-weight-along-slope": {
+      "front": "Does all of a block's weight pull it down a slope?",
+      "back": "No. Only W sin θ acts along the slope; W cos θ presses into it."
+    },
+    "generic": {
+      "front": "Weight component along a θ slope?",
+      "back": "W sin θ."
+    }
+  },
+  "accessibility": {
+    "altText": "A block on a slope at {{theta}}°, with its {{W}} N weight drawn straight down.",
+    "nonDragAlternative": "Tick Tilted axes and read each component in the description below the board; type your answer in the box."
+  }
+}

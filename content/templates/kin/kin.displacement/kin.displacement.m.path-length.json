@@ -1,0 +1,189 @@
+{
+  "id": "kin.displacement.m.path-length",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.displacement"
+  ],
+  "primarySkillId": "kin.displacement",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "x1": {
+      "kind": "int",
+      "min": -4,
+      "max": 2
+    },
+    "x2": {
+      "kind": "int",
+      "min": 6,
+      "max": 12
+    },
+    "x3": {
+      "kind": "int",
+      "min": -2,
+      "max": 5
+    }
+  },
+  "constraints": [
+    "x3 < x2",
+    "x1 < x2"
+  ],
+  "solver": "kin.pathLength",
+  "intro": "Distance travelled, not just where it ends.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "displacement-for-path-length"
+      ],
+      "match": {
+        "buggySolver": "displacementOnly"
+      }
+    },
+    {
+      "tags": [
+        "displacement-for-path-length"
+      ],
+      "match": {
+        "buggySolver": "farthestOnly"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 22,
+      "vectors": [
+        {
+          "id": "o",
+          "kind": "vector",
+          "label": "out",
+          "agent": "none",
+          "magnitude": "{{out}}",
+          "angleDeg": 0,
+          "tone": "a"
+        },
+        {
+          "id": "r",
+          "kind": "vector",
+          "label": "back",
+          "agent": "none",
+          "magnitude": "{{back}}",
+          "angleDeg": 180,
+          "tone": "b"
+        }
+      ],
+      "showResultant": false,
+      "unit": "m"
+    },
+    "instructions": "The arrows are the outward and return stretches."
+  },
+  "consequence": [
+    {
+      "cue": "add-vector",
+      "args": {
+        "vector": {
+          "id": "y",
+          "kind": "vector",
+          "label": "your path length",
+          "agent": "none",
+          "magnitude": "$value",
+          "angleDeg": -90
+        }
+      }
+    }
+  ],
+  "stem": [
+    "A cart starts at x = {{x1}} m, rolls to x = {{x2}} m, then rolls back to x = {{x3}} m.",
+    "What is the total path length it travels?"
+  ],
+  "input": {
+    "label": "Path length",
+    "placeholder": "for example 15 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Split the trip into the outward and return stretches.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "o",
+            "r"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Each stretch contributes its own length, whatever its direction."
+    },
+    {
+      "text": "Path length = |x₂ − x₁| + |x₃ − x₂|."
+    }
+  ],
+  "feedback": {
+    "displacement-for-path-length": {
+      "text": "You counted only the outward stretch. The return trip adds to the path length too."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "Add the length of every stretch travelled."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Outward: |{{x2}} − ({{x1}})| = {{out}} m. Back: |{{x3}} − {{x2}}| = {{back}} m."
+    },
+    {
+      "text": "Path length = {{out}} + {{back}} = {{ans}} m (the displacement is only {{disp}} m).",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "o",
+            "r"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "displacement-for-path-length": {
+      "front": "A walk out and back: is the path length the same as the displacement?",
+      "back": "No. Path length adds every stretch travelled; displacement only compares the start and end."
+    },
+    "generic": {
+      "front": "Path length?",
+      "back": "The total distance covered along the path, always positive."
+    }
+  },
+  "accessibility": {
+    "altText": "Two arrows: the cart's outward stretch to the right and its return to the left.",
+    "nonDragAlternative": "The board only illustrates the stretches; type your answer in the box."
+  }
+}

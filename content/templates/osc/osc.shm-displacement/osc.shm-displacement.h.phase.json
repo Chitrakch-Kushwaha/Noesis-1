@@ -1,0 +1,156 @@
+{
+  "id": "osc.shm-displacement.h.phase",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.shm-displacement"
+  ],
+  "primarySkillId": "osc.shm-displacement",
+  "difficulty": "hard",
+  "format": "number",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "frac": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        0.7071067811865476,
+        0.8660254037844386
+      ]
+    },
+    "A": {
+      "kind": "choice",
+      "values": [
+        0.1,
+        0.2
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.phaseFromStart",
+  "intro": "Finding the phase constant.",
+  "answer": {
+    "tolerance": {
+      "absolute": 0.6
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "phase-arcsin"
+      ],
+      "match": {
+        "buggySolver": "arcsin"
+      }
+    },
+    {
+      "tags": [
+        "phase-direction-ignored"
+      ],
+      "match": {
+        "buggySolver": "directionIgnored"
+      }
+    }
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": 4,
+      "amplitude": "{{A}}",
+      "phaseDeg": "{{ans}}"
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Check the direction: v(0) = −Aω sin φ."
+      }
+    }
+  ],
+  "stem": [
+    "A particle in SHM, x = A cos(ωt + φ) with A = {{A}} m, is at x = {{frac*A|3}} m at t = 0 and is moving towards −x.",
+    "What is φ, in degrees (between 0° and 180°)?"
+  ],
+  "input": {
+    "label": "φ (degrees)",
+    "placeholder": "for example 30",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "At t = 0, x = A cos φ.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "t": 0
+        }
+      }
+    },
+    {
+      "text": "cos φ = x(0) ÷ A."
+    },
+    {
+      "text": "Pick the angle whose sine makes v(0) = −Aω sin φ negative."
+    }
+  ],
+  "feedback": {
+    "phase-arcsin": {
+      "text": "With x = A cos(ωt + φ), x(0) = A cos φ: use the inverse cosine."
+    },
+    "phase-direction-ignored": {
+      "text": "Both ±φ give the same x(0). Moving towards −x means v(0) = −Aω sin φ < 0, so sin φ > 0 and φ is positive."
+    },
+    "generic": {
+      "text": "cos φ = x₀ ÷ A, with the sign of φ set by the direction of motion."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "cos φ = {{frac*A|3}} ÷ {{A}} = {{frac|3}}."
+    },
+    {
+      "text": "Moving towards −x needs sin φ > 0, so φ = {{ans}}°.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "t": 0
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "phase-arcsin": {
+      "front": "x(0) = A cos φ: φ = ?",
+      "back": "cos⁻¹(x₀ ÷ A), with its sign set by the direction of motion."
+    },
+    "phase-direction-ignored": {
+      "front": "Two phases give the same x(0). How to choose?",
+      "back": "Use the velocity: v(0) = −Aω sin φ."
+    },
+    "generic": {
+      "front": "Phase from x(0) and the direction of motion?",
+      "back": "cos φ = x₀/A; v(0) = −Aω sin φ fixes the sign."
+    }
+  },
+  "accessibility": {
+    "altText": "A spring oscillator with its x–t graph.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

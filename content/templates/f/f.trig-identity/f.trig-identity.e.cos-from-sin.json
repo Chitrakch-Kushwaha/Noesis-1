@@ -1,0 +1,143 @@
+{
+  "id": "f.trig-identity.e.cos-from-sin",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.trig-identity"
+  ],
+  "primarySkillId": "f.trig-identity",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "s": {
+      "kind": "choice",
+      "values": [
+        0.6,
+        0.8,
+        0.28,
+        0.96,
+        0.5,
+        0.385
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.cosFromSin",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "identity-linear"
+      ],
+      "match": {
+        "buggySolver": "oneMinus"
+      }
+    },
+    {
+      "tags": [
+        "identity-no-root"
+      ],
+      "match": {
+        "buggySolver": "noRoot"
+      }
+    }
+  ],
+  "widget": {
+    "type": "triangle-explorer",
+    "config": {
+      "mode": "triangle",
+      "editable": false,
+      "hypotenuse": 5,
+      "angleDeg": "{{ang}}",
+      "showRoles": true,
+      "showRatios": true
+    },
+    "instructions": "The right angle is at C."
+  },
+  "consequence": [
+    {
+      "cue": "show-ratios"
+    }
+  ],
+  "stem": [
+    "For an acute angle θ, sin θ = {{s}}.",
+    "What is cos θ?"
+  ],
+  "input": {
+    "label": "cos θ",
+    "placeholder": "for example 0.8",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Use sin²θ + cos²θ = 1.",
+      "cue": {
+        "cue": "show-ratios"
+      }
+    },
+    {
+      "text": "cos²θ = 1 − sin²θ."
+    },
+    {
+      "text": "θ is acute, so cos θ is positive."
+    }
+  ],
+  "feedback": {
+    "identity-linear": {
+      "text": "The identity uses squares: sin²θ + cos²θ = 1."
+    },
+    "identity-no-root": {
+      "text": "That is cos²θ. Take the square root."
+    },
+    "generic": {
+      "text": "cos θ = √(1 − sin²θ)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "cos²θ = 1 − {{s}}²."
+    },
+    {
+      "text": "cos θ = {{ans}}.",
+      "cue": {
+        "cue": "show-ratios"
+      }
+    }
+  ],
+  "flashcards": {
+    "identity-linear": {
+      "front": "From sin θ to cos θ?",
+      "back": "cos θ = √(1 − sin²θ) for an acute angle."
+    },
+    "identity-no-root": {
+      "front": "sin²θ + cos²θ = 1 gives cos θ = ?",
+      "back": "√(1 − sin²θ)."
+    },
+    "generic": {
+      "front": "cos θ from sin θ (acute)?",
+      "back": "√(1 − sin²θ)."
+    }
+  },
+  "accessibility": {
+    "altText": "A right triangle with its ratios.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

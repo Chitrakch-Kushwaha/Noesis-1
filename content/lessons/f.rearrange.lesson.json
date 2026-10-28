@@ -1,0 +1,129 @@
+{
+  "id": "f.rearrange.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.rearrange",
+  "kind": "micro-lesson",
+  "title": "Solving equations and rearranging formulas",
+  "minutes": 5,
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -1,
+        8
+      ],
+      "yRange": [
+        0,
+        25
+      ],
+      "functions": [
+        {
+          "id": "L",
+          "expr": "3*x + 4",
+          "label": "y = 3x + 4"
+        },
+        {
+          "id": "R",
+          "expr": "19 + 0*x",
+          "label": "y = 19"
+        }
+      ]
+    },
+    "instructions": "Drag points or sliders where you see them; the description below names every value."
+  },
+  "steps": [
+    {
+      "text": "To solve 3x + 4 = 19, find where the line y = 3x + 4 meets y = 19.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "L",
+            "R"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Algebra does the same thing: undo each operation, doing the same to both sides. First subtract 4: 3x = 15.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "x": 5,
+          "y": 19,
+          "label": "?"
+        }
+      }
+    },
+    {
+      "text": "Then divide both sides by 3: x = 5. The graphs meet at x = 5.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "x": 5,
+          "y": 19,
+          "label": "x = 5"
+        }
+      }
+    },
+    {
+      "text": "Formulas rearrange the same way: v = u + at becomes at = v − u, then a = (v − u) ÷ t.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Undo + u, then undo × t."
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "A balance",
+    "steps": [
+      {
+        "text": "Think of the equation as a balance: whatever you do to one side you must do to the other to keep it level.",
+        "cue": {
+          "cue": "note",
+          "args": {
+            "text": "3x + 4  =  19"
+          }
+        }
+      },
+      {
+        "text": "Take 4 from each side, then share each side into 3 equal parts.",
+        "cue": {
+          "cue": "note",
+          "args": {
+            "text": "3x = 15, so x = 5"
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: undo operations in reverse order, doing the same to both sides.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "x": 5,
+          "y": 19,
+          "label": "x = 5"
+        }
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A sloping line and a horizontal line on a graph.",
+    "nonDragAlternative": "Use the sliders or their arrow keys; the description below the graph gives every value."
+  }
+}

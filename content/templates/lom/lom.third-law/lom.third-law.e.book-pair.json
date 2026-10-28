@@ -1,0 +1,190 @@
+{
+  "id": "lom.third-law.e.book-pair",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.third-law"
+  ],
+  "primarySkillId": "lom.third-law",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        1.5,
+        2,
+        2.5,
+        3
+      ]
+    }
+  },
+  "solver": "lom.thirdLawPair",
+  "intro": "A quick check on action and reaction.",
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The board shows the forces on the book only. Its third-law partner acts on a different body.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "book",
+        "mass": "{{m}}"
+      },
+      "maxMagnitude": "{{W*2+2}}",
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight (Earth pulls book)",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal (table pushes book)",
+          "agent": "table",
+          "magnitude": "{{W}}",
+          "angleDeg": 90,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "stem": [
+    "A book rests on a table. Its weight is the Earth's gravitational pull on the book.",
+    "By Newton's third law, what is the partner (reaction) of this force?"
+  ],
+  "options": [
+    {
+      "id": "earth",
+      "text": "The book's gravitational pull on the Earth, upwards"
+    },
+    {
+      "id": "normal",
+      "text": "The table's upward push on the book",
+      "tags": [
+        "third-law-pair-on-same-body"
+      ],
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N",
+            "W"
+          ]
+        }
+      }
+    },
+    {
+      "id": "table",
+      "text": "The book's push down on the table",
+      "tags": [
+        "third-law-wrong-interaction"
+      ]
+    },
+    {
+      "id": "none",
+      "text": "There is none, because the book isn't moving",
+      "tags": [
+        "third-law-only-when-moving"
+      ]
+    }
+  ],
+  "answerText": "The book's pull on the Earth",
+  "hints": [
+    {
+      "text": "A third-law pair is one interaction between two bodies: if A acts on B, the partner is B acting on A."
+    },
+    {
+      "text": "Here A is the Earth, B is the book, and the interaction is gravity.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Swap the roles: the book pulls the Earth by gravity."
+    }
+  ],
+  "feedback": {
+    "third-law-pair-on-same-body": {
+      "text": "Both of these act on the book, so they can't be a third-law pair. They balance because the book is at rest (first law), not because of the third law.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N",
+            "W"
+          ]
+        }
+      }
+    },
+    "third-law-wrong-interaction": {
+      "text": "The book's push on the table is the partner of the table's push on the book (a contact interaction). The weight's partner is also gravitational."
+    },
+    "third-law-only-when-moving": {
+      "text": "Third-law pairs exist whenever two bodies interact, moving or not."
+    },
+    "generic": {
+      "text": "Swap the two bodies and keep the same kind of interaction."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The weight is a gravitational force: Earth on book.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Its partner is the same interaction the other way round: book on Earth, upwards, equal in size ({{W}} N). It acts on the Earth, so it isn't on this board."
+    }
+  ],
+  "flashcards": {
+    "third-law-pair-on-same-body": {
+      "front": "Are weight and normal force on a book an action–reaction pair?",
+      "back": "No. Third-law pairs act on different bodies. The pair of the book's weight is the book's pull on the Earth."
+    },
+    "third-law-wrong-interaction": {
+      "front": "The partner of a gravitational force is…?",
+      "back": "Another gravitational force, on the other body."
+    },
+    "third-law-only-when-moving": {
+      "front": "Do third-law pairs need motion?",
+      "back": "No: any interaction between two bodies gives a pair."
+    },
+    "generic": {
+      "front": "Third-law partner of 'Earth pulls book'?",
+      "back": "Book pulls Earth."
+    }
+  },
+  "accessibility": {
+    "altText": "A book on a table with its weight and the table's normal force drawn.",
+    "nonDragAlternative": "Choose an answer with the radio buttons; the board only illustrates the forces."
+  }
+}

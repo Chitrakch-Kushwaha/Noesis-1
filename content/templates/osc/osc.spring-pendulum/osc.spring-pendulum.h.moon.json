@@ -1,0 +1,170 @@
+{
+  "id": "osc.spring-pendulum.h.moon",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.spring-pendulum",
+    "osc.force-law"
+  ],
+  "primarySkillId": "osc.spring-pendulum",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "T": {
+      "kind": "choice",
+      "values": [
+        1,
+        1.5,
+        2
+      ]
+    },
+    "k": {
+      "kind": "choice",
+      "values": [
+        4,
+        6,
+        9
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.moonPendulum",
+  "intro": "Changing g.",
+  "answer": {
+    "dimension": "time",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "pendulum-g-inverted"
+      ],
+      "match": {
+        "buggySolver": "inverted"
+      }
+    },
+    {
+      "tags": [
+        "pendulum-g-linear"
+      ],
+      "match": {
+        "buggySolver": "linear"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} s"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "pendulum",
+      "length": "{{9.8*T^2/(4*pi^2)}}",
+      "amplitude": 0.05,
+      "g": 9.8
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "ghost",
+      "args": {
+        "key": "length",
+        "value": "{{9.8*T^2/(4*pi^2)*k}}",
+        "label": "same pendulum, weaker g"
+      }
+    }
+  ],
+  "stem": [
+    "A pendulum has a period of {{T}} s on Earth. It is taken to a place where g is {{k}} times smaller.",
+    "What is its period there?"
+  ],
+  "input": {
+    "label": "Period",
+    "placeholder": "for example 4 s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} s",
+  "hints": [
+    {
+      "text": "How does T depend on g?",
+      "cue": {
+        "cue": "ghost",
+        "args": {
+          "key": "length",
+          "value": "{{9.8*T^2/(4*pi^2)*k}}",
+          "label": "same pendulum, weaker g"
+        }
+      }
+    },
+    {
+      "text": "T ∝ 1 ÷ √g."
+    },
+    {
+      "text": "g ÷ {{k}} multiplies T by √{{k}}."
+    }
+  ],
+  "feedback": {
+    "pendulum-g-inverted": {
+      "text": "With weaker gravity the restoring force is smaller, so the pendulum swings more slowly."
+    },
+    "pendulum-g-linear": {
+      "text": "T ∝ 1 ÷ √g: g falling by {{k}} raises T by √{{k}}."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a time."
+    },
+    "generic": {
+      "text": "T' = T √(g ÷ g')."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "T ∝ 1 ÷ √g, so T' = {{T}} × √{{k}}."
+    },
+    {
+      "text": "= {{ans}} s.",
+      "cue": {
+        "cue": "ghost",
+        "args": {
+          "key": "length",
+          "value": "{{9.8*T^2/(4*pi^2)*k}}",
+          "label": "same pendulum, weaker g"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "pendulum-g-inverted": {
+      "front": "g six times smaller: period?",
+      "back": "√6 times longer."
+    },
+    "pendulum-g-linear": {
+      "front": "T depends on g how?",
+      "back": "T ∝ 1 ÷ √g."
+    },
+    "generic": {
+      "front": "Pendulum where g is k times smaller?",
+      "back": "Period × √k."
+    }
+  },
+  "accessibility": {
+    "altText": "A pendulum's x–t graph, with the weaker-gravity case dashed.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

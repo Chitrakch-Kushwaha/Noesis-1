@@ -1,0 +1,159 @@
+{
+  "id": "wep.power.e.lift",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.power"
+  ],
+  "primarySkillId": "wep.power",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        20,
+        40,
+        50,
+        60
+      ]
+    },
+    "h": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5,
+        10
+      ]
+    },
+    "t": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        8,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.liftPower",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "power",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "power-forgot-g"
+      ],
+      "match": {
+        "buggySolver": "forgotG"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} W"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "s",
+          "label": "student (height)",
+          "x0": 0,
+          "v0": "{{h/t}}",
+          "a": 0
+        }
+      ],
+      "duration": "{{t}}",
+      "hideNumbers": true
+    },
+    "instructions": "Press Play; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Power is how fast the work is done: joules per second."
+      }
+    }
+  ],
+  "stem": [
+    "A student of mass {{m}} kg runs up stairs {{h}} m high in {{t}} s. Take g = 9.8 m/s².",
+    "What is the student's average power in lifting their body?"
+  ],
+  "input": {
+    "label": "Power",
+    "placeholder": "for example 300 W",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} W",
+  "hints": [
+    {
+      "text": "Find the work done against gravity first.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "W = mgh."
+    },
+    {
+      "text": "P = W ÷ t."
+    }
+  ],
+  "feedback": {
+    "power-forgot-g": {
+      "text": "The work done is mgh: include g."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a power."
+    },
+    "generic": {
+      "text": "P = mgh ÷ t."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "W = {{m}} × 9.8 × {{h}} = {{W}} J."
+    },
+    {
+      "text": "P = {{W}} ÷ {{t}} = {{ans}} W.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "power-forgot-g": {
+      "front": "Power to lift m by h in t?",
+      "back": "mgh ÷ t."
+    },
+    "generic": {
+      "front": "Power lifting m by h in t?",
+      "back": "mgh ÷ t."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane showing the student's height rising steadily.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

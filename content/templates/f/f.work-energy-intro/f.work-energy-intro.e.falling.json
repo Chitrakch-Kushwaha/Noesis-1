@@ -1,0 +1,133 @@
+{
+  "id": "f.work-energy-intro.e.falling",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.work-energy-intro"
+  ],
+  "primarySkillId": "f.work-energy-intro",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "h": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        5,
+        8,
+        10,
+        15,
+        20
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.fallingEnergy",
+  "intro": "A foundation check.",
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "system": "pendulum",
+      "length": 1,
+      "amplitude": 0.3,
+      "periods": 1,
+      "showValues": false
+    },
+    "instructions": "A swinging pendulum shows the same exchange: watch the energy bars."
+  },
+  "stem": [
+    "A ball is dropped from {{h}} m. Ignore air resistance.",
+    "What happens to its energy as it falls?"
+  ],
+  "options": [
+    {
+      "id": "pe-ke",
+      "text": "Potential energy turns into kinetic energy; the total stays the same"
+    },
+    {
+      "id": "lost",
+      "text": "Its energy is used up as it falls",
+      "tags": [
+        "energy-destroyed"
+      ],
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    }
+  ],
+  "answerText": "PE becomes KE",
+  "hints": [
+    {
+      "text": "Where is its potential energy greatest?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    },
+    {
+      "text": "As height falls, speed rises."
+    },
+    {
+      "text": "With no air resistance, nothing is lost."
+    }
+  ],
+  "feedback": {
+    "energy-destroyed": {
+      "text": "Energy isn't used up: the height (potential) energy becomes energy of motion (kinetic)."
+    },
+    "generic": {
+      "text": "PE → KE; total energy is conserved."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Lower height: less PE. Faster: more KE.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The total mechanical energy stays the same."
+    }
+  ],
+  "flashcards": {
+    "energy-destroyed": {
+      "front": "A falling ball loses height. Where does the energy go?",
+      "back": "Into kinetic energy (and a little into heat with air resistance)."
+    },
+    "generic": {
+      "front": "Falling ball's energy?",
+      "back": "PE becomes KE; the total is conserved."
+    }
+  },
+  "accessibility": {
+    "altText": "A pendulum with energy bars.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

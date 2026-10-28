@@ -1,0 +1,147 @@
+{
+  "id": "f.pythagoras.e.hypotenuse",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.pythagoras"
+  ],
+  "primarySkillId": "f.pythagoras",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        3,
+        5,
+        6,
+        8,
+        9
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        4,
+        12,
+        8,
+        15,
+        12
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.hypotenuse",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "pythag-added-sides"
+      ],
+      "match": {
+        "buggySolver": "addedSides"
+      }
+    }
+  ],
+  "widget": {
+    "type": "triangle-explorer",
+    "config": {
+      "mode": "triangle",
+      "editable": false,
+      "hypotenuse": "{{ans}}",
+      "angleDeg": "{{ang}}",
+      "showRoles": true,
+      "showValues": false
+    },
+    "instructions": "The right angle is at C."
+  },
+  "consequence": [
+    {
+      "cue": "highlight-side",
+      "args": {
+        "sides": [
+          "hypotenuse"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A right triangle has shorter sides {{a}} and {{b}}.",
+    "How long is the hypotenuse?"
+  ],
+  "input": {
+    "label": "Hypotenuse",
+    "placeholder": "for example 13",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Which side is opposite the right angle?",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "hypotenuse"
+          ]
+        }
+      }
+    },
+    {
+      "text": "c² = a² + b²."
+    },
+    {
+      "text": "Square, add, then take the square root."
+    }
+  ],
+  "feedback": {
+    "pythag-added-sides": {
+      "text": "The hypotenuse is shorter than the two legs together: c = √(a² + b²)."
+    },
+    "generic": {
+      "text": "c = √(a² + b²)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "c² = {{a}}² + {{b}}²."
+    },
+    {
+      "text": "c = {{ans}}.",
+      "cue": {
+        "cue": "show-values"
+      }
+    }
+  ],
+  "flashcards": {
+    "pythag-added-sides": {
+      "front": "Hypotenuse from legs a and b?",
+      "back": "√(a² + b²)."
+    },
+    "generic": {
+      "front": "Hypotenuse?",
+      "back": "√(a² + b²)."
+    }
+  },
+  "accessibility": {
+    "altText": "A right triangle.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

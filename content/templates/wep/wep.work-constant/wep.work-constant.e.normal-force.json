@@ -1,0 +1,174 @@
+{
+  "id": "wep.work-constant.e.normal-force",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.work-constant",
+    "wep.scalar-product"
+  ],
+  "primarySkillId": "wep.work-constant",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ]
+    },
+    "d": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.normalWork",
+  "intro": "A quick check.",
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "floor",
+      "maxMagnitude": "{{W*1.3}}",
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "floor",
+          "magnitude": "{{W}}",
+          "angleDeg": 90,
+          "locked": true
+        }
+      ],
+      "body": {
+        "label": "box",
+        "mass": "{{m}}"
+      },
+      "initialVelocity": {
+        "x": 1.5,
+        "y": 0
+      },
+      "predict": true
+    },
+    "instructions": "The board shows the forces on the body; press Play to see its motion."
+  },
+  "stem": [
+    "A {{m}} kg box slides {{d}} m along a level floor.",
+    "How much work does the floor's normal force do on the box?"
+  ],
+  "options": [
+    {
+      "id": "zero",
+      "text": "Zero"
+    },
+    {
+      "id": "Wd",
+      "text": "{{W}} N × {{d}} m",
+      "tags": [
+        "perpendicular-force-does-work"
+      ],
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "id": "neg",
+      "text": "A negative amount, because it pushes up while the box moves along",
+      "tags": [
+        "perpendicular-force-does-work"
+      ]
+    }
+  ],
+  "answerText": "Zero",
+  "hints": [
+    {
+      "text": "Work counts only the part of a force along the displacement.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The box moves horizontally; the normal force points straight up."
+    },
+    {
+      "text": "W = F d cos θ with θ = 90°."
+    }
+  ],
+  "feedback": {
+    "perpendicular-force-does-work": {
+      "text": "The normal force is vertical and the displacement is horizontal: cos 90° = 0, so it does no work."
+    },
+    "generic": {
+      "text": "A force perpendicular to the displacement does no work."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The normal force is at 90° to the displacement.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "text": "W = N × {{d}} × cos 90° = 0."
+    }
+  ],
+  "flashcards": {
+    "perpendicular-force-does-work": {
+      "front": "Does the normal force do work on a box sliding along a level floor?",
+      "back": "No: it is perpendicular to the displacement, so W = F d cos 90° = 0."
+    },
+    "generic": {
+      "front": "Work by a force perpendicular to the motion?",
+      "back": "Zero: W = F d cos 90°."
+    }
+  },
+  "accessibility": {
+    "altText": "A box on a floor with its weight and the normal force drawn.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

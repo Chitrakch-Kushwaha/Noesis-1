@@ -1,0 +1,207 @@
+{
+  "id": "kin.displacement.h.signed",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.displacement"
+  ],
+  "primarySkillId": "kin.displacement",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "x1": {
+      "kind": "int",
+      "min": -6,
+      "max": 4
+    },
+    "x2": {
+      "kind": "int",
+      "min": 5,
+      "max": 12
+    },
+    "x3": {
+      "kind": "int",
+      "min": -9,
+      "max": -1
+    }
+  },
+  "constraints": [
+    "x3 < x1"
+  ],
+  "solver": "kin.signedDisplacement",
+  "intro": "Signs matter here.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "path-length-for-displacement"
+      ],
+      "match": {
+        "buggySolver": "pathLength"
+      }
+    },
+    {
+      "tags": [
+        "displacement-sign"
+      ],
+      "match": {
+        "buggySolver": "signDropped"
+      }
+    },
+    {
+      "tags": [
+        "last-leg-only"
+      ],
+      "match": {
+        "buggySolver": "lastLegOnly"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 22,
+      "vectors": [
+        {
+          "id": "s1",
+          "kind": "vector",
+          "label": "first move",
+          "agent": "none",
+          "magnitude": "{{abs(d1)}}",
+          "angleDeg": 0,
+          "tone": "a"
+        },
+        {
+          "id": "s2",
+          "kind": "vector",
+          "label": "second move",
+          "agent": "none",
+          "magnitude": "{{abs(d2)}}",
+          "angleDeg": 180,
+          "tone": "b"
+        }
+      ],
+      "showResultant": false,
+      "unit": "m"
+    },
+    "instructions": "The arrows are the two moves along the x-axis."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Compare your answer with where the second arrow ends, measured from the start of the first."
+      }
+    }
+  ],
+  "stem": [
+    "A particle moves along the x-axis from x = {{x1}} m to x = {{x2}} m, then to x = {{x3}} m.",
+    "What is its displacement? Give a negative value if it points towards −x."
+  ],
+  "input": {
+    "label": "Displacement",
+    "placeholder": "for example −3 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Only the first and last positions matter for displacement.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "s1",
+            "s2"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Displacement = x_final − x_initial; keep the sign."
+    },
+    {
+      "text": "Subtract the starting position from the final position."
+    }
+  ],
+  "feedback": {
+    "path-length-for-displacement": {
+      "text": "That is the path length. Displacement is final minus initial position."
+    },
+    "displacement-sign": {
+      "text": "The size is right, but the particle ends at a smaller x than it started, so the displacement is negative."
+    },
+    "last-leg-only": {
+      "text": "Displacement covers the whole journey: from the very first position to the last."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "Final position minus initial position, with its sign."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "x_initial = {{x1}} m, x_final = {{x3}} m."
+    },
+    {
+      "text": "Δx = {{x3}} − ({{x1}}) = {{ans}} m: negative, so towards −x (path length {{path}} m).",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "d",
+            "kind": "vector",
+            "label": "displacement",
+            "agent": "none",
+            "magnitude": "{{abs(ans)}}",
+            "angleDeg": 180
+          }
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "path-length-for-displacement": {
+      "front": "Is displacement the total distance travelled?",
+      "back": "No. Displacement is the change in position (final − initial), with a direction; path length is the total distance covered."
+    },
+    "displacement-sign": {
+      "front": "Can a displacement be negative?",
+      "back": "Yes. Its sign gives its direction along the axis: negative means towards −x."
+    },
+    "last-leg-only": {
+      "front": "Displacement for a two-stage journey?",
+      "back": "Final position minus initial position, not just the last stage."
+    },
+    "generic": {
+      "front": "Displacement along an axis?",
+      "back": "Δx = x_final − x_initial; the sign gives the direction."
+    }
+  },
+  "accessibility": {
+    "altText": "Two arrows along the x-axis: a move to the right, then a longer move to the left.",
+    "nonDragAlternative": "The board only illustrates the moves; type your answer in the box."
+  }
+}

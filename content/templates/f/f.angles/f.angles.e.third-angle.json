@@ -1,0 +1,142 @@
+{
+  "id": "f.angles.e.third-angle",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.angles"
+  ],
+  "primarySkillId": "f.angles",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "A": {
+      "kind": "choice",
+      "values": [
+        30,
+        40,
+        55,
+        70
+      ]
+    },
+    "B": {
+      "kind": "choice",
+      "values": [
+        45,
+        60,
+        65
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.thirdAngle",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "angle-sum-full-turn"
+      ],
+      "match": {
+        "buggySolver": "fullTurn"
+      }
+    }
+  ],
+  "widget": {
+    "type": "triangle-explorer",
+    "config": {
+      "mode": "triangle",
+      "editable": false,
+      "hypotenuse": 5,
+      "angleDeg": 40,
+      "showRoles": false
+    },
+    "instructions": "The right angle is at C."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Angles of a triangle add to 180°."
+      }
+    }
+  ],
+  "stem": [
+    "Two angles of a triangle are {{A}}° and {{B}}°.",
+    "What is the third angle, in degrees?"
+  ],
+  "input": {
+    "label": "Angle (°)",
+    "placeholder": "for example 75",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "What do the three angles of any triangle add to?",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Add the three angles."
+        }
+      }
+    },
+    {
+      "text": "180°."
+    },
+    {
+      "text": "Subtract the two known angles from 180°."
+    }
+  ],
+  "feedback": {
+    "angle-sum-full-turn": {
+      "text": "The angles of a triangle add to 180°, not 360°."
+    },
+    "generic": {
+      "text": "Angles of a triangle add to 180°."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "{{A}} + {{B}} + x = 180."
+    },
+    {
+      "text": "x = {{ans}}°.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Check: the three angles total 180°."
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "angle-sum-full-turn": {
+      "front": "Angles of a triangle add to?",
+      "back": "180°."
+    },
+    "generic": {
+      "front": "Third angle of a triangle?",
+      "back": "180° − (sum of the other two)."
+    }
+  },
+  "accessibility": {
+    "altText": "A triangle.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

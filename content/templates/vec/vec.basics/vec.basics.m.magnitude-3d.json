@@ -1,0 +1,199 @@
+{
+  "id": "vec.basics.m.magnitude-3d",
+  "version": 2,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": [],
+    "migratedFrom": "src/questions/templates.ts vec.basics.m.magnitude-3d@1 (Phase 1 diagnostic; same review status)"
+  },
+  "chapterId": "vec",
+  "skillIds": [
+    "vec.basics"
+  ],
+  "primarySkillId": "vec.basics",
+  "difficulty": "medium",
+  "format": "number",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "p": {
+      "kind": "int",
+      "min": -6,
+      "max": 6
+    },
+    "q": {
+      "kind": "int",
+      "min": -6,
+      "max": 6
+    },
+    "r": {
+      "kind": "int",
+      "min": -6,
+      "max": 6
+    }
+  },
+  "constraints": [
+    "p != 0",
+    "q != 0",
+    "r != 0"
+  ],
+  "solver": "vec.magnitude3d",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "added-components"
+      ],
+      "match": {
+        "buggySolver": "addedComponents"
+      }
+    },
+    {
+      "tags": [
+        "added-components"
+      ],
+      "match": {
+        "buggySolver": "addedSigned"
+      }
+    },
+    {
+      "tags": [
+        "forgot-square-root"
+      ],
+      "match": {
+        "buggySolver": "forgotRoot"
+      }
+    },
+    {
+      "tags": [
+        "missed-k-component"
+      ],
+      "match": {
+        "buggySolver": "missedK"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{exact}}",
+    "sqrt({{ss}})",
+    "{{mag|fixed2}}"
+  ],
+  "widget": {
+    "type": "figure",
+    "instructions": "The figure draws the vector as the diagonal of a box. It follows each step of the worked solution.",
+    "config": {
+      "figure": "box",
+      "p": "{{p}}",
+      "q": "{{q}}",
+      "r": "{{r}}"
+    }
+  },
+  "consequence": {
+    "cue": "student",
+    "args": {
+      "value": "$value",
+      "tags": "$tags"
+    }
+  },
+  "stem": [
+    "Find the magnitude of a = {{aStr}}.",
+    "Give an exact value (for example √29) or a decimal to 2 places."
+  ],
+  "input": {
+    "label": "|a|",
+    "placeholder": "for example √29",
+    "keypad": "maths"
+  },
+  "answerText": "{{exact}} ≈ {{mag|fixed2}}",
+  "hints": [
+    {
+      "text": "Picture the vector as the diagonal of a box with sides along x, y and z."
+    },
+    {
+      "text": "Use Pythagoras twice: across the base, then up to the opposite corner.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 0
+        }
+      }
+    },
+    {
+      "text": "|a| = √(p² + q² + r²) with p = {{p}}, q = {{q}}, r = {{r}}."
+    }
+  ],
+  "feedback": {
+    "added-components": {
+      "text": "Lengths along perpendicular directions don't add directly. Use Pythagoras: square them, add, then take the square root."
+    },
+    "forgot-square-root": {
+      "text": "That's |a|², the sum of the squares. Take its square root."
+    },
+    "missed-k-component": {
+      "text": "That's the diagonal across the base only. Include the k̂ component to reach the far corner."
+    },
+    "generic": {
+      "text": "Treat the vector as a box diagonal and use Pythagoras in three dimensions."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Across the base: √({{p}}² + {{q}}²) = √{{base}}.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 0
+        }
+      }
+    },
+    {
+      "text": "Up to the far corner: |a| = √({{base}} + {{r*r}}) = √{{ss}}.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 1
+        }
+      }
+    },
+    {
+      "text": "|a| = {{exact}} ≈ {{mag|fixed2}}.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 2
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "added-components": {
+      "front": "Is |3î + 4ĵ| equal to 7?",
+      "back": "No. It is √(3² + 4²) = 5. Perpendicular components combine by Pythagoras."
+    },
+    "forgot-square-root": {
+      "front": "a₁² + a₂² + a₃² equals what?",
+      "back": "|a|². Take the square root for |a|."
+    },
+    "missed-k-component": {
+      "front": "Magnitude of a₁î + a₂ĵ + a₃k̂?",
+      "back": "√(a₁² + a₂² + a₃²): all three components."
+    },
+    "generic": {
+      "front": "How do you find a 3-D vector's magnitude?",
+      "back": "√(a₁² + a₂² + a₃²): Pythagoras twice."
+    }
+  },
+  "accessibility": {
+    "altText": "A box with sides {{ax}}, {{ay}} and {{az}}; the vector a runs along its diagonal."
+  }
+}

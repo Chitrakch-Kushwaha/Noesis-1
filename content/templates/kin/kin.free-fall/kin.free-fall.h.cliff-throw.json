@@ -1,0 +1,160 @@
+{
+  "id": "kin.free-fall.h.cliff-throw",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.free-fall"
+  ],
+  "primarySkillId": "kin.free-fall",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "u": {
+      "kind": "choice",
+      "values": [
+        5,
+        9.8,
+        10,
+        15
+      ]
+    },
+    "h": {
+      "kind": "choice",
+      "values": [
+        20,
+        25,
+        30,
+        40
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.cliffThrow",
+  "intro": "The ground is below the launch point.",
+  "answer": {
+    "dimension": "time",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "ignores-launch-height"
+      ],
+      "match": {
+        "buggySolver": "ignoresCliff"
+      }
+    },
+    {
+      "tags": [
+        "ignores-throw"
+      ],
+      "match": {
+        "buggySolver": "ignoresThrow"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "2d",
+      "projectile": {
+        "speed": "{{u}}",
+        "angleDeg": 89.9,
+        "y0": "{{h}}"
+      },
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to watch the ball rise and fall past the cliff."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Watch the whole flight: up, back past the cliff top, and down to the foot."
+      }
+    }
+  ],
+  "stem": [
+    "A ball is thrown straight up at {{u}} m/s from the edge of a cliff {{h}} m high. It just misses the edge on the way down and lands at the foot. Take g = 9.8 m/s².",
+    "How long after the throw does it land?"
+  ],
+  "input": {
+    "label": "Time",
+    "placeholder": "for example 4 s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} s",
+  "hints": [
+    {
+      "text": "Take up as positive with the origin at the cliff top. Where is the ground?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Displacement when it lands: −{{h}} m."
+    },
+    {
+      "text": "Solve −{{h}} = {{u}}t − ½ × 9.8 × t² for the positive root."
+    }
+  ],
+  "feedback": {
+    "ignores-launch-height": {
+      "text": "That is when it returns to the cliff top. It still has {{h}} m to fall."
+    },
+    "ignores-throw": {
+      "text": "That would be the time if the ball were simply dropped. Throwing it up first adds time."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a time."
+    },
+    "generic": {
+      "text": "Use s = ut − ½gt² with s = −h, and take the positive root."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Up positive: −{{h}} = {{u}}t − 4.9t²."
+    },
+    {
+      "text": "4.9t² − {{u}}t − {{h}} = 0 gives t = ({{u}} + √({{u}}² + 2 × 9.8 × {{h}})) ÷ 9.8 = {{ans}} s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "ignores-launch-height": {
+      "front": "Ball thrown up from a cliff top: time to the ground below?",
+      "back": "Solve h + ut − ½gt² = 0 with the cliff height; 2u/g only brings it back to the top."
+    },
+    "ignores-throw": {
+      "front": "Thrown up from a cliff vs dropped: same time to land?",
+      "back": "No. The upward throw adds time going up and coming back."
+    },
+    "generic": {
+      "front": "Thrown up from a cliff: time to land?",
+      "back": "Solve −h = ut − ½gt² and take the positive root."
+    }
+  },
+  "accessibility": {
+    "altText": "A ball thrown upward from the top of a cliff.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

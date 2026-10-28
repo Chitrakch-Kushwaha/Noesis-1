@@ -1,0 +1,211 @@
+{
+  "id": "rot.moment-of-inertia.h.point-masses",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.moment-of-inertia"
+  ],
+  "primarySkillId": "rot.moment-of-inertia",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        4
+      ]
+    },
+    "L": {
+      "kind": "choice",
+      "values": [
+        1,
+        2
+      ]
+    },
+    "a": {
+      "kind": "choice",
+      "values": [
+        0.25,
+        0.5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.pointMassesI",
+  "intro": "Point masses on a light rod.",
+  "answer": {
+    "dimension": "moment-of-inertia",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "inertia-not-squared"
+      ],
+      "match": {
+        "buggySolver": "notSquared"
+      }
+    },
+    {
+      "tags": [
+        "inertia-com-distance"
+      ],
+      "match": {
+        "buggySolver": "comDistance"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} kg m^2"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "com",
+      "com": {
+        "masses": [
+          {
+            "id": "a",
+            "label": "A",
+            "m": "{{m1}}",
+            "x": 0,
+            "y": 0,
+            "editable": false
+          },
+          {
+            "id": "b",
+            "label": "B",
+            "m": "{{m2}}",
+            "x": "{{L}}",
+            "y": 0,
+            "editable": false
+          },
+          {
+            "id": "ax",
+            "label": "axis",
+            "m": 0.01,
+            "x": "{{a}}",
+            "y": 0,
+            "editable": false
+          }
+        ]
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "a",
+          "b"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A light rod {{L}} m long carries {{m1}} kg at end A and {{m2}} kg at end B. It rotates about a perpendicular axis {{a}} m from A.",
+    "What is its moment of inertia about this axis?"
+  ],
+  "input": {
+    "label": "Moment of inertia",
+    "placeholder": "for example 1.5 kg m^2",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} kg m^2",
+  "hints": [
+    {
+      "text": "Find each mass's distance from the axis.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b",
+            "ax"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Measure each distance from the axis, not from end A."
+    },
+    {
+      "text": "I = m₁r₁² + m₂r₂²."
+    }
+  ],
+  "feedback": {
+    "inertia-not-squared": {
+      "text": "Each mass contributes m r², not m r."
+    },
+    "inertia-com-distance": {
+      "text": "I depends on each mass's own distance from the axis: Σ m r²."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a moment of inertia."
+    },
+    "generic": {
+      "text": "I = Σ m r²."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "r_A = {{a}} m, r_B = {{b}} m."
+    },
+    {
+      "text": "I = {{m1}} × {{a}}² + {{m2}} × {{b}}² = {{ans}} kg m².",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "inertia-not-squared": {
+      "front": "Moment of inertia of point masses?",
+      "back": "Σ m r²."
+    },
+    "inertia-com-distance": {
+      "front": "Can you use the centre of mass for I?",
+      "back": "No: I = Σ m r² depends on where each mass is."
+    },
+    "generic": {
+      "front": "Moment of inertia of point masses?",
+      "back": "Σ m r², each r from the axis."
+    }
+  },
+  "accessibility": {
+    "altText": "Two point masses on a rod with the axis position marked.",
+    "nonDragAlternative": "The figure only shows the masses; type your answer in the box."
+  }
+}

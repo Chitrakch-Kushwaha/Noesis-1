@@ -1,0 +1,33 @@
+{
+  "$comment": "Curated 24-chapter subset of CBSE/NCERT Class 11-12 Physics and Mathematics. Not the complete syllabus. Titles follow NCERT textbook chapter titles, except 'Applications of Derivatives' (plural, by product decision U-16; NCERT uses the singular). Chapter-to-chapter dependencies are DERIVED from skill prerequisites by scripts/validate-curriculum.mjs; do not author them here.",
+  "version": 1,
+  "chapters": [
+    { "id": "kin", "title": "Motion in a Straight Line", "subject": "physics", "class": 11 },
+    { "id": "mip", "title": "Motion in a Plane", "subject": "physics", "class": 11 },
+    { "id": "lom", "title": "Laws of Motion", "subject": "physics", "class": 11 },
+    { "id": "wep", "title": "Work, Energy and Power", "subject": "physics", "class": 11 },
+    { "id": "rot", "title": "System of Particles and Rotational Motion", "subject": "physics", "class": 11 },
+    { "id": "osc", "title": "Oscillations", "subject": "physics", "class": 11 },
+
+    { "id": "set", "title": "Sets", "subject": "maths", "class": 11 },
+    { "id": "rel", "title": "Relations and Functions", "subject": "maths", "class": 11 },
+    { "id": "trg", "title": "Trigonometric Functions", "subject": "maths", "class": 11 },
+    { "id": "sl", "title": "Straight Lines", "subject": "maths", "class": 11 },
+    { "id": "con", "title": "Conic Sections", "subject": "maths", "class": 11 },
+    { "id": "lim", "title": "Limits and Derivatives", "subject": "maths", "class": 11 },
+
+    { "id": "ecf", "title": "Electric Charges and Fields", "subject": "physics", "class": 12 },
+    { "id": "epc", "title": "Electrostatic Potential and Capacitance", "subject": "physics", "class": 12 },
+    { "id": "cur", "title": "Current Electricity", "subject": "physics", "class": 12 },
+    { "id": "mcm", "title": "Moving Charges and Magnetism", "subject": "physics", "class": 12 },
+    { "id": "emi", "title": "Electromagnetic Induction", "subject": "physics", "class": 12 },
+    { "id": "opt", "title": "Ray Optics and Optical Instruments", "subject": "physics", "class": 12 },
+
+    { "id": "cnd", "title": "Continuity and Differentiability", "subject": "maths", "class": 12 },
+    { "id": "aod", "title": "Applications of Derivatives", "subject": "maths", "class": 12 },
+    { "id": "int", "title": "Integrals", "subject": "maths", "class": 12 },
+    { "id": "aoi", "title": "Application of Integrals", "subject": "maths", "class": 12 },
+    { "id": "vec", "title": "Vector Algebra", "subject": "maths", "class": 12 },
+    { "id": "tdg", "title": "Three Dimensional Geometry", "subject": "maths", "class": 12 }
+  ]
+}

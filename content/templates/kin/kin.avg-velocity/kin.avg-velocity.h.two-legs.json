@@ -1,0 +1,199 @@
+{
+  "id": "kin.avg-velocity.h.two-legs",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.avg-velocity"
+  ],
+  "primarySkillId": "kin.avg-velocity",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "d1": {
+      "kind": "choice",
+      "values": [
+        300,
+        400,
+        500,
+        600
+      ]
+    },
+    "t1": {
+      "kind": "choice",
+      "values": [
+        100,
+        150,
+        200
+      ]
+    },
+    "d2": {
+      "kind": "choice",
+      "values": [
+        100,
+        150,
+        200,
+        250
+      ]
+    },
+    "t2": {
+      "kind": "choice",
+      "values": [
+        50,
+        100,
+        150
+      ]
+    }
+  },
+  "constraints": [
+    "d1 > d2"
+  ],
+  "solver": "kin.avgVelocityTwoLegs",
+  "intro": "Velocity, not speed.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "speed-for-velocity"
+      ],
+      "match": {
+        "buggySolver": "speedNotVelocity"
+      }
+    },
+    {
+      "tags": [
+        "mean-of-velocities"
+      ],
+      "match": {
+        "buggySolver": "meanOfVelocities"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "e",
+          "label": "east leg",
+          "x0": 0,
+          "v0": "{{d1/t1}}",
+          "a": 0
+        },
+        {
+          "id": "w",
+          "label": "west leg",
+          "x0": 0,
+          "v0": "{{-d2/t2}}",
+          "a": 0
+        }
+      ],
+      "duration": 4,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "you",
+          "label": "steady at your average velocity",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A runner jogs {{d1}} m east in {{t1}} s, then {{d2}} m west in {{t2}} s.",
+    "What is the runner's average velocity for the whole run (east positive)?"
+  ],
+  "input": {
+    "label": "Average velocity",
+    "placeholder": "for example 1.2 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "What is the runner's net displacement?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Average velocity = displacement ÷ total time."
+    },
+    {
+      "text": "Displacement = {{d1}} − {{d2}} m east; time = {{t1}} + {{t2}} s."
+    }
+  ],
+  "feedback": {
+    "speed-for-velocity": {
+      "text": "You used the total distance, which gives the average speed. Average velocity uses the displacement."
+    },
+    "mean-of-velocities": {
+      "text": "The two legs take different times, so you can't just average their velocities. Use total displacement ÷ total time."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "Total displacement ÷ total time."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Displacement: {{d1}} − {{d2}} = {{net}} m east. Total time: {{T}} s."
+    },
+    {
+      "text": "Average velocity = {{net}} ÷ {{T}} = {{ans}} m/s east (average speed would be {{speed}} m/s).",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "speed-for-velocity": {
+      "front": "Average velocity or average speed: which uses displacement?",
+      "back": "Average velocity = displacement ÷ time; average speed = path length ÷ time."
+    },
+    "mean-of-velocities": {
+      "front": "Is average velocity the mean of the stage velocities?",
+      "back": "Only if the stages take equal times. In general, total displacement ÷ total time."
+    },
+    "generic": {
+      "front": "Average velocity?",
+      "back": "Total displacement ÷ total time."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes: the runner's eastward leg and the westward return.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

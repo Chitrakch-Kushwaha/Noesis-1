@@ -1,0 +1,161 @@
+{
+  "id": "mip.projectile.h.horizontal-launch",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.projectile"
+  ],
+  "primarySkillId": "mip.projectile",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "u": {
+      "kind": "choice",
+      "values": [
+        5,
+        8,
+        10,
+        12
+      ]
+    },
+    "h": {
+      "kind": "choice",
+      "values": [
+        4.9,
+        19.6,
+        44.1,
+        20,
+        30
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.horizontalLaunch",
+  "intro": "Launched horizontally from a height.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "forgot-root-fall-time"
+      ],
+      "match": {
+        "buggySolver": "forgotRoot"
+      }
+    },
+    {
+      "tags": [
+        "range-formula-misapplied"
+      ],
+      "match": {
+        "buggySolver": "rangeFormula"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "2d",
+      "projectile": {
+        "speed": "{{u}}",
+        "angleDeg": 0.001,
+        "y0": "{{h}}"
+      },
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to watch the ball leave the table."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "The fall time depends only on the height; the horizontal speed sets how far it goes in that time."
+      }
+    }
+  ],
+  "stem": [
+    "A ball rolls off a table top {{h}} m above the floor at {{u}} m/s horizontally. Take g = 9.8 m/s².",
+    "How far from the foot of the table does it land?"
+  ],
+  "input": {
+    "label": "Distance",
+    "placeholder": "for example 6 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "The horizontal and vertical motions are independent.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Vertically it falls {{h}} m from rest: h = ½gt²."
+    },
+    {
+      "text": "Horizontal distance = u × fall time."
+    }
+  ],
+  "feedback": {
+    "forgot-root-fall-time": {
+      "text": "The fall time is √(2h ÷ g): you left out the square root."
+    },
+    "range-formula-misapplied": {
+      "text": "u² sin 2θ ÷ g is for launch and landing at the same height. Here the ball falls {{h}} m."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "t = √(2h ÷ g), then distance = u t."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Fall time: t = √(2 × {{h}} ÷ 9.8) = {{t}} s."
+    },
+    {
+      "text": "Distance: {{u}} × {{t}} = {{ans}} m.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "forgot-root-fall-time": {
+      "front": "Fall time from height h?",
+      "back": "t = √(2h ÷ g)."
+    },
+    "range-formula-misapplied": {
+      "front": "Horizontal launch from a height h: how far out does it land?",
+      "back": "x = u √(2h ÷ g); the u² sin 2θ ÷ g formula is for launch and landing at the same height."
+    },
+    "generic": {
+      "front": "Horizontal launch from height h at speed u: distance?",
+      "back": "u √(2h ÷ g)."
+    }
+  },
+  "accessibility": {
+    "altText": "A ball rolling off a table top.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

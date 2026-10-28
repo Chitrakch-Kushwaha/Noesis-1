@@ -1,0 +1,164 @@
+{
+  "id": "osc.shm-velocity-acceleration.m.speed-at-x",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.shm-velocity-acceleration"
+  ],
+  "primarySkillId": "osc.shm-velocity-acceleration",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "A": {
+      "kind": "choice",
+      "values": [
+        0.1,
+        0.2
+      ]
+    },
+    "x": {
+      "kind": "choice",
+      "values": [
+        0.06,
+        0.08
+      ]
+    },
+    "T": {
+      "kind": "choice",
+      "values": [
+        1,
+        2
+      ]
+    }
+  },
+  "constraints": [
+    "x < A"
+  ],
+  "solver": "osc.speedAtX",
+  "intro": "Speed partway out.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "shm-speed-linear"
+      ],
+      "match": {
+        "buggySolver": "omegaX"
+      }
+    },
+    {
+      "tags": [
+        "shm-speed-linear"
+      ],
+      "match": {
+        "buggySolver": "linear"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": "{{4*pi^2/T^2}}",
+      "amplitude": "{{A}}"
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "phasor"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A particle in SHM has amplitude {{A}} m and period {{T}} s.",
+    "How fast is it moving when it is {{x}} m from the centre?"
+  ],
+  "input": {
+    "label": "Speed",
+    "placeholder": "for example 0.3 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "Use the reference circle: the speed comes from the vertical part of the rotating arm.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "phasor"
+          ]
+        }
+      }
+    },
+    {
+      "text": "v = ω√(A² − x²)."
+    },
+    {
+      "text": "ω = 2π ÷ T."
+    }
+  ],
+  "feedback": {
+    "shm-speed-linear": {
+      "text": "Speed doesn't fall in proportion to (A − x); use v = ω√(A² − x²)."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "v = ω√(A² − x²)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "ω = {{w}} rad/s."
+    },
+    {
+      "text": "v = {{w}} × √({{A}}² − {{x}}²) = {{ans}} m/s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "shm-speed-linear": {
+      "front": "Speed at displacement x in SHM?",
+      "back": "v = ω √(A² − x²)."
+    },
+    "generic": {
+      "front": "Speed at displacement x in SHM?",
+      "back": "ω√(A² − x²)."
+    }
+  },
+  "accessibility": {
+    "altText": "A spring oscillator with its reference circle.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

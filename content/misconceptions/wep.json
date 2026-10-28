@@ -1,0 +1,438 @@
+{
+  "$comment": "Misconception catalogue. 'implicates' lists skills whose weakness this misconception is evidence of; the detour planner intersects it with the prerequisite closure of the failed skill. Awaiting named human review with the templates that use these tags.",
+  "chapter": "wep",
+  "status": "in-review",
+  "misconceptions": [
+    {
+      "tag": "ignored-angle",
+      "description": "Multiplies magnitudes without the cosine of the angle between the vectors.",
+      "implicates": [
+        "wep.scalar-product"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "a · b for vectors at angle θ?",
+        "back": "|a||b| cos θ: only the part of one vector along the other counts."
+      }
+    },
+    {
+      "tag": "dot-uses-sin",
+      "description": "Uses sin θ in the scalar product.",
+      "implicates": [
+        "wep.scalar-product",
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Scalar product: sin or cos?",
+        "back": "cos θ: a · b = |a||b| cos θ."
+      }
+    },
+    {
+      "tag": "dot-as-angle",
+      "description": "Reports the scalar product itself as the angle between vectors.",
+      "implicates": [
+        "wep.scalar-product"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Angle between vectors from their components?",
+        "back": "cos θ = (a · b) ÷ (|a||b|), then take the inverse cosine."
+      }
+    },
+    {
+      "tag": "perpendicular-dot-sign",
+      "description": "Gets the sign wrong when solving a · b = 0.",
+      "implicates": [
+        "wep.scalar-product",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Perpendicular vectors: a · b = ?",
+        "back": "0. Solve aₓbₓ + a_yb_y = 0 carefully for the unknown."
+      }
+    },
+    {
+      "tag": "perpendicular-force-does-work",
+      "description": "Thinks a force perpendicular to the motion does work.",
+      "implicates": [
+        "wep.work-constant"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Does the normal force do work on a box sliding along a level floor?",
+        "back": "No: it is perpendicular to the displacement, so W = F d cos 90° = 0."
+      }
+    },
+    {
+      "tag": "work-ignores-angle",
+      "description": "Uses F × d for a force at an angle to the displacement.",
+      "implicates": [
+        "wep.work-constant",
+        "wep.scalar-product"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Work by a force at angle θ to the displacement?",
+        "back": "W = F d cos θ."
+      }
+    },
+    {
+      "tag": "work-uses-sin",
+      "description": "Uses sin θ for the work done by an angled force.",
+      "implicates": [
+        "wep.work-constant",
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Pulling at θ above the horizontal along the floor: which part does work?",
+        "back": "The horizontal part, F cos θ."
+      }
+    },
+    {
+      "tag": "friction-work-sign",
+      "description": "Gives the work done by friction as positive.",
+      "implicates": [
+        "wep.work-constant"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Sign of the work done by kinetic friction on a sliding block?",
+        "back": "Negative: friction opposes the displacement."
+      }
+    },
+    {
+      "tag": "friction-uses-weight",
+      "description": "Uses the weight instead of the friction force.",
+      "implicates": [
+        "wep.work-constant",
+        "lom.friction"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Work done by friction over d?",
+        "back": "−μ N d, with μ N the friction force."
+      }
+    },
+    {
+      "tag": "area-rectangle-for-triangle",
+      "description": "Uses a rectangle where the F–x graph is a triangle.",
+      "implicates": [
+        "wep.work-variable",
+        "f.area-graph"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Work from a straight F–x line rising from 0?",
+        "back": "The triangle's area, ½ F x."
+      }
+    },
+    {
+      "tag": "spring-work-difference-squared",
+      "description": "Uses ½k(x₂ − x₁)² for the work stretching a spring from x₁ to x₂.",
+      "implicates": [
+        "wep.work-variable",
+        "wep.potential-energy"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Work to stretch a spring from x₁ to x₂?",
+        "back": "½k(x₂² − x₁²), the area between x₁ and x₂ under F = kx."
+      }
+    },
+    {
+      "tag": "spring-missing-half",
+      "description": "Leaves out the ½ in spring work or energy.",
+      "implicates": [
+        "wep.potential-energy",
+        "f.area-graph"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Energy stored in a spring stretched by x?",
+        "back": "½kx²: the area of the triangle under F = kx."
+      }
+    },
+    {
+      "tag": "area-misses-triangle-fx",
+      "description": "Leaves out part of the area under an F–x graph.",
+      "implicates": [
+        "wep.work-variable",
+        "f.area-graph"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Work from an F–x graph with two parts?",
+        "back": "Add the area of every part."
+      }
+    },
+    {
+      "tag": "ke-missing-half",
+      "description": "Writes kinetic energy as mv².",
+      "implicates": [
+        "wep.ke-theorem"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Kinetic energy?",
+        "back": "½mv²."
+      }
+    },
+    {
+      "tag": "ke-not-squared",
+      "description": "Forgets to square the speed in ½mv².",
+      "implicates": [
+        "wep.ke-theorem",
+        "f.powers"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Doubling the speed does what to KE?",
+        "back": "Multiplies it by 4: KE = ½mv²."
+      }
+    },
+    {
+      "tag": "work-energy-missing-two",
+      "description": "Drops the 2 when solving Fd = ½mv² for v.",
+      "implicates": [
+        "wep.ke-theorem",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Speed after work W on a body from rest?",
+        "back": "v = √(2W ÷ m)."
+      }
+    },
+    {
+      "tag": "forgot-root-energy",
+      "description": "Stops at v² and forgets the square root.",
+      "implicates": [
+        "wep.ke-theorem",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "From ½mv² = E, v = ?",
+        "back": "√(2E ÷ m)."
+      }
+    },
+    {
+      "tag": "pe-forgot-g",
+      "description": "Uses m h for gravitational potential energy.",
+      "implicates": [
+        "wep.potential-energy"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Gravitational PE gained by m raised h?",
+        "back": "mgh."
+      }
+    },
+    {
+      "tag": "spring-unit-not-converted",
+      "description": "Uses centimetres directly in ½kx².",
+      "implicates": [
+        "wep.potential-energy",
+        "f.si-units"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Spring energy with x in cm and k in N/m?",
+        "back": "Convert x to metres first."
+      }
+    },
+    {
+      "tag": "spring-launch-root",
+      "description": "Leaves out the square root when finding the launch speed from a spring.",
+      "implicates": [
+        "wep.energy-conservation",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Speed from a spring compressed by x?",
+        "back": "½kx² = ½mv², so v = x√(k ÷ m)."
+      }
+    },
+    {
+      "tag": "drop-no-root",
+      "description": "Gives 2gh instead of √(2gh) for the speed after a fall.",
+      "implicates": [
+        "wep.energy-conservation",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Speed after falling h from rest?",
+        "back": "v = √(2gh)."
+      }
+    },
+    {
+      "tag": "drop-missing-two",
+      "description": "Uses √(gh) for the speed after a fall.",
+      "implicates": [
+        "wep.energy-conservation"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "mgh = ½mv² gives v = ?",
+        "back": "√(2gh)."
+      }
+    },
+    {
+      "tag": "swing-full-drop",
+      "description": "Uses the whole string length as the height fallen by a pendulum.",
+      "implicates": [
+        "wep.energy-conservation",
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Height fallen by a pendulum released at θ?",
+        "back": "L(1 − cos θ)."
+      }
+    },
+    {
+      "tag": "swing-uses-cos",
+      "description": "Uses L cos θ as the height fallen by a pendulum.",
+      "implicates": [
+        "wep.energy-conservation",
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Pendulum released at θ: drop of the bob?",
+        "back": "L − L cos θ = L(1 − cos θ)."
+      }
+    },
+    {
+      "tag": "loop-top-condition",
+      "description": "Uses the minimum speed at the top of a vertical circle for the bottom.",
+      "implicates": [
+        "wep.energy-conservation",
+        "lom.circular-dynamics"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Minimum speed at the bottom of a vertical circle on a string?",
+        "back": "√(5gR): √(gR) at the top plus the energy for the 2R climb."
+      }
+    },
+    {
+      "tag": "loop-zero-top",
+      "description": "Lets the speed fall to zero at the top of a vertical circle on a string.",
+      "implicates": [
+        "wep.energy-conservation",
+        "lom.circular-dynamics"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Can a body on a string be at rest at the top of a vertical circle?",
+        "back": "No: the string would go slack. It needs at least √(gR) there."
+      }
+    },
+    {
+      "tag": "power-forgot-g",
+      "description": "Uses m h ÷ t for the power to lift a load.",
+      "implicates": [
+        "wep.power",
+        "wep.potential-energy"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Power to lift m by h in t?",
+        "back": "mgh ÷ t."
+      }
+    },
+    {
+      "tag": "power-force-over-speed",
+      "description": "Uses F ÷ v for power.",
+      "implicates": [
+        "wep.power"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Power at constant speed against a force F?",
+        "back": "P = F v."
+      }
+    },
+    {
+      "tag": "power-minutes",
+      "description": "Divides by the time in minutes for a power in watts.",
+      "implicates": [
+        "wep.power",
+        "f.si-units"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A watt is a joule per …?",
+        "back": "Second. Convert minutes to seconds."
+      }
+    },
+    {
+      "tag": "ke-always-conserved",
+      "description": "Thinks kinetic energy is conserved in every collision.",
+      "implicates": [
+        "wep.collisions"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is KE conserved when two bodies stick together?",
+        "back": "No. Momentum is conserved; some KE becomes heat, sound and deformation."
+      }
+    },
+    {
+      "tag": "inelastic-for-elastic",
+      "description": "Uses the sticking-collision result for an elastic collision.",
+      "implicates": [
+        "wep.collisions",
+        "lom.momentum-conservation"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Elastic collision, m₁ at u hits m₂ at rest: v₂?",
+        "back": "2m₁u ÷ (m₁ + m₂)."
+      }
+    },
+    {
+      "tag": "elastic-same-speed",
+      "description": "Thinks the struck body always moves off at the incoming speed.",
+      "implicates": [
+        "wep.collisions"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "When does the struck ball take the full incoming speed?",
+        "back": "Only for equal masses in an elastic collision."
+      }
+    },
+    {
+      "tag": "ke-final-for-loss",
+      "description": "Gives the final kinetic energy when the loss is asked.",
+      "implicates": [
+        "wep.collisions"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "KE lost in a collision?",
+        "back": "Initial KE − final KE."
+      }
+    },
+    {
+      "tag": "all-ke-lost",
+      "description": "Thinks all the kinetic energy is lost when bodies stick.",
+      "implicates": [
+        "wep.collisions",
+        "lom.momentum-conservation"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Do two sticking carts stop dead?",
+        "back": "No: momentum is conserved, so they keep moving and keep some KE."
+      }
+    }
+  ]
+}

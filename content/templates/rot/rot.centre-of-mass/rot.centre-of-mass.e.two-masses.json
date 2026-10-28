@@ -1,0 +1,188 @@
+{
+  "id": "rot.centre-of-mass.e.two-masses",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.centre-of-mass"
+  ],
+  "primarySkillId": "rot.centre-of-mass",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        6
+      ]
+    },
+    "d": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.comTwo",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "com-midpoint"
+      ],
+      "match": {
+        "buggySolver": "midpoint"
+      }
+    },
+    {
+      "tags": [
+        "com-wrong-end"
+      ],
+      "match": {
+        "buggySolver": "fromWrongEnd"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "com",
+      "com": {
+        "masses": [
+          {
+            "id": "a",
+            "label": "A",
+            "m": "{{m1}}",
+            "x": 0,
+            "y": 0,
+            "editable": false
+          },
+          {
+            "id": "b",
+            "label": "B",
+            "m": "{{m2}}",
+            "x": "{{d}}",
+            "y": 0,
+            "editable": false
+          }
+        ]
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "com"
+    }
+  ],
+  "stem": [
+    "Masses of {{m1}} kg and {{m2}} kg are fixed {{d}} m apart on a light rod.",
+    "How far from the {{m1}} kg mass is the centre of mass?"
+  ],
+  "input": {
+    "label": "Distance",
+    "placeholder": "for example 1.5 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Put the {{m1}} kg mass at x = 0.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    },
+    {
+      "text": "x_cm = (m₁x₁ + m₂x₂) ÷ (m₁ + m₂)."
+    },
+    {
+      "text": "Only the {{m2}} kg mass has a non-zero position."
+    }
+  ],
+  "feedback": {
+    "com-midpoint": {
+      "text": "The masses aren't equal, so the centre of mass is nearer the heavier one, not at the midpoint.",
+      "cue": {
+        "cue": "com"
+      }
+    },
+    "com-wrong-end": {
+      "text": "That distance is measured from the heavier mass. The centre of mass is nearer the heavier mass."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "x_cm = (m₁x₁ + m₂x₂) ÷ (m₁ + m₂)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "With the {{m1}} kg mass at 0: x_cm = {{m2}} × {{d}} ÷ ({{m1}} + {{m2}})."
+    },
+    {
+      "text": "= {{ans}} m from the {{m1}} kg mass.",
+      "cue": {
+        "cue": "com"
+      }
+    }
+  ],
+  "flashcards": {
+    "com-midpoint": {
+      "front": "Is the centre of mass of two unequal masses at the midpoint?",
+      "back": "No: it is nearer the heavier mass, x = (m₁x₁ + m₂x₂) ÷ (m₁ + m₂)."
+    },
+    "com-wrong-end": {
+      "front": "Centre of mass of two masses: nearer which one?",
+      "back": "The heavier one."
+    },
+    "generic": {
+      "front": "Centre of mass of two masses?",
+      "back": "(m₁x₁ + m₂x₂) ÷ (m₁ + m₂), nearer the heavier."
+    }
+  },
+  "accessibility": {
+    "altText": "Two point masses on a line.",
+    "nonDragAlternative": "The figure only shows the masses; type your answer in the box."
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "id": "sl.slope.h.perpendicular-k",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "sl",
+  "skillIds": [
+    "sl.slope"
+  ],
+  "primarySkillId": "sl.slope",
+  "difficulty": "hard",
+  "format": "number",
+  "estimatedSeconds": 120,
+  "parameters": {
+    "x1": {
+      "kind": "int",
+      "min": -4,
+      "max": -1
+    },
+    "y1": {
+      "kind": "int",
+      "min": -3,
+      "max": 1
+    },
+    "dx": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "dy": {
+      "kind": "choice",
+      "values": [
+        -3,
+        -2,
+        -1,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "solver": "sl.perpendicularSlope",
+  "intro": "Perpendicular lines, with a parameter.",
+  "answer": {
+    "tolerance": {
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "parallel-for-perpendicular"
+      ],
+      "match": {
+        "buggySolver": "parallelInstead"
+      }
+    },
+    {
+      "tags": [
+        "perpendicular-missing-negative"
+      ],
+      "match": {
+        "buggySolver": "forgotNegative"
+      }
+    },
+    {
+      "tags": [
+        "perpendicular-not-reciprocal"
+      ],
+      "match": {
+        "buggySolver": "negatedNotInverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{kText}}"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "instructions": "Line L₁ passes through P and Q. Drag the slope k of line L₂ with its slider and watch the angle between the lines.",
+    "config": {
+      "xRange": [
+        -6,
+        6
+      ],
+      "yRange": [
+        -6,
+        6
+      ],
+      "functions": [
+        {
+          "id": "L1",
+          "expr": "{{m1|raw}}*x + {{c1|raw}}",
+          "label": "L₁"
+        },
+        {
+          "id": "L2",
+          "expr": "k*x",
+          "label": "L₂: y = kx"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "label": "P",
+          "x": "{{x1}}",
+          "y": "{{y1}}"
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "x": "{{x2}}",
+          "y": "{{y2}}"
+        }
+      ],
+      "params": {
+        "k": {
+          "value": 1,
+          "min": -5,
+          "max": 5,
+          "step": 0.05,
+          "label": "slope k"
+        }
+      }
+    }
+  },
+  "consequence": [
+    {
+      "cue": "set-param",
+      "args": {
+        "name": "k",
+        "value": "$value"
+      }
+    }
+  ],
+  "stem": [
+    "Line L₁ passes through P({{x1}}, {{y1}}) and Q({{x2}}, {{y2}}). Line L₂ is y = kx.",
+    "For what value of k is L₂ perpendicular to L₁?"
+  ],
+  "input": {
+    "label": "k",
+    "placeholder": "for example −3/2",
+    "keypad": "maths"
+  },
+  "answerText": "k = {{kText}}",
+  "hints": [
+    {
+      "text": "Find the slope of L₁ first: rise over run from P to Q.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L1",
+          "x1": "{{x1}}",
+          "x2": "{{x2}}"
+        }
+      }
+    },
+    {
+      "text": "Two lines (neither vertical) are perpendicular when the product of their slopes is −1."
+    },
+    {
+      "text": "k = −1 ÷ m₁: flip the fraction and change its sign."
+    }
+  ],
+  "feedback": {
+    "parallel-for-perpendicular": {
+      "text": "Equal slopes make the lines parallel. Perpendicular slopes multiply to −1.",
+      "cue": {
+        "cue": "set-param",
+        "args": {
+          "name": "k",
+          "value": "$value"
+        }
+      }
+    },
+    "perpendicular-missing-negative": {
+      "text": "You flipped the slope but kept its sign. One perpendicular line rises while the other falls: k = −1 ÷ m₁."
+    },
+    "perpendicular-not-reciprocal": {
+      "text": "Changing the sign alone isn't enough; flip the fraction too, so that m₁ × k = −1."
+    },
+    "generic": {
+      "text": "Check your k: multiply it by the slope of L₁. You need −1."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "m₁ = ({{y2}} − {{y1}}) ÷ ({{x2}} − {{x1}}) = {{m1Text}}.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L1",
+          "x1": "{{x1}}",
+          "x2": "{{x2}}"
+        }
+      }
+    },
+    {
+      "text": "Perpendicular: m₁ × k = −1, so k = {{kText}}.",
+      "cue": {
+        "cue": "set-param",
+        "args": {
+          "name": "k",
+          "value": "{{k}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "parallel-for-perpendicular": {
+      "front": "Slopes of perpendicular lines?",
+      "back": "They multiply to −1 (equal slopes mean parallel)."
+    },
+    "perpendicular-missing-negative": {
+      "front": "A line has slope 2/3. Slope of a perpendicular line?",
+      "back": "−3/2: flip and change the sign."
+    },
+    "perpendicular-not-reciprocal": {
+      "front": "Is the perpendicular slope to m just −m?",
+      "back": "No: it is −1/m."
+    },
+    "generic": {
+      "front": "Perpendicular slope to m?",
+      "back": "−1/m."
+    }
+  },
+  "accessibility": {
+    "altText": "Line L₁ through P({{x1}}, {{y1}}) and Q({{x2}}, {{y2}}), and a line y = kx through the origin.",
+    "nonDragAlternative": "Use the k slider or its arrow keys; type your answer in the box."
+  }
+}

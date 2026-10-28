@@ -1,0 +1,344 @@
+{
+  "id": "lom.friction.h.incline-will-it-slide",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.friction",
+    "lom.resolve-forces"
+  ],
+  "primarySkillId": "lom.friction",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m": {
+      "kind": "decimal",
+      "min": 2,
+      "max": 8,
+      "step": 0.5
+    },
+    "theta": {
+      "kind": "choice",
+      "values": [
+        20,
+        25,
+        30,
+        35,
+        40
+      ]
+    },
+    "muS": {
+      "kind": "decimal",
+      "min": 0.3,
+      "max": 0.8,
+      "step": 0.05
+    }
+  },
+  "constraints": [
+    "tan(theta*pi/180) < muS - 0.05"
+  ],
+  "solver": "lom.frictionIncline",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "dimension": "force",
+    "tolerance": {
+      "relative": 0.01
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "static-friction-always-max"
+      ],
+      "match": {
+        "buggySolver": "muTimesNormal"
+      }
+    },
+    {
+      "tags": [
+        "normal-equals-weight",
+        "static-friction-always-max"
+      ],
+      "match": {
+        "buggySolver": "muTimesWeight"
+      }
+    },
+    {
+      "tags": [
+        "sin-cos-swap-incline"
+      ],
+      "match": {
+        "buggySolver": "weightCosTheta"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{f|raw}}N",
+    "{{f|raw}} kg m/s^2"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Add the normal force and friction, adjust them, and press Play to see whether the block would stay still. Tilted axes split forces along and across the plank.",
+    "config": {
+      "scene": "incline",
+      "inclineDeg": "{{theta}}",
+      "body": {
+        "label": "block",
+        "mass": "{{m}}"
+      },
+      "predict": true,
+      "predictSeconds": 1.2,
+      "maxMagnitude": "{{W+10}}",
+      "allowAdd": true,
+      "allowAxesToggle": true,
+      "agents": [
+        "plank",
+        "Earth",
+        "none"
+      ],
+      "kinds": [
+        {
+          "kind": "normal",
+          "label": "Normal"
+        },
+        {
+          "kind": "friction",
+          "label": "Friction"
+        }
+      ],
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "add-vector",
+      "args": {
+        "vector": {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "plank",
+          "magnitude": "{{N}}",
+          "angleDeg": "{{angN}}"
+        }
+      }
+    },
+    {
+      "cue": "add-vector",
+      "args": {
+        "vector": {
+          "id": "fs",
+          "kind": "friction",
+          "label": "Friction (your value)",
+          "agent": "plank",
+          "magnitude": "$value",
+          "angleDeg": "{{theta}}"
+        }
+      }
+    },
+    {
+      "cue": "predict"
+    }
+  ],
+  "stem": [
+    "A {{m}} kg block rests on a rough plank tilted at {{theta}}°. The coefficient of static friction is {{muS}}. Take g = 9.8 m/s².",
+    "What is the magnitude of the friction force acting on the block?"
+  ],
+  "input": {
+    "label": "Friction force",
+    "placeholder": "for example 19.6 N",
+    "keypad": "none"
+  },
+  "answerText": "{{f}} N",
+  "hints": [
+    {
+      "text": "Is the block moving? What does that tell you about the net force along the plank?"
+    },
+    {
+      "text": "Turn on tilted axes. Which forces have a component along the plank?",
+      "cue": [
+        {
+          "cue": "tilted-axes"
+        },
+        {
+          "cue": "decompose",
+          "args": {
+            "id": "W",
+            "axes": "tilted",
+            "values": false
+          }
+        }
+      ]
+    },
+    {
+      "text": "Along the plank, friction must exactly balance mg sin θ. μs N is only the most friction could be."
+    }
+  ],
+  "feedback": {
+    "static-friction-always-max": {
+      "text": "You found the maximum static friction, μs N. The block isn't slipping, so friction is only as large as it needs to be. With your value the block would accelerate, as the simulation shows. The meter compares what is needed with what is available.",
+      "cue": {
+        "cue": "meter",
+        "args": {
+          "needed": "{{f}}",
+          "available": "{{fmax}}",
+          "showValues": false
+        }
+      }
+    },
+    "normal-equals-weight": {
+      "text": "On an incline the plank pushes back only against the part of the weight pressing into it: N = mg cos θ, not mg.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "W",
+          "axes": "tilted",
+          "values": false
+        }
+      }
+    },
+    "sin-cos-swap-incline": {
+      "text": "Check which component points along the plank. The angle between the weight and the plank's normal is θ, so the component along the plank is mg sin θ.",
+      "cue": [
+        {
+          "cue": "decompose",
+          "args": {
+            "id": "W",
+            "axes": "tilted",
+            "values": false
+          }
+        },
+        {
+          "cue": "highlight",
+          "args": {
+            "ids": [
+              "W"
+            ]
+          }
+        }
+      ]
+    },
+    "dimension-mismatch": {
+      "text": "Friction is a force. Check your units."
+    },
+    "generic": {
+      "text": "Compare the forces along the plank. What has to balance for the block to stay still? Watch what your value would do."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The block is at rest, so the net force along the plank is zero. Resolve the weight along tilted axes.",
+      "cue": [
+        {
+          "cue": "tilted-axes"
+        },
+        {
+          "cue": "decompose",
+          "args": {
+            "id": "W",
+            "axes": "tilted"
+          }
+        }
+      ]
+    },
+    {
+      "text": "Across the plank: N = mg cos θ = {{N}} N.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "N",
+            "kind": "normal",
+            "label": "Normal",
+            "agent": "plank",
+            "magnitude": "{{N}}",
+            "angleDeg": "{{angN}}"
+          }
+        }
+      }
+    },
+    {
+      "text": "Along the plank: static friction balances mg sin θ, so f = {{m}} × 9.8 × sin {{theta}}° = {{f}} N. Press Play: the block stays put.",
+      "cue": [
+        {
+          "cue": "add-vector",
+          "args": {
+            "vector": {
+              "id": "fs",
+              "kind": "friction",
+              "label": "Friction",
+              "agent": "plank",
+              "magnitude": "{{f}}",
+              "angleDeg": "{{theta}}"
+            }
+          }
+        },
+        {
+          "cue": "predict"
+        }
+      ]
+    },
+    {
+      "text": "Check: the most friction available is μs N = {{fmax}} N, more than the {{f}} N needed, so the block indeed doesn't slip.",
+      "cue": {
+        "cue": "meter",
+        "args": {
+          "needed": "{{f}}",
+          "available": "{{fmax}}"
+        }
+      }
+    }
+  ],
+  "reasoning": {
+    "prompt": "In one or two sentences, explain why the friction force here is mg sin θ and not μs N.",
+    "rubric": [
+      "Says the block is at rest, so the net force along the plank is zero",
+      "Names mg sin θ as the component of the weight along the plank",
+      "Explains that μs N is only the maximum static friction",
+      "Compares the friction needed with the friction available"
+    ],
+    "modelAnswer": "The block isn't moving, so the forces along the plank balance and friction equals the component of the weight down the plank, mg sin θ. μs N is only the largest friction the surface can supply; here {{fmax}} N is available but only {{f}} N is needed."
+  },
+  "flashcards": {
+    "static-friction-always-max": {
+      "front": "Is static friction always μs N?",
+      "back": "No. μs N is the maximum. Static friction is only as large as needed to prevent slipping."
+    },
+    "normal-equals-weight": {
+      "front": "On a θ incline, is the normal force on a resting block equal to its weight?",
+      "back": "No. It balances only the component of weight into the surface: N = mg cos θ."
+    },
+    "sin-cos-swap-incline": {
+      "front": "Which component of weight acts along a slope of angle θ?",
+      "back": "mg sin θ along the slope; mg cos θ perpendicular to it."
+    },
+    "generic": {
+      "front": "Friction on a block resting on an incline?",
+      "back": "f = mg sin θ (as long as that is no more than μs mg cos θ)."
+    }
+  },
+  "accessibility": {
+    "altText": "A block on a plank tilted at {{theta}}°, with its weight ({{W}} N) drawn straight down.",
+    "nonDragAlternative": "Use Add force, then type each force's size and direction in Precise controls; tick Tilted axes to see components."
+  }
+}

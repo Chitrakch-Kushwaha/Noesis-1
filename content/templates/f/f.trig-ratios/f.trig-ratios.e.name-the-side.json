@@ -1,0 +1,231 @@
+{
+  "id": "f.trig-ratios.e.name-the-side",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.trig-ratios"
+  ],
+  "primarySkillId": "f.trig-ratios",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 40,
+  "parameters": {
+    "at": {
+      "kind": "choice",
+      "values": [
+        "A",
+        "B"
+      ]
+    },
+    "angA": {
+      "kind": "choice",
+      "values": [
+        30,
+        35,
+        40,
+        50,
+        55,
+        60
+      ]
+    }
+  },
+  "solver": "f.adjacentSide",
+  "intro": "Name the side.",
+  "widget": {
+    "type": "triangle-explorer",
+    "instructions": "The right angle is at C. θ is marked with an arc.",
+    "config": {
+      "mode": "triangle",
+      "hypotenuse": 5,
+      "angleDeg": "{{angA}}",
+      "marked": "{{at}}",
+      "editable": false,
+      "showRoles": false
+    }
+  },
+  "stem": [
+    "In right triangle ABC the right angle is at C, and θ is the angle at {{at}}.",
+    "Which side is adjacent to θ?"
+  ],
+  "options": [
+    {
+      "id": "AC",
+      "text": "AC"
+    },
+    {
+      "id": "BC",
+      "text": "BC",
+      "tags": [
+        "opposite-adjacent-confusion"
+      ],
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite",
+            "adjacent"
+          ]
+        }
+      }
+    },
+    {
+      "id": "AB",
+      "text": "AB",
+      "tags": [
+        "hypotenuse-confusion"
+      ],
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "hypotenuse"
+          ]
+        }
+      }
+    }
+  ],
+  "variants": {
+    "param": "at",
+    "cases": {
+      "B": {
+        "options": [
+          {
+            "id": "AC",
+            "text": "AC",
+            "tags": [
+              "opposite-adjacent-confusion"
+            ],
+            "cue": {
+              "cue": "highlight-side",
+              "args": {
+                "sides": [
+                  "opposite",
+                  "adjacent"
+                ]
+              }
+            }
+          },
+          {
+            "id": "BC",
+            "text": "BC"
+          },
+          {
+            "id": "AB",
+            "text": "AB",
+            "tags": [
+              "hypotenuse-confusion"
+            ],
+            "cue": {
+              "cue": "highlight-side",
+              "args": {
+                "sides": [
+                  "hypotenuse"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "answerText": "AC",
+  "hints": [
+    {
+      "text": "Two sides meet at the corner where θ is. One of them is the hypotenuse.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "hypotenuse"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The hypotenuse is opposite the right angle: here AB. It is never called adjacent."
+    },
+    {
+      "text": "The adjacent side is the other side that touches θ's corner."
+    }
+  ],
+  "feedback": {
+    "opposite-adjacent-confusion": {
+      "text": "That side is across from θ, so it is opposite. The adjacent side touches θ's corner.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite",
+            "adjacent"
+          ]
+        }
+      }
+    },
+    "hypotenuse-confusion": {
+      "text": "AB is the hypotenuse, the side opposite the right angle. Adjacent means the other side that touches θ."
+    },
+    "generic": {
+      "text": "Look at the corner where θ is: which non-hypotenuse side touches it?"
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "AB is the hypotenuse (opposite the right angle at C).",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "hypotenuse"
+          ]
+        }
+      }
+    },
+    {
+      "text": "At corner {{at}}, the other side that touches θ is the adjacent side; the side across from θ is opposite.",
+      "cue": [
+        {
+          "cue": "show-values",
+          "args": {
+            "on": false
+          }
+        },
+        {
+          "cue": "highlight-side",
+          "args": {
+            "sides": [
+              "adjacent"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "opposite-adjacent-confusion": {
+      "front": "In a right triangle, which side is adjacent to an angle?",
+      "back": "The side that touches the angle and isn't the hypotenuse. The opposite side is across from it."
+    },
+    "hypotenuse-confusion": {
+      "front": "Is the hypotenuse ever 'adjacent'?",
+      "back": "No: the hypotenuse is the longest side, opposite the right angle."
+    },
+    "generic": {
+      "front": "Opposite, adjacent, hypotenuse?",
+      "back": "Across from θ; touching θ; across from the right angle."
+    }
+  },
+  "accessibility": {
+    "altText": "A right triangle ABC with the right angle at C and the angle θ marked at {{at}}.",
+    "nonDragAlternative": "Choose an answer with the radio buttons; the figure cannot be changed in this question."
+  }
+}

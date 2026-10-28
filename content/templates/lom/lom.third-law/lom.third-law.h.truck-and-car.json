@@ -1,0 +1,193 @@
+{
+  "id": "lom.third-law.h.truck-and-car",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.third-law",
+    "lom.second-law"
+  ],
+  "primarySkillId": "lom.third-law",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 120,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        8000,
+        12000,
+        15000,
+        20000
+      ]
+    },
+    "M": {
+      "kind": "choice",
+      "values": [
+        4000,
+        6000,
+        8000
+      ]
+    },
+    "m": {
+      "kind": "choice",
+      "values": [
+        800,
+        1000,
+        1200
+      ]
+    }
+  },
+  "solver": "lom.truckAndCar",
+  "intro": "Same force, different bodies.",
+  "answer": {
+    "dimension": "force",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "heavier-pushes-harder"
+      ],
+      "match": {
+        "buggySolver": "scaledByMass"
+      }
+    },
+    {
+      "tags": [
+        "third-law-forces-cancel"
+      ],
+      "match": {
+        "buggySolver": "cancelled"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{F|raw}} N"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The board shows the force on the car during the collision. Its third-law partner acts on the truck.",
+    "config": {
+      "scene": "free",
+      "body": {
+        "label": "car",
+        "mass": "{{m}}"
+      },
+      "predict": true,
+      "predictSeconds": 0.5,
+      "maxMagnitude": "{{F*1.3}}",
+      "showResultant": false,
+      "vectors": [
+        {
+          "id": "Fc",
+          "kind": "applied",
+          "label": "Truck pushes car",
+          "agent": "truck",
+          "magnitude": "{{F}}",
+          "angleDeg": 0,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Third-law forces are equal in size whatever the masses."
+      }
+    }
+  ],
+  "stem": [
+    "A {{M}} kg truck and a {{m}} kg car collide head-on. At one instant the truck pushes on the car with a force of {{F}} N.",
+    "At that instant, how large is the force the car exerts on the truck?"
+  ],
+  "input": {
+    "label": "Force on the truck",
+    "placeholder": "for example 9000 N",
+    "keypad": "none"
+  },
+  "answerText": "{{F}} N",
+  "hints": [
+    {
+      "text": "The two forces are one interaction between the truck and the car.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "Fc"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Newton's third law doesn't depend on mass or on who is 'stronger'. The masses change the accelerations, not the forces."
+    },
+    {
+      "text": "The car pushes back on the truck with an equal force in the opposite direction."
+    }
+  ],
+  "feedback": {
+    "heavier-pushes-harder": {
+      "text": "The masses don't change the size of a third-law pair. They change the accelerations: the car accelerates more because it is lighter."
+    },
+    "third-law-forces-cancel": {
+      "text": "The two forces act on different bodies, so they never cancel each other. Each one changes the motion of the body it acts on."
+    },
+    "dimension-mismatch": {
+      "text": "Give a force, in newtons."
+    },
+    "generic": {
+      "text": "Use Newton's third law: equal in size, opposite in direction, on the other body."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The truck pushing the car and the car pushing the truck are a third-law pair.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "Fc"
+          ]
+        }
+      }
+    },
+    {
+      "text": "So the car pushes on the truck with {{F}} N, backwards. The car's acceleration is {{F}} ÷ {{m}} = {{ac}} m/s²; the truck's only {{F}} ÷ {{M}} = {{at}} m/s².",
+      "cue": {
+        "cue": "predict"
+      }
+    }
+  ],
+  "flashcards": {
+    "heavier-pushes-harder": {
+      "front": "In a truck–car collision, which pushes harder on the other?",
+      "back": "Neither: the forces are equal and opposite. The car accelerates more because it is lighter."
+    },
+    "third-law-forces-cancel": {
+      "front": "Do the two forces of a third-law pair cancel?",
+      "back": "No. They act on different bodies."
+    },
+    "generic": {
+      "front": "Third law in a collision?",
+      "back": "Equal and opposite forces on the two bodies, whatever their masses."
+    }
+  },
+  "accessibility": {
+    "altText": "The car with the truck's push on it drawn as one arrow.",
+    "nonDragAlternative": "The board only illustrates the force; type your answer in the box."
+  }
+}

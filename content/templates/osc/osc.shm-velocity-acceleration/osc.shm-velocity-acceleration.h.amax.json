@@ -1,0 +1,164 @@
+{
+  "id": "osc.shm-velocity-acceleration.h.amax",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.shm-velocity-acceleration"
+  ],
+  "primarySkillId": "osc.shm-velocity-acceleration",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "A": {
+      "kind": "choice",
+      "values": [
+        0.01,
+        0.02,
+        0.05
+      ]
+    },
+    "f": {
+      "kind": "choice",
+      "values": [
+        2,
+        5,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.amax",
+  "intro": "Peak acceleration.",
+  "answer": {
+    "dimension": "acceleration",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "vmax-amax-confusion"
+      ],
+      "match": {
+        "buggySolver": "vmaxInstead"
+      }
+    },
+    {
+      "tags": [
+        "shm-forgot-2pi"
+      ],
+      "match": {
+        "buggySolver": "forgot2pi"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s^2"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": "{{4*pi^2*f^2}}",
+      "amplitude": "{{A}}"
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "x"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A loudspeaker cone vibrates in SHM at {{f}} Hz with amplitude {{A}} m.",
+    "What is its maximum acceleration?"
+  ],
+  "input": {
+    "label": "Maximum acceleration",
+    "placeholder": "for example 40 m/s^2",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s^2",
+  "hints": [
+    {
+      "text": "Where is the acceleration greatest?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "x"
+          ]
+        }
+      }
+    },
+    {
+      "text": "At the ends: a_max = Aω²."
+    },
+    {
+      "text": "ω = 2πf."
+    }
+  ],
+  "feedback": {
+    "vmax-amax-confusion": {
+      "text": "Aω is the maximum speed. The maximum acceleration is Aω²."
+    },
+    "shm-forgot-2pi": {
+      "text": "ω = 2πf, not f."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a acceleration."
+    },
+    "generic": {
+      "text": "a_max = A(2πf)²."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "ω = 2π × {{f}} = {{w}} rad/s."
+    },
+    {
+      "text": "a_max = {{A}} × {{w}}² = {{ans}} m/s².",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "vmax-amax-confusion": {
+      "front": "Maximum speed and acceleration in SHM?",
+      "back": "v_max = Aω, a_max = Aω²."
+    },
+    "shm-forgot-2pi": {
+      "front": "ω from f?",
+      "back": "ω = 2πf."
+    },
+    "generic": {
+      "front": "Maximum acceleration in SHM?",
+      "back": "Aω² = A(2πf)²."
+    }
+  },
+  "accessibility": {
+    "altText": "A spring oscillator with its x–t graph.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

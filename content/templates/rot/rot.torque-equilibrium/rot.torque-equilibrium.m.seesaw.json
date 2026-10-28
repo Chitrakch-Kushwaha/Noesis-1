@@ -1,0 +1,186 @@
+{
+  "id": "rot.torque-equilibrium.m.seesaw",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.torque-equilibrium"
+  ],
+  "primarySkillId": "rot.torque-equilibrium",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        20,
+        25,
+        30
+      ]
+    },
+    "d1": {
+      "kind": "choice",
+      "values": [
+        1.5,
+        2
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        35,
+        40,
+        50
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.seesaw",
+  "intro": "Balancing a see-saw.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "moments-inverted"
+      ],
+      "match": {
+        "buggySolver": "inverted"
+      }
+    },
+    {
+      "tags": [
+        "moments-same-distance"
+      ],
+      "match": {
+        "buggySolver": "sameDistance"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "lever",
+      "lever": {
+        "length": 5,
+        "pivot": 2.5,
+        "beamWeight": 0,
+        "loads": [
+          {
+            "id": "a",
+            "label": "child 1",
+            "x": "{{2.5 - d1}}",
+            "force": "{{W1}}",
+            "editable": false
+          },
+          {
+            "id": "b",
+            "label": "child 2",
+            "x": 4.5,
+            "force": "{{W2}}",
+            "editable": true
+          }
+        ]
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Move child 2 with the controls: where do the turning effects cancel?"
+      }
+    }
+  ],
+  "stem": [
+    "A {{m1}} kg child sits {{d1}} m from the pivot of a uniform see-saw.",
+    "How far from the pivot, on the other side, must a {{m2}} kg child sit to balance it?"
+  ],
+  "input": {
+    "label": "Distance",
+    "placeholder": "for example 1.2 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "For balance, the clockwise and anticlockwise moments are equal.",
+      "cue": {
+        "cue": "arms"
+      }
+    },
+    {
+      "text": "m₁ g d₁ = m₂ g d₂; g cancels."
+    },
+    {
+      "text": "d₂ = m₁d₁ ÷ m₂."
+    }
+  ],
+  "feedback": {
+    "moments-inverted": {
+      "text": "The heavier child must sit closer to the pivot. Balance the moments: m₁d₁ = m₂d₂."
+    },
+    "moments-same-distance": {
+      "text": "Equal distances balance only equal weights."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "m₁d₁ = m₂d₂."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Moments: {{m1}} × {{d1}} = {{m2}} × d₂."
+    },
+    {
+      "text": "d₂ = {{ans}} m. The beam balances.",
+      "cue": {
+        "cue": "set-load",
+        "args": {
+          "id": "b",
+          "x": "{{2.5 + ans}}",
+          "force": "{{W2}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "moments-inverted": {
+      "front": "Where must the heavier child sit to balance?",
+      "back": "Closer to the pivot: m₁d₁ = m₂d₂."
+    },
+    "moments-same-distance": {
+      "front": "Do unequal weights balance at equal distances?",
+      "back": "No: the moments m g d must be equal."
+    },
+    "generic": {
+      "front": "See-saw balance?",
+      "back": "m₁d₁ = m₂d₂."
+    }
+  },
+  "accessibility": {
+    "altText": "A see-saw with two children.",
+    "nonDragAlternative": "Type child 2's position in the load controls, or type your answer in the box."
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "id": "f.number-systems.e.distance",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.number-systems"
+  ],
+  "primarySkillId": "f.number-systems",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        1,
+        3,
+        4,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.numberLineDistance",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "negative-subtraction-sign"
+      ],
+      "match": {
+        "buggySolver": "subtracted"
+      }
+    }
+  ],
+  "widget": {
+    "type": "number-line",
+    "config": {
+      "range": [
+        -8,
+        8
+      ],
+      "editable": false
+    },
+    "instructions": "Press Play to send a point along the number line."
+  },
+  "consequence": [
+    {
+      "cue": "test-point",
+      "args": {
+        "from": "{{lo}}",
+        "to": "{{b}}"
+      }
+    }
+  ],
+  "stem": [
+    "On a number line, how far apart are −{{a}} and {{b}}?"
+  ],
+  "input": {
+    "label": "Distance",
+    "placeholder": "for example 7",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Walk from −{{a}} to {{b}} on the line.",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": "{{lo}}",
+          "to": "{{b}}"
+        }
+      }
+    },
+    {
+      "text": "First to 0, then on to {{b}}."
+    },
+    {
+      "text": "Distance = larger − smaller."
+    }
+  ],
+  "feedback": {
+    "negative-subtraction-sign": {
+      "text": "From −{{a}} to 0 is {{a}}, and from 0 to {{b}} is {{b}}: the distance is b − (−a).",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": "{{lo}}",
+          "to": "{{b}}"
+        }
+      }
+    },
+    "generic": {
+      "text": "Distance = |b − (−a)|."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Distance = {{b}} − (−{{a}}).",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": "{{lo}}",
+          "to": "{{b}}"
+        }
+      }
+    },
+    {
+      "text": "= {{ans}}."
+    }
+  ],
+  "flashcards": {
+    "negative-subtraction-sign": {
+      "front": "Distance from −3 to 5 on a number line?",
+      "back": "5 − (−3) = 8."
+    },
+    "generic": {
+      "front": "Distance from −a to b?",
+      "back": "a + b."
+    }
+  },
+  "accessibility": {
+    "altText": "A number line from −8 to 8.",
+    "nonDragAlternative": "Press Play to watch the point move; type your answer in the box."
+  }
+}

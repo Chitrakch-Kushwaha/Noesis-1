@@ -1,0 +1,159 @@
+{
+  "id": "rot.moment-of-inertia.e.disc",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.moment-of-inertia"
+  ],
+  "primarySkillId": "rot.moment-of-inertia",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "M": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        5,
+        10
+      ]
+    },
+    "R": {
+      "kind": "choice",
+      "values": [
+        0.1,
+        0.2,
+        0.3,
+        0.5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.discI",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "moment-of-inertia",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "ring-formula-for-disc"
+      ],
+      "match": {
+        "buggySolver": "ringFormula"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} kg m^2"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "disc",
+        "mass": "{{M}}",
+        "size": "{{R}}",
+        "torque": 1,
+        "omega0": 0,
+        "duration": 3
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-shape",
+      "args": {
+        "shape": "ring"
+      }
+    }
+  ],
+  "stem": [
+    "A uniform disc of mass {{M}} kg and radius {{R}} m turns about its central axis.",
+    "What is its moment of inertia? (Use the standard result.)"
+  ],
+  "input": {
+    "label": "Moment of inertia",
+    "placeholder": "for example 0.5 kg m^2",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} kg m^2",
+  "hints": [
+    {
+      "text": "Mass closer to the axis contributes less.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "disc"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Standard results: ring MR², disc ½MR²."
+    },
+    {
+      "text": "I = ½MR²."
+    }
+  ],
+  "feedback": {
+    "ring-formula-for-disc": {
+      "text": "MR² is for a ring, where all the mass is at the rim. A disc has mass spread inwards: ½MR².",
+      "cue": {
+        "cue": "ghost-shape",
+        "args": {
+          "shape": "ring"
+        }
+      }
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a moment of inertia."
+    },
+    "generic": {
+      "text": "I_disc = ½MR²."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "I = ½MR² = ½ × {{M}} × {{R}}²."
+    },
+    {
+      "text": "= {{ans}} kg m².",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "ring-formula-for-disc": {
+      "front": "Moment of inertia of a uniform disc about its axis?",
+      "back": "½MR²."
+    },
+    "generic": {
+      "front": "Moment of inertia of a uniform disc?",
+      "back": "½MR²."
+    }
+  },
+  "accessibility": {
+    "altText": "A disc turning about its axis.",
+    "nonDragAlternative": "Use the torque slider to explore; type your answer in the box."
+  }
+}

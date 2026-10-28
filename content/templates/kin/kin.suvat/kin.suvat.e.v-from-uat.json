@@ -1,0 +1,166 @@
+{
+  "id": "kin.suvat.e.v-from-uat",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.suvat"
+  ],
+  "primarySkillId": "kin.suvat",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "u": {
+      "kind": "choice",
+      "values": [
+        3,
+        5,
+        8,
+        10
+      ]
+    },
+    "a": {
+      "kind": "choice",
+      "values": [
+        1.5,
+        2,
+        3
+      ]
+    },
+    "t": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.vFromUat",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "ignores-initial-velocity"
+      ],
+      "match": {
+        "buggySolver": "ignoresU"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "tr",
+          "label": "train",
+          "x0": 0,
+          "v0": "{{u}}",
+          "a": "{{a}}"
+        }
+      ],
+      "duration": "{{t}}",
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "you",
+          "label": "steady at your final speed",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A train moving at {{u}} m/s accelerates uniformly at {{a}} m/s² for {{t}} s.",
+    "What is its speed at the end?"
+  ],
+  "input": {
+    "label": "Final speed",
+    "placeholder": "for example 18 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "Which equation links u, a, t and v?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "v = u + at."
+    },
+    {
+      "text": "The gain in speed is a × t; add it to u."
+    }
+  ],
+  "feedback": {
+    "ignores-initial-velocity": {
+      "text": "That is only the gain in speed, a × t. The train was already moving at {{u}} m/s."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "v = u + at."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Gain in speed: {{a}} × {{t}} = {{at}} m/s."
+    },
+    {
+      "text": "v = {{u}} + {{at}} = {{ans}} m/s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "ignores-initial-velocity": {
+      "front": "v = u + at: what does u add?",
+      "back": "The velocity the body already had; a t is only the change."
+    },
+    "generic": {
+      "front": "v = u + at: meaning?",
+      "back": "Final velocity = initial velocity + gain (a × t)."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with a train that speeds up uniformly.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

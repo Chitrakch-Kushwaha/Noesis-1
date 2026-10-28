@@ -1,0 +1,185 @@
+{
+  "id": "mip.resolution.e.which-side",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.resolution",
+    "f.trig-ratios"
+  ],
+  "primarySkillId": "mip.resolution",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "ang": {
+      "kind": "choice",
+      "values": [
+        30,
+        37,
+        50,
+        60
+      ]
+    },
+    "F": {
+      "kind": "choice",
+      "values": [
+        20,
+        40,
+        50
+      ]
+    }
+  },
+  "solver": "mip.whichSide",
+  "intro": "A quick check on components.",
+  "widget": {
+    "type": "triangle-explorer",
+    "instructions": "The vector is the hypotenuse of a right triangle. Its shadows on the axes are its components.",
+    "config": {
+      "mode": "vector",
+      "hypotenuse": "{{F}}",
+      "angleDeg": "{{ang}}",
+      "marked": "A",
+      "editable": false,
+      "showRoles": false,
+      "unit": "N"
+    }
+  },
+  "stem": [
+    "A {{F}} N force acts at {{ang}}° above the +x axis. The force and its two components form a right triangle.",
+    "Which side of that triangle is adjacent to the {{ang}}° angle?"
+  ],
+  "options": [
+    {
+      "id": "x",
+      "text": "The x-component, along the x-axis"
+    },
+    {
+      "id": "y",
+      "text": "The y-component, vertical",
+      "tags": [
+        "opposite-adjacent-confusion"
+      ],
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite"
+          ]
+        }
+      }
+    },
+    {
+      "id": "f",
+      "text": "The force itself",
+      "tags": [
+        "hypotenuse-confusion"
+      ],
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "hypotenuse"
+          ]
+        }
+      }
+    }
+  ],
+  "answerText": "The x-component",
+  "hints": [
+    {
+      "text": "The adjacent side touches the angle but is not the longest side.",
+      "cue": {
+        "cue": "shadows"
+      }
+    },
+    {
+      "text": "The angle sits between the force and the x-axis. Which two sides meet there?",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "hypotenuse"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The force is the hypotenuse; the other side touching the angle is the x-component."
+    }
+  ],
+  "feedback": {
+    "opposite-adjacent-confusion": {
+      "text": "The vertical side is across from the angle: it is opposite. The side that touches the angle, along the x-axis, is adjacent.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite",
+            "adjacent"
+          ]
+        }
+      }
+    },
+    "hypotenuse-confusion": {
+      "text": "The force is the longest side, the hypotenuse. Adjacent means the other side that touches the angle."
+    },
+    "generic": {
+      "text": "Find the two sides that meet at the angle; the shorter one is adjacent."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Draw the force's shadows on the axes: those are its components.",
+      "cue": [
+        {
+          "cue": "shadows"
+        },
+        {
+          "cue": "show-values",
+          "args": {
+            "on": false
+          }
+        }
+      ]
+    },
+    {
+      "text": "The {{ang}}° angle is between the force and the x-axis, so the x-component is adjacent and the y-component is opposite.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "adjacent"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "opposite-adjacent-confusion": {
+      "front": "In a right triangle, which side is adjacent to an angle?",
+      "back": "The side that touches the angle and isn't the hypotenuse. The opposite side is across from it."
+    },
+    "hypotenuse-confusion": {
+      "front": "Is the hypotenuse ever 'adjacent'?",
+      "back": "No: the hypotenuse is the longest side, opposite the right angle."
+    },
+    "generic": {
+      "front": "Force at θ above the x-axis: which component is adjacent to θ?",
+      "back": "The x-component."
+    }
+  },
+  "accessibility": {
+    "altText": "A {{F}} N force drawn from the origin at {{ang}}° above the x-axis, with its components forming a right triangle.",
+    "nonDragAlternative": "Choose an answer with the radio buttons; the figure cannot be changed in this question."
+  }
+}

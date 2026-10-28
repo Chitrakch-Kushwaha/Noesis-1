@@ -1,0 +1,146 @@
+{
+  "id": "f.pythagoras.e.leg",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.pythagoras"
+  ],
+  "primarySkillId": "f.pythagoras",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "c": {
+      "kind": "choice",
+      "values": [
+        10,
+        13,
+        17,
+        25
+      ]
+    },
+    "a": {
+      "kind": "choice",
+      "values": [
+        6,
+        5,
+        8,
+        7
+      ]
+    }
+  },
+  "constraints": [
+    "a < c"
+  ],
+  "solver": "f.missingLeg",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "pythag-missing-leg-added"
+      ],
+      "match": {
+        "buggySolver": "addedSquares"
+      }
+    }
+  ],
+  "widget": {
+    "type": "triangle-explorer",
+    "config": {
+      "mode": "triangle",
+      "editable": false,
+      "hypotenuse": "{{c}}",
+      "angleDeg": "{{ang}}",
+      "showRoles": true
+    },
+    "instructions": "The right angle is at C."
+  },
+  "consequence": [
+    {
+      "cue": "highlight-side",
+      "args": {
+        "sides": [
+          "hypotenuse"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A right triangle has hypotenuse {{c}} and one shorter side {{a}}.",
+    "How long is the other shorter side?"
+  ],
+  "input": {
+    "label": "Side",
+    "placeholder": "for example 8",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "The hypotenuse is the longest side.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "hypotenuse"
+          ]
+        }
+      }
+    },
+    {
+      "text": "b² = c² − a²."
+    },
+    {
+      "text": "Subtract the squares, then take the root."
+    }
+  ],
+  "feedback": {
+    "pythag-missing-leg-added": {
+      "text": "The hypotenuse is the longest side: b² = c² − a²."
+    },
+    "generic": {
+      "text": "b = √(c² − a²)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "b² = {{c}}² − {{a}}²."
+    },
+    {
+      "text": "b = {{ans}}.",
+      "cue": {
+        "cue": "show-values"
+      }
+    }
+  ],
+  "flashcards": {
+    "pythag-missing-leg-added": {
+      "front": "Shorter side from c and a?",
+      "back": "√(c² − a²)."
+    },
+    "generic": {
+      "front": "Shorter side of a right triangle?",
+      "back": "√(c² − a²)."
+    }
+  },
+  "accessibility": {
+    "altText": "A right triangle.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "id": "wep.power.m.fv",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.power"
+  ],
+  "primarySkillId": "wep.power",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        400,
+        500,
+        800,
+        1200
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        10,
+        15,
+        20,
+        25
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.powerFv",
+  "intro": "Power at a steady speed.",
+  "answer": {
+    "dimension": "power",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "power-force-over-speed"
+      ],
+      "match": {
+        "buggySolver": "divided"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} W"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "car",
+          "label": "car",
+          "x0": 0,
+          "v0": "{{v}}",
+          "a": 0
+        }
+      ],
+      "duration": 3,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Each second the car moves v metres against F: that is F v joules per second."
+      }
+    }
+  ],
+  "stem": [
+    "A car cruises at a steady {{v}} m/s against a total resistive force of {{F}} N.",
+    "What power must its engine deliver?"
+  ],
+  "input": {
+    "label": "Power",
+    "placeholder": "for example 12000 W",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} W",
+  "hints": [
+    {
+      "text": "At steady speed the engine's force balances the resistance.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Work per second = force × distance per second."
+    },
+    {
+      "text": "P = F v."
+    }
+  ],
+  "feedback": {
+    "power-force-over-speed": {
+      "text": "P = W ÷ t = F × (d ÷ t) = F v. Multiply, don't divide."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a power."
+    },
+    "generic": {
+      "text": "P = F v."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Driving force = {{F}} N at {{v}} m/s."
+    },
+    {
+      "text": "P = {{F}} × {{v}} = {{ans}} W.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "power-force-over-speed": {
+      "front": "Power at constant speed against a force F?",
+      "back": "P = F v."
+    },
+    "generic": {
+      "front": "Power at steady speed against force F?",
+      "back": "P = F v."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with the car moving at a steady speed.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

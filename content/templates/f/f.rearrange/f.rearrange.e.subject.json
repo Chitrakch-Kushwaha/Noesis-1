@@ -1,0 +1,152 @@
+{
+  "id": "f.rearrange.e.subject",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.rearrange"
+  ],
+  "primarySkillId": "f.rearrange",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "k": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.subjectOfFormula",
+  "intro": "A foundation check.",
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        5
+      ],
+      "yRange": [
+        0,
+        20
+      ],
+      "functions": [
+        {
+          "id": "v",
+          "expr": "{{k}} + 2*x",
+          "label": "v = u + at"
+        }
+      ]
+    },
+    "instructions": "The slope of the v–t line is a."
+  },
+  "stem": [
+    "Make a the subject of v = u + at."
+  ],
+  "options": [
+    {
+      "id": "ok",
+      "text": "a = (v − u) ÷ t"
+    },
+    {
+      "id": "sign",
+      "text": "a = (v + u) ÷ t",
+      "tags": [
+        "subject-sign"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Undo + u by subtracting u."
+        }
+      }
+    },
+    {
+      "id": "inv",
+      "text": "a = t(v − u)",
+      "tags": [
+        "subject-inverted"
+      ]
+    }
+  ],
+  "answerText": "a = (v − u) ÷ t",
+  "hints": [
+    {
+      "text": "Undo the operations around a one at a time.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "v"
+          ]
+        }
+      }
+    },
+    {
+      "text": "First subtract u from both sides."
+    },
+    {
+      "text": "Then divide by t."
+    }
+  ],
+  "feedback": {
+    "subject-sign": {
+      "text": "To remove + u, subtract u from both sides: at = v − u."
+    },
+    "subject-inverted": {
+      "text": "a is multiplied by t, so divide by t to undo it."
+    },
+    "generic": {
+      "text": "Subtract u, then divide by t."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "v − u = at.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "v"
+          ]
+        }
+      }
+    },
+    {
+      "text": "a = (v − u) ÷ t."
+    }
+  ],
+  "flashcards": {
+    "subject-sign": {
+      "front": "Make a the subject of v = u + at.",
+      "back": "a = (v − u) ÷ t."
+    },
+    "subject-inverted": {
+      "front": "Undo multiplying by t?",
+      "back": "Divide both sides by t."
+    },
+    "generic": {
+      "front": "Make a the subject of v = u + at.",
+      "back": "a = (v − u) ÷ t."
+    }
+  },
+  "accessibility": {
+    "altText": "A straight v–t line.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "id": "kin.acceleration.e.from-change",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.acceleration"
+  ],
+  "primarySkillId": "kin.acceleration",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "u": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        5,
+        6
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        14,
+        16,
+        20,
+        26
+      ]
+    },
+    "t": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.accelSimple",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "acceleration",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "acceleration-final-over-time"
+      ],
+      "match": {
+        "buggySolver": "finalOverTime"
+      }
+    },
+    {
+      "tags": [
+        "acceleration-sum-over-time"
+      ],
+      "match": {
+        "buggySolver": "sumOverTime"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s^2"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "s",
+          "label": "scooter",
+          "x0": 0,
+          "v0": "{{u}}",
+          "a": "{{dv/t}}"
+        }
+      ],
+      "duration": "{{t}}",
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "you",
+          "label": "scooter at your acceleration",
+          "x0": 0,
+          "v0": "{{u}}",
+          "a": "$value"
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A scooter speeds up from {{u}} m/s to {{v}} m/s in {{t}} s.",
+    "What is its average acceleration?"
+  ],
+  "input": {
+    "label": "Acceleration",
+    "placeholder": "for example 3 m/s^2",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s^2",
+  "hints": [
+    {
+      "text": "Acceleration measures how fast the velocity changes.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "a = (v − u) ÷ t."
+    },
+    {
+      "text": "Change in velocity: {{v}} − {{u}} m/s."
+    }
+  ],
+  "feedback": {
+    "acceleration-final-over-time": {
+      "text": "Acceleration is the change in velocity per second. The scooter didn't start from rest."
+    },
+    "acceleration-sum-over-time": {
+      "text": "Subtract the initial velocity from the final one; don't add them."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a acceleration."
+    },
+    "generic": {
+      "text": "a = (v − u) ÷ t."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Change in velocity: {{v}} − {{u}} = {{dv}} m/s."
+    },
+    {
+      "text": "a = {{dv}} ÷ {{t}} = {{ans}} m/s².",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "acceleration-final-over-time": {
+      "front": "Acceleration from u to v in time t?",
+      "back": "a = (v − u) ÷ t: the change in velocity per unit time."
+    },
+    "acceleration-sum-over-time": {
+      "front": "Is acceleration (u + v) ÷ t?",
+      "back": "No: (v − u) ÷ t."
+    },
+    "generic": {
+      "front": "Average acceleration?",
+      "back": "a = (v − u) ÷ t."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with a scooter that speeds up.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

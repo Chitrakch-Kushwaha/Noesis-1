@@ -1,0 +1,200 @@
+{
+  "id": "trg.unit-circle.m.exact-value",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "trg",
+  "skillIds": [
+    "trg.unit-circle",
+    "trg.allied-angles"
+  ],
+  "primarySkillId": "trg.unit-circle",
+  "difficulty": "medium",
+  "format": "number",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "fn": {
+      "kind": "choice",
+      "values": [
+        "sin",
+        "cos"
+      ]
+    },
+    "k": {
+      "kind": "int",
+      "min": 0,
+      "max": 11
+    }
+  },
+  "constraints": [],
+  "solver": "trg.exactValue",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "exact": true
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "sin-cos-swap"
+      ],
+      "match": {
+        "buggySolver": "sinCosSwap"
+      }
+    },
+    {
+      "tags": [
+        "quadrant-sign"
+      ],
+      "match": {
+        "buggySolver": "quadrantSign"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{exactText}}"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "instructions": "Drag point P along the curve (or use the arrow keys) to explore the graph. Decimals help you check, but the answer must be exact.",
+    "config": {
+      "xRange": [
+        0,
+        6.5
+      ],
+      "yRange": [
+        -1.4,
+        1.4
+      ],
+      "xLabel": "x (radians)",
+      "functions": [
+        {
+          "id": "f",
+          "expr": "{{fn}}(x)"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "label": "P",
+          "on": "f",
+          "x": 0.5,
+          "draggable": true,
+          "step": 0.01
+        }
+      ]
+    }
+  },
+  "consequence": {
+    "cue": "marker",
+    "args": {
+      "x": "{{thetaRad}}",
+      "y": "$value",
+      "label": "your answer",
+      "tone": "bad"
+    }
+  },
+  "stem": [
+    "Find the exact value of {{fn}}({{thetaText}})."
+  ],
+  "input": {
+    "label": "Exact value",
+    "placeholder": "for example √3/2",
+    "keypad": "maths"
+  },
+  "answerText": "{{exactText}}",
+  "hints": [
+    {
+      "text": "{{thetaText}} is in the {{quadrant}} quadrant. Its reference angle is {{refDeg}}°.",
+      "cue": {
+        "cue": "move-point",
+        "args": {
+          "point": "P",
+          "x": "{{thetaRad}}"
+        }
+      }
+    },
+    {
+      "text": "Find {{fn}} of the reference angle, then decide the sign from the quadrant."
+    },
+    {
+      "text": "Use the standard values: sin 30° = 1/2, sin 45° = √2/2, sin 60° = √3/2 (and cos the other way round)."
+    }
+  ],
+  "feedback": {
+    "sin-cos-swap": {
+      "text": "That's the other function's value. Check which of sin and cos is 1/2 at a {{refDeg}}° reference angle."
+    },
+    "quadrant-sign": {
+      "text": "The size is right, but check the sign: in the {{quadrant}} quadrant, {{fn}} is negative. Look where P sits on the curve.",
+      "cue": {
+        "cue": "move-point",
+        "args": {
+          "point": "P",
+          "x": "{{thetaRad}}"
+        }
+      }
+    },
+    "sign-error": {
+      "text": "The size is right, but check the sign for the {{quadrant}} quadrant.",
+      "cue": {
+        "cue": "move-point",
+        "args": {
+          "point": "P",
+          "x": "{{thetaRad}}"
+        }
+      }
+    },
+    "generic": {
+      "text": "Use the reference angle and the quadrant. P marks x = {{thetaText}} on the curve."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "{{thetaText}} = {{deg}}°, in the {{quadrant}} quadrant, with reference angle {{refDeg}}°.",
+      "cue": {
+        "cue": "move-point",
+        "args": {
+          "point": "P",
+          "x": "{{thetaRad}}"
+        }
+      }
+    },
+    {
+      "text": "{{fn}}({{thetaText}}) = {{exactText}}. P shows the same value on the graph.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "x": "{{thetaRad}}",
+          "y": "{{value}}",
+          "label": "{{exactText}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "sin-cos-swap": {
+      "front": "sin 30° and cos 30°?",
+      "back": "sin 30° = 1/2, cos 30° = √3/2."
+    },
+    "quadrant-sign": {
+      "front": "Signs of sin and cos in each quadrant?",
+      "back": "All positive in the first; sin in the second; tan in the third; cos in the fourth."
+    },
+    "generic": {
+      "front": "How do you find sin or cos of a non-acute angle?",
+      "back": "Use the reference angle's value, with the sign from the quadrant."
+    }
+  },
+  "accessibility": {
+    "altText": "Graph of y = {{fn}}(x) from 0 to 2π, with a movable point P on the curve.",
+    "nonDragAlternative": "Type an x value for P in Precise controls, or focus P and use the arrow keys."
+  }
+}

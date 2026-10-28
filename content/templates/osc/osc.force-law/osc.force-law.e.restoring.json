@@ -1,0 +1,156 @@
+{
+  "id": "osc.force-law.e.restoring",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.force-law"
+  ],
+  "primarySkillId": "osc.force-law",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "k": {
+      "kind": "choice",
+      "values": [
+        50,
+        100,
+        200,
+        400
+      ]
+    },
+    "xcm": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        5,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.springForce",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "force",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "spring-cm-not-converted"
+      ],
+      "match": {
+        "buggySolver": "notConverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} N"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": "{{k}}",
+      "amplitude": "{{x}}"
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "spring"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A spring with k = {{k}} N/m is stretched {{xcm}} cm from its natural length.",
+    "What is the size of the restoring force?"
+  ],
+  "input": {
+    "label": "Force",
+    "placeholder": "for example 8 N",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} N",
+  "hints": [
+    {
+      "text": "The restoring force is proportional to the displacement.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "spring"
+          ]
+        }
+      }
+    },
+    {
+      "text": "F = −kx; its size is kx."
+    },
+    {
+      "text": "x in metres: {{xcm}} cm = {{x}} m."
+    }
+  ],
+  "feedback": {
+    "spring-cm-not-converted": {
+      "text": "Convert {{xcm}} cm to metres before using F = kx."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a force."
+    },
+    "generic": {
+      "text": "|F| = kx with x in metres."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "x = {{x}} m."
+    },
+    {
+      "text": "|F| = {{k}} × {{x}} = {{ans}} N, back towards equilibrium.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "spring"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "spring-cm-not-converted": {
+      "front": "F = kx with x in cm?",
+      "back": "Convert x to metres."
+    },
+    "generic": {
+      "front": "Restoring force of a spring?",
+      "back": "F = −kx."
+    }
+  },
+  "accessibility": {
+    "altText": "A block on a spring.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

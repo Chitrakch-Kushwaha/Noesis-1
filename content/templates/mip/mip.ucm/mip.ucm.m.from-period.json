@@ -1,0 +1,146 @@
+{
+  "id": "mip.ucm.m.from-period",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.ucm"
+  ],
+  "primarySkillId": "mip.ucm",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "r": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        1.5,
+        2
+      ]
+    },
+    "T": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        2,
+        4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.centripetalFromPeriod",
+  "intro": "From the period.",
+  "answer": {
+    "dimension": "acceleration",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "speed-for-acceleration"
+      ],
+      "match": {
+        "buggySolver": "speedInstead"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s^2"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "circle",
+      "circle": {
+        "radius": "{{r}}",
+        "speed": "{{v}}"
+      },
+      "showValues": false
+    },
+    "instructions": "Press Play: the orange arrow is the velocity and the peach arrow the acceleration."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "a"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A stone on a string moves in a horizontal circle of radius {{r}} m, completing one revolution every {{T}} s.",
+    "What is its centripetal acceleration?"
+  ],
+  "input": {
+    "label": "Acceleration",
+    "placeholder": "for example 40 m/s^2",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s^2",
+  "hints": [
+    {
+      "text": "Find the speed first from the period.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "v = 2πr ÷ T."
+    },
+    {
+      "text": "Then a = v² ÷ r."
+    }
+  ],
+  "feedback": {
+    "speed-for-acceleration": {
+      "text": "2πr ÷ T is the stone's speed. The acceleration is v² ÷ r = 4π²r ÷ T²."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a acceleration."
+    },
+    "generic": {
+      "text": "a = v² ÷ r with v = 2πr ÷ T, so a = 4π²r ÷ T²."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "v = 2π × {{r}} ÷ {{T}} = {{v}} m/s."
+    },
+    {
+      "text": "a = v² ÷ r = {{ans}} m/s².",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "speed-for-acceleration": {
+      "front": "Centripetal acceleration from the period?",
+      "back": "a = 4π²r ÷ T²; 2πr ÷ T is the speed."
+    },
+    "generic": {
+      "front": "Centripetal acceleration from period T?",
+      "back": "4π²r ÷ T²."
+    }
+  },
+  "accessibility": {
+    "altText": "A stone moving round a circle.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

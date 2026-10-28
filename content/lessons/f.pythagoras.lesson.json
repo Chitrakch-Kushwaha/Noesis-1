@@ -1,0 +1,104 @@
+{
+  "id": "f.pythagoras.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.pythagoras",
+  "kind": "micro-lesson",
+  "title": "Pythagoras' theorem",
+  "minutes": 4,
+  "widget": {
+    "type": "triangle-explorer",
+    "config": {
+      "mode": "triangle",
+      "hypotenuse": 5,
+      "angleDeg": 37,
+      "editable": true,
+      "showRoles": true,
+      "showValues": true
+    },
+    "instructions": "Drag corner B or use the slider to change the angles."
+  },
+  "steps": [
+    {
+      "text": "In a right triangle the side opposite the right angle is the hypotenuse, always the longest.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "hypotenuse"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Pythagoras: hypotenuse² = (one side)² + (other side)². Here 3² + 4² = 9 + 16 = 25 = 5².",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite",
+            "adjacent"
+          ]
+        }
+      }
+    },
+    {
+      "text": "To find a shorter side, subtract: b² = c² − a².",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "hypotenuse"
+          ]
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "Squares on the sides",
+    "steps": [
+      {
+        "text": "Imagine a square on each side: the area of the big square equals the two small ones together.",
+        "cue": {
+          "cue": "show-values"
+        }
+      },
+      {
+        "text": "Change the angle: the sides change, but a² + b² always equals c².",
+        "cue": {
+          "cue": "sweep",
+          "args": {
+            "from": 25,
+            "to": 65
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: c² = a² + b²; the hypotenuse is opposite the right angle.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "hypotenuse"
+          ]
+        }
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A right triangle with its side lengths.",
+    "nonDragAlternative": "Use the angle slider; the description gives every side length."
+  }
+}

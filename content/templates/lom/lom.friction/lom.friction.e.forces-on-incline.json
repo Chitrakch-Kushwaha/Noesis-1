@@ -1,0 +1,276 @@
+{
+  "id": "lom.friction.e.forces-on-incline",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.friction",
+    "lom.fbd",
+    "lom.resolve-forces"
+  ],
+  "primarySkillId": "lom.friction",
+  "difficulty": "easy",
+  "format": "diagram",
+  "estimatedSeconds": 120,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "theta": {
+      "kind": "choice",
+      "values": [
+        20,
+        25,
+        30
+      ]
+    }
+  },
+  "solver": "lom.fbdRestingIncline",
+  "intro": "Draw what really acts on the block.",
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Add each force with Precise controls, choose who exerts it, and set its size and direction. Tick Tilted axes to work along and across the slope. Press Play: a correct diagram keeps the block still.",
+    "config": {
+      "scene": "incline",
+      "inclineDeg": "{{theta}}",
+      "body": {
+        "label": "block",
+        "mass": "{{m}}"
+      },
+      "predict": true,
+      "predictSeconds": 1.2,
+      "maxMagnitude": "{{maxF}}",
+      "magnitudeStep": 0.5,
+      "allowAdd": true,
+      "allowAxesToggle": true,
+      "agents": [
+        "Earth",
+        "plank",
+        "none"
+      ],
+      "kinds": [
+        {
+          "kind": "weight",
+          "label": "Weight"
+        },
+        {
+          "kind": "normal",
+          "label": "Normal"
+        },
+        {
+          "kind": "friction",
+          "label": "Friction"
+        },
+        {
+          "kind": "applied",
+          "label": "Push"
+        },
+        {
+          "kind": "motion",
+          "label": "Force of motion"
+        }
+      ],
+      "vectors": []
+    }
+  },
+  "resolution": {
+    "cue": "student-diagram",
+    "args": {
+      "correct": [
+        {
+          "id": "sW",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90
+        },
+        {
+          "id": "sN",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "plank",
+          "magnitude": "{{N}}",
+          "angleDeg": "{{angN}}"
+        },
+        {
+          "id": "sF",
+          "kind": "friction",
+          "label": "Friction",
+          "agent": "plank",
+          "magnitude": "{{f}}",
+          "angleDeg": "{{theta}}"
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "predict"
+    }
+  ],
+  "stem": [
+    "A {{m}} kg block rests, without moving, on a rough plank tilted at {{theta}}°. Take g = 9.8 m/s².",
+    "Draw every force acting on the block, with its size and direction."
+  ],
+  "answerText": "Weight {{W}} N down; normal {{N}} N perpendicular to the plank; friction {{f}} N up the plank.",
+  "hints": [
+    {
+      "text": "What touches the block? Only the plank. Gravity acts too. The plank can push perpendicular to its surface and along it."
+    },
+    {
+      "text": "The block is at rest: the net force is zero. Tilt the axes and balance along and across the plank.",
+      "cue": {
+        "cue": "tilted-axes"
+      }
+    },
+    {
+      "text": "Across: N = mg cos θ. Along: friction up the slope = mg sin θ."
+    }
+  ],
+  "feedback": {
+    "normal-equals-weight": {
+      "text": "On a slope the plank pushes back only against the part of the weight pressing into it: N = mg cos θ, not mg.",
+      "cue": [
+        {
+          "cue": "add-vector",
+          "args": {
+            "vector": {
+              "id": "sW",
+              "kind": "weight",
+              "label": "Weight",
+              "agent": "Earth",
+              "magnitude": "{{W}}",
+              "angleDeg": -90
+            }
+          }
+        },
+        {
+          "cue": "tilted-axes"
+        },
+        {
+          "cue": "decompose",
+          "args": {
+            "id": "sW",
+            "axes": "tilted",
+            "values": false
+          }
+        }
+      ]
+    },
+    "extra-force-of-motion": {
+      "text": "Nothing pushes the block down the slope except gravity, and gravity is already the weight. The pull down the slope is just the weight's component, not an extra force."
+    },
+    "static-friction-always-max": {
+      "text": "Static friction is only as large as needed to stop slipping: here it balances mg sin θ."
+    },
+    "friction-direction-opposes-force": {
+      "text": "The block would slide down, so friction acts up the slope."
+    },
+    "missing-weight": {
+      "text": "Every body near the Earth has a weight, mg, straight down."
+    },
+    "missing-normal": {
+      "text": "The plank pushes on the block perpendicular to its surface."
+    },
+    "missing-friction": {
+      "text": "Without friction the block would slide down. The rough plank holds it."
+    },
+    "normal-direction": {
+      "text": "The normal force is perpendicular to the plank, not straight up."
+    },
+    "weight-magnitude": {
+      "text": "Weight = mg = {{m}} × 9.8 = {{W}} N."
+    },
+    "double-counted-force": {
+      "text": "The plank gives one normal force and one friction force. Remove the duplicate."
+    },
+    "generic": {
+      "text": "Name the agent of each arrow (Earth, plank) and check that the net force is zero."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Weight {{W}} N straight down, from the Earth.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "sW",
+            "kind": "weight",
+            "label": "Weight",
+            "agent": "Earth",
+            "magnitude": "{{W}}",
+            "angleDeg": -90
+          }
+        }
+      }
+    },
+    {
+      "text": "Tilted axes. Across the plank: N = mg cos {{theta}}° = {{N}} N.",
+      "cue": [
+        {
+          "cue": "tilted-axes"
+        },
+        {
+          "cue": "add-vector",
+          "args": {
+            "vector": {
+              "id": "sN",
+              "kind": "normal",
+              "label": "Normal",
+              "agent": "plank",
+              "magnitude": "{{N}}",
+              "angleDeg": "{{angN}}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "text": "Along the plank: friction balances mg sin {{theta}}° = {{f}} N, up the slope. Press Play: the block stays still.",
+      "cue": [
+        {
+          "cue": "add-vector",
+          "args": {
+            "vector": {
+              "id": "sF",
+              "kind": "friction",
+              "label": "Friction",
+              "agent": "plank",
+              "magnitude": "{{f}}",
+              "angleDeg": "{{theta}}"
+            }
+          }
+        },
+        {
+          "cue": "predict"
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "generic": {
+      "front": "Forces on a block resting on a rough slope?",
+      "back": "Weight (down), normal mg cos θ (perpendicular), static friction mg sin θ (up the slope)."
+    }
+  },
+  "accessibility": {
+    "altText": "A block resting on a plank tilted at {{theta}}°. No forces are drawn yet.",
+    "nonDragAlternative": "Use Add force with a type and an agent, then type each size and direction in Precise controls."
+  }
+}

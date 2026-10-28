@@ -1,0 +1,153 @@
+{
+  "id": "rot.angular-kinematics.m.revolutions",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.angular-kinematics"
+  ],
+  "primarySkillId": "rot.angular-kinematics",
+  "difficulty": "medium",
+  "format": "number",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "alpha": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        6
+      ]
+    },
+    "t": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.revsFromRest",
+  "intro": "Turning faster and faster.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.01,
+      "absolute": 0.05
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "rad-for-revolutions"
+      ],
+      "match": {
+        "buggySolver": "radiansNotRevs"
+      }
+    },
+    {
+      "tags": [
+        "rot-missing-half"
+      ],
+      "match": {
+        "buggySolver": "missingHalf"
+      }
+    }
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "disc",
+        "mass": 2,
+        "size": 0.5,
+        "torque": "{{alpha*0.25}}",
+        "omega0": 0,
+        "duration": "{{t}}"
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A wheel starts from rest with a constant angular acceleration of {{alpha}} rad/s².",
+    "How many revolutions does it make in the first {{t}} s?"
+  ],
+  "input": {
+    "label": "Revolutions",
+    "placeholder": "for example 8",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Use the rotational form of s = ut + ½at².",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "θ = ½αt² (from rest), in radians."
+    },
+    {
+      "text": "Revolutions = θ ÷ 2π."
+    }
+  ],
+  "feedback": {
+    "rad-for-revolutions": {
+      "text": "That angle is in radians. Divide by 2π for revolutions."
+    },
+    "rot-missing-half": {
+      "text": "From rest, θ = ½αt²: include the ½."
+    },
+    "generic": {
+      "text": "θ = ½αt², revolutions = θ ÷ 2π."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "θ = ½ × {{alpha}} × {{t}}² = {{theta}} rad."
+    },
+    {
+      "text": "Revolutions = {{theta}} ÷ 2π = {{ans}}.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "rad-for-revolutions": {
+      "front": "Radians to revolutions?",
+      "back": "Divide by 2π."
+    },
+    "rot-missing-half": {
+      "front": "Angle turned from rest at constant α?",
+      "back": "θ = ½αt²."
+    },
+    "generic": {
+      "front": "Revolutions from rest at constant α?",
+      "back": "½αt² ÷ 2π."
+    }
+  },
+  "accessibility": {
+    "altText": "A rotating disc speeding up.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

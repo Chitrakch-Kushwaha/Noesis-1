@@ -1,0 +1,153 @@
+{
+  "id": "mip.vector-basics.e.which-vector",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.vector-basics"
+  ],
+  "primarySkillId": "mip.vector-basics",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "d": {
+      "kind": "choice",
+      "values": [
+        12,
+        20,
+        25,
+        30,
+        40,
+        45,
+        60
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.whichVector",
+  "intro": "A quick check.",
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 8,
+      "vectors": [
+        {
+          "id": "d",
+          "kind": "vector",
+          "label": "displacement",
+          "agent": "none",
+          "magnitude": 4,
+          "angleDeg": 90,
+          "tone": "a"
+        }
+      ]
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "stem": [
+    "A bus travels {{d}} km along a straight road towards the north.",
+    "Which of these quantities about the trip is a vector?"
+  ],
+  "options": [
+    {
+      "id": "disp",
+      "text": "Its displacement, {{d}} km north"
+    },
+    {
+      "id": "speed",
+      "text": "Its average speed",
+      "tags": [
+        "scalar-vector-confusion"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Speed: only a size. Turning the arrow doesn't change it."
+        }
+      }
+    },
+    {
+      "id": "time",
+      "text": "The time the trip takes",
+      "tags": [
+        "scalar-vector-confusion"
+      ]
+    },
+    {
+      "id": "mass",
+      "text": "The mass of the bus",
+      "tags": [
+        "scalar-vector-confusion"
+      ]
+    }
+  ],
+  "answerText": "Its displacement",
+  "hints": [
+    {
+      "text": "A vector needs both a size and a direction to describe it.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "d"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Ask: does saying 'north' change the meaning of this quantity?"
+    },
+    {
+      "text": "Only one of the options has a direction attached."
+    }
+  ],
+  "feedback": {
+    "scalar-vector-confusion": {
+      "text": "Speed has a size but no direction: it is a scalar."
+    },
+    "generic": {
+      "text": "Vectors have direction as well as size."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Displacement has a size and a direction ({{d}} km north): a vector.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "d"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Speed, time and mass have only sizes: they are scalars."
+    }
+  ],
+  "flashcards": {
+    "scalar-vector-confusion": {
+      "front": "Which needs a direction: speed or displacement?",
+      "back": "Displacement (a vector). Speed, mass and time are scalars."
+    },
+    "generic": {
+      "front": "Scalar or vector: displacement, speed, mass, time?",
+      "back": "Displacement is a vector; speed, mass and time are scalars."
+    }
+  },
+  "accessibility": {
+    "altText": "An arrow pointing north representing the bus's displacement.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

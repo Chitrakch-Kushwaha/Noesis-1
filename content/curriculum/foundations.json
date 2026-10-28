@@ -1,0 +1,32 @@
+{
+  "$comment": "Foundational micro-skills: the leaves of every prerequisite detour. Each gets a short interactive micro-lesson plus practice. level 'pre-11' = Class 9-10 content; 'bridge-11' = Class 11 content outside the curated subset (safe for any Class 11 or 12 student). Nothing here is Class 12, so a Class 11 student can always be routed here.",
+  "version": 1,
+  "foundations": [
+    { "id": "f.number-systems", "title": "Number systems: naturals, integers, rationals, reals", "level": "pre-11", "widget": "number-line", "prereqs": [] },
+    { "id": "f.ratio", "title": "Ratio, proportion and percentage", "level": "pre-11", "widget": "number-line", "prereqs": [] },
+    { "id": "f.powers", "title": "Laws of exponents and scientific notation", "level": "pre-11", "widget": "number-line", "prereqs": [] },
+    { "id": "f.rearrange", "title": "Solving linear equations and rearranging formulas", "level": "pre-11", "widget": "balance-scale", "prereqs": [] },
+    { "id": "f.factorise", "title": "Algebraic identities and factorisation", "level": "pre-11", "widget": "algebra-tiles", "prereqs": [] },
+    { "id": "f.polynomials", "title": "Polynomials and their zeroes", "level": "pre-11", "widget": "graph-plot", "prereqs": ["f.factorise"] },
+    { "id": "f.quadratic", "title": "Solving quadratic equations", "level": "pre-11", "widget": "graph-plot", "prereqs": ["f.factorise"] },
+    { "id": "f.function-idea", "title": "Substituting into expressions: input to output", "level": "pre-11", "widget": "graph-plot", "prereqs": [] },
+    { "id": "f.inequalities", "title": "Linear inequalities on the number line", "level": "bridge-11", "widget": "number-line", "prereqs": ["f.rearrange"] },
+    { "id": "f.coord", "title": "Coordinate plane, distance and section formula", "level": "pre-11", "widget": "graph-plot", "prereqs": ["f.pythagoras"] },
+    { "id": "f.linear-graph", "title": "Graph of a linear equation y = mx + c", "level": "pre-11", "widget": "graph-plot", "prereqs": ["f.coord"] },
+    { "id": "f.slope", "title": "Slope of a straight-line graph as a rate of change", "level": "pre-11", "widget": "graph-plot", "prereqs": ["f.coord"] },
+    { "id": "f.area-graph", "title": "Area under a straight-line graph", "level": "pre-11", "widget": "graph-plot", "prereqs": ["f.mensuration"] },
+    { "id": "f.mensuration", "title": "Areas of triangles, rectangles, trapezia and circles", "level": "pre-11", "widget": "graph-plot", "prereqs": [] },
+    { "id": "f.pythagoras", "title": "Pythagoras theorem", "level": "pre-11", "widget": "triangle-explorer", "prereqs": [] },
+    { "id": "f.angles", "title": "Angle relationships: parallel lines and triangles", "level": "pre-11", "widget": "triangle-explorer", "prereqs": [] },
+    { "id": "f.circle", "title": "Circle measurement: circumference, arc and area", "level": "pre-11", "widget": "unit-circle", "prereqs": [] },
+    { "id": "f.trig-ratios", "title": "Trigonometric ratios in a right triangle", "level": "pre-11", "widget": "triangle-explorer", "prereqs": ["f.pythagoras"] },
+    { "id": "f.trig-identity", "title": "Standard angle values and sin²θ + cos²θ = 1", "level": "pre-11", "widget": "triangle-explorer", "prereqs": ["f.trig-ratios"] },
+    { "id": "f.si-units", "title": "SI units, prefixes and unit conversion", "level": "bridge-11", "widget": "unit-converter", "prereqs": ["f.powers"] },
+    { "id": "f.speed-time", "title": "Speed, distance and time", "level": "pre-11", "widget": "motion-track", "prereqs": ["f.ratio"] },
+    { "id": "f.force-intro", "title": "Force, mass and Newton's laws (qualitative)", "level": "pre-11", "widget": "vector-board", "prereqs": [] },
+    { "id": "f.work-energy-intro", "title": "Work, kinetic energy and potential energy basics", "level": "pre-11", "widget": "motion-track", "prereqs": [] },
+    { "id": "f.electricity-basics", "title": "Charge, current, Ohm's law, series and parallel resistors", "level": "pre-11", "widget": "circuit-board", "prereqs": ["f.rearrange"] },
+    { "id": "f.magnetism-basics", "title": "Magnetic field lines and the field around a current", "level": "pre-11", "widget": "field-map", "prereqs": [] },
+    { "id": "f.light-basics", "title": "Reflection, refraction, lenses and sign convention", "level": "pre-11", "widget": "ray-diagram", "prereqs": [] }
+  ]
+}

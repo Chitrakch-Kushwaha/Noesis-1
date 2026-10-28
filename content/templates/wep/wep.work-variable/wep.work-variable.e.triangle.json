@@ -1,0 +1,181 @@
+{
+  "id": "wep.work-variable.e.triangle",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.work-variable"
+  ],
+  "primarySkillId": "wep.work-variable",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "F0": {
+      "kind": "choice",
+      "values": [
+        10,
+        20,
+        30,
+        40
+      ]
+    },
+    "x0": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.triangleWork",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "area-rectangle-for-triangle"
+      ],
+      "match": {
+        "buggySolver": "rectangle"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        "{{x0+1}}"
+      ],
+      "yRange": [
+        0,
+        "{{F0*1.3}}"
+      ],
+      "xLabel": "x (m)",
+      "yLabel": "F (N)",
+      "functions": [
+        {
+          "id": "F",
+          "expr": "{{F0/x0}}*x",
+          "domain": [
+            0,
+            "{{x0}}"
+          ]
+        }
+      ]
+    },
+    "instructions": "The graph shows the force against position; the area under it is the work done."
+  },
+  "consequence": [
+    {
+      "cue": "area",
+      "args": {
+        "top": "F",
+        "from": 0,
+        "to": "{{x0}}",
+        "showValue": false
+      }
+    }
+  ],
+  "stem": [
+    "A force rises steadily from 0 to {{F0}} N as a body moves from x = 0 to x = {{x0}} m.",
+    "How much work does the force do?"
+  ],
+  "input": {
+    "label": "Work",
+    "placeholder": "for example 40 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "Work is the area under the F–x graph.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "F",
+          "from": 0,
+          "to": "{{x0}}",
+          "showValue": false
+        }
+      }
+    },
+    {
+      "text": "The shape under the line is a triangle."
+    },
+    {
+      "text": "Area = ½ × base × height."
+    }
+  ],
+  "feedback": {
+    "area-rectangle-for-triangle": {
+      "text": "The force wasn't {{F0}} N all the way: the area under the line is a triangle.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "F",
+          "from": 0,
+          "to": "{{x0}}",
+          "showValue": false
+        }
+      }
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "W = area under F–x = ½ F₀ x₀."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Area of the triangle: ½ × {{x0}} × {{F0}}.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "F",
+          "from": 0,
+          "to": "{{x0}}"
+        }
+      }
+    },
+    {
+      "text": "W = {{ans}} J."
+    }
+  ],
+  "flashcards": {
+    "area-rectangle-for-triangle": {
+      "front": "Work from a straight F–x line rising from 0?",
+      "back": "The triangle's area, ½ F x."
+    },
+    "generic": {
+      "front": "Work from a straight F–x line from 0?",
+      "back": "½ F x (triangle)."
+    }
+  },
+  "accessibility": {
+    "altText": "An F–x graph rising in a straight line from 0 to {{F0}} N at x = {{x0}} m.",
+    "nonDragAlternative": "The graph is for reading; type your answer in the box."
+  }
+}

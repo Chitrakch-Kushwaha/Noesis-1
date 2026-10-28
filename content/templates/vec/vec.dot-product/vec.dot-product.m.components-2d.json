@@ -1,0 +1,214 @@
+{
+  "id": "vec.dot-product.m.components-2d",
+  "version": 2,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": [],
+    "migratedFrom": "src/questions/templates.ts vec.dot-product.m.components-2d@1 (Phase 1 diagnostic; same review status)"
+  },
+  "chapterId": "vec",
+  "skillIds": [
+    "vec.dot-product",
+    "vec.components"
+  ],
+  "primarySkillId": "vec.dot-product",
+  "difficulty": "medium",
+  "format": "number",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "a1": {
+      "kind": "int",
+      "min": -5,
+      "max": 6
+    },
+    "a2": {
+      "kind": "int",
+      "min": -5,
+      "max": 6
+    },
+    "b1": {
+      "kind": "int",
+      "min": -5,
+      "max": 6
+    },
+    "b2": {
+      "kind": "int",
+      "min": -5,
+      "max": 6
+    }
+  },
+  "constraints": [
+    "a1 != 0",
+    "a2 != 0",
+    "b1 != 0",
+    "b2 != 0",
+    "a1*b1 + a2*b2 != a1*b2 + a2*b1"
+  ],
+  "solver": "vec.dotProduct",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "tolerance": {
+      "relative": 1e-09
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "cross-multiplied-components"
+      ],
+      "match": {
+        "buggySolver": "crossMultiplied"
+      }
+    },
+    {
+      "tags": [
+        "ignored-angle"
+      ],
+      "match": {
+        "buggySolver": "ignoredAngle"
+      }
+    },
+    {
+      "tags": [
+        "dropped-j-term"
+      ],
+      "match": {
+        "buggySolver": "droppedJ"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{a1|raw}}*{{b1|raw}} + {{a2|raw}}*({{b2|raw}})"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The grid shows a and b. Turn on Show components to see each vector split into its î and ĵ parts.",
+    "config": {
+      "scene": "grid",
+      "unit": "",
+      "maxMagnitude": 9,
+      "showResultant": false,
+      "allowEdit": false,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "a",
+          "magnitude": "{{magA}}",
+          "angleDeg": "{{angA}}",
+          "locked": true,
+          "tone": "a"
+        },
+        {
+          "id": "b",
+          "kind": "vector",
+          "label": "b",
+          "magnitude": "{{magB}}",
+          "angleDeg": "{{angB}}",
+          "locked": true,
+          "tone": "b"
+        }
+      ]
+    }
+  },
+  "stem": [
+    "Let a = {{aStr}} and b = {{bStr}}.",
+    "Find the scalar product a · b."
+  ],
+  "input": {
+    "label": "a · b",
+    "placeholder": "a number, for example −7",
+    "keypad": "maths"
+  },
+  "answerText": "{{dot}}",
+  "hints": [
+    {
+      "text": "The scalar product pairs up matching components. Which component of a goes with which component of b?",
+      "cue": {
+        "cue": "components"
+      }
+    },
+    {
+      "text": "Multiply x with x and y with y, then add: a·b = a₁b₁ + a₂b₂."
+    },
+    {
+      "text": "({{a1}})({{b1}}) + ({{a2}})({{b2}})"
+    }
+  ],
+  "feedback": {
+    "cross-multiplied-components": {
+      "text": "You multiplied x with y. The scalar product pairs î with î and ĵ with ĵ, because î·ĵ = 0.",
+      "cue": {
+        "cue": "components"
+      }
+    },
+    "ignored-angle": {
+      "text": "|a||b| is the scalar product only when the vectors point the same way. In general it is |a||b| cos θ, which the components give directly. The highlighted projection shows how much of a lies along b.",
+      "cue": {
+        "cue": "project",
+        "args": {
+          "a": "a",
+          "b": "b"
+        }
+      }
+    },
+    "dropped-j-term": {
+      "text": "That's only the î part. Add the ĵ part too.",
+      "cue": {
+        "cue": "components"
+      }
+    },
+    "generic": {
+      "text": "Pair matching components, multiply each pair, then add."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "a·b = a₁b₁ + a₂b₂, because î·î = ĵ·ĵ = 1 and î·ĵ = 0.",
+      "cue": {
+        "cue": "components"
+      }
+    },
+    {
+      "text": "= ({{a1}})({{b1}}) + ({{a2}})({{b2}}) = {{xx}} + {{yy}}"
+    },
+    {
+      "text": "= {{dot}}. Geometrically, that is |b| times the projection of a onto b.",
+      "cue": {
+        "cue": "project",
+        "args": {
+          "a": "a",
+          "b": "b"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "cross-multiplied-components": {
+      "front": "a = a₁î + a₂ĵ, b = b₁î + b₂ĵ. What is a·b?",
+      "back": "a₁b₁ + a₂b₂ (matching components), because î·ĵ = 0."
+    },
+    "ignored-angle": {
+      "front": "Is a·b = |a||b| always?",
+      "back": "No: a·b = |a||b| cos θ. It equals |a||b| only when θ = 0."
+    },
+    "dropped-j-term": {
+      "front": "How many terms does a·b have for 2-D vectors?",
+      "back": "Two: a₁b₁ + a₂b₂."
+    },
+    "generic": {
+      "front": "Scalar product from components?",
+      "back": "Multiply matching components and add."
+    }
+  },
+  "accessibility": {
+    "altText": "Grid with vector a = {{aStr}} and vector b = {{bStr}} drawn from the origin.",
+    "nonDragAlternative": "Nothing needs dragging: the vectors are fixed, Show components is a checkbox, and each vector is described in text."
+  }
+}

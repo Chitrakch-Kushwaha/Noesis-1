@@ -1,0 +1,158 @@
+{
+  "id": "wep.power.h.pump",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.power",
+    "wep.potential-energy"
+  ],
+  "primarySkillId": "wep.power",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "L": {
+      "kind": "choice",
+      "values": [
+        300,
+        600,
+        900,
+        1200
+      ]
+    },
+    "h": {
+      "kind": "choice",
+      "values": [
+        10,
+        15,
+        20
+      ]
+    },
+    "tmin": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.pumpPower",
+  "intro": "Pumping water uphill.",
+  "answer": {
+    "dimension": "power",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "power-minutes"
+      ],
+      "match": {
+        "buggySolver": "minutesNotConverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} W"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "w",
+          "label": "water (height)",
+          "x0": 0,
+          "v0": "{{h/(tmin*60)}}",
+          "a": 0
+        }
+      ],
+      "duration": 4,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Check the time unit: power is per second."
+      }
+    }
+  ],
+  "stem": [
+    "A pump lifts {{L}} litres of water through {{h}} m every {{tmin}} min. 1 litre of water has a mass of 1 kg; g = 9.8 m/s².",
+    "What is the pump's useful power output?"
+  ],
+  "input": {
+    "label": "Power",
+    "placeholder": "for example 900 W",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} W",
+  "hints": [
+    {
+      "text": "Work done = gain in PE of the water.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "W = mgh with m = {{L}} kg."
+    },
+    {
+      "text": "Divide by the time in seconds."
+    }
+  ],
+  "feedback": {
+    "power-minutes": {
+      "text": "A watt is a joule per second: convert {{tmin}} min to seconds."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a power."
+    },
+    "generic": {
+      "text": "P = mgh ÷ t (t in s)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "m = {{mass}} kg; W = {{mass}} × 9.8 × {{h}} = {{W}} J."
+    },
+    {
+      "text": "t = {{t}} s, so P = {{ans}} W.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "power-minutes": {
+      "front": "A watt is a joule per …?",
+      "back": "Second. Convert minutes to seconds."
+    },
+    "generic": {
+      "front": "Pump power?",
+      "back": "mgh ÷ t, with t in seconds."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane representing the water being raised.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

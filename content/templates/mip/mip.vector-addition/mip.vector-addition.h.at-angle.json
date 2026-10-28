@@ -1,0 +1,193 @@
+{
+  "id": "mip.vector-addition.h.at-angle",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.vector-addition"
+  ],
+  "primarySkillId": "mip.vector-addition",
+  "difficulty": "hard",
+  "format": "number",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        8
+      ]
+    },
+    "th": {
+      "kind": "choice",
+      "values": [
+        60,
+        120,
+        45,
+        135
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.resultantAtAngle",
+  "intro": "Vectors at any angle.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "perpendicular-formula-misapplied"
+      ],
+      "match": {
+        "buggySolver": "perpendicularFormula"
+      }
+    },
+    {
+      "tags": [
+        "cosine-law-sign"
+      ],
+      "match": {
+        "buggySolver": "cosineSign"
+      }
+    }
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 14,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "a",
+          "agent": "none",
+          "magnitude": "{{a}}",
+          "angleDeg": 0,
+          "tone": "a"
+        },
+        {
+          "id": "b",
+          "kind": "vector",
+          "label": "b",
+          "agent": "none",
+          "magnitude": "{{b}}",
+          "angleDeg": "{{th}}",
+          "tone": "b"
+        }
+      ],
+      "unit": "m"
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "a",
+          "b"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "Two displacements of {{a}} m and {{b}} m are made with an angle of {{th}}° between their directions.",
+    "What is the magnitude of the resultant displacement, in metres?"
+  ],
+  "input": {
+    "label": "Resultant (m)",
+    "placeholder": "for example 7.2",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "The amber arrow on the board is a + b: watch it as you think.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Use the law for any angle: R² = a² + b² + 2ab cos θ."
+    },
+    {
+      "text": "cos {{th}}° may be negative."
+    }
+  ],
+  "feedback": {
+    "perpendicular-formula-misapplied": {
+      "text": "√(a² + b²) holds only for vectors at right angles. Include the 2ab cos θ term."
+    },
+    "cosine-law-sign": {
+      "text": "With θ as the angle between the two vectors (tail to tail), the term is +2ab cos θ."
+    },
+    "generic": {
+      "text": "R = √(a² + b² + 2ab cos θ)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "R² = {{a}}² + {{b}}² + 2 × {{a}} × {{b}} × cos {{th}}°."
+    },
+    {
+      "text": "R = {{ans}} m, at {{dir}}° to the first displacement.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "perpendicular-formula-misapplied": {
+      "front": "Resultant of a and b at angle θ?",
+      "back": "R = √(a² + b² + 2ab cos θ); √(a² + b²) only when θ = 90°."
+    },
+    "cosine-law-sign": {
+      "front": "Sign of 2ab cos θ in the resultant formula?",
+      "back": "Plus, when θ is the angle between a and b placed tail to tail."
+    },
+    "generic": {
+      "front": "Resultant of a and b at angle θ?",
+      "back": "R = √(a² + b² + 2ab cos θ)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two vectors on a grid at {{th}}° to each other, with their resultant.",
+    "nonDragAlternative": "Select an arrow and type its size and direction in Precise controls; type your answer in the box."
+  }
+}

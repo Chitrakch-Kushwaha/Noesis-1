@@ -1,0 +1,155 @@
+{
+  "id": "rot.angular-kinematics.e.rpm",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.angular-kinematics"
+  ],
+  "primarySkillId": "rot.angular-kinematics",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "rpm": {
+      "kind": "choice",
+      "values": [
+        30,
+        60,
+        120,
+        300,
+        600
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.rpmToRad",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "angular-velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "rev-not-radians"
+      ],
+      "match": {
+        "buggySolver": "revNotRadians"
+      }
+    },
+    {
+      "tags": [
+        "minutes-kept"
+      ],
+      "match": {
+        "buggySolver": "minutesKept"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} rad/s"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "disc",
+        "mass": 1,
+        "size": 0.6,
+        "torque": 0,
+        "omega0": "{{ans}}",
+        "duration": 2
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "One revolution = 2π radians; one minute = 60 s."
+      }
+    }
+  ],
+  "stem": [
+    "A ceiling fan turns at {{rpm}} revolutions per minute.",
+    "What is its angular speed in rad/s?"
+  ],
+  "input": {
+    "label": "Angular speed",
+    "placeholder": "for example 6.3 rad/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} rad/s",
+  "hints": [
+    {
+      "text": "How many radians are in one revolution?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "1 rev = 2π rad; 1 min = 60 s."
+    },
+    {
+      "text": "ω = 2π × rpm ÷ 60."
+    }
+  ],
+  "feedback": {
+    "rev-not-radians": {
+      "text": "That is revolutions per second. One revolution is 2π rad."
+    },
+    "minutes-kept": {
+      "text": "Convert per minute to per second: divide by 60."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a angular velocity."
+    },
+    "generic": {
+      "text": "ω = 2π × (rpm) ÷ 60."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "{{rpm}} rev/min = {{rps}} rev/s."
+    },
+    {
+      "text": "ω = 2π × {{rps}} = {{ans}} rad/s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "rev-not-radians": {
+      "front": "rpm to rad/s?",
+      "back": "Multiply by 2π, divide by 60."
+    },
+    "minutes-kept": {
+      "front": "1 rpm in rad/s?",
+      "back": "2π ÷ 60 ≈ 0.105 rad/s."
+    },
+    "generic": {
+      "front": "rpm to rad/s?",
+      "back": "× 2π ÷ 60."
+    }
+  },
+  "accessibility": {
+    "altText": "A rotating disc representing the fan.",
+    "nonDragAlternative": "Use Play and the torque slider to explore; type your answer in the box."
+  }
+}

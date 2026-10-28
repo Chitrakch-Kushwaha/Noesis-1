@@ -1,0 +1,133 @@
+{
+  "id": "wep.collisions.e.what-is-conserved",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.collisions"
+  ],
+  "primarySkillId": "wep.collisions",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.inelasticConserved",
+  "intro": "A quick check.",
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "a",
+          "label": "trolley A",
+          "x0": -6,
+          "v0": 3,
+          "a": 0
+        },
+        {
+          "id": "b",
+          "label": "trolley B",
+          "x0": 0,
+          "v0": 0,
+          "a": 0
+        }
+      ],
+      "duration": 3,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play; scrub the time slider to inspect any instant."
+  },
+  "stem": [
+    "Two {{m}} kg trolleys collide and stick together.",
+    "Which quantity is conserved in this collision?"
+  ],
+  "options": [
+    {
+      "id": "momentum",
+      "text": "Total momentum, but not total kinetic energy"
+    },
+    {
+      "id": "both",
+      "text": "Both total momentum and total kinetic energy",
+      "tags": [
+        "ke-always-conserved"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Compare ½mv² before and after: it drops."
+        }
+      }
+    }
+  ],
+  "answerText": "Momentum only",
+  "hints": [
+    {
+      "text": "With no external force, which quantity can't change?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Kinetic energy is conserved only in elastic collisions."
+    },
+    {
+      "text": "Sticking together is perfectly inelastic."
+    }
+  ],
+  "feedback": {
+    "ke-always-conserved": {
+      "text": "When bodies stick together, some kinetic energy becomes heat, sound and deformation. Only momentum is conserved."
+    },
+    "generic": {
+      "text": "Momentum is conserved in every collision; KE only in elastic ones."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "No external force: total momentum is conserved.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "They stick, so it is perfectly inelastic: some KE is lost."
+    }
+  ],
+  "flashcards": {
+    "ke-always-conserved": {
+      "front": "Is KE conserved when two bodies stick together?",
+      "back": "No. Momentum is conserved; some KE becomes heat, sound and deformation."
+    },
+    "generic": {
+      "front": "What is conserved when bodies stick together?",
+      "back": "Momentum, not kinetic energy."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes with trolley A moving towards trolley B.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

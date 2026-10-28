@@ -1,0 +1,101 @@
+{
+  "id": "f.work-energy-intro.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.work-energy-intro",
+  "kind": "micro-lesson",
+  "title": "Work and energy",
+  "minutes": 4,
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "system": "pendulum",
+      "length": 1,
+      "amplitude": 0.3,
+      "periods": 1.5
+    },
+    "instructions": "Press Play: the bars show the energy changing form."
+  },
+  "steps": [
+    {
+      "text": "Work is done when a force moves something along its direction: W = F × d, measured in joules.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "W = F × d"
+        }
+      }
+    },
+    {
+      "text": "Energy is the ability to do work. A raised object has potential energy; a moving one has kinetic energy.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    },
+    {
+      "text": "As the pendulum swings down, potential energy becomes kinetic energy; on the way up it changes back.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Without friction the total stays the same: energy changes form but is not used up.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "A falling ball",
+    "steps": [
+      {
+        "text": "A dropped ball loses height and gains speed: potential energy becomes kinetic energy.",
+        "cue": {
+          "cue": "play"
+        }
+      },
+      {
+        "text": "Just before landing almost all the energy is kinetic.",
+        "cue": {
+          "cue": "highlight",
+          "args": {
+            "ids": [
+              "energy"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: W = F d; PE ↔ KE; total energy is conserved.",
+      "cue": {
+        "cue": "play"
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A pendulum with kinetic and potential energy bars.",
+    "nonDragAlternative": "Use Play and the time slider; the description gives each energy."
+  }
+}

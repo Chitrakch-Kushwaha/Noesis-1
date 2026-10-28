@@ -1,0 +1,163 @@
+{
+  "id": "wep.scalar-product.h.perpendicular-k",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.scalar-product"
+  ],
+  "primarySkillId": "wep.scalar-product",
+  "difficulty": "hard",
+  "format": "number",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "c": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        5
+      ]
+    },
+    "d": {
+      "kind": "choice",
+      "values": [
+        -4,
+        -2,
+        4,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.perpendicularK",
+  "intro": "Perpendicular vectors.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "perpendicular-dot-sign"
+      ],
+      "match": {
+        "buggySolver": "signLost"
+      }
+    },
+    {
+      "tags": [
+        "perpendicular-dot-sign"
+      ],
+      "match": {
+        "buggySolver": "ratioInverted"
+      }
+    }
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 8,
+      "vectors": [
+        {
+          "id": "b",
+          "kind": "vector",
+          "label": "b",
+          "agent": "none",
+          "magnitude": "{{magB}}",
+          "angleDeg": "{{angB}}",
+          "tone": "b"
+        }
+      ],
+      "showResultant": false
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Perpendicular vectors have a zero scalar product."
+      }
+    }
+  ],
+  "stem": [
+    "For what value of k are a = {{a}}î + kĵ and b = {{c}}î + ({{d}})ĵ perpendicular?"
+  ],
+  "input": {
+    "label": "k",
+    "placeholder": "for example 1.5",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Perpendicular means a · b = 0.",
+      "cue": {
+        "cue": "components"
+      }
+    },
+    {
+      "text": "a · b = {{a}} × {{c}} + k × ({{d}})."
+    },
+    {
+      "text": "Set it to zero and solve for k."
+    }
+  ],
+  "feedback": {
+    "perpendicular-dot-sign": {
+      "text": "Rearrange a · b = 0 for k: k = −(aₓbₓ) ÷ b_y."
+    },
+    "generic": {
+      "text": "a · b = 0 for perpendicular vectors."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "a · b = {{ac}} + {{d}}k = 0."
+    },
+    {
+      "text": "k = −{{ac}} ÷ ({{d}}) = {{ans}}.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "With this k, a is at 90° to b."
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "perpendicular-dot-sign": {
+      "front": "Perpendicular vectors: a · b = ?",
+      "back": "0. Solve aₓbₓ + a_yb_y = 0 carefully for the unknown."
+    },
+    "generic": {
+      "front": "Condition for perpendicular vectors?",
+      "back": "a · b = 0."
+    }
+  },
+  "accessibility": {
+    "altText": "The vector b drawn on a grid.",
+    "nonDragAlternative": "Type your answer in the box."
+  }
+}

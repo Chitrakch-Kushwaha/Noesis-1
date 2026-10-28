@@ -1,0 +1,192 @@
+{
+  "id": "f.coord.e.distance",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.coord"
+  ],
+  "primarySkillId": "f.coord",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "x1": {
+      "kind": "int",
+      "min": -3,
+      "max": 1
+    },
+    "y1": {
+      "kind": "int",
+      "min": -3,
+      "max": 1
+    },
+    "dx": {
+      "kind": "choice",
+      "values": [
+        3,
+        6,
+        5,
+        8
+      ]
+    },
+    "dy": {
+      "kind": "choice",
+      "values": [
+        4,
+        8,
+        12,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.distanceTwoPoints",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "distance-added-legs"
+      ],
+      "match": {
+        "buggySolver": "addedLegs"
+      }
+    }
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -4,
+        10
+      ],
+      "yRange": [
+        -4,
+        14
+      ],
+      "functions": [
+        {
+          "id": "L",
+          "expr": "{{y1}} + {{dy/dx}}*(x - {{x1}})",
+          "tone": "muted"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "label": "P",
+          "x": "{{x1}}",
+          "y": "{{y1}}"
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "x": "{{x2}}",
+          "y": "{{y2}}"
+        }
+      ]
+    },
+    "instructions": "The graph is for exploring; drag points or sliders where you see them."
+  },
+  "consequence": [
+    {
+      "cue": "slope-triangle",
+      "args": {
+        "fn": "L",
+        "x1": "{{x1}}",
+        "x2": "{{x2}}",
+        "tone": "bad"
+      }
+    }
+  ],
+  "stem": [
+    "What is the distance between ({{x1}}, {{y1}}) and ({{x2}}, {{y2}})?"
+  ],
+  "input": {
+    "label": "Distance",
+    "placeholder": "for example 10",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Draw the right triangle with PQ as the hypotenuse.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": "{{x1}}",
+          "x2": "{{x2}}"
+        }
+      }
+    },
+    {
+      "text": "The legs are Δx and Δy."
+    },
+    {
+      "text": "d = √(Δx² + Δy²)."
+    }
+  ],
+  "feedback": {
+    "distance-added-legs": {
+      "text": "The straight-line distance is the hypotenuse of the right triangle: use Pythagoras.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": "{{x1}}",
+          "x2": "{{x2}}",
+          "tone": "bad"
+        }
+      }
+    },
+    "generic": {
+      "text": "d = √(Δx² + Δy²)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Δx = {{dx}}, Δy = {{dy}}.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": "{{x1}}",
+          "x2": "{{x2}}"
+        }
+      }
+    },
+    {
+      "text": "d = √({{dx}}² + {{dy}}²) = {{ans}}."
+    }
+  ],
+  "flashcards": {
+    "distance-added-legs": {
+      "front": "Distance between two points?",
+      "back": "√(Δx² + Δy²)."
+    },
+    "generic": {
+      "front": "Distance between two points?",
+      "back": "√(Δx² + Δy²)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two points joined by a line segment.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

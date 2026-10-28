@@ -1,0 +1,14 @@
+{
+  "name": "noesis-content-drafting",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Adult-only, offline drafting of question variations for human review. Never imported by the NOESIS app.",
+  "type": "module",
+  "scripts": {
+    "draft": "node draft.mjs",
+    "check": "node check.mjs",
+    "verify": "node verify.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": { "node": ">=20.9" }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "noesis",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interactive, adaptive Physics and Mathematics for CBSE/NCERT Class 11–12",
+  "scripts": {
+    "dev": "next dev",
+    "prebuild": "npm run content:validate",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "pretest": "npm run content:validate -- --quiet",
+    "test": "vitest run",
+    "e2e": "playwright test",
+    "content:validate": "tsx scripts/content/validate.ts",
+    "content:review": "tsx scripts/content/review.ts",
+    "check:curriculum": "node scripts/validate-curriculum.mjs",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "check:no-ai-sdk": "node scripts/check-no-ai-sdk.mjs",
+    "check": "npm run check:curriculum && npm run content:validate && npm run check:contrast && npm run check:no-ai-sdk && npm run typecheck && npm test",
+    "tutor:select-adapter": "node scripts/tutor/select-adapter.mjs",
+    "tutor:verify-openai": "tsx scripts/tutor/verify-openai.ts",
+    "drafting:test": "npm --prefix tools/content-drafting test",
+    "e2e:tutor-fixture": "playwright test -c playwright.fixture.config.ts"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "dependencies": {
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "d3-selection": "^3.0.0",
+    "d3-transition": "^3.0.1",
+    "d3-zoom": "^3.0.0",
+    "dexie": "^4.4.7",
+    "firebase": "^12.19.0",
+    "katex": "^0.19.1",
+    "motion": "^14.7.1",
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.63.0",
+    "@types/d3-selection": "^3.0.12",
+    "@types/d3-transition": "^3.0.9",
+    "@types/d3-zoom": "^3.0.9",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "fake-indexeddb": "^6.2.6",
+    "fast-check": "^4.10.2",
+    "playwright-core": "^1.63.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "id": "wep.energy-conservation.m.swing",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.energy-conservation"
+  ],
+  "primarySkillId": "wep.energy-conservation",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "L": {
+      "kind": "choice",
+      "values": [
+        1,
+        1.5,
+        2,
+        3
+      ]
+    },
+    "th": {
+      "kind": "choice",
+      "values": [
+        30,
+        45,
+        60
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.swingSpeed",
+  "intro": "A pendulum swing.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "swing-full-drop"
+      ],
+      "match": {
+        "buggySolver": "ignoredAngle"
+      }
+    },
+    {
+      "tags": [
+        "swing-uses-cos"
+      ],
+      "match": {
+        "buggySolver": "usedCos"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "system": "pendulum",
+      "length": "{{L}}",
+      "amplitude": "{{L*th*pi/180}}",
+      "periods": 1
+    },
+    "instructions": "Press Play: the bars show the energy changing between potential and kinetic."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "energy"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A pendulum bob on a {{L}} m string is pulled aside until the string makes {{th}}° with the vertical, then released.",
+    "How fast is the bob moving at the lowest point? Take g = 9.8 m/s²."
+  ],
+  "input": {
+    "label": "Speed",
+    "placeholder": "for example 2.5 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "How far does the bob drop between release and the lowest point?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Drop = L(1 − cos θ)."
+    },
+    {
+      "text": "mg × drop = ½mv²."
+    }
+  ],
+  "feedback": {
+    "swing-full-drop": {
+      "text": "The bob doesn't fall the whole string length: it drops L(1 − cos θ)."
+    },
+    "swing-uses-cos": {
+      "text": "L cos θ is the height of the support above the bob; the drop is L − L cos θ."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "v = √(2gL(1 − cos θ))."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Drop: {{L}} × (1 − cos {{th}}°) = {{drop}} m."
+    },
+    {
+      "text": "v = √(2 × 9.8 × {{drop}}) = {{ans}} m/s.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "swing-full-drop": {
+      "front": "Height fallen by a pendulum released at θ?",
+      "back": "L(1 − cos θ)."
+    },
+    "swing-uses-cos": {
+      "front": "Pendulum released at θ: drop of the bob?",
+      "back": "L − L cos θ = L(1 − cos θ)."
+    },
+    "generic": {
+      "front": "Pendulum speed at the bottom after release at θ?",
+      "back": "√(2gL(1 − cos θ))."
+    }
+  },
+  "accessibility": {
+    "altText": "A pendulum with energy bars.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

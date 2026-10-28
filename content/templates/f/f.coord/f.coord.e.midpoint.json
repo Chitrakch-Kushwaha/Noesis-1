@@ -1,0 +1,169 @@
+{
+  "id": "f.coord.e.midpoint",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.coord"
+  ],
+  "primarySkillId": "f.coord",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "x1": {
+      "kind": "int",
+      "min": -4,
+      "max": 2
+    },
+    "x2": {
+      "kind": "int",
+      "min": 3,
+      "max": 8
+    },
+    "y1": {
+      "kind": "int",
+      "min": -2,
+      "max": 2
+    },
+    "y2": {
+      "kind": "int",
+      "min": 3,
+      "max": 6
+    }
+  },
+  "constraints": [],
+  "solver": "f.midpoint",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "midpoint-half-difference"
+      ],
+      "match": {
+        "buggySolver": "halfDifference"
+      }
+    }
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -5,
+        9
+      ],
+      "yRange": [
+        -3,
+        7
+      ],
+      "points": [
+        {
+          "id": "P",
+          "label": "P",
+          "x": "{{x1}}",
+          "y": "{{y1}}"
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "x": "{{x2}}",
+          "y": "{{y2}}"
+        }
+      ]
+    },
+    "instructions": "The graph is for exploring; drag points or sliders where you see them."
+  },
+  "consequence": [
+    {
+      "cue": "marker",
+      "args": {
+        "x": "$value",
+        "y": "{{my}}",
+        "label": "your midpoint",
+        "tone": "bad"
+      }
+    }
+  ],
+  "stem": [
+    "What is the x-coordinate of the midpoint of ({{x1}}, {{y1}}) and ({{x2}}, {{y2}})?"
+  ],
+  "input": {
+    "label": "x-coordinate",
+    "placeholder": "for example 2.5",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "The midpoint is halfway between the points in each direction.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "P",
+            "Q"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Average the x-coordinates."
+    },
+    {
+      "text": "(x₁ + x₂) ÷ 2."
+    }
+  ],
+  "feedback": {
+    "midpoint-half-difference": {
+      "text": "The midpoint averages the coordinates: (x₁ + x₂) ÷ 2."
+    },
+    "generic": {
+      "text": "Midpoint = ((x₁ + x₂)/2, (y₁ + y₂)/2)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "x = ({{x1}} + {{x2}}) ÷ 2."
+    },
+    {
+      "text": "= {{ans}}.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "x": "{{ans}}",
+          "y": "{{my}}",
+          "label": "midpoint"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "midpoint-half-difference": {
+      "front": "Midpoint x-coordinate?",
+      "back": "(x₁ + x₂) ÷ 2."
+    },
+    "generic": {
+      "front": "Midpoint of two points?",
+      "back": "Average each coordinate."
+    }
+  },
+  "accessibility": {
+    "altText": "Two points on a grid.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

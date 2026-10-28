@@ -1,0 +1,226 @@
+{
+  "id": "lom.circular-dynamics.h.banked-road",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.circular-dynamics",
+    "lom.resolve-forces"
+  ],
+  "primarySkillId": "lom.circular-dynamics",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 180,
+  "parameters": {
+    "r": {
+      "kind": "choice",
+      "values": [
+        30,
+        50,
+        80,
+        100,
+        120
+      ]
+    },
+    "theta": {
+      "kind": "choice",
+      "values": [
+        10,
+        15,
+        20,
+        25,
+        30
+      ]
+    }
+  },
+  "solver": "lom.bankedSpeed",
+  "intro": "A banked curve: no friction needed at the right speed.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "banked-used-sin"
+      ],
+      "match": {
+        "buggySolver": "usedSin"
+      }
+    },
+    {
+      "tags": [
+        "tan-inverted"
+      ],
+      "match": {
+        "buggySolver": "invertedTan"
+      }
+    },
+    {
+      "tags": [
+        "forgot-square-root"
+      ],
+      "match": {
+        "buggySolver": "forgotRoot"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{v|raw}} m/s"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Seen from behind on the banked road, the centre of the curve is to the left. Turn on components to split the normal force into vertical and horizontal parts.",
+    "config": {
+      "scene": "incline",
+      "inclineDeg": "{{theta}}",
+      "body": {
+        "label": "car",
+        "mass": 1000
+      },
+      "maxMagnitude": "{{Nm*1.2}}",
+      "showResultant": true,
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "road",
+          "magnitude": "{{Nm}}",
+          "angleDeg": "{{angN}}",
+          "locked": true
+        }
+      ]
+    }
+  },
+  "stem": [
+    "A road curve of radius {{r}} m is banked at {{theta}}° so that a car can take it with no sideways friction at one particular speed. Take g = 9.8 m/s².",
+    "What is that speed?"
+  ],
+  "input": {
+    "label": "Design speed",
+    "placeholder": "for example 15 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{v}} m/s",
+  "hints": [
+    {
+      "text": "With no friction, only the weight and the normal force act. Which of them has a part towards the centre?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Split N: vertically N cos θ balances m g; horizontally N sin θ supplies m v² ÷ r.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "N",
+          "axes": "standard",
+          "values": false
+        }
+      }
+    },
+    {
+      "text": "Divide the two equations: tan θ = v² ÷ (r g), so v = √(r g tan θ)."
+    }
+  ],
+  "feedback": {
+    "banked-used-sin": {
+      "text": "Dividing N sin θ = m v²/r by N cos θ = m g gives tan θ, not sin θ.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "N",
+          "axes": "standard",
+          "values": false
+        }
+      }
+    },
+    "tan-inverted": {
+      "text": "Check which equation is on top: horizontal ÷ vertical gives tan θ = v² ÷ (r g)."
+    },
+    "forgot-square-root": {
+      "text": "r g tan θ is v². Take its square root."
+    },
+    "dimension-mismatch": {
+      "text": "Give a speed, in m/s."
+    },
+    "generic": {
+      "text": "Resolve the normal force vertically and horizontally, then divide the two equations."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Only weight and the normal force act. Split N into vertical and horizontal parts.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "N",
+          "axes": "standard"
+        }
+      }
+    },
+    {
+      "text": "Vertically: N cos θ = m g. Horizontally (towards the centre): N sin θ = m v² ÷ r.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Dividing: tan θ = v² ÷ (r g), so v² = {{r}} × 9.8 × tan {{theta}}° = {{v2}} and v = {{v}} m/s."
+    }
+  ],
+  "flashcards": {
+    "banked-used-sin": {
+      "front": "Banked curve, no friction: which trig ratio links v and θ?",
+      "back": "tan θ = v² ÷ (r g)."
+    },
+    "tan-inverted": {
+      "front": "Is tan θ = r g ÷ v² for a banked curve?",
+      "back": "No: tan θ = v² ÷ (r g) (horizontal ÷ vertical)."
+    },
+    "forgot-square-root": {
+      "front": "μ g r for a level bend gives what?",
+      "back": "v², the square of the greatest speed. Take the square root."
+    },
+    "generic": {
+      "front": "Design speed of a banked curve?",
+      "back": "v = √(r g tan θ)."
+    }
+  },
+  "accessibility": {
+    "altText": "A car on a road banked at {{theta}}°, seen from behind, with its weight and the normal force drawn.",
+    "nonDragAlternative": "Tick Components to see each force's parts in the description; type your answer in the box."
+  }
+}

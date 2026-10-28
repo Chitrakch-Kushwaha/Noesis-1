@@ -1,0 +1,181 @@
+{
+  "id": "kin.relative-1d.h.overtake",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.relative-1d"
+  ],
+  "primarySkillId": "kin.relative-1d",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "L1": {
+      "kind": "choice",
+      "values": [
+        100,
+        150,
+        200
+      ]
+    },
+    "L2": {
+      "kind": "choice",
+      "values": [
+        100,
+        150,
+        250
+      ]
+    },
+    "v1": {
+      "kind": "choice",
+      "values": [
+        25,
+        30,
+        35
+      ]
+    },
+    "v2": {
+      "kind": "choice",
+      "values": [
+        10,
+        15,
+        20
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.overtake",
+  "intro": "Passing completely takes longer than you think.",
+  "answer": {
+    "dimension": "time",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "overtake-one-length"
+      ],
+      "match": {
+        "buggySolver": "oneLength"
+      }
+    },
+    {
+      "tags": [
+        "overtake-speeds-added"
+      ],
+      "match": {
+        "buggySolver": "speedsAdded"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "f",
+          "label": "faster train (front)",
+          "x0": 0,
+          "v0": "{{v1}}",
+          "a": 0
+        },
+        {
+          "id": "s",
+          "label": "slower train (back)",
+          "x0": 0,
+          "v0": "{{v2}}",
+          "a": 0
+        }
+      ],
+      "duration": 4,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion; scrub the time slider to inspect any instant."
+  },
+  "stem": [
+    "A {{L1}} m train at {{v1}} m/s overtakes a {{L2}} m train moving the same way on a parallel track at {{v2}} m/s.",
+    "How long does it take, from the front of the faster train reaching the back of the slower one until it has passed completely?"
+  ],
+  "input": {
+    "label": "Time",
+    "placeholder": "for example 20 s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} s",
+  "hints": [
+    {
+      "text": "Work in the frame of the slower train. How fast does the faster one move there?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Relative speed: v₁ − v₂."
+    },
+    {
+      "text": "Distance to gain: L₁ + L₂."
+    }
+  ],
+  "feedback": {
+    "overtake-one-length": {
+      "text": "To pass completely, the faster train must gain both lengths: its own and the other train's."
+    },
+    "overtake-speeds-added": {
+      "text": "The trains move the same way, so the faster one gains only at the difference of their speeds.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a time."
+    },
+    "generic": {
+      "text": "Time = (L₁ + L₂) ÷ (v₁ − v₂)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Relative speed: {{v1}} − {{v2}} = {{rel}} m/s."
+    },
+    {
+      "text": "Gain needed: {{L1}} + {{L2}} = {{Lsum}} m, so t = {{Lsum}} ÷ {{rel}} = {{ans}} s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "overtake-one-length": {
+      "front": "Time for one train to pass another completely?",
+      "back": "(L₁ + L₂) ÷ relative speed."
+    },
+    "overtake-speeds-added": {
+      "front": "Relative speed of trains moving the same way?",
+      "back": "The difference of their speeds."
+    },
+    "generic": {
+      "front": "Overtaking time for two trains moving the same way?",
+      "back": "(L₁ + L₂) ÷ (v₁ − v₂)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes with the two trains moving right at different speeds.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

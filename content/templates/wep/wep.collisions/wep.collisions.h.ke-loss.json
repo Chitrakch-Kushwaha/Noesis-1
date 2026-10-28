@@ -1,0 +1,200 @@
+{
+  "id": "wep.collisions.h.ke-loss",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.collisions",
+    "lom.momentum-conservation"
+  ],
+  "primarySkillId": "wep.collisions",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        6
+      ]
+    },
+    "u": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        6,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.keLoss",
+  "intro": "Where does the energy go?",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "ke-final-for-loss"
+      ],
+      "match": {
+        "buggySolver": "finalKE"
+      }
+    },
+    {
+      "tags": [
+        "all-ke-lost"
+      ],
+      "match": {
+        "buggySolver": "initialKE"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "a",
+          "label": "cart 1",
+          "x0": -6,
+          "v0": "{{u}}",
+          "a": 0
+        },
+        {
+          "id": "b",
+          "label": "cart 2",
+          "x0": 0,
+          "v0": 0,
+          "a": 0
+        }
+      ],
+      "duration": 3,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "after",
+          "label": "carts together",
+          "x0": 0,
+          "v0": "{{v}}",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A {{m1}} kg cart moving at {{u}} m/s hits a {{m2}} kg cart at rest, and they stick together.",
+    "How much kinetic energy is lost in the collision?"
+  ],
+  "input": {
+    "label": "KE lost",
+    "placeholder": "for example 12 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "First find the shared speed from momentum.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "v = m₁u ÷ (m₁ + m₂)."
+    },
+    {
+      "text": "Loss = ½m₁u² − ½(m₁ + m₂)v²."
+    }
+  ],
+  "feedback": {
+    "ke-final-for-loss": {
+      "text": "That is the kinetic energy left after the collision. The loss is initial KE minus final KE."
+    },
+    "all-ke-lost": {
+      "text": "The carts keep moving after sticking (momentum is conserved), so not all the KE is lost."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "KE lost = ½m₁u² − ½(m₁ + m₂)v²."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "v = {{m1}} × {{u}} ÷ ({{m1}} + {{m2}}) = {{v}} m/s."
+    },
+    {
+      "text": "KE before {{k1}} J, after {{k2}} J: lost {{ans}} J.",
+      "cue": {
+        "cue": "ghost-lane",
+        "args": {
+          "lane": {
+            "id": "after",
+            "label": "carts together",
+            "x0": 0,
+            "v0": "{{v}}",
+            "a": 0
+          }
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "ke-final-for-loss": {
+      "front": "KE lost in a collision?",
+      "back": "Initial KE − final KE."
+    },
+    "all-ke-lost": {
+      "front": "Do two sticking carts stop dead?",
+      "back": "No: momentum is conserved, so they keep moving and keep some KE."
+    },
+    "generic": {
+      "front": "KE lost in a sticking collision?",
+      "back": "Initial KE − final KE, with v from momentum."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes: cart 1 moving towards cart 2, which is at rest.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

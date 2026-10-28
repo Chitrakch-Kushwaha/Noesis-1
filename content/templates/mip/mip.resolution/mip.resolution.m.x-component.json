@@ -1,0 +1,189 @@
+{
+  "id": "mip.resolution.m.x-component",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.resolution",
+    "f.trig-ratios"
+  ],
+  "primarySkillId": "mip.resolution",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 80,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        20,
+        40,
+        50,
+        60,
+        80
+      ]
+    },
+    "ang": {
+      "kind": "choice",
+      "values": [
+        30,
+        37,
+        45,
+        53,
+        60
+      ]
+    }
+  },
+  "solver": "mip.xComponent",
+  "intro": "Splitting a force into components.",
+  "answer": {
+    "dimension": "force",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "sin-cos-swap"
+      ],
+      "match": {
+        "buggySolver": "usedSin"
+      }
+    },
+    {
+      "tags": [
+        "tan-for-component"
+      ],
+      "match": {
+        "buggySolver": "usedTan"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{Fx|raw}} N"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Tick Components to see the force split along the axes.",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": "{{maxM}}",
+      "unit": "N",
+      "showResultant": false,
+      "vectors": [
+        {
+          "id": "F",
+          "kind": "force",
+          "label": "F",
+          "agent": "none",
+          "magnitude": "{{F}}",
+          "angleDeg": "{{ang}}",
+          "locked": true
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "decompose",
+      "args": {
+        "id": "F",
+        "axes": "standard",
+        "values": false
+      }
+    }
+  ],
+  "stem": [
+    "A {{F}} N force acts at {{ang}}° above the +x axis.",
+    "What is its x-component?"
+  ],
+  "input": {
+    "label": "x-component",
+    "placeholder": "for example 25 N",
+    "keypad": "none"
+  },
+  "answerText": "{{Fx}} N",
+  "hints": [
+    {
+      "text": "The force is the hypotenuse of a right triangle with its two components.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "F",
+          "axes": "standard",
+          "values": false
+        }
+      }
+    },
+    {
+      "text": "The x-component is the side adjacent to the {{ang}}° angle. Which ratio links adjacent and hypotenuse?"
+    },
+    {
+      "text": "Adjacent = hypotenuse × cos θ, so F_x = F cos θ."
+    }
+  ],
+  "feedback": {
+    "sin-cos-swap": {
+      "text": "You found the side opposite the angle, the y-component. The x-component is adjacent to the angle: F cos θ.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "F",
+          "axes": "standard",
+          "values": false
+        }
+      }
+    },
+    "tan-for-component": {
+      "text": "tan θ relates the two components to each other, not a component to the force. Use cos θ for the adjacent side."
+    },
+    "dimension-mismatch": {
+      "text": "A component of a force is a force, in newtons."
+    },
+    "generic": {
+      "text": "Identify the side adjacent to the angle and use the matching ratio."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Split F into components along the axes.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "F",
+          "axes": "standard"
+        }
+      }
+    },
+    {
+      "text": "The x-component is adjacent to {{ang}}°: F_x = {{F}} × cos {{ang}}° = {{Fx}} N. (The y-component is {{Fy}} N.)"
+    }
+  ],
+  "flashcards": {
+    "sin-cos-swap": {
+      "front": "Force F at θ above the x-axis: x-component?",
+      "back": "F cos θ (adjacent). The y-component is F sin θ."
+    },
+    "tan-for-component": {
+      "front": "Does F tan θ give a component of F?",
+      "back": "No. tan θ = F_y ÷ F_x relates the components to each other."
+    },
+    "generic": {
+      "front": "x-component of a force at θ above +x?",
+      "back": "F cos θ."
+    }
+  },
+  "accessibility": {
+    "altText": "A {{F}} N force on a grid at {{ang}}° above the x-axis.",
+    "nonDragAlternative": "Tick Components and read the description; type your answer in the box."
+  }
+}

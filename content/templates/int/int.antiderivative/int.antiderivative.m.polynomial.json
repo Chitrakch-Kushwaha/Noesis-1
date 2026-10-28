@@ -1,0 +1,238 @@
+{
+  "id": "int.antiderivative.m.polynomial",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "int",
+  "skillIds": [
+    "int.antiderivative"
+  ],
+  "primarySkillId": "int.antiderivative",
+  "difficulty": "medium",
+  "format": "antiderivative",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "a": {
+      "kind": "int",
+      "min": 2,
+      "max": 3
+    },
+    "b": {
+      "kind": "int",
+      "min": -3,
+      "max": 3
+    },
+    "c": {
+      "kind": "int",
+      "min": -4,
+      "max": 4
+    }
+  },
+  "constraints": [
+    "b != 0",
+    "c != 0",
+    "abs(b) != 1"
+  ],
+  "solver": "int.polyAntiderivative",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "variable": "x",
+    "domain": {
+      "x": [
+        -3,
+        3
+      ]
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "forgot-to-divide"
+      ],
+      "match": {
+        "buggySolver": "forgotDivide"
+      }
+    },
+    {
+      "tags": [
+        "differentiated-instead"
+      ],
+      "match": {
+        "buggySolver": "differentiated"
+      }
+    },
+    {
+      "tags": [
+        "constant-term-not-integrated"
+      ],
+      "match": {
+        "buggySolver": "constantNotIntegrated"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{Fref}}"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "instructions": "Drag point X along the curve. The shaded area from 0 to X grows like the antiderivative: that is the link between integrals and areas.",
+    "config": {
+      "xRange": [
+        -3,
+        3
+      ],
+      "yRange": [
+        "{{ylo}}",
+        "{{yhi}}"
+      ],
+      "functions": [
+        {
+          "id": "f",
+          "expr": "{{A3|raw}}*x^2 + {{B2|raw}}*x + {{c|raw}}"
+        }
+      ],
+      "points": [
+        {
+          "id": "X",
+          "label": "X",
+          "on": "f",
+          "x": 1,
+          "draggable": true,
+          "step": 0.25
+        }
+      ],
+      "areas": [
+        {
+          "id": "acc",
+          "top": "f",
+          "bottom": 0,
+          "from": 0,
+          "to": "X",
+          "tone": "neutral",
+          "label": "Signed area from 0 to X"
+        }
+      ],
+      "equation": {
+        "fn": "f"
+      }
+    }
+  },
+  "consequence": {
+    "cue": "add-function",
+    "args": {
+      "id": "student",
+      "expr": "$input",
+      "tone": "bad",
+      "label": "your antiderivative",
+      "constants": [
+        "C"
+      ]
+    }
+  },
+  "stem": [
+    "Find ∫ ({{A3}}x² {{B2|signed}}x {{c|signed}}) dx."
+  ],
+  "input": {
+    "label": "Antiderivative",
+    "placeholder": "for example x³ + 2x + C",
+    "keypad": "maths"
+  },
+  "answerText": "{{a}}x³ {{b|signed}}x² {{c|signed}}x + C",
+  "hints": [
+    {
+      "text": "Integration undoes differentiation: you need a function whose derivative is the integrand."
+    },
+    {
+      "text": "∫ xⁿ dx = xⁿ⁺¹ ÷ (n + 1) + C. Raise the power, then divide by the new power. The antiderivative measures the area building up under the curve.",
+      "cue": {
+        "cue": "sweep-area",
+        "args": {
+          "id": "acc2",
+          "top": "f",
+          "bottom": 0,
+          "from": 0,
+          "to": 2,
+          "tone": "neutral"
+        }
+      }
+    },
+    {
+      "text": "∫ {{A3}}x² dx = {{a}}x³. Do the same for the other two terms."
+    }
+  ],
+  "feedback": {
+    "forgot-to-divide": {
+      "text": "After raising each power by one, divide by the new power: ∫ x² dx = x³/3. Differentiate your answer to check: it should give back the integrand."
+    },
+    "differentiated-instead": {
+      "text": "That's the derivative of the integrand, not its antiderivative. Integration raises powers; differentiation lowers them."
+    },
+    "constant-term-not-integrated": {
+      "text": "The constant {{c}} integrates to {{c}}x, not {{c}}: its antiderivative must have derivative {{c}}."
+    },
+    "generic": {
+      "text": "Check by differentiating your answer: it must give back the integrand exactly. Your curve (dashed, coral) is compared with the true antiderivative after the solution."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Integrate term by term with ∫ xⁿ dx = xⁿ⁺¹/(n + 1).",
+      "cue": {
+        "cue": "sweep-area",
+        "args": {
+          "id": "acc2",
+          "top": "f",
+          "bottom": 0,
+          "from": 0,
+          "to": 2,
+          "tone": "good"
+        }
+      }
+    },
+    {
+      "text": "∫ {{A3}}x² dx = {{a}}x³; ∫ {{B2}}x dx = {{b}}x²; ∫ {{c}} dx = {{c}}x."
+    },
+    {
+      "text": "So ∫ f dx = {{a}}x³ {{b|signed}}x² {{c|signed}}x + C. The solid amber curve is this antiderivative with C = 0.",
+      "cue": {
+        "cue": "add-function",
+        "args": {
+          "id": "F",
+          "expr": "{{Fref}}",
+          "tone": "good",
+          "label": "antiderivative"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "forgot-to-divide": {
+      "front": "∫ x² dx?",
+      "back": "x³/3 + C: raise the power, then divide by the new power."
+    },
+    "differentiated-instead": {
+      "front": "Integration vs differentiation: which raises powers?",
+      "back": "Integration raises the power by one; differentiation lowers it."
+    },
+    "constant-term-not-integrated": {
+      "front": "∫ 5 dx?",
+      "back": "5x + C."
+    },
+    "generic": {
+      "front": "How can you check an antiderivative?",
+      "back": "Differentiate it: you should get the integrand back."
+    }
+  },
+  "accessibility": {
+    "altText": "Graph of y = {{A3}}x² {{B2|signed}}x {{c|signed}} with the area from 0 to a movable point X shaded.",
+    "nonDragAlternative": "Type an x value for X in Precise controls, or focus X and use the arrow keys."
+  }
+}

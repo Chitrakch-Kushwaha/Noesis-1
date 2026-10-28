@@ -1,0 +1,158 @@
+{
+  "id": "kin.relative-1d.e.same-direction",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.relative-1d"
+  ],
+  "primarySkillId": "kin.relative-1d",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "vA": {
+      "kind": "choice",
+      "values": [
+        20,
+        25,
+        30
+      ]
+    },
+    "vB": {
+      "kind": "choice",
+      "values": [
+        12,
+        15,
+        18
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.relativeSameDir",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "relative-added"
+      ],
+      "match": {
+        "buggySolver": "added"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "A",
+          "label": "car A",
+          "x0": 0,
+          "v0": "{{vA}}",
+          "a": 0
+        },
+        {
+          "id": "B",
+          "label": "car B",
+          "x0": 0,
+          "v0": "{{vB}}",
+          "a": 0
+        }
+      ],
+      "duration": 3,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Ride along with car B: A creeps ahead only at the difference of the two speeds."
+      }
+    }
+  ],
+  "stem": [
+    "Car A drives east at {{vA}} m/s and car B drives east at {{vB}} m/s on a straight road.",
+    "What is the velocity of A relative to B (east positive)?"
+  ],
+  "input": {
+    "label": "Relative velocity",
+    "placeholder": "for example 8 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "Imagine riding in car B. How fast does A move away from you?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "v_AB = v_A − v_B."
+    },
+    {
+      "text": "Both velocities are positive (east)."
+    }
+  ],
+  "feedback": {
+    "relative-added": {
+      "text": "Both cars move the same way, so B sees A pulling ahead only by the difference of their speeds.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "Relative velocity of A with respect to B is v_A − v_B."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "v_AB = v_A − v_B."
+    },
+    {
+      "text": "= {{vA}} − {{vB}} = {{ans}} m/s: A pulls ahead at {{ans}} m/s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "relative-added": {
+      "front": "Velocity of A relative to B, both moving the same way?",
+      "back": "v_A − v_B."
+    },
+    "generic": {
+      "front": "Velocity of A relative to B?",
+      "back": "v_A − v_B."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes with cars A and B both moving right.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

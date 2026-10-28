@@ -1,0 +1,438 @@
+{
+  "id": "kin.acceleration.m.vt-area",
+  "version": 2,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": [],
+    "migratedFrom": "src/questions/templates.ts kin.acceleration.m.vt-area@1 (Phase 1 diagnostic; same review status)"
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.acceleration",
+    "kin.xt-graphs"
+  ],
+  "primarySkillId": "kin.acceleration",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "u": {
+      "kind": "int",
+      "min": 2,
+      "max": 9
+    },
+    "k": {
+      "kind": "int",
+      "min": 2,
+      "max": 7
+    },
+    "t": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        6,
+        8,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.vtArea",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.01
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "area-uses-final-velocity"
+      ],
+      "match": {
+        "buggySolver": "areaUsesFinalVelocity"
+      }
+    },
+    {
+      "tags": [
+        "area-ignores-acceleration"
+      ],
+      "match": {
+        "buggySolver": "areaIgnoresAcceleration"
+      }
+    },
+    {
+      "tags": [
+        "area-misses-rectangle"
+      ],
+      "match": {
+        "buggySolver": "areaMissesRectangle"
+      }
+    },
+    {
+      "tags": [
+        "slope-instead-of-area"
+      ],
+      "match": {
+        "buggySolver": "slopeInsteadOfArea"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{s/1000|raw}} km",
+    "{{s*100|raw}} cm",
+    "{{s|raw}}m",
+    "{{s|raw}} metres"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "instructions": "Drag point P along the line, or focus it and use the arrow keys, to read the velocity at any moment.",
+    "config": {
+      "xRange": [
+        0,
+        "{{t}}"
+      ],
+      "yRange": [
+        0,
+        "{{vmax}}"
+      ],
+      "xLabel": "t (s)",
+      "yLabel": "v (m/s)",
+      "functions": [
+        {
+          "id": "line",
+          "expr": "{{u|raw}} + {{acc|raw}}*x",
+          "label": "velocity"
+        },
+        {
+          "id": "flatU",
+          "expr": "{{u|raw}}",
+          "tone": "hidden"
+        },
+        {
+          "id": "flatV",
+          "expr": "{{v|raw}}",
+          "tone": "hidden"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "label": "P",
+          "on": "line",
+          "x": "{{t/2}}",
+          "draggable": true,
+          "step": 0.5
+        }
+      ]
+    }
+  },
+  "stem": [
+    "A cyclist's velocity rises steadily from {{u}} m/s to {{v}} m/s over {{t}} s, as the velocity–time graph shows.",
+    "How far does the cyclist travel in those {{t}} seconds?"
+  ],
+  "input": {
+    "label": "Distance travelled",
+    "placeholder": "for example 42 m",
+    "keypad": "none"
+  },
+  "answerText": "{{s}} m",
+  "hints": [
+    {
+      "text": "On a velocity–time graph, what does the area under the line stand for?"
+    },
+    {
+      "text": "Split the region under the line into a rectangle and a triangle.",
+      "cue": [
+        {
+          "cue": "clear-overlay"
+        },
+        {
+          "cue": "area",
+          "args": {
+            "id": "rect",
+            "top": "flatU",
+            "bottom": 0,
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "neutral",
+            "showValue": false
+          }
+        },
+        {
+          "cue": "area",
+          "args": {
+            "id": "tri",
+            "top": "line",
+            "bottom": "flatU",
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "good",
+            "showValue": false
+          }
+        }
+      ]
+    },
+    {
+      "text": "Rectangle: {{u}} × {{t}}. Triangle: ½ × ({{v}} − {{u}}) × {{t}}. Add them."
+    }
+  ],
+  "feedback": {
+    "area-uses-final-velocity": {
+      "text": "{{v}} m/s × {{t}} s assumes the cyclist moved at the final speed the whole time. The coral region is what you counted; the cyclist only covered the orange area under the line.",
+      "cue": [
+        {
+          "cue": "area",
+          "args": {
+            "id": "over",
+            "top": "flatV",
+            "bottom": 0,
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "bad",
+            "label": "Your answer, v × t"
+          }
+        },
+        {
+          "cue": "area",
+          "args": {
+            "id": "full",
+            "top": "line",
+            "bottom": 0,
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "good",
+            "showValue": false
+          }
+        }
+      ]
+    },
+    "area-ignores-acceleration": {
+      "text": "{{u}} m/s × {{t}} s is only the rectangle under the starting speed. The cyclist sped up, so the coral triangle on top counts too.",
+      "cue": [
+        {
+          "cue": "area",
+          "args": {
+            "id": "rect",
+            "top": "flatU",
+            "bottom": 0,
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "neutral",
+            "label": "Your answer, u × t"
+          }
+        },
+        {
+          "cue": "area",
+          "args": {
+            "id": "tri",
+            "top": "line",
+            "bottom": "flatU",
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "bad",
+            "showValue": false
+          }
+        }
+      ]
+    },
+    "area-misses-rectangle": {
+      "text": "That's only the triangle. The cyclist was already moving at the start, so the coral rectangle underneath counts as well.",
+      "cue": [
+        {
+          "cue": "area",
+          "args": {
+            "id": "tri",
+            "top": "line",
+            "bottom": "flatU",
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "good",
+            "label": "Your answer, the triangle"
+          }
+        },
+        {
+          "cue": "area",
+          "args": {
+            "id": "rect",
+            "top": "flatU",
+            "bottom": 0,
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "bad",
+            "showValue": false
+          }
+        }
+      ]
+    },
+    "slope-instead-of-area": {
+      "text": "That's the slope of the line (rise over run), which is the acceleration. Distance is the area under a velocity–time graph, not its slope.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "line",
+          "x1": 0,
+          "x2": "{{t}}",
+          "tone": "bad"
+        }
+      }
+    },
+    "dimension-mismatch": {
+      "text": "Distance is a length. Check your unit."
+    },
+    "unit-conversion-error": {
+      "text": "Check your unit conversion. The graph uses metres and seconds."
+    },
+    "generic": {
+      "text": "Distance on a velocity–time graph is the area under the line. Which shapes make up that area?",
+      "cue": {
+        "cue": "sweep-area",
+        "args": {
+          "id": "full",
+          "top": "line",
+          "bottom": 0,
+          "from": 0,
+          "to": "{{t}}",
+          "tone": "good",
+          "showValue": false
+        }
+      }
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Displacement equals the area under the velocity–time graph from 0 to {{t}} s.",
+      "cue": {
+        "cue": "sweep-area",
+        "args": {
+          "id": "full",
+          "top": "line",
+          "bottom": 0,
+          "from": 0,
+          "to": "{{t}}",
+          "tone": "good"
+        }
+      }
+    },
+    {
+      "text": "Rectangle under the starting speed: {{u}} m/s × {{t}} s = {{rect}} m.",
+      "cue": [
+        {
+          "cue": "clear-overlay"
+        },
+        {
+          "cue": "area",
+          "args": {
+            "id": "rect",
+            "top": "flatU",
+            "bottom": 0,
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "neutral",
+            "label": "u × t"
+          }
+        }
+      ]
+    },
+    {
+      "text": "Triangle for the gain in speed: ½ × ({{v}} − {{u}}) m/s × {{t}} s = {{tri}} m.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "id": "tri",
+          "top": "line",
+          "bottom": "flatU",
+          "from": 0,
+          "to": "{{t}}",
+          "tone": "good",
+          "label": "½(v − u)t"
+        }
+      }
+    },
+    {
+      "text": "Total distance: {{rect}} + {{tri}} = {{s}} m.",
+      "cue": [
+        {
+          "cue": "clear-overlay"
+        },
+        {
+          "cue": "area",
+          "args": {
+            "id": "full",
+            "top": "line",
+            "bottom": 0,
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "good",
+            "label": "Distance"
+          }
+        }
+      ]
+    }
+  ],
+  "alternativeSolution": {
+    "title": "Using the average velocity",
+    "steps": [
+      {
+        "text": "For steady acceleration the average velocity is halfway between the start and end: ({{u}} + {{v}})/2 = {{(u+v)/2}} m/s.",
+        "cue": {
+          "cue": "marker",
+          "args": {
+            "x": "{{t/2}}",
+            "y": "{{(u+v)/2}}",
+            "label": "average velocity"
+          }
+        }
+      },
+      {
+        "text": "Distance = average velocity × time = {{(u+v)/2}} × {{t}} = {{s}} m. The rectangle under the average-velocity line has the same area as the region under the graph.",
+        "cue": {
+          "cue": "area",
+          "args": {
+            "id": "avg",
+            "top": "{{(u+v)/2}}",
+            "bottom": 0,
+            "from": 0,
+            "to": "{{t}}",
+            "tone": "neutral",
+            "label": "average × time"
+          }
+        }
+      }
+    ]
+  },
+  "flashcards": {
+    "area-uses-final-velocity": {
+      "front": "Velocity rises from u to v in time t. Why isn't the distance v × t?",
+      "back": "The body was slower earlier. Distance is the area under the v–t line: rectangle u·t plus triangle ½(v − u)t."
+    },
+    "area-ignores-acceleration": {
+      "front": "Speeding up from u to v: is the distance u × t?",
+      "back": "No. That is only the rectangle. Add the triangle ½(v − u)t for the speed gained."
+    },
+    "area-misses-rectangle": {
+      "front": "Which shapes make up the area under a rising v–t line that starts at u > 0?",
+      "back": "A rectangle u·t under the starting speed plus a triangle ½(v − u)t on top."
+    },
+    "slope-instead-of-area": {
+      "front": "On a v–t graph, what do the slope and the area tell you?",
+      "back": "Slope = acceleration. Area under the line = displacement."
+    },
+    "generic": {
+      "front": "How do you get distance from a velocity–time graph?",
+      "back": "Find the area under the line between the two times."
+    }
+  },
+  "accessibility": {
+    "altText": "Velocity–time graph: a straight line rising from {{u}} m/s at t = 0 to {{v}} m/s at t = {{t}} s.",
+    "nonDragAlternative": "Type a time for point P in Precise controls, or focus P and use the arrow keys."
+  }
+}

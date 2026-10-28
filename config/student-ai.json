@@ -1,0 +1,8 @@
+{
+  "$comment": "Student AI activation record (docs/09, docs/10). Live tutoring is possible only when every field below is filled in by a person AND the server environment sets STUDENT_AI_ENABLED=true with a matching STUDENT_AI_PROVIDER AND the provider's adapter is compiled in (npm run tutor:select-adapter) AND its key is present. A configured API key alone is never an activation decision.",
+  "provider": null,
+  "providerDecision": null,
+  "privacyReview": null,
+  "text": false,
+  "voice": false
+}

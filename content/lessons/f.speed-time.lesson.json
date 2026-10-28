@@ -1,0 +1,113 @@
+{
+  "id": "f.speed-time.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.speed-time",
+  "kind": "micro-lesson",
+  "title": "Speed, distance and time",
+  "minutes": 4,
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "a",
+          "label": "walker",
+          "x0": 0,
+          "v0": 1.5,
+          "a": 0
+        },
+        {
+          "id": "b",
+          "label": "cyclist",
+          "x0": 0,
+          "v0": 5,
+          "a": 0
+        }
+      ],
+      "duration": 4,
+      "editable": [
+        "v0"
+      ]
+    },
+    "instructions": "Change a lane's speed with its controls, then press Play."
+  },
+  "steps": [
+    {
+      "text": "Speed tells you how many metres are covered each second. Press Play: the cyclist covers more metres every second.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Distance = speed × time: after 4 s the cyclist at 5 m/s has gone 20 m.",
+      "cue": {
+        "cue": "flag",
+        "args": {
+          "x": 20,
+          "label": "20 m"
+        }
+      }
+    },
+    {
+      "text": "Rearranged: speed = distance ÷ time, and time = distance ÷ speed. Check the units: m ÷ (m/s) = s.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "d = v t, v = d ÷ t, t = d ÷ v"
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "The distance–speed–time triangle",
+    "steps": [
+      {
+        "text": "Cover the quantity you want: d on top, v and t below.",
+        "cue": {
+          "cue": "note",
+          "args": {
+            "text": "d over (v × t)"
+          }
+        }
+      },
+      {
+        "text": "Covering t leaves d over v: time = distance ÷ speed. Press Play and read when the walker reaches 6 m.",
+        "cue": [
+          {
+            "cue": "flag",
+            "args": {
+              "x": 6,
+              "label": "6 m"
+            }
+          },
+          {
+            "cue": "play"
+          }
+        ]
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: d = v × t; v = d ÷ t; t = d ÷ v. Keep the units consistent.",
+      "cue": {
+        "cue": "play"
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "Two lanes: a walker and a cyclist moving at steady speeds.",
+    "nonDragAlternative": "Type speeds in the lane controls and press Play; the description gives every position."
+  }
+}

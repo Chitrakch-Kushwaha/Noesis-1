@@ -1,0 +1,149 @@
+{
+  "id": "f.force-intro.e.unbalanced",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.force-intro"
+  ],
+  "primarySkillId": "f.force-intro",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.unbalancedForce",
+  "intro": "A foundation check.",
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "floor",
+      "maxMagnitude": 30,
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": 9.8,
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "ice",
+          "magnitude": 9.8,
+          "angleDeg": 90,
+          "locked": true
+        },
+        {
+          "id": "P",
+          "kind": "applied",
+          "label": "Push",
+          "agent": "hand",
+          "magnitude": "{{F}}",
+          "angleDeg": 0,
+          "locked": true
+        }
+      ],
+      "body": {
+        "label": "puck",
+        "mass": 1
+      },
+      "predict": true
+    },
+    "instructions": "Press Play to see how the forces move the puck."
+  },
+  "stem": [
+    "A puck rests on smooth ice. A steady {{F}} N push acts on it to the right and nothing else acts horizontally.",
+    "What happens to the puck?"
+  ],
+  "options": [
+    {
+      "id": "speeds",
+      "text": "It speeds up to the right, faster and faster"
+    },
+    {
+      "id": "steady",
+      "text": "It moves right at a steady speed",
+      "tags": [
+        "force-needed-for-motion"
+      ],
+      "cue": {
+        "cue": "predict"
+      }
+    }
+  ],
+  "answerText": "It speeds up",
+  "hints": [
+    {
+      "text": "Is the horizontal force balanced?",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "An unbalanced force causes acceleration."
+    },
+    {
+      "text": "Acceleration means the speed keeps changing."
+    }
+  ],
+  "feedback": {
+    "force-needed-for-motion": {
+      "text": "An unbalanced force changes the velocity. With nothing opposing it, the puck keeps speeding up."
+    },
+    "generic": {
+      "text": "An unbalanced force accelerates a body."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Only the push acts horizontally: the force is unbalanced.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "So the puck accelerates: it speeds up continuously."
+    }
+  ],
+  "flashcards": {
+    "force-needed-for-motion": {
+      "front": "Unbalanced force on a body: effect?",
+      "back": "It accelerates: speeds up, slows down or turns."
+    },
+    "generic": {
+      "front": "Unbalanced force on a body?",
+      "back": "It accelerates."
+    }
+  },
+  "accessibility": {
+    "altText": "A puck on ice with a push to the right.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

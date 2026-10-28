@@ -1,0 +1,199 @@
+{
+  "id": "wep.work-variable.m.spring",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.work-variable",
+    "wep.potential-energy"
+  ],
+  "primarySkillId": "wep.work-variable",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "k": {
+      "kind": "choice",
+      "values": [
+        100,
+        200,
+        400,
+        500
+      ]
+    },
+    "x1": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        5
+      ]
+    },
+    "x2": {
+      "kind": "choice",
+      "values": [
+        8,
+        10,
+        12
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.springWorkBetween",
+  "intro": "Stretching a spring further.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "spring-work-difference-squared"
+      ],
+      "match": {
+        "buggySolver": "differenceSquared"
+      }
+    },
+    {
+      "tags": [
+        "spring-missing-half"
+      ],
+      "match": {
+        "buggySolver": "missingHalf"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        "{{xb*1.2}}"
+      ],
+      "yRange": [
+        0,
+        "{{F2*1.2}}"
+      ],
+      "xLabel": "x (m)",
+      "yLabel": "F (N)",
+      "functions": [
+        {
+          "id": "F",
+          "expr": "{{k}}*x"
+        }
+      ]
+    },
+    "instructions": "The graph shows the force against position; the area under it is the work done."
+  },
+  "consequence": [
+    {
+      "cue": "area",
+      "args": {
+        "top": "F",
+        "from": "{{xa}}",
+        "to": "{{xb}}",
+        "showValue": false
+      }
+    }
+  ],
+  "stem": [
+    "A spring with k = {{k}} N/m is already stretched by {{x1}} cm.",
+    "How much work is needed to stretch it further, to {{x2}} cm?"
+  ],
+  "input": {
+    "label": "Work",
+    "placeholder": "for example 1.2 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "The spring force is F = kx: draw it on the F–x graph.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "F"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The work is the area under F = kx between x₁ and x₂."
+    },
+    {
+      "text": "W = ½k(x₂² − x₁²), with x in metres."
+    }
+  ],
+  "feedback": {
+    "spring-work-difference-squared": {
+      "text": "The force grows as the spring stretches, so you can't use the extra stretch alone. Find the area under F = kx between the two positions.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "F",
+          "from": "{{xa}}",
+          "to": "{{xb}}",
+          "showValue": false
+        }
+      }
+    },
+    "spring-missing-half": {
+      "text": "The area under F = kx is a triangle (or trapezium): include the ½."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "W = ½k(x₂² − x₁²)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "x₁ = {{xa}} m, x₂ = {{xb}} m."
+    },
+    {
+      "text": "W = ½ × {{k}} × ({{xb}}² − {{xa}}²) = {{ans}} J.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "F",
+          "from": "{{xa}}",
+          "to": "{{xb}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "spring-work-difference-squared": {
+      "front": "Work to stretch a spring from x₁ to x₂?",
+      "back": "½k(x₂² − x₁²), the area between x₁ and x₂ under F = kx."
+    },
+    "spring-missing-half": {
+      "front": "Energy stored in a spring stretched by x?",
+      "back": "½kx²: the area of the triangle under F = kx."
+    },
+    "generic": {
+      "front": "Work to stretch a spring from x₁ to x₂?",
+      "back": "½k(x₂² − x₁²)."
+    }
+  },
+  "accessibility": {
+    "altText": "The straight line F = kx on an F–x graph.",
+    "nonDragAlternative": "The graph is for reading; type your answer in the box."
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "id": "wep.scalar-product.m.angle",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.scalar-product"
+  ],
+  "primarySkillId": "wep.scalar-product",
+  "difficulty": "medium",
+  "format": "number",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "ax": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "ay": {
+      "kind": "choice",
+      "values": [
+        1,
+        0,
+        2
+      ]
+    },
+    "bx": {
+      "kind": "choice",
+      "values": [
+        0,
+        1,
+        -1
+      ]
+    },
+    "by": {
+      "kind": "choice",
+      "values": [
+        1,
+        3,
+        2
+      ]
+    }
+  },
+  "constraints": [
+    "ax*bx + ay*by != 0"
+  ],
+  "solver": "wep.angleFromComponents",
+  "intro": "The angle between two vectors.",
+  "answer": {
+    "tolerance": {
+      "absolute": 0.6
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "dot-as-angle"
+      ],
+      "match": {
+        "buggySolver": "dotAsAngle"
+      }
+    }
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 5,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "a",
+          "agent": "none",
+          "magnitude": "{{ma}}",
+          "angleDeg": "{{angA}}",
+          "tone": "a"
+        },
+        {
+          "id": "b",
+          "kind": "vector",
+          "label": "b",
+          "agent": "none",
+          "magnitude": "{{mb}}",
+          "angleDeg": "{{angB}}",
+          "tone": "b"
+        }
+      ],
+      "showResultant": false
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "consequence": [
+    {
+      "cue": "project",
+      "args": {
+        "a": "a",
+        "b": "b"
+      }
+    }
+  ],
+  "stem": [
+    "a = {{ax}}î + {{ay}}ĵ and b = {{bx}}î + {{by}}ĵ.",
+    "What is the angle between a and b, in degrees?"
+  ],
+  "input": {
+    "label": "Angle (°)",
+    "placeholder": "for example 45",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Find a · b from the components first.",
+      "cue": {
+        "cue": "components"
+      }
+    },
+    {
+      "text": "Then cos θ = (a · b) ÷ (|a||b|)."
+    },
+    {
+      "text": "Finally θ = cos⁻¹(…)."
+    }
+  ],
+  "feedback": {
+    "dot-as-angle": {
+      "text": "That is the scalar product a · b. Divide it by |a||b| to get cos θ, then take the inverse cosine."
+    },
+    "generic": {
+      "text": "cos θ = a · b ÷ (|a||b|)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "a · b = {{ax}} × {{bx}} + {{ay}} × {{by}} = {{dot}}; |a| = {{ma}}, |b| = {{mb}}."
+    },
+    {
+      "text": "cos θ = {{dot}} ÷ ({{ma}} × {{mb}}) = {{cos}}, so θ = {{ans}}°.",
+      "cue": {
+        "cue": "project",
+        "args": {
+          "a": "a",
+          "b": "b"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "dot-as-angle": {
+      "front": "Angle between vectors from their components?",
+      "back": "cos θ = (a · b) ÷ (|a||b|), then take the inverse cosine."
+    },
+    "generic": {
+      "front": "Angle between vectors from components?",
+      "back": "cos θ = (aₓbₓ + a_yb_y) ÷ (|a||b|)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two vectors a and b drawn from the origin.",
+    "nonDragAlternative": "Tick Show components; type your answer in the box."
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "id": "rot.torque-equilibrium.e.spanner",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.torque-equilibrium"
+  ],
+  "primarySkillId": "rot.torque-equilibrium",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        20,
+        30,
+        40,
+        50
+      ]
+    },
+    "r": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.25,
+        0.3,
+        0.4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.torque",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "torque",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "torque-divided"
+      ],
+      "match": {
+        "buggySolver": "divided"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} N m"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "lever",
+      "lever": {
+        "length": 1,
+        "pivot": 0,
+        "beamWeight": 0,
+        "loads": [
+          {
+            "id": "F",
+            "label": "push",
+            "x": "{{r/1}}",
+            "force": "{{F}}",
+            "editable": false
+          }
+        ]
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "arms"
+    }
+  ],
+  "stem": [
+    "A mechanic pushes at right angles on a spanner {{r}} m from the nut with a force of {{F}} N.",
+    "What torque does she apply to the nut?"
+  ],
+  "input": {
+    "label": "Torque",
+    "placeholder": "for example 10 N m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} N m",
+  "hints": [
+    {
+      "text": "A longer spanner gives more turning effect for the same push.",
+      "cue": {
+        "cue": "arms"
+      }
+    },
+    {
+      "text": "τ = F × perpendicular distance."
+    },
+    {
+      "text": "Here the push is perpendicular to the spanner."
+    }
+  ],
+  "feedback": {
+    "torque-divided": {
+      "text": "Torque grows with the distance from the axis: τ = F × r."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a torque."
+    },
+    "generic": {
+      "text": "τ = F r⊥."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Moment arm: {{r}} m.",
+      "cue": {
+        "cue": "arms"
+      }
+    },
+    {
+      "text": "τ = {{F}} × {{r}} = {{ans}} N m."
+    }
+  ],
+  "flashcards": {
+    "torque-divided": {
+      "front": "Torque of F at perpendicular distance r?",
+      "back": "τ = F r."
+    },
+    "generic": {
+      "front": "Torque of a perpendicular push F at r?",
+      "back": "F × r."
+    }
+  },
+  "accessibility": {
+    "altText": "A bar pivoted at one end with a push at {{r}} m.",
+    "nonDragAlternative": "The figure illustrates the push; type your answer in the box."
+  }
+}

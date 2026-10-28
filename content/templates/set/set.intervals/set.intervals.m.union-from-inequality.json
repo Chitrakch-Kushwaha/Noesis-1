@@ -1,0 +1,172 @@
+{
+  "id": "set.intervals.m.union-from-inequality",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "set",
+  "skillIds": [
+    "set.intervals",
+    "set.operations"
+  ],
+  "primarySkillId": "set.intervals",
+  "difficulty": "medium",
+  "format": "interval",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "a": {
+      "kind": "int",
+      "min": -6,
+      "max": -1
+    },
+    "gap": {
+      "kind": "int",
+      "min": 2,
+      "max": 4
+    },
+    "w": {
+      "kind": "int",
+      "min": 1,
+      "max": 4
+    },
+    "symA": {
+      "kind": "choice",
+      "values": [
+        "<",
+        "≤"
+      ]
+    },
+    "symB": {
+      "kind": "choice",
+      "values": [
+        "≤",
+        "<"
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "set.unionFromInequality",
+  "intro": "This question helps us find the best place for you to begin.",
+  "widget": {
+    "type": "number-line",
+    "instructions": "Build the set from intervals: drag or type endpoints, toggle whether each is included, and add a second interval for the second part.",
+    "config": {
+      "range": [
+        -10,
+        12
+      ],
+      "step": 1,
+      "maxPieces": 3,
+      "pieces": [
+        {
+          "lo": 9,
+          "hi": 11,
+          "loClosed": true,
+          "hiClosed": true
+        }
+      ]
+    }
+  },
+  "stem": [
+    "Write the set {x ∈ ℝ : {{cond}}} as a union of intervals."
+  ],
+  "input": {
+    "label": "Union of intervals",
+    "placeholder": "for example (−∞, 2) ∪ [3, 5]",
+    "keypad": "interval"
+  },
+  "answerText": "{{text}}",
+  "hints": [
+    {
+      "text": "“or” means a number is in the set if it satisfies either condition. Draw each part separately. Watch the test point light up wherever the condition holds.",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": -10,
+          "to": 12
+        }
+      }
+    },
+    {
+      "text": "The first part has no lower bound, so it starts at −∞."
+    },
+    {
+      "text": "Join the two intervals with ∪."
+    }
+  ],
+  "feedback": {
+    "open-closed-confusion": {
+      "text": "The endpoints are right, but check which are included. The ringed endpoint is the one to fix.",
+      "cue": {
+        "cue": "highlight-endpoints",
+        "args": {
+          "mismatches": "$details.endpointMismatches"
+        }
+      }
+    },
+    "missing-piece": {
+      "text": "This set has two separate parts, joined by “or”. Add the missing interval."
+    },
+    "extra-piece": {
+      "text": "This set has exactly two parts."
+    },
+    "wrong-endpoints": {
+      "text": "Check each endpoint against the condition."
+    },
+    "infinity-closed": {
+      "text": "∞ can never be included. Use a round bracket next to it."
+    },
+    "generic": {
+      "text": "Draw each part of the condition on the number line, then join them with ∪."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "First part: x {{symA}} {{a}}, everything to the left of {{a}}.",
+      "cue": {
+        "cue": "show-target",
+        "args": {
+          "union": "{{union}}"
+        }
+      }
+    },
+    {
+      "text": "Second part: {{b}} {{symB}} x ≤ {{c}}. Watch the test point move along the line.",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": -10,
+          "to": 12
+        }
+      }
+    },
+    {
+      "text": "The set is {{text}}."
+    }
+  ],
+  "flashcards": {
+    "open-closed-confusion": {
+      "front": "x ≤ 3 or x < 3: which bracket at 3?",
+      "back": "≤ → ] (included); < → ) (not included)."
+    },
+    "missing-piece": {
+      "front": "How do you write “x < 1 or x > 4” as intervals?",
+      "back": "(−∞, 1) ∪ (4, ∞): two pieces joined by ∪."
+    },
+    "generic": {
+      "front": "What does ∪ mean for intervals?",
+      "back": "Union: a number is in the set if it is in either piece."
+    }
+  },
+  "accessibility": {
+    "altText": "A number line from −10 to 12 with one interval you can move, resize, and add to.",
+    "nonDragAlternative": "Type the union in the answer box, or use From, To, included and ∞ in Precise controls."
+  }
+}

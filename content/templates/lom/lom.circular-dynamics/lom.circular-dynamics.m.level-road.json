@@ -1,0 +1,221 @@
+{
+  "id": "lom.circular-dynamics.m.level-road",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.circular-dynamics",
+    "lom.friction"
+  ],
+  "primarySkillId": "lom.circular-dynamics",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 120,
+  "parameters": {
+    "mu": {
+      "kind": "choice",
+      "values": [
+        0.3,
+        0.4,
+        0.5,
+        0.6
+      ]
+    },
+    "r": {
+      "kind": "choice",
+      "values": [
+        20,
+        30,
+        40,
+        50,
+        80
+      ]
+    }
+  },
+  "solver": "lom.levelRoadMaxSpeed",
+  "intro": "How fast can the car take the bend?",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "forgot-square-root"
+      ],
+      "match": {
+        "buggySolver": "forgotRoot"
+      }
+    },
+    {
+      "tags": [
+        "centripetal-without-friction"
+      ],
+      "match": {
+        "buggySolver": "ignoredFriction"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{v|raw}} m/s"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Seen from behind: friction (towards the centre, to the left) is the only sideways force. The meter compares the friction needed with the most the road can give.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "car",
+        "mass": 1000
+      },
+      "maxMagnitude": 12000,
+      "showResultant": false,
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": 9800,
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "road",
+          "magnitude": 9800,
+          "angleDeg": 90,
+          "locked": true
+        },
+        {
+          "id": "f",
+          "kind": "friction",
+          "label": "Friction",
+          "agent": "road",
+          "magnitude": "{{f}}",
+          "angleDeg": 180,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "stem": [
+    "A car takes a flat, level bend of radius {{r}} m. The coefficient of static friction between the tyres and the road is {{mu}}. Take g = 9.8 m/s².",
+    "What is the greatest speed at which it can take the bend without skidding?"
+  ],
+  "input": {
+    "label": "Greatest speed",
+    "placeholder": "for example 12 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{v}} m/s",
+  "hints": [
+    {
+      "text": "Friction is the only force towards the centre. What is the most friction the road can provide?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "f"
+          ]
+        }
+      }
+    },
+    {
+      "text": "At the limit, μ m g = m v² ÷ r. The mass cancels."
+    },
+    {
+      "text": "v² = μ g r; take the square root."
+    }
+  ],
+  "feedback": {
+    "forgot-square-root": {
+      "text": "μ g r is v², in m²/s². Take its square root to get the speed."
+    },
+    "centripetal-without-friction": {
+      "text": "Only friction pulls the car inward, and at most it is μ m g. Your speed would need more grip than the road has.",
+      "cue": {
+        "cue": "meter",
+        "args": {
+          "needed": "$value",
+          "available": "{{v}}",
+          "label": "speed",
+          "showValues": false
+        }
+      }
+    },
+    "dimension-mismatch": {
+      "text": "Give a speed, in m/s."
+    },
+    "generic": {
+      "text": "Set the largest friction, μ m g, equal to the force needed to turn, m v² ÷ r."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Vertically: N = m g. The largest sideways friction is μ N = μ m g.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N",
+            "f"
+          ]
+        }
+      }
+    },
+    {
+      "text": "That friction must supply m v² ÷ r. At the limit, μ m g = m v² ÷ r, so v² = μ g r = {{v2}} m²/s².",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "f"
+          ]
+        }
+      }
+    },
+    {
+      "text": "v = √{{v2}} = {{v}} m/s (about {{kmh}} km/h). Any faster and the tyres skid outward.",
+      "cue": {
+        "cue": "meter",
+        "args": {
+          "needed": "{{v}}",
+          "available": "{{v}}",
+          "label": "speed"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "forgot-square-root": {
+      "front": "μ g r for a level bend gives what?",
+      "back": "v², the square of the greatest speed. Take the square root."
+    },
+    "centripetal-without-friction": {
+      "front": "What limits the speed on a level bend?",
+      "back": "Friction: v_max = √(μ g r)."
+    },
+    "generic": {
+      "front": "Greatest speed on a level bend?",
+      "back": "v = √(μ g r), independent of mass."
+    }
+  },
+  "accessibility": {
+    "altText": "A car seen from behind on a level road, with weight, normal force and inward friction drawn.",
+    "nonDragAlternative": "The board only illustrates the forces; type your answer in the box."
+  }
+}

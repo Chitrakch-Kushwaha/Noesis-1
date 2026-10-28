@@ -1,0 +1,127 @@
+{
+  "id": "f.angles.e.alternate",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.angles"
+  ],
+  "primarySkillId": "f.angles",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "x": {
+      "kind": "choice",
+      "values": [
+        35,
+        40,
+        50,
+        55,
+        65,
+        70,
+        75
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.alternateAngles",
+  "intro": "A foundation check.",
+  "widget": {
+    "type": "triangle-explorer",
+    "config": {
+      "mode": "triangle",
+      "editable": false,
+      "hypotenuse": 5,
+      "angleDeg": "{{x}}",
+      "showRoles": false
+    },
+    "instructions": "The right angle is at C."
+  },
+  "stem": [
+    "A line crosses two parallel lines. One angle it makes is {{x}}°.",
+    "How is the alternate angle on the other parallel line related to it?"
+  ],
+  "options": [
+    {
+      "id": "equal",
+      "text": "It is equal: {{x}}°"
+    },
+    {
+      "id": "supp",
+      "text": "It is supplementary: {{y}}°",
+      "tags": [
+        "alternate-supplementary"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Alternate angles make a Z shape."
+        }
+      }
+    }
+  ],
+  "answerText": "Equal, {{x}}°",
+  "hints": [
+    {
+      "text": "Look for the Z shape made by the crossing line.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Z shape: alternate angles."
+        }
+      }
+    },
+    {
+      "text": "Alternate angles lie on opposite sides of the crossing line."
+    },
+    {
+      "text": "They are equal."
+    }
+  ],
+  "feedback": {
+    "alternate-supplementary": {
+      "text": "Alternate angles (a Z shape) are equal. Co-interior angles (a C shape) add to 180°."
+    },
+    "generic": {
+      "text": "Alternate angles are equal."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The two angles form a Z with the parallel lines.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Z shape"
+        }
+      }
+    },
+    {
+      "text": "Alternate angles are equal: {{x}}°."
+    }
+  ],
+  "flashcards": {
+    "alternate-supplementary": {
+      "front": "Alternate angles between parallel lines?",
+      "back": "Equal."
+    },
+    "generic": {
+      "front": "Alternate angles between parallel lines?",
+      "back": "Equal (Z shape)."
+    }
+  },
+  "accessibility": {
+    "altText": "A triangle used as a reference figure.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

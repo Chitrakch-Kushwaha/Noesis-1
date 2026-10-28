@@ -1,0 +1,184 @@
+{
+  "id": "rot.centre-of-mass.h.boat",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.centre-of-mass",
+    "lom.momentum-conservation"
+  ],
+  "primarySkillId": "rot.centre-of-mass",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        50,
+        60,
+        70
+      ]
+    },
+    "M": {
+      "kind": "choice",
+      "values": [
+        140,
+        180,
+        240,
+        280
+      ]
+    },
+    "d": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.boat",
+  "intro": "An isolated system.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "com-shifts-isolated"
+      ],
+      "match": {
+        "buggySolver": "sameDistance"
+      }
+    },
+    {
+      "tags": [
+        "boat-ratio"
+      ],
+      "match": {
+        "buggySolver": "massRatioOnly"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "com",
+      "com": {
+        "masses": [
+          {
+            "id": "p",
+            "label": "person",
+            "m": "{{m}}",
+            "x": 0,
+            "y": 1,
+            "editable": false
+          },
+          {
+            "id": "b",
+            "label": "boat",
+            "m": "{{M}}",
+            "x": "{{d/2}}",
+            "y": 0,
+            "editable": false
+          }
+        ]
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "com"
+    }
+  ],
+  "stem": [
+    "A {{m}} kg person walks {{d}} m along a {{M}} kg boat floating on still water, from one end towards the other. Ignore water resistance.",
+    "How far does the boat move relative to the water?"
+  ],
+  "input": {
+    "label": "Boat's displacement",
+    "placeholder": "for example 1.2 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "No horizontal external force acts on person + boat.",
+      "cue": {
+        "cue": "com"
+      }
+    },
+    {
+      "text": "So their centre of mass doesn't move."
+    },
+    {
+      "text": "Person moves x_p, boat moves x_b backwards, with x_p + x_b = {{d}} and m x_p = M x_b."
+    }
+  ],
+  "feedback": {
+    "com-shifts-isolated": {
+      "text": "If the boat moved as far as the person, the centre of mass would shift. No external horizontal force acts, so it stays put.",
+      "cue": {
+        "cue": "com"
+      }
+    },
+    "boat-ratio": {
+      "text": "The person also moves relative to the water: their shift plus the boat's must add to {{d}} m. Use m ÷ (m + M)."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "m x_p = M x_b with x_p + x_b = d, so x_b = m d ÷ (m + M)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Centre of mass fixed: {{m}} x_p = {{M}} x_b, and x_p + x_b = {{d}}."
+    },
+    {
+      "text": "x_b = {{m}} × {{d}} ÷ ({{m}} + {{M}}) = {{ans}} m backwards (the person moves {{shore}} m forwards).",
+      "cue": {
+        "cue": "com"
+      }
+    }
+  ],
+  "flashcards": {
+    "com-shifts-isolated": {
+      "front": "A person walks along a boat on still water. Does the centre of mass of person + boat move?",
+      "back": "No: no external horizontal force, so the boat moves back to keep it fixed."
+    },
+    "boat-ratio": {
+      "front": "Person m walks d along boat M: boat moves?",
+      "back": "m d ÷ (m + M) backwards."
+    },
+    "generic": {
+      "front": "Person walks d on a boat: boat moves?",
+      "back": "m d ÷ (m + M) the other way."
+    }
+  },
+  "accessibility": {
+    "altText": "A person and a boat represented as two masses.",
+    "nonDragAlternative": "The figure only shows the masses; type your answer in the box."
+  }
+}

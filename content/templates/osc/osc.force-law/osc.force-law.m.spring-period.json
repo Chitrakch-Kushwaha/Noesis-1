@@ -1,0 +1,163 @@
+{
+  "id": "osc.force-law.m.spring-period",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.force-law"
+  ],
+  "primarySkillId": "osc.force-law",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.5,
+        1,
+        2
+      ]
+    },
+    "k": {
+      "kind": "choice",
+      "values": [
+        20,
+        50,
+        80,
+        200
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.springPeriod",
+  "intro": "Period of a spring–mass system.",
+  "answer": {
+    "dimension": "time",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "spring-period-inverted"
+      ],
+      "match": {
+        "buggySolver": "inverted"
+      }
+    },
+    {
+      "tags": [
+        "spring-period-no-2pi"
+      ],
+      "match": {
+        "buggySolver": "forgot2pi"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} s"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": "{{m}}",
+      "k": "{{k}}",
+      "amplitude": 0.1,
+      "editable": [
+        "mass",
+        "k"
+      ]
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Change m and k with the controls: which one makes it slower?"
+      }
+    }
+  ],
+  "stem": [
+    "A {{m}} kg mass on a spring with k = {{k}} N/m oscillates horizontally on a smooth surface.",
+    "What is its period?"
+  ],
+  "input": {
+    "label": "Period",
+    "placeholder": "for example 0.6 s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} s",
+  "hints": [
+    {
+      "text": "From F = −kx and F = ma: a = −(k/m)x.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "So ω = √(k ÷ m)."
+    },
+    {
+      "text": "T = 2π ÷ ω."
+    }
+  ],
+  "feedback": {
+    "spring-period-inverted": {
+      "text": "A heavier mass oscillates more slowly: T = 2π√(m ÷ k)."
+    },
+    "spring-period-no-2pi": {
+      "text": "T = 2π√(m ÷ k): include the 2π."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a time."
+    },
+    "generic": {
+      "text": "T = 2π√(m ÷ k)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "ω = √({{k}} ÷ {{m}}) = {{w}} rad/s."
+    },
+    {
+      "text": "T = 2π ÷ ω = {{ans}} s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "spring-period-inverted": {
+      "front": "Period of a spring–mass system?",
+      "back": "T = 2π√(m ÷ k)."
+    },
+    "spring-period-no-2pi": {
+      "front": "T for a spring–mass system?",
+      "back": "2π√(m ÷ k)."
+    },
+    "generic": {
+      "front": "Period of a spring–mass system?",
+      "back": "2π√(m ÷ k)."
+    }
+  },
+  "accessibility": {
+    "altText": "A block on a spring with its x–t graph.",
+    "nonDragAlternative": "Type values in the mass and spring-constant boxes; type your answer in the box."
+  }
+}

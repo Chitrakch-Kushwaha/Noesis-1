@@ -1,0 +1,221 @@
+{
+  "id": "cur.emf.m.terminal-voltage",
+  "version": 2,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": [],
+    "migratedFrom": "src/questions/templates.ts cur.emf.m.terminal-voltage@1 (Phase 1 diagnostic; same review status)"
+  },
+  "chapterId": "cur",
+  "skillIds": [
+    "cur.emf"
+  ],
+  "primarySkillId": "cur.emf",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "E": {
+      "kind": "choice",
+      "values": [
+        6,
+        9,
+        12
+      ]
+    },
+    "r": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        1.5,
+        2
+      ]
+    },
+    "R": {
+      "kind": "int",
+      "min": 3,
+      "max": 10
+    }
+  },
+  "constraints": [],
+  "solver": "cur.terminalVoltage",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "dimension": "voltage",
+    "tolerance": {
+      "relative": 0.01
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "terminal-equals-emf"
+      ],
+      "match": {
+        "buggySolver": "terminalEqualsEmf"
+      }
+    },
+    {
+      "tags": [
+        "drop-across-internal"
+      ],
+      "match": {
+        "buggySolver": "dropAcrossInternal"
+      }
+    },
+    {
+      "tags": [
+        "added-internal-drop"
+      ],
+      "match": {
+        "buggySolver": "addedInternalDrop"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{V*1000|raw}} mV",
+    "{{V|raw}} volts"
+  ],
+  "widget": {
+    "type": "figure",
+    "instructions": "The circuit and its potential ladder show where the emf is used up. They follow each step of the worked solution.",
+    "config": {
+      "figure": "circuit",
+      "E": "{{E}}",
+      "r": "{{r}}",
+      "R": "{{R}}",
+      "showVoltmeter": true
+    }
+  },
+  "consequence": {
+    "cue": "student",
+    "args": {
+      "value": "$value",
+      "tags": "$tags"
+    }
+  },
+  "stem": [
+    "A cell of emf {{E}} V and internal resistance {{r}} Ω drives current through a {{R}} Ω resistor.",
+    "What does a voltmeter connected across the cell's terminals read?"
+  ],
+  "input": {
+    "label": "Terminal voltage",
+    "placeholder": "for example 8.4 V",
+    "keypad": "none"
+  },
+  "answerText": "{{V}} V",
+  "hints": [
+    {
+      "text": "Is the voltmeter's reading the full emf while current flows? What happens inside the cell?"
+    },
+    {
+      "text": "Find the current first, then subtract the voltage lost across the internal resistance: V = E − Ir.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 1
+        }
+      }
+    },
+    {
+      "text": "I = {{E}} ÷ ({{R}} + {{r}}). Then V = {{E}} − I × {{r}}."
+    }
+  ],
+  "feedback": {
+    "terminal-equals-emf": {
+      "text": "The emf is the reading only when no current flows. With current flowing, some voltage is used up inside the cell. Watch the potential drop across r."
+    },
+    "drop-across-internal": {
+      "text": "That is the voltage lost inside the cell (Ir). The voltmeter reads what is left: E − Ir."
+    },
+    "added-internal-drop": {
+      "text": "The internal drop should be subtracted from the emf, not added. Potential falls across every resistance the current passes through."
+    },
+    "dimension-mismatch": {
+      "text": "A voltmeter reads volts. Check your unit."
+    },
+    "generic": {
+      "text": "Find the current, then subtract the drop across the internal resistance from the emf."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Current: I = E ÷ (R + r) = {{E}} ÷ {{Rt}} = {{I}} A.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 0
+        }
+      }
+    },
+    {
+      "text": "Voltage lost inside the cell: Ir = {{I}} × {{r}} = {{drop}} V.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 1
+        }
+      }
+    },
+    {
+      "text": "Terminal voltage: V = E − Ir = {{E}} − {{drop}} = {{V}} V. This equals IR across the external resistor.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 2
+        }
+      }
+    }
+  ],
+  "alternativeSolution": {
+    "title": "Using the external resistor",
+    "steps": [
+      {
+        "text": "The voltmeter across the terminals reads the same as one across the external resistor.",
+        "cue": {
+          "cue": "solution-step",
+          "args": {
+            "step": 2
+          }
+        }
+      },
+      {
+        "text": "V = IR = {{I}} × {{R}} = {{V}} V.",
+        "cue": {
+          "cue": "solution-step",
+          "args": {
+            "step": 2
+          }
+        }
+      }
+    ]
+  },
+  "flashcards": {
+    "terminal-equals-emf": {
+      "front": "When does a voltmeter across a cell read its full emf?",
+      "back": "Only when no current flows. Otherwise it reads V = E − Ir."
+    },
+    "drop-across-internal": {
+      "front": "What is Ir for a cell delivering current I?",
+      "back": "The voltage lost inside the cell. The terminal voltage is E − Ir."
+    },
+    "added-internal-drop": {
+      "front": "Terminal voltage of a cell delivering current: E + Ir or E − Ir?",
+      "back": "E − Ir (while the cell is discharging)."
+    },
+    "generic": {
+      "front": "Terminal voltage of a cell with internal resistance r supplying current I?",
+      "back": "V = E − Ir = IR."
+    }
+  },
+  "accessibility": {
+    "altText": "Circuit with a voltmeter across a cell of emf {{E}} V and internal resistance {{r}} Ω, driving a {{R}} Ω resistor, with a diagram of potential around the loop."
+  }
+}

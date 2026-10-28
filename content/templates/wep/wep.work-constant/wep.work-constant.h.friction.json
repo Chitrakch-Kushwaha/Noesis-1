@@ -1,0 +1,218 @@
+{
+  "id": "wep.work-constant.h.friction",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.work-constant",
+    "lom.friction"
+  ],
+  "primarySkillId": "wep.work-constant",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        5,
+        8
+      ]
+    },
+    "mu": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.25,
+        0.3,
+        0.4
+      ]
+    },
+    "d": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        6,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.frictionWork",
+  "intro": "Negative work.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "friction-work-sign"
+      ],
+      "match": {
+        "buggySolver": "signLost"
+      }
+    },
+    {
+      "tags": [
+        "friction-uses-weight"
+      ],
+      "match": {
+        "buggySolver": "weightNotFriction"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "floor",
+      "maxMagnitude": "{{W*1.3}}",
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "floor",
+          "magnitude": "{{W}}",
+          "angleDeg": 90,
+          "locked": true
+        },
+        {
+          "id": "f",
+          "kind": "friction",
+          "label": "Friction",
+          "agent": "floor",
+          "magnitude": "{{f}}",
+          "angleDeg": 180,
+          "locked": true
+        }
+      ],
+      "body": {
+        "label": "box",
+        "mass": "{{m}}"
+      },
+      "initialVelocity": {
+        "x": 2,
+        "y": 0
+      },
+      "predict": true
+    },
+    "instructions": "The board shows the forces on the body; press Play to see its motion."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "f"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A {{m}} kg crate slides {{d}} m across a level floor (μk = {{mu}}). Take g = 9.8 m/s².",
+    "How much work does friction do on the crate? Give the sign."
+  ],
+  "input": {
+    "label": "Work",
+    "placeholder": "for example −40 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "Which way does friction point compared with the displacement?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "f"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Friction force = μk N = μk m g."
+    },
+    {
+      "text": "W = f d cos 180°."
+    }
+  ],
+  "feedback": {
+    "friction-work-sign": {
+      "text": "Friction points against the motion, so cos 180° = −1: its work is negative.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "f"
+          ]
+        }
+      }
+    },
+    "friction-uses-weight": {
+      "text": "The friction force is μk N = μk m g, not the weight."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "W = −μk m g d."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Friction: {{mu}} × {{m}} × 9.8 = {{f}} N, opposite the displacement."
+    },
+    {
+      "text": "W = {{f}} × {{d}} × cos 180° = {{ans}} J. Press Play: the crate slows.",
+      "cue": {
+        "cue": "predict"
+      }
+    }
+  ],
+  "flashcards": {
+    "friction-work-sign": {
+      "front": "Sign of the work done by kinetic friction on a sliding block?",
+      "back": "Negative: friction opposes the displacement."
+    },
+    "friction-uses-weight": {
+      "front": "Work done by friction over d?",
+      "back": "−μ N d, with μ N the friction force."
+    },
+    "generic": {
+      "front": "Work done by kinetic friction?",
+      "back": "−μk N d (negative)."
+    }
+  },
+  "accessibility": {
+    "altText": "A crate sliding on a floor with its weight, the normal force and friction drawn.",
+    "nonDragAlternative": "The board shows the forces; type your answer in the box."
+  }
+}

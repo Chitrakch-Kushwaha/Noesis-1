@@ -1,0 +1,224 @@
+{
+  "id": "lom.momentum-conservation.e.recoil",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.momentum-conservation",
+    "lom.third-law"
+  ],
+  "primarySkillId": "lom.momentum-conservation",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 75,
+  "parameters": {
+    "mb": {
+      "kind": "choice",
+      "values": [
+        10,
+        20,
+        25,
+        50
+      ]
+    },
+    "vb": {
+      "kind": "choice",
+      "values": [
+        200,
+        300,
+        400
+      ]
+    },
+    "M": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        5
+      ]
+    }
+  },
+  "solver": "lom.recoil",
+  "intro": "A quick check on momentum.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "recoil-same-speed"
+      ],
+      "match": {
+        "buggySolver": "sameSpeed"
+      }
+    },
+    {
+      "tags": [
+        "momentum-not-velocity"
+      ],
+      "match": {
+        "buggySolver": "momentumNotVelocity"
+      }
+    },
+    {
+      "tags": [
+        "mass-ratio-inverted"
+      ],
+      "match": {
+        "buggySolver": "ratioInverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{V|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "instructions": "Press Play to watch the bullet leave. The gun's recoil is what you are finding.",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "b",
+          "label": "bullet",
+          "x0": 0,
+          "v0": 30,
+          "a": 0
+        },
+        {
+          "id": "g",
+          "label": "gun",
+          "x0": 0,
+          "v0": 0,
+          "a": 0
+        }
+      ],
+      "duration": 1,
+      "xRange": [
+        -12,
+        32
+      ],
+      "hideNumbers": true
+    }
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "gy",
+          "label": "gun at your speed",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A {{M}} kg gun, at rest, fires a {{mb}} g bullet at {{vb}} m/s.",
+    "With what speed does the gun recoil?"
+  ],
+  "input": {
+    "label": "Recoil speed",
+    "placeholder": "for example 2 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{V}} m/s",
+  "hints": [
+    {
+      "text": "Before firing, nothing moves: the total momentum is zero. What must it be just after?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "The bullet's momentum forwards must be cancelled by the gun's momentum backwards: m_bullet × v_bullet = M_gun × V."
+    },
+    {
+      "text": "Convert the bullet's mass to kilograms first, then divide its momentum by the gun's mass."
+    }
+  ],
+  "feedback": {
+    "recoil-same-speed": {
+      "text": "Equal and opposite momenta, not speeds. The gun is far heavier, so it moves far more slowly."
+    },
+    "momentum-not-velocity": {
+      "text": "That is the bullet's momentum (in kg m/s). The gun has the same momentum backwards; divide by its mass to get its speed."
+    },
+    "mass-ratio-inverted": {
+      "text": "The heavier body moves more slowly: V = m v ÷ M, with the small mass on top."
+    },
+    "dimension-mismatch": {
+      "text": "A recoil speed is a velocity, in m/s."
+    },
+    "generic": {
+      "text": "Total momentum stays zero: m v forwards for the bullet equals M V backwards for the gun."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Before: total momentum 0. After: bullet {{mbkg}} kg × {{vb}} m/s = {{pb}} kg m/s forwards.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "The gun carries {{pb}} kg m/s backwards, so V = {{pb}} ÷ {{M}} = {{V}} m/s.",
+      "cue": [
+        {
+          "cue": "ghost-lane",
+          "args": {
+            "lane": {
+              "id": "gs",
+              "label": "gun recoil",
+              "x0": 0,
+              "v0": "{{negV}}",
+              "a": 0
+            }
+          }
+        },
+        {
+          "cue": "play"
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "recoil-same-speed": {
+      "front": "A gun fires a bullet. Do they move apart at the same speed?",
+      "back": "No. Their momenta are equal and opposite; the heavy gun moves slowly."
+    },
+    "momentum-not-velocity": {
+      "front": "Momentum or velocity: which is shared equally (and oppositely) in a recoil?",
+      "back": "Momentum. Divide by each mass to find each speed."
+    },
+    "mass-ratio-inverted": {
+      "front": "Recoil speed of a gun of mass M firing mass m at v?",
+      "back": "V = m v ÷ M."
+    },
+    "generic": {
+      "front": "Recoil from rest?",
+      "back": "m v = M V: total momentum stays zero."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes: a bullet that moves right when played, and a gun that starts at rest.",
+    "nonDragAlternative": "Use Play, Step and the time slider to run the animation; type your answer in the box."
+  }
+}

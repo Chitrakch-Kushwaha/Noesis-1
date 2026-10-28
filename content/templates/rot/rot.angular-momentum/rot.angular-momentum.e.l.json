@@ -1,0 +1,162 @@
+{
+  "id": "rot.angular-momentum.e.l",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.angular-momentum"
+  ],
+  "primarySkillId": "rot.angular-momentum",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "I": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        2,
+        3
+      ]
+    },
+    "w": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.angularMomentum",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "angular-momentum",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "ke-for-angular-momentum"
+      ],
+      "match": {
+        "buggySolver": "keInstead"
+      }
+    },
+    {
+      "tags": [
+        "am-divided"
+      ],
+      "match": {
+        "buggySolver": "divided"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} kg m^2/s"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "disc",
+        "mass": "{{2*I/0.25}}",
+        "size": 0.5,
+        "torque": 0,
+        "omega0": "{{w}}",
+        "duration": 3
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "L = Iω, the rotational partner of p = mv."
+      }
+    }
+  ],
+  "stem": [
+    "A flywheel with moment of inertia {{I}} kg m² spins at {{w}} rad/s.",
+    "What is its angular momentum?"
+  ],
+  "input": {
+    "label": "Angular momentum",
+    "placeholder": "for example 8 kg m^2/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} kg m^2/s",
+  "hints": [
+    {
+      "text": "The rotational partner of p = mv.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "L = Iω."
+    },
+    {
+      "text": "Multiply."
+    }
+  ],
+  "feedback": {
+    "ke-for-angular-momentum": {
+      "text": "That is the rotational KE, ½Iω². Angular momentum is Iω."
+    },
+    "am-divided": {
+      "text": "L = I × ω."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a angular momentum."
+    },
+    "generic": {
+      "text": "L = Iω."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "L = {{I}} × {{w}}."
+    },
+    {
+      "text": "= {{ans}} kg m²/s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "ke-for-angular-momentum": {
+      "front": "Angular momentum?",
+      "back": "L = Iω."
+    },
+    "am-divided": {
+      "front": "Units of angular momentum?",
+      "back": "kg m²/s: L = Iω."
+    },
+    "generic": {
+      "front": "Angular momentum?",
+      "back": "L = Iω."
+    }
+  },
+  "accessibility": {
+    "altText": "A flywheel spinning.",
+    "nonDragAlternative": "Use Play; type your answer in the box."
+  }
+}

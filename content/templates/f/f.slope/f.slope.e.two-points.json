@@ -1,0 +1,192 @@
+{
+  "id": "f.slope.e.two-points",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.slope"
+  ],
+  "primarySkillId": "f.slope",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "x1": {
+      "kind": "int",
+      "min": -3,
+      "max": 1
+    },
+    "y1": {
+      "kind": "int",
+      "min": -2,
+      "max": 2
+    },
+    "dx": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "m": {
+      "kind": "choice",
+      "values": [
+        -2,
+        -1.5,
+        -0.5,
+        0.5,
+        1.5,
+        2
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.slopeTwoPoints",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "slope-run-over-rise"
+      ],
+      "match": {
+        "buggySolver": "runOverRise"
+      }
+    }
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -6,
+        8
+      ],
+      "yRange": [
+        -8,
+        8
+      ],
+      "functions": [
+        {
+          "id": "L",
+          "expr": "{{m}}*x + {{c}}"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "label": "P",
+          "x": "{{x1}}",
+          "y": "{{y1}}"
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "x": "{{x2}}",
+          "y": "{{y2}}"
+        }
+      ]
+    },
+    "instructions": "The graph is for exploring; drag points or sliders where you see them."
+  },
+  "consequence": [
+    {
+      "cue": "slope-triangle",
+      "args": {
+        "fn": "L",
+        "x1": "{{x1}}",
+        "x2": "{{x2}}",
+        "tone": "bad"
+      }
+    }
+  ],
+  "stem": [
+    "A straight line passes through ({{x1}}, {{y1}}) and ({{x2}}, {{y2}}).",
+    "What is its slope?"
+  ],
+  "input": {
+    "label": "Slope",
+    "placeholder": "for example 1.5",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Draw the right triangle between the two points.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": "{{x1}}",
+          "x2": "{{x2}}"
+        }
+      }
+    },
+    {
+      "text": "Rise = change in y; run = change in x."
+    },
+    {
+      "text": "Slope = rise ÷ run."
+    }
+  ],
+  "feedback": {
+    "slope-run-over-rise": {
+      "text": "Slope is rise over run: (change in y) ÷ (change in x).",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": "{{x1}}",
+          "x2": "{{x2}}"
+        }
+      }
+    },
+    "generic": {
+      "text": "m = Δy ÷ Δx."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Rise {{dy}}, run {{dx}}.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": "{{x1}}",
+          "x2": "{{x2}}"
+        }
+      }
+    },
+    {
+      "text": "m = {{dy}} ÷ {{dx}} = {{ans}}."
+    }
+  ],
+  "flashcards": {
+    "slope-run-over-rise": {
+      "front": "Slope of a line?",
+      "back": "Rise ÷ run: Δy ÷ Δx."
+    },
+    "generic": {
+      "front": "Slope of a line through two points?",
+      "back": "(y₂ − y₁) ÷ (x₂ − x₁)."
+    }
+  },
+  "accessibility": {
+    "altText": "A straight line through two marked points.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

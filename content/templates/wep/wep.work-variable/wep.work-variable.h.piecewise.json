@@ -1,0 +1,211 @@
+{
+  "id": "wep.work-variable.h.piecewise",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.work-variable"
+  ],
+  "primarySkillId": "wep.work-variable",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        10,
+        15,
+        20,
+        25
+      ]
+    },
+    "a": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        6,
+        7,
+        8
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.piecewiseWork",
+  "intro": "An F–x graph in two parts.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "area-rectangle-for-triangle"
+      ],
+      "match": {
+        "buggySolver": "rectangleWhole"
+      }
+    },
+    {
+      "tags": [
+        "area-misses-triangle-fx"
+      ],
+      "match": {
+        "buggySolver": "rectangleOnly"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        "{{b+1}}"
+      ],
+      "yRange": [
+        0,
+        "{{F*1.3}}"
+      ],
+      "xLabel": "x (m)",
+      "yLabel": "F (N)",
+      "functions": [
+        {
+          "id": "F",
+          "expr": "({{F}} + {{F}}*({{b}} - x)/({{b}} - {{a}}) - abs({{F}} - {{F}}*({{b}} - x)/({{b}} - {{a}})))/2",
+          "domain": [
+            0,
+            "{{b}}"
+          ]
+        }
+      ]
+    },
+    "instructions": "The graph shows the force against position; the area under it is the work done."
+  },
+  "consequence": [
+    {
+      "cue": "area",
+      "args": {
+        "top": "F",
+        "from": 0,
+        "to": "{{b}}",
+        "showValue": false
+      }
+    }
+  ],
+  "stem": [
+    "A force stays at {{F}} N from x = 0 to x = {{a}} m, then falls steadily to 0 at x = {{b}} m.",
+    "How much work does it do from x = 0 to x = {{b}} m?"
+  ],
+  "input": {
+    "label": "Work",
+    "placeholder": "for example 80 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "Work = area under the F–x graph.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "F",
+          "from": 0,
+          "to": "{{b}}",
+          "showValue": false
+        }
+      }
+    },
+    {
+      "text": "Split it into a rectangle and a triangle."
+    },
+    {
+      "text": "Rectangle: F × a; triangle: ½ × F × (b − a)."
+    }
+  ],
+  "feedback": {
+    "area-rectangle-for-triangle": {
+      "text": "The force drops after x = {{a}} m: the second part of the area is a triangle, not a rectangle.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "F",
+          "from": 0,
+          "to": "{{b}}",
+          "showValue": false
+        }
+      }
+    },
+    "area-misses-triangle-fx": {
+      "text": "The force still does work while it falls to zero: add the triangle."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "Area = rectangle + triangle."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Rectangle: {{F}} × {{a}} = {{rect}} J.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "F",
+          "from": 0,
+          "to": "{{a}}"
+        }
+      }
+    },
+    {
+      "text": "Triangle: ½ × {{F}} × ({{b}} − {{a}}) = {{tri}} J. Total {{ans}} J.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "F",
+          "from": 0,
+          "to": "{{b}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "area-rectangle-for-triangle": {
+      "front": "Work from a straight F–x line rising from 0?",
+      "back": "The triangle's area, ½ F x."
+    },
+    "area-misses-triangle-fx": {
+      "front": "Work from an F–x graph with two parts?",
+      "back": "Add the area of every part."
+    },
+    "generic": {
+      "front": "Work from an F–x graph?",
+      "back": "The area under it, part by part."
+    }
+  },
+  "accessibility": {
+    "altText": "An F–x graph: flat at {{F}} N, then falling to 0.",
+    "nonDragAlternative": "The graph is for reading; type your answer in the box."
+  }
+}

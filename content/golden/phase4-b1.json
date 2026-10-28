@@ -1,0 +1,1153 @@
+{
+  "$comment": "Golden answers for Phase 4 solvers, computed by separately written Python formulas (not by running the TypeScript solvers). g = 9.8 m/s² unless stated. Author-computed by content-dev on 2026-10-28; a named reviewer should confirm each case during content review.",
+  "status": "author-computed, awaiting reviewer confirmation",
+  "cases": [
+    {
+      "solver": "kin.netWalk",
+      "params": {
+        "a": 10,
+        "b": 4
+      },
+      "expectChoice": "net",
+      "template": "kin.displacement.e.walk-and-back"
+    },
+    {
+      "solver": "kin.pathLength",
+      "params": {
+        "x1": 0,
+        "x2": 10,
+        "x3": 4
+      },
+      "expect": 16,
+      "template": "kin.displacement.m.path-length"
+    },
+    {
+      "solver": "kin.signedDisplacement",
+      "params": {
+        "x1": 2,
+        "x2": 10,
+        "x3": -5
+      },
+      "expect": -7,
+      "template": "kin.displacement.h.signed"
+    },
+    {
+      "solver": "kin.averageSpeedUnits",
+      "params": {
+        "d": 600,
+        "tmin": 2
+      },
+      "expect": 5,
+      "template": "kin.avg-velocity.e.unit-conversion"
+    },
+    {
+      "solver": "kin.halvesAverage",
+      "params": {
+        "v1": 20,
+        "v2": 30
+      },
+      "expect": 24,
+      "template": "kin.avg-velocity.m.two-halves"
+    },
+    {
+      "solver": "kin.avgVelocityTwoLegs",
+      "params": {
+        "d1": 500,
+        "t1": 200,
+        "d2": 200,
+        "t2": 100
+      },
+      "expect": 1.0,
+      "template": "kin.avg-velocity.h.two-legs"
+    },
+    {
+      "solver": "kin.xtNegativeSlope",
+      "params": {
+        "x0": 10,
+        "v": 2
+      },
+      "expectChoice": "towards",
+      "template": "kin.xt-graphs.e.negative-slope"
+    },
+    {
+      "solver": "kin.xtSlope",
+      "params": {
+        "x0": 4,
+        "v": 2,
+        "t1": 1,
+        "t2": 4
+      },
+      "expect": 2,
+      "template": "kin.xt-graphs.m.slope"
+    },
+    {
+      "solver": "kin.xtTangent",
+      "params": {
+        "a": 1,
+        "b": 2,
+        "t1": 3
+      },
+      "expect": 8,
+      "template": "kin.xt-graphs.h.tangent"
+    },
+    {
+      "solver": "kin.accelSimple",
+      "params": {
+        "u": 4,
+        "v": 16,
+        "t": 4
+      },
+      "expect": 3,
+      "template": "kin.acceleration.e.from-change"
+    },
+    {
+      "solver": "kin.twoPhaseArea",
+      "params": {
+        "v": 10,
+        "t1": 4,
+        "t2": 5
+      },
+      "expect": 70,
+      "template": "kin.acceleration.h.two-phase"
+    },
+    {
+      "solver": "kin.vFromUat",
+      "params": {
+        "u": 5,
+        "a": 2,
+        "t": 4
+      },
+      "expect": 13,
+      "template": "kin.suvat.e.v-from-uat"
+    },
+    {
+      "solver": "kin.reactionStop",
+      "params": {
+        "u": 20,
+        "tr": 0.5,
+        "a": 5
+      },
+      "expect": 50,
+      "template": "kin.suvat.h.reaction-stop"
+    },
+    {
+      "solver": "kin.dropSpeed",
+      "params": {
+        "t": 2
+      },
+      "expect": 19.6,
+      "template": "kin.free-fall.e.drop-speed"
+    },
+    {
+      "solver": "kin.maxHeight",
+      "params": {
+        "u": 19.6
+      },
+      "expect": 19.6,
+      "template": "kin.free-fall.m.max-height"
+    },
+    {
+      "solver": "kin.cliffThrow",
+      "params": {
+        "u": 10,
+        "h": 30
+      },
+      "expect": 3.6969136833885714,
+      "template": "kin.free-fall.h.cliff-throw"
+    },
+    {
+      "solver": "kin.relativeSameDir",
+      "params": {
+        "vA": 25,
+        "vB": 15
+      },
+      "expect": 10,
+      "template": "kin.relative-1d.e.same-direction"
+    },
+    {
+      "solver": "kin.meetTime",
+      "params": {
+        "d": 600,
+        "vA": 20,
+        "vB": 10
+      },
+      "expect": 20,
+      "template": "kin.relative-1d.m.meet"
+    },
+    {
+      "solver": "kin.overtake",
+      "params": {
+        "L1": 150,
+        "L2": 150,
+        "v1": 30,
+        "v2": 15
+      },
+      "expect": 20,
+      "template": "kin.relative-1d.h.overtake"
+    },
+    {
+      "solver": "mip.whichVector",
+      "params": {
+        "d": 30
+      },
+      "expectChoice": "disp",
+      "template": "mip.vector-basics.e.which-vector"
+    },
+    {
+      "solver": "mip.scaledMagnitude",
+      "params": {
+        "A": 5,
+        "k": -2
+      },
+      "expect": 10,
+      "template": "mip.vector-basics.m.scaled"
+    },
+    {
+      "solver": "mip.unitVectorX",
+      "params": {
+        "ax": 3,
+        "ay": 4
+      },
+      "expect": 0.6,
+      "template": "mip.vector-basics.h.unit-vector"
+    },
+    {
+      "solver": "mip.oppositeResultant",
+      "params": {
+        "a": 8,
+        "b": 3
+      },
+      "expect": 5,
+      "template": "mip.vector-addition.e.opposite"
+    },
+    {
+      "solver": "mip.resultantAtAngle",
+      "params": {
+        "a": 3,
+        "b": 5,
+        "th": 60
+      },
+      "expect": 7.0,
+      "template": "mip.vector-addition.h.at-angle"
+    },
+    {
+      "solver": "mip.speedFromComponents",
+      "params": {
+        "vx": 6,
+        "vy": 8
+      },
+      "expect": 10,
+      "template": "mip.velocity-2d.e.speed"
+    },
+    {
+      "solver": "mip.distanceAccelerated",
+      "params": {
+        "a": 2,
+        "v": 6,
+        "t": 4
+      },
+      "expect": 28.844410203711913,
+      "template": "mip.velocity-2d.m.accelerated"
+    },
+    {
+      "solver": "mip.riverDrift",
+      "params": {
+        "w": 100,
+        "vb": 4,
+        "vr": 2
+      },
+      "expect": 50,
+      "template": "mip.velocity-2d.h.river"
+    },
+    {
+      "solver": "mip.velocityAtTop",
+      "params": {
+        "u": 20,
+        "ang": 60
+      },
+      "expectChoice": "horizontal",
+      "template": "mip.projectile.e.top"
+    },
+    {
+      "solver": "mip.horizontalLaunch",
+      "params": {
+        "u": 10,
+        "h": 19.6
+      },
+      "expect": 20,
+      "template": "mip.projectile.h.horizontal-launch"
+    },
+    {
+      "solver": "mip.centripetal",
+      "params": {
+        "v": 6,
+        "r": 4
+      },
+      "expect": 9,
+      "template": "mip.ucm.e.centripetal"
+    },
+    {
+      "solver": "mip.centripetalFromPeriod",
+      "params": {
+        "r": 1,
+        "T": 1
+      },
+      "expect": 39.47841760435743,
+      "template": "mip.ucm.m.from-period"
+    },
+    {
+      "solver": "mip.centripetalScaling",
+      "params": {
+        "kv": 2,
+        "kr": 0.5
+      },
+      "expect": 8,
+      "template": "mip.ucm.h.scaling"
+    },
+    {
+      "solver": "lom.stringBreaks",
+      "params": {
+        "r": 1,
+        "v": 4
+      },
+      "expectChoice": "tangent",
+      "template": "lom.first-law.h.string-breaks"
+    },
+    {
+      "solver": "lom.lampTwoStrings",
+      "params": {
+        "m": 2,
+        "th": 60
+      },
+      "expect": 19.6,
+      "template": "lom.fbd.h.lamp-two-strings"
+    },
+    {
+      "solver": "wep.dotFromAngle",
+      "params": {
+        "A": 4,
+        "B": 5,
+        "th": 60
+      },
+      "expect": 10,
+      "template": "wep.scalar-product.e.from-angle"
+    },
+    {
+      "solver": "wep.angleFromComponents",
+      "params": {
+        "ax": 1,
+        "ay": 1,
+        "bx": 0,
+        "by": 1
+      },
+      "expect": 45,
+      "template": "wep.scalar-product.m.angle"
+    },
+    {
+      "solver": "wep.perpendicularK",
+      "params": {
+        "a": 3,
+        "c": 2,
+        "d": -4
+      },
+      "expect": 1.5,
+      "template": "wep.scalar-product.h.perpendicular-k"
+    },
+    {
+      "solver": "wep.normalWork",
+      "params": {
+        "m": 2,
+        "d": 3
+      },
+      "expectChoice": "zero",
+      "template": "wep.work-constant.e.normal-force"
+    },
+    {
+      "solver": "wep.sledWork",
+      "params": {
+        "F": 40,
+        "d": 10,
+        "th": 60
+      },
+      "expect": 200,
+      "template": "wep.work-constant.m.sled"
+    },
+    {
+      "solver": "wep.frictionWork",
+      "params": {
+        "m": 5,
+        "mu": 0.2,
+        "d": 4
+      },
+      "expect": -39.2,
+      "template": "wep.work-constant.h.friction"
+    },
+    {
+      "solver": "wep.triangleWork",
+      "params": {
+        "F0": 20,
+        "x0": 4
+      },
+      "expect": 40,
+      "template": "wep.work-variable.e.triangle"
+    },
+    {
+      "solver": "wep.springWorkBetween",
+      "params": {
+        "k": 200,
+        "x1": 4,
+        "x2": 10
+      },
+      "expect": 0.8400000000000001,
+      "template": "wep.work-variable.m.spring"
+    },
+    {
+      "solver": "wep.piecewiseWork",
+      "params": {
+        "F": 20,
+        "a": 3,
+        "b": 7
+      },
+      "expect": 100,
+      "template": "wep.work-variable.h.piecewise"
+    },
+    {
+      "solver": "wep.kineticEnergy",
+      "params": {
+        "m": 2,
+        "v": 10
+      },
+      "expect": 100,
+      "template": "wep.ke-theorem.e.ke"
+    },
+    {
+      "solver": "wep.speedFromWork",
+      "params": {
+        "F": 20,
+        "d": 10,
+        "m": 4
+      },
+      "expect": 10,
+      "template": "wep.ke-theorem.m.speed-from-work"
+    },
+    {
+      "solver": "wep.brakingByWork",
+      "params": {
+        "v": 20,
+        "mu": 0.5
+      },
+      "expect": 40.816326530612244,
+      "template": "wep.ke-theorem.h.braking"
+    },
+    {
+      "solver": "wep.gravPE",
+      "params": {
+        "m": 5,
+        "h": 4
+      },
+      "expect": 196,
+      "template": "wep.potential-energy.e.mgh"
+    },
+    {
+      "solver": "wep.springPE",
+      "params": {
+        "k": 400,
+        "xcm": 5
+      },
+      "expect": 0.5,
+      "template": "wep.potential-energy.m.spring"
+    },
+    {
+      "solver": "wep.springLaunch",
+      "params": {
+        "k": 800,
+        "xcm": 10,
+        "m": 2
+      },
+      "expect": 2.0,
+      "template": "wep.potential-energy.h.launch"
+    },
+    {
+      "solver": "wep.dropSpeed",
+      "params": {
+        "h": 20
+      },
+      "expect": 19.79898987322333,
+      "template": "wep.energy-conservation.e.drop"
+    },
+    {
+      "solver": "wep.swingSpeed",
+      "params": {
+        "L": 2,
+        "th": 60
+      },
+      "expect": 4.427188724235731,
+      "template": "wep.energy-conservation.m.swing"
+    },
+    {
+      "solver": "wep.loopBottomSpeed",
+      "params": {
+        "R": 0.8
+      },
+      "expect": 6.260990336999411,
+      "template": "wep.energy-conservation.h.vertical-circle"
+    },
+    {
+      "solver": "wep.liftPower",
+      "params": {
+        "m": 50,
+        "h": 4,
+        "t": 5
+      },
+      "expect": 392,
+      "template": "wep.power.e.lift"
+    },
+    {
+      "solver": "wep.powerFv",
+      "params": {
+        "F": 500,
+        "v": 20
+      },
+      "expect": 10000,
+      "template": "wep.power.m.fv"
+    },
+    {
+      "solver": "wep.pumpPower",
+      "params": {
+        "L": 600,
+        "h": 10,
+        "tmin": 1
+      },
+      "expect": 980,
+      "template": "wep.power.h.pump"
+    },
+    {
+      "solver": "wep.inelasticConserved",
+      "params": {
+        "m": 2
+      },
+      "expectChoice": "momentum",
+      "template": "wep.collisions.e.what-is-conserved"
+    },
+    {
+      "solver": "wep.elasticSecond",
+      "params": {
+        "m1": 2,
+        "m2": 3,
+        "u": 5
+      },
+      "expect": 4,
+      "template": "wep.collisions.m.elastic"
+    },
+    {
+      "solver": "wep.keLoss",
+      "params": {
+        "m1": 2,
+        "m2": 2,
+        "u": 6
+      },
+      "expect": 18,
+      "template": "wep.collisions.h.ke-loss"
+    },
+    {
+      "solver": "rot.comTwo",
+      "params": {
+        "m1": 1,
+        "m2": 3,
+        "d": 4
+      },
+      "expect": 3,
+      "template": "rot.centre-of-mass.e.two-masses"
+    },
+    {
+      "solver": "rot.comThree",
+      "params": {
+        "m1": 1,
+        "m2": 1,
+        "m3": 2,
+        "b": 4,
+        "c": 2,
+        "h": 6
+      },
+      "expect": 3,
+      "template": "rot.centre-of-mass.m.three"
+    },
+    {
+      "solver": "rot.boat",
+      "params": {
+        "m": 60,
+        "M": 240,
+        "d": 5
+      },
+      "expect": 1,
+      "template": "rot.centre-of-mass.h.boat"
+    },
+    {
+      "solver": "rot.ixj",
+      "params": {
+        "s": 2
+      },
+      "expectChoice": "k",
+      "template": "rot.vector-product.e.i-cross-j"
+    },
+    {
+      "solver": "rot.crossMagnitude",
+      "params": {
+        "A": 4,
+        "B": 6,
+        "th": 30
+      },
+      "expect": 12,
+      "template": "rot.vector-product.m.magnitude"
+    },
+    {
+      "solver": "rot.crossZ",
+      "params": {
+        "a1": 2,
+        "a2": -1,
+        "b1": 3,
+        "b2": 1
+      },
+      "expect": 5,
+      "template": "rot.vector-product.h.components"
+    },
+    {
+      "solver": "rot.rpmToRad",
+      "params": {
+        "rpm": 60
+      },
+      "expect": 6.283185307179586,
+      "template": "rot.angular-kinematics.e.rpm"
+    },
+    {
+      "solver": "rot.revsFromRest",
+      "params": {
+        "alpha": 4,
+        "t": 5
+      },
+      "expect": 7.957747154594767,
+      "template": "rot.angular-kinematics.m.revolutions"
+    },
+    {
+      "solver": "rot.fanStop",
+      "params": {
+        "w0": 20,
+        "n": 10
+      },
+      "expect": 3.183098861837907,
+      "template": "rot.angular-kinematics.h.fan-stop"
+    },
+    {
+      "solver": "rot.torque",
+      "params": {
+        "F": 40,
+        "r": 0.25
+      },
+      "expect": 10,
+      "template": "rot.torque-equilibrium.e.spanner"
+    },
+    {
+      "solver": "rot.seesaw",
+      "params": {
+        "m1": 30,
+        "d1": 2,
+        "m2": 40
+      },
+      "expect": 1.5,
+      "template": "rot.torque-equilibrium.m.seesaw"
+    },
+    {
+      "solver": "rot.beamBalance",
+      "params": {
+        "L": 6,
+        "pv": 1,
+        "Wb": 100
+      },
+      "expect": 200,
+      "template": "rot.torque-equilibrium.h.beam"
+    },
+    {
+      "solver": "rot.discI",
+      "params": {
+        "M": 4,
+        "R": 0.5
+      },
+      "expect": 0.5,
+      "template": "rot.moment-of-inertia.e.disc"
+    },
+    {
+      "solver": "rot.gyrationRod",
+      "params": {
+        "M": 2,
+        "L": 1.2
+      },
+      "expect": 0.34641016151377546,
+      "template": "rot.moment-of-inertia.m.gyration"
+    },
+    {
+      "solver": "rot.pointMassesI",
+      "params": {
+        "m1": 2,
+        "m2": 1,
+        "L": 2,
+        "a": 0.5
+      },
+      "expect": 2.75,
+      "template": "rot.moment-of-inertia.h.point-masses"
+    },
+    {
+      "solver": "rot.alpha",
+      "params": {
+        "tau": 6,
+        "I": 2
+      },
+      "expect": 3,
+      "template": "rot.dynamics.e.alpha"
+    },
+    {
+      "solver": "rot.discKE",
+      "params": {
+        "M": 4,
+        "R": 0.5,
+        "w": 10
+      },
+      "expect": 25.0,
+      "template": "rot.dynamics.m.ke"
+    },
+    {
+      "solver": "rot.pulleyMass",
+      "params": {
+        "m": 2,
+        "M": 4
+      },
+      "expect": 4.9,
+      "template": "rot.dynamics.h.pulley"
+    },
+    {
+      "solver": "rot.angularMomentum",
+      "params": {
+        "I": 2,
+        "w": 5
+      },
+      "expect": 10,
+      "template": "rot.angular-momentum.e.l"
+    },
+    {
+      "solver": "rot.skater",
+      "params": {
+        "I1": 4,
+        "I2": 2,
+        "w1": 3
+      },
+      "expect": 6,
+      "template": "rot.angular-momentum.m.skater"
+    },
+    {
+      "solver": "rot.discDrop",
+      "params": {
+        "M1": 3,
+        "M2": 1,
+        "R": 0.2,
+        "w1": 12
+      },
+      "expect": 9,
+      "template": "rot.angular-momentum.h.coupled-discs"
+    },
+    {
+      "solver": "osc.frequency",
+      "params": {
+        "T": 0.25
+      },
+      "expect": 4,
+      "template": "osc.periodic.e.frequency"
+    },
+    {
+      "solver": "osc.periodFromCount",
+      "params": {
+        "n": 20,
+        "t": 30
+      },
+      "expect": 1.5,
+      "template": "osc.periodic.m.count"
+    },
+    {
+      "solver": "osc.inPhaseAgain",
+      "params": {
+        "T1": 2,
+        "T2": 2.5
+      },
+      "expect": 10,
+      "template": "osc.periodic.h.in-phase"
+    },
+    {
+      "solver": "osc.x0",
+      "params": {
+        "A": 0.1,
+        "phi": 60
+      },
+      "expect": 0.05,
+      "template": "osc.shm-displacement.e.x0"
+    },
+    {
+      "solver": "osc.xAtTime",
+      "params": {
+        "A": 0.08,
+        "T": 6,
+        "t": 1
+      },
+      "expect": 0.04,
+      "template": "osc.shm-displacement.m.x-at-t"
+    },
+    {
+      "solver": "osc.phaseFromStart",
+      "params": {
+        "frac": 0.5,
+        "A": 0.1
+      },
+      "expect": 60,
+      "template": "osc.shm-displacement.h.phase"
+    },
+    {
+      "solver": "osc.vmax",
+      "params": {
+        "A": 0.1,
+        "T": 1
+      },
+      "expect": 0.6283185307179586,
+      "template": "osc.shm-velocity-acceleration.e.vmax"
+    },
+    {
+      "solver": "osc.speedAtX",
+      "params": {
+        "A": 0.1,
+        "x": 0.06,
+        "T": 1
+      },
+      "expect": 0.5026548245743669,
+      "template": "osc.shm-velocity-acceleration.m.speed-at-x"
+    },
+    {
+      "solver": "osc.amax",
+      "params": {
+        "A": 0.01,
+        "f": 5
+      },
+      "expect": 9.869604401089358,
+      "template": "osc.shm-velocity-acceleration.h.amax"
+    },
+    {
+      "solver": "osc.springForce",
+      "params": {
+        "k": 200,
+        "xcm": 4
+      },
+      "expect": 8,
+      "template": "osc.force-law.e.restoring"
+    },
+    {
+      "solver": "osc.springPeriod",
+      "params": {
+        "m": 0.5,
+        "k": 50
+      },
+      "expect": 0.6283185307179586,
+      "template": "osc.force-law.m.spring-period"
+    },
+    {
+      "solver": "osc.parallelSprings",
+      "params": {
+        "m": 1,
+        "k": 50
+      },
+      "expect": 0.6283185307179586,
+      "template": "osc.force-law.h.parallel"
+    },
+    {
+      "solver": "osc.totalEnergy",
+      "params": {
+        "k": 200,
+        "Acm": 10
+      },
+      "expect": 1,
+      "template": "osc.energy.e.total"
+    },
+    {
+      "solver": "osc.keAtX",
+      "params": {
+        "k": 200,
+        "Acm": 10,
+        "xcm": 6
+      },
+      "expect": 0.64,
+      "template": "osc.energy.m.ke-at-x"
+    },
+    {
+      "solver": "osc.equalEnergies",
+      "params": {
+        "Acm": 10
+      },
+      "expect": 0.07071067811865475,
+      "template": "osc.energy.h.equal-share"
+    },
+    {
+      "solver": "osc.pendulumPeriod",
+      "params": {
+        "L": 1
+      },
+      "expect": 2.007089923154493,
+      "template": "osc.spring-pendulum.e.period"
+    },
+    {
+      "solver": "osc.pendulumLength",
+      "params": {
+        "T": 2
+      },
+      "expect": 0.9929475996949103,
+      "template": "osc.spring-pendulum.m.length"
+    },
+    {
+      "solver": "osc.moonPendulum",
+      "params": {
+        "T": 2,
+        "k": 4
+      },
+      "expect": 4,
+      "template": "osc.spring-pendulum.h.moon"
+    },
+    {
+      "solver": "f.whichIrrational",
+      "params": {
+        "n": 2
+      },
+      "expectChoice": "root",
+      "template": "f.number-systems.e.irrational"
+    },
+    {
+      "solver": "f.numberLineDistance",
+      "params": {
+        "a": 3,
+        "b": 4
+      },
+      "expect": 7,
+      "template": "f.number-systems.e.distance"
+    },
+    {
+      "solver": "f.timeFromSpeed",
+      "params": {
+        "d": 200,
+        "v": 5
+      },
+      "expect": 40,
+      "template": "f.speed-time.e.time"
+    },
+    {
+      "solver": "f.speedFromDistance",
+      "params": {
+        "d": 90,
+        "t": 15
+      },
+      "expect": 6,
+      "template": "f.speed-time.e.speed"
+    },
+    {
+      "solver": "f.slopeTwoPoints",
+      "params": {
+        "x1": 0,
+        "y1": 0,
+        "dx": 2,
+        "m": 1.5
+      },
+      "expect": 1.5,
+      "template": "f.slope.e.two-points"
+    },
+    {
+      "solver": "f.steeper",
+      "params": {
+        "m1": -3,
+        "m2": 2.5
+      },
+      "expectChoice": "a",
+      "template": "f.slope.e.steeper"
+    },
+    {
+      "solver": "f.trapeziumUnderLine",
+      "params": {
+        "m": 1,
+        "c": 2,
+        "a": 0,
+        "b": 4
+      },
+      "expect": 16.0,
+      "template": "f.area-graph.e.trapezium"
+    },
+    {
+      "solver": "f.triangleArea",
+      "params": {
+        "b": 6,
+        "h": 5
+      },
+      "expect": 15,
+      "template": "f.area-graph.e.triangle"
+    },
+    {
+      "solver": "f.solveLinear",
+      "params": {
+        "a": 3,
+        "b": 4,
+        "c": 19
+      },
+      "expect": 5,
+      "template": "f.rearrange.e.solve-linear"
+    },
+    {
+      "solver": "f.subjectOfFormula",
+      "params": {
+        "k": 2
+      },
+      "expectChoice": "ok",
+      "template": "f.rearrange.e.subject"
+    },
+    {
+      "solver": "f.largerRoot",
+      "params": {
+        "p": 2,
+        "q": 5
+      },
+      "expect": 5,
+      "template": "f.quadratic.e.larger-root"
+    },
+    {
+      "solver": "f.discriminant",
+      "params": {
+        "a": 1,
+        "b": -5,
+        "c": 2
+      },
+      "expect": 17,
+      "template": "f.quadratic.e.discriminant"
+    },
+    {
+      "solver": "f.distanceTwoPoints",
+      "params": {
+        "x1": 0,
+        "y1": 0,
+        "dx": 3,
+        "dy": 4
+      },
+      "expect": 5,
+      "template": "f.coord.e.distance"
+    },
+    {
+      "solver": "f.midpoint",
+      "params": {
+        "x1": -1,
+        "x2": 6,
+        "y1": 0,
+        "y2": 4
+      },
+      "expect": 2.5,
+      "template": "f.coord.e.midpoint"
+    },
+    {
+      "solver": "f.thirdAngle",
+      "params": {
+        "A": 40,
+        "B": 60
+      },
+      "expect": 80,
+      "template": "f.angles.e.third-angle"
+    },
+    {
+      "solver": "f.alternateAngles",
+      "params": {
+        "x": 50
+      },
+      "expectChoice": "equal",
+      "template": "f.angles.e.alternate"
+    },
+    {
+      "solver": "f.hypotenuse",
+      "params": {
+        "a": 5,
+        "b": 12
+      },
+      "expect": 13,
+      "template": "f.pythagoras.e.hypotenuse"
+    },
+    {
+      "solver": "f.missingLeg",
+      "params": {
+        "c": 13,
+        "a": 5
+      },
+      "expect": 12,
+      "template": "f.pythagoras.e.leg"
+    },
+    {
+      "solver": "f.arcLength",
+      "params": {
+        "r": 6,
+        "deg": 90
+      },
+      "expect": 0.09424777960769379,
+      "template": "f.circle.e.arc"
+    },
+    {
+      "solver": "f.circleArea",
+      "params": {
+        "r": 3
+      },
+      "expect": 28.274333882308138,
+      "template": "f.circle.e.area"
+    },
+    {
+      "solver": "f.unbalancedForce",
+      "params": {
+        "F": 3
+      },
+      "expectChoice": "speeds",
+      "template": "f.force-intro.e.unbalanced"
+    },
+    {
+      "solver": "f.massWeight",
+      "params": {
+        "m": 5
+      },
+      "expectChoice": "mass",
+      "template": "f.force-intro.e.mass-weight"
+    },
+    {
+      "solver": "f.workFd",
+      "params": {
+        "F": 20,
+        "d": 3
+      },
+      "expect": 60,
+      "template": "f.work-energy-intro.e.work"
+    },
+    {
+      "solver": "f.fallingEnergy",
+      "params": {
+        "h": 5
+      },
+      "expectChoice": "pe-ke",
+      "template": "f.work-energy-intro.e.falling"
+    },
+    {
+      "solver": "f.cosFromSin",
+      "params": {
+        "s": 0.6
+      },
+      "expect": 0.8,
+      "template": "f.trig-identity.e.cos-from-sin"
+    },
+    {
+      "solver": "f.standardValue",
+      "params": {
+        "k": 1
+      },
+      "expectChoice": "half",
+      "template": "f.trig-identity.e.standard"
+    }
+  ]
+}

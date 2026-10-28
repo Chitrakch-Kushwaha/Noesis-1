@@ -1,0 +1,69 @@
+flowchart TB
+  subgraph physics11["Physics · Class 11"]
+    kin["Motion in a Straight Line"]
+    mip["Motion in a Plane"]
+    lom["Laws of Motion"]
+    wep["Work, Energy and Power"]
+    rot["System of Particles and Rotational Motion"]
+    osc["Oscillations"]
+  end
+  subgraph maths11["Maths · Class 11"]
+    set["Sets"]
+    rel["Relations and Functions"]
+    trg["Trigonometric Functions"]
+    sl["Straight Lines"]
+    con["Conic Sections"]
+    lim["Limits and Derivatives"]
+  end
+  subgraph physics12["Physics · Class 12"]
+    ecf["Electric Charges and Fields"]
+    epc["Electrostatic Potential and Capacitance"]
+    cur["Current Electricity"]
+    mcm["Moving Charges and Magnetism"]
+    emi["Electromagnetic Induction"]
+    opt["Ray Optics and Optical Instruments"]
+  end
+  subgraph maths12["Maths · Class 12"]
+    cnd["Continuity and Differentiability"]
+    aod["Applications of Derivatives"]
+    int["Integrals"]
+    aoi["Application of Integrals"]
+    vec["Vector Algebra"]
+    tdg["Three Dimensional Geometry"]
+  end
+  kin --> mip
+  mip --> lom
+  lom --> wep
+  wep --> rot
+  wep --> osc
+  rot --> ecf
+  set --> rel
+  rel --> trg
+  trg --> sl
+  trg --> lim
+  trg --> vec
+  sl --> con
+  sl --> tdg
+  con --> aoi
+  lim --> cnd
+  ecf --> epc
+  epc --> cur
+  cur --> mcm
+  mcm --> emi
+  cnd --> aod
+  cnd --> int
+  int --> aoi
+  vec --> tdg
+  lim -. related .- kin
+  trg -. related .- mip
+  trg -. related .- osc
+  vec -. related .- mip
+  vec -. related .- mcm
+  aod -. related .- kin
+  con -. related .- opt
+  osc -. related .- emi
+  subgraph legend["Legend"]
+    direction LR
+    lgA["Chapter A"] -->|"prerequisite (can trigger remediation)"| lgB["Chapter B"]
+    lgC["Chapter C"] -.-|"related concept (never triggers remediation)"| lgD["Chapter D"]
+  end

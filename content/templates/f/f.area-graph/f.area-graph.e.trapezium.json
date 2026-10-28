@@ -1,0 +1,181 @@
+{
+  "id": "f.area-graph.e.trapezium",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.area-graph"
+  ],
+  "primarySkillId": "f.area-graph",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        2
+      ]
+    },
+    "c": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "a": {
+      "kind": "choice",
+      "values": [
+        0,
+        1
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.trapeziumUnderLine",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "area-end-height"
+      ],
+      "match": {
+        "buggySolver": "endHeight"
+      }
+    }
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        6
+      ],
+      "yRange": [
+        0,
+        "{{m*6 + c + 1}}"
+      ],
+      "functions": [
+        {
+          "id": "L",
+          "expr": "{{m}}*x + {{c}}"
+        }
+      ]
+    },
+    "instructions": "The graph is for exploring; drag points or sliders where you see them."
+  },
+  "consequence": [
+    {
+      "cue": "area",
+      "args": {
+        "top": "L",
+        "from": "{{a}}",
+        "to": "{{b}}",
+        "showValue": false
+      }
+    }
+  ],
+  "stem": [
+    "Find the area under the line y = {{m}}x + {{c}} between x = {{a}} and x = {{b}} (above the x-axis)."
+  ],
+  "input": {
+    "label": "Area",
+    "placeholder": "for example 12",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "What shape is the region under a straight sloping line?",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "L",
+          "from": "{{a}}",
+          "to": "{{b}}",
+          "showValue": false
+        }
+      }
+    },
+    {
+      "text": "A trapezium with parallel sides y(a) and y(b)."
+    },
+    {
+      "text": "Area = ½(sum of parallel sides) × width."
+    }
+  ],
+  "feedback": {
+    "area-end-height": {
+      "text": "The line slopes, so the region is a trapezium, not a rectangle of the end height.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "L",
+          "from": "{{a}}",
+          "to": "{{b}}",
+          "showValue": false
+        }
+      }
+    },
+    "generic": {
+      "text": "Area = ½(y_a + y_b) × (b − a)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "y({{a}}) = {{ya}}, y({{b}}) = {{yb}}, width {{w}}."
+    },
+    {
+      "text": "Area = ½ × ({{ya}} + {{yb}}) × {{w}} = {{ans}}.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "L",
+          "from": "{{a}}",
+          "to": "{{b}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "area-end-height": {
+      "front": "Area under a sloping straight line?",
+      "back": "A trapezium: ½(y₁ + y₂) × width."
+    },
+    "generic": {
+      "front": "Area under a straight line between two x values?",
+      "back": "Trapezium: ½(y₁ + y₂) × width."
+    }
+  },
+  "accessibility": {
+    "altText": "A straight line above the x-axis.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

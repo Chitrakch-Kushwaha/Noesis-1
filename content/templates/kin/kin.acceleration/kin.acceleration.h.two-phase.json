@@ -1,0 +1,194 @@
+{
+  "id": "kin.acceleration.h.two-phase",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.acceleration"
+  ],
+  "primarySkillId": "kin.acceleration",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "v": {
+      "kind": "choice",
+      "values": [
+        8,
+        10,
+        12,
+        15
+      ]
+    },
+    "t1": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        5
+      ]
+    },
+    "t2": {
+      "kind": "choice",
+      "values": [
+        3,
+        5,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.twoPhaseArea",
+  "intro": "Read the distance from a v–t graph.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "area-uses-final-velocity"
+      ],
+      "match": {
+        "buggySolver": "finalVelocityTimesTime"
+      }
+    },
+    {
+      "tags": [
+        "area-misses-triangle"
+      ],
+      "match": {
+        "buggySolver": "rectangleOnly"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        "{{T+1}}"
+      ],
+      "yRange": [
+        0,
+        "{{vmax}}"
+      ],
+      "xLabel": "t (s)",
+      "yLabel": "v (m/s)",
+      "functions": [
+        {
+          "id": "v",
+          "expr": "({{v}}/{{t1}}*x + {{v}} - abs({{v}}/{{t1}}*x - {{v}}))/2"
+        }
+      ]
+    },
+    "instructions": "The graph is the sprinter's velocity against time; the area under it is the distance."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Your distance is the area of some shape under this graph: check which parts you included."
+      }
+    }
+  ],
+  "stem": [
+    "A sprinter's v–t graph rises in a straight line from 0 to {{v}} m/s over {{t1}} s, then stays at {{v}} m/s for {{t2}} s.",
+    "How far does the sprinter run in this time?"
+  ],
+  "input": {
+    "label": "Distance",
+    "placeholder": "for example 70 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Distance is the area under a v–t graph.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "v"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Split the area into a triangle (speeding up) and a rectangle (steady speed)."
+    },
+    {
+      "text": "Triangle: ½ × base × height; rectangle: width × height."
+    }
+  ],
+  "feedback": {
+    "area-uses-final-velocity": {
+      "text": "You used a rectangle of height {{v}} m/s for the whole time. During the first {{t1}} s the sprinter was slower, so that part is a triangle."
+    },
+    "area-misses-triangle": {
+      "text": "You left out the distance covered while speeding up: the triangle under the first part of the graph."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "Area under the v–t graph: triangle + rectangle."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Triangle: ½ × {{t1}} × {{v}} = {{tri}} m.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "v",
+          "from": 0,
+          "to": "{{t1}}"
+        }
+      }
+    },
+    {
+      "text": "Rectangle: {{t2}} × {{v}} = {{rect}} m. Total {{ans}} m.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "v",
+          "from": 0,
+          "to": "{{T}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "area-uses-final-velocity": {
+      "front": "Displacement from a v–t graph?",
+      "back": "The area under it: a sloping part makes a triangle or trapezium, not a rectangle of height v."
+    },
+    "area-misses-triangle": {
+      "front": "v–t graph: acceleration phase then constant speed. Distance?",
+      "back": "Triangle (acceleration) + rectangle (constant speed)."
+    },
+    "generic": {
+      "front": "Distance from a v–t graph?",
+      "back": "The area under it (triangle + rectangle for this shape)."
+    }
+  },
+  "accessibility": {
+    "altText": "A v–t graph rising from 0 to {{v}} m/s and then flat.",
+    "nonDragAlternative": "The graph is for reading; type your answer in the box."
+  }
+}

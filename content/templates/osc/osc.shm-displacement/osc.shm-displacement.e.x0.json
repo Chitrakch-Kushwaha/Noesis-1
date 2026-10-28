@@ -1,0 +1,166 @@
+{
+  "id": "osc.shm-displacement.e.x0",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.shm-displacement"
+  ],
+  "primarySkillId": "osc.shm-displacement",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "A": {
+      "kind": "choice",
+      "values": [
+        0.05,
+        0.1,
+        0.2
+      ]
+    },
+    "phi": {
+      "kind": "choice",
+      "values": [
+        0,
+        60,
+        90,
+        120,
+        180
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.x0",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "shm-phase-sin-cos"
+      ],
+      "match": {
+        "buggySolver": "usedSin"
+      }
+    },
+    {
+      "tags": [
+        "shm-amplitude-for-x"
+      ],
+      "match": {
+        "buggySolver": "amplitude"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": 4,
+      "amplitude": "{{A}}",
+      "phaseDeg": "{{phi}}"
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "marker",
+      "args": {
+        "t": 0
+      }
+    }
+  ],
+  "stem": [
+    "A body moves in SHM with x = A cos(ωt + φ), where A = {{A}} m and φ = {{phi}}°.",
+    "What is its displacement at t = 0?"
+  ],
+  "input": {
+    "label": "Displacement",
+    "placeholder": "for example 0.05 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Put t = 0 into the equation.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "t": 0
+        }
+      }
+    },
+    {
+      "text": "x(0) = A cos φ."
+    },
+    {
+      "text": "Use φ = {{phi}}°."
+    }
+  ],
+  "feedback": {
+    "shm-phase-sin-cos": {
+      "text": "With x = A cos(ωt + φ), at t = 0 you get A cos φ, not A sin φ."
+    },
+    "shm-amplitude-for-x": {
+      "text": "The body starts at A only if φ = 0. Here x(0) = A cos {{phi}}°."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "x(0) = A cos φ."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "x(0) = {{A}} × cos {{phi}}°."
+    },
+    {
+      "text": "= {{ans}} m.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "t": 0
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "shm-phase-sin-cos": {
+      "front": "x = A cos(ωt + φ): x at t = 0?",
+      "back": "A cos φ."
+    },
+    "shm-amplitude-for-x": {
+      "front": "Is x(0) always A?",
+      "back": "Only if φ = 0: x(0) = A cos φ."
+    },
+    "generic": {
+      "front": "SHM x(0) for x = A cos(ωt + φ)?",
+      "back": "A cos φ."
+    }
+  },
+  "accessibility": {
+    "altText": "A spring oscillator with its x–t graph.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

@@ -1,0 +1,430 @@
+{
+  "$comment": "Misconception catalogue. 'implicates' lists skills whose weakness this misconception is evidence of; the detour planner intersects it with the prerequisite closure of the failed skill. Awaiting named human review with the templates that use these tags.",
+  "chapter": "rot",
+  "status": "in-review",
+  "misconceptions": [
+    {
+      "tag": "com-midpoint",
+      "description": "Puts the centre of mass at the midpoint regardless of the masses.",
+      "implicates": [
+        "rot.centre-of-mass"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is the centre of mass of two unequal masses at the midpoint?",
+        "back": "No: it is nearer the heavier mass, x = (m₁x₁ + m₂x₂) ÷ (m₁ + m₂)."
+      }
+    },
+    {
+      "tag": "com-wrong-end",
+      "description": "Measures the centre of mass from the wrong end.",
+      "implicates": [
+        "rot.centre-of-mass"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Centre of mass of two masses: nearer which one?",
+        "back": "The heavier one."
+      }
+    },
+    {
+      "tag": "com-unweighted",
+      "description": "Averages coordinates without weighting by mass.",
+      "implicates": [
+        "rot.centre-of-mass",
+        "f.coord"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Centre of mass of unequal masses?",
+        "back": "Weight each position by its mass: Σmx ÷ Σm."
+      }
+    },
+    {
+      "tag": "com-shifts-isolated",
+      "description": "Expects an isolated system's centre of mass to move when parts move internally.",
+      "implicates": [
+        "rot.centre-of-mass",
+        "lom.momentum-conservation"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A person walks along a boat on still water. Does the centre of mass of person + boat move?",
+        "back": "No: no external horizontal force, so the boat moves back to keep it fixed."
+      }
+    },
+    {
+      "tag": "boat-ratio",
+      "description": "Uses m ÷ M instead of m ÷ (m + M) for the boat's recoil.",
+      "implicates": [
+        "rot.centre-of-mass"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Person m walks d along boat M: boat moves?",
+        "back": "m d ÷ (m + M) backwards."
+      }
+    },
+    {
+      "tag": "cross-order",
+      "description": "Reverses the order (and so the sign) of a cross product.",
+      "implicates": [
+        "rot.vector-product"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "î × ĵ or ĵ × î: which is +k̂?",
+        "back": "î × ĵ = k̂; ĵ × î = −k̂."
+      }
+    },
+    {
+      "tag": "cross-uses-cos",
+      "description": "Uses cos θ for the magnitude of a cross product.",
+      "implicates": [
+        "rot.vector-product",
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "|a × b| = ?",
+        "back": "|a||b| sin θ."
+      }
+    },
+    {
+      "tag": "cross-ignores-angle",
+      "description": "Multiplies magnitudes without sin θ.",
+      "implicates": [
+        "rot.vector-product"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Cross product of parallel vectors?",
+        "back": "Zero: sin 0° = 0."
+      }
+    },
+    {
+      "tag": "cross-as-dot",
+      "description": "Computes a dot product when a cross product is asked.",
+      "implicates": [
+        "rot.vector-product",
+        "wep.scalar-product"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "z-component of (a₁, a₂) × (b₁, b₂)?",
+        "back": "a₁b₂ − a₂b₁."
+      }
+    },
+    {
+      "tag": "cross-in-plane",
+      "description": "Expects the cross product of two vectors in a plane to lie in that plane.",
+      "implicates": [
+        "rot.vector-product"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Where does a × b point for a and b in the xy-plane?",
+        "back": "Along ±z, perpendicular to both (right-hand rule)."
+      }
+    },
+    {
+      "tag": "rev-not-radians",
+      "description": "Leaves angular speed in revolutions per second.",
+      "implicates": [
+        "rot.angular-kinematics",
+        "trg.radian"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "rpm to rad/s?",
+        "back": "Multiply by 2π, divide by 60."
+      }
+    },
+    {
+      "tag": "minutes-kept",
+      "description": "Forgets to convert minutes to seconds for angular speed.",
+      "implicates": [
+        "rot.angular-kinematics",
+        "f.si-units"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "1 rpm in rad/s?",
+        "back": "2π ÷ 60 ≈ 0.105 rad/s."
+      }
+    },
+    {
+      "tag": "rad-for-revolutions",
+      "description": "Reports radians when revolutions are asked.",
+      "implicates": [
+        "rot.angular-kinematics",
+        "trg.radian"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Radians to revolutions?",
+        "back": "Divide by 2π."
+      }
+    },
+    {
+      "tag": "rot-missing-half",
+      "description": "Drops the ½ in θ = ω₀t + ½αt².",
+      "implicates": [
+        "rot.angular-kinematics",
+        "kin.suvat"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Angle turned from rest at constant α?",
+        "back": "θ = ½αt²."
+      }
+    },
+    {
+      "tag": "revs-not-converted",
+      "description": "Uses revolutions instead of radians in ω² = ω₀² + 2αθ.",
+      "implicates": [
+        "rot.angular-kinematics",
+        "trg.radian"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Units of θ in ω² = ω₀² + 2αθ?",
+        "back": "Radians: 1 revolution = 2π rad."
+      }
+    },
+    {
+      "tag": "torque-divided",
+      "description": "Divides force by distance for torque.",
+      "implicates": [
+        "rot.torque-equilibrium"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Torque of F at perpendicular distance r?",
+        "back": "τ = F r."
+      }
+    },
+    {
+      "tag": "moments-inverted",
+      "description": "Inverts the mass ratio when balancing a see-saw.",
+      "implicates": [
+        "rot.torque-equilibrium",
+        "f.ratio"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Where must the heavier child sit to balance?",
+        "back": "Closer to the pivot: m₁d₁ = m₂d₂."
+      }
+    },
+    {
+      "tag": "moments-same-distance",
+      "description": "Expects unequal masses to balance at equal distances.",
+      "implicates": [
+        "rot.torque-equilibrium"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Do unequal weights balance at equal distances?",
+        "back": "No: the moments m g d must be equal."
+      }
+    },
+    {
+      "tag": "beam-arm-from-end",
+      "description": "Measures the beam's weight arm from the end instead of from the pivot.",
+      "implicates": [
+        "rot.torque-equilibrium"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Moment arm of a uniform beam's weight?",
+        "back": "From the pivot to the beam's centre."
+      }
+    },
+    {
+      "tag": "beam-weight-ignored",
+      "description": "Ignores the weight of the beam itself.",
+      "implicates": [
+        "rot.torque-equilibrium",
+        "lom.fbd"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Does a uniform beam's own weight have a moment about an off-centre pivot?",
+        "back": "Yes: its weight acts at the centre."
+      }
+    },
+    {
+      "tag": "ring-formula-for-disc",
+      "description": "Uses MR² (a ring) for a uniform disc.",
+      "implicates": [
+        "rot.moment-of-inertia"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Moment of inertia of a uniform disc about its axis?",
+        "back": "½MR²."
+      }
+    },
+    {
+      "tag": "gyration-root",
+      "description": "Forgets the square root in k = √(I ÷ M).",
+      "implicates": [
+        "rot.moment-of-inertia",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Radius of gyration?",
+        "back": "k = √(I ÷ M)."
+      }
+    },
+    {
+      "tag": "gyration-half-length",
+      "description": "Uses half the rod's length as its radius of gyration.",
+      "implicates": [
+        "rot.moment-of-inertia"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Radius of gyration of a rod about its centre?",
+        "back": "L ÷ √12."
+      }
+    },
+    {
+      "tag": "inertia-not-squared",
+      "description": "Uses m r instead of m r² for moment of inertia.",
+      "implicates": [
+        "rot.moment-of-inertia"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Moment of inertia of point masses?",
+        "back": "Σ m r²."
+      }
+    },
+    {
+      "tag": "inertia-com-distance",
+      "description": "Puts all the mass at the centre of mass when computing I.",
+      "implicates": [
+        "rot.moment-of-inertia"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Can you use the centre of mass for I?",
+        "back": "No: I = Σ m r² depends on where each mass is."
+      }
+    },
+    {
+      "tag": "alpha-multiplied",
+      "description": "Multiplies torque by moment of inertia for angular acceleration.",
+      "implicates": [
+        "rot.dynamics"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Angular acceleration from τ and I?",
+        "back": "α = τ ÷ I."
+      }
+    },
+    {
+      "tag": "rot-ke-missing-half",
+      "description": "Writes rotational KE as Iω².",
+      "implicates": [
+        "rot.dynamics"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Rotational kinetic energy?",
+        "back": "½Iω²."
+      }
+    },
+    {
+      "tag": "pulley-inertia-ignored",
+      "description": "Treats a heavy pulley as massless.",
+      "implicates": [
+        "rot.dynamics",
+        "lom.connected-bodies"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A mass hangs from a cord round a heavy disc pulley: is a = g?",
+        "back": "No: a = mg ÷ (m + M/2)."
+      }
+    },
+    {
+      "tag": "pulley-ring",
+      "description": "Uses MR² for a disc-shaped pulley.",
+      "implicates": [
+        "rot.dynamics",
+        "rot.moment-of-inertia"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Disc pulley's effective mass in a = mg ÷ (m + …)?",
+        "back": "M/2, from I = ½MR²."
+      }
+    },
+    {
+      "tag": "ke-for-angular-momentum",
+      "description": "Uses ½Iω² for angular momentum.",
+      "implicates": [
+        "rot.angular-momentum"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Angular momentum?",
+        "back": "L = Iω."
+      }
+    },
+    {
+      "tag": "am-divided",
+      "description": "Divides I by ω for angular momentum.",
+      "implicates": [
+        "rot.angular-momentum"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Units of angular momentum?",
+        "back": "kg m²/s: L = Iω."
+      }
+    },
+    {
+      "tag": "am-ratio-inverted",
+      "description": "Inverts the ratio when angular momentum is conserved.",
+      "implicates": [
+        "rot.angular-momentum"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Skater pulls in arms (I falls): ω?",
+        "back": "Rises: ω₂ = I₁ω₁ ÷ I₂."
+      }
+    },
+    {
+      "tag": "averages-angular-velocities",
+      "description": "Averages angular velocities when two bodies start rotating together.",
+      "implicates": [
+        "rot.angular-momentum"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Two discs coupled: final ω?",
+        "back": "I₁ω₁ ÷ (I₁ + I₂), from conservation of angular momentum."
+      }
+    },
+    {
+      "tag": "rot-ke-conserved",
+      "description": "Conserves rotational KE in a sticking (coupling) process.",
+      "implicates": [
+        "rot.angular-momentum",
+        "wep.collisions"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is rotational KE conserved when two discs couple?",
+        "back": "No: angular momentum is conserved; KE is lost."
+      }
+    }
+  ]
+}

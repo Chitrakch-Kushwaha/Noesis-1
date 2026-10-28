@@ -1,0 +1,439 @@
+{
+  "$comment": "Misconception catalogue. 'implicates' lists skills whose weakness this misconception is evidence of; the detour planner intersects it with the prerequisite closure of the failed skill. Awaiting named human review with the templates that use these tags.",
+  "chapter": "kin",
+  "status": "in-review",
+  "misconceptions": [
+    {
+      "tag": "path-length-for-displacement",
+      "description": "Gives the total distance travelled when asked for displacement.",
+      "implicates": [
+        "kin.displacement"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is displacement the total distance travelled?",
+        "back": "No. Displacement is the change in position (final − initial), with a direction; path length is the total distance covered."
+      }
+    },
+    {
+      "tag": "displacement-for-path-length",
+      "description": "Gives the change in position when asked for the distance travelled.",
+      "implicates": [
+        "kin.displacement"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A walk out and back: is the path length the same as the displacement?",
+        "back": "No. Path length adds every stretch travelled; displacement only compares the start and end."
+      }
+    },
+    {
+      "tag": "displacement-sign",
+      "description": "Drops the sign (direction) of a displacement.",
+      "implicates": [
+        "kin.displacement",
+        "f.number-systems"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Can a displacement be negative?",
+        "back": "Yes. Its sign gives its direction along the axis: negative means towards −x."
+      }
+    },
+    {
+      "tag": "last-leg-only",
+      "description": "Uses only the last stretch of a journey as the displacement.",
+      "implicates": [
+        "kin.displacement"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Displacement for a two-stage journey?",
+        "back": "Final position minus initial position, not just the last stage."
+      }
+    },
+    {
+      "tag": "unit-not-converted",
+      "description": "Divides metres by minutes and reports the result as m/s.",
+      "implicates": [
+        "f.si-units"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Distance in m, time in min: is d ÷ t in m/s?",
+        "back": "No. Convert minutes to seconds first (× 60)."
+      }
+    },
+    {
+      "tag": "arithmetic-mean-speed",
+      "description": "Averages two speeds arithmetically when equal distances are covered at each.",
+      "implicates": [
+        "kin.avg-velocity"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Half the distance at v₁, half at v₂: average speed?",
+        "back": "2v₁v₂ ÷ (v₁ + v₂), not (v₁ + v₂) ÷ 2: more time is spent at the slower speed."
+      }
+    },
+    {
+      "tag": "speed-for-velocity",
+      "description": "Uses total distance ÷ time when average velocity is asked.",
+      "implicates": [
+        "kin.avg-velocity",
+        "kin.displacement"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Average velocity or average speed: which uses displacement?",
+        "back": "Average velocity = displacement ÷ time; average speed = path length ÷ time."
+      }
+    },
+    {
+      "tag": "mean-of-velocities",
+      "description": "Averages the velocities of the stages instead of dividing displacement by total time.",
+      "implicates": [
+        "kin.avg-velocity"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is average velocity the mean of the stage velocities?",
+        "back": "Only if the stages take equal times. In general, total displacement ÷ total time."
+      }
+    },
+    {
+      "tag": "negative-slope-slowing",
+      "description": "Reads a negative x–t slope as slowing down.",
+      "implicates": [
+        "kin.xt-graphs"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A straight x–t line sloping down: what is happening?",
+        "back": "Constant velocity in the −x direction. Slope is velocity; a straight line means it doesn't change."
+      }
+    },
+    {
+      "tag": "xt-graph-as-path",
+      "description": "Reads a position–time graph as a picture of the path.",
+      "implicates": [
+        "kin.xt-graphs"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is an x–t graph a picture of the route?",
+        "back": "No. It shows position against time; its slope is the velocity."
+      }
+    },
+    {
+      "tag": "slope-through-origin",
+      "description": "Divides one position by one time instead of using the change in position.",
+      "implicates": [
+        "kin.xt-graphs",
+        "f.slope"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Velocity from an x–t line?",
+        "back": "Slope = Δx ÷ Δt between two points, not x ÷ t at one point."
+      }
+    },
+    {
+      "tag": "slope-inverted",
+      "description": "Uses run over rise for a slope.",
+      "implicates": [
+        "f.slope"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Slope of a straight-line graph?",
+        "back": "Rise over run: change in the vertical quantity ÷ change in the horizontal one."
+      }
+    },
+    {
+      "tag": "average-for-instantaneous",
+      "description": "Uses the average velocity from t = 0 instead of the tangent's slope.",
+      "implicates": [
+        "kin.xt-graphs"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Instantaneous velocity on a curved x–t graph?",
+        "back": "The slope of the tangent at that instant, not x ÷ t."
+      }
+    },
+    {
+      "tag": "position-for-velocity",
+      "description": "Reads the position at an instant as the velocity.",
+      "implicates": [
+        "kin.xt-graphs"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "On an x–t graph, is the height of the curve the velocity?",
+        "back": "No. The height is the position; the slope is the velocity."
+      }
+    },
+    {
+      "tag": "acceleration-final-over-time",
+      "description": "Uses v ÷ t for acceleration, ignoring the initial velocity.",
+      "implicates": [
+        "kin.acceleration"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Acceleration from u to v in time t?",
+        "back": "a = (v − u) ÷ t: the change in velocity per unit time."
+      }
+    },
+    {
+      "tag": "acceleration-sum-over-time",
+      "description": "Adds the velocities instead of subtracting them.",
+      "implicates": [
+        "kin.acceleration"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is acceleration (u + v) ÷ t?",
+        "back": "No: (v − u) ÷ t."
+      }
+    },
+    {
+      "tag": "area-uses-final-velocity",
+      "description": "Multiplies the final velocity by the whole time.",
+      "implicates": [
+        "kin.acceleration",
+        "f.area-graph"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Displacement from a v–t graph?",
+        "back": "The area under it: a sloping part makes a triangle or trapezium, not a rectangle of height v."
+      }
+    },
+    {
+      "tag": "area-misses-triangle",
+      "description": "Leaves out the accelerating part of the v–t area.",
+      "implicates": [
+        "kin.acceleration",
+        "f.area-graph"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "v–t graph: acceleration phase then constant speed. Distance?",
+        "back": "Triangle (acceleration) + rectangle (constant speed)."
+      }
+    },
+    {
+      "tag": "ignores-initial-velocity",
+      "description": "Leaves the initial velocity out of v = u + at.",
+      "implicates": [
+        "kin.suvat"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "v = u + at: what does u add?",
+        "back": "The velocity the body already had; a t is only the change."
+      }
+    },
+    {
+      "tag": "reaction-distance-ignored",
+      "description": "Leaves out the distance covered during the reaction time.",
+      "implicates": [
+        "kin.suvat"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Stopping distance with a reaction time?",
+        "back": "Thinking distance u·t_r plus braking distance u² ÷ 2a."
+      }
+    },
+    {
+      "tag": "missing-half-suvat",
+      "description": "Drops the ½ in v² = u² + 2as (or s = ut + ½at²).",
+      "implicates": [
+        "kin.suvat",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Braking distance from u at deceleration a?",
+        "back": "u² ÷ (2a): the 2 comes from v² = u² + 2as."
+      }
+    },
+    {
+      "tag": "fall-distance-for-speed",
+      "description": "Gives the distance fallen when the speed is asked.",
+      "implicates": [
+        "kin.free-fall"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Speed after falling for t seconds from rest?",
+        "back": "v = g t (the distance is ½ g t²)."
+      }
+    },
+    {
+      "tag": "time-for-height",
+      "description": "Gives the time to the top when the height is asked.",
+      "implicates": [
+        "kin.free-fall"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Maximum height of a ball thrown up at u?",
+        "back": "u² ÷ (2g); the time to the top is u ÷ g."
+      }
+    },
+    {
+      "tag": "ignores-launch-height",
+      "description": "Uses the time to return to the launch height when the ball lands lower.",
+      "implicates": [
+        "kin.free-fall",
+        "kin.suvat"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Ball thrown up from a cliff top: time to the ground below?",
+        "back": "Solve h + ut − ½gt² = 0 with the cliff height; 2u/g only brings it back to the top."
+      }
+    },
+    {
+      "tag": "ignores-throw",
+      "description": "Treats a thrown ball as simply dropped.",
+      "implicates": [
+        "kin.free-fall"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Thrown up from a cliff vs dropped: same time to land?",
+        "back": "No. The upward throw adds time going up and coming back."
+      }
+    },
+    {
+      "tag": "relative-added",
+      "description": "Adds the velocities of bodies moving the same way.",
+      "implicates": [
+        "kin.relative-1d"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Velocity of A relative to B, both moving the same way?",
+        "back": "v_A − v_B."
+      }
+    },
+    {
+      "tag": "relative-subtracted-opposite",
+      "description": "Subtracts speeds of bodies approaching each other.",
+      "implicates": [
+        "kin.relative-1d"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Two cars approaching head-on: closing speed?",
+        "back": "The sum of their speeds."
+      }
+    },
+    {
+      "tag": "overtake-one-length",
+      "description": "Uses only one train's length for an overtaking time.",
+      "implicates": [
+        "kin.relative-1d"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Time for one train to pass another completely?",
+        "back": "(L₁ + L₂) ÷ relative speed."
+      }
+    },
+    {
+      "tag": "overtake-speeds-added",
+      "description": "Adds the speeds of trains moving the same way.",
+      "implicates": [
+        "kin.relative-1d"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Relative speed of trains moving the same way?",
+        "back": "The difference of their speeds."
+      }
+    },
+    {
+      "tag": "area-ignores-acceleration",
+      "description": "Uses only u·t for the distance, ignoring the speed gained.",
+      "implicates": [
+        "kin.acceleration",
+        "f.area-graph"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is the distance u × t when the body speeds up?",
+        "back": "No. Add the triangle ½(v − u)t for the speed gained."
+      }
+    },
+    {
+      "tag": "area-misses-rectangle",
+      "description": "Uses only the triangle above the starting speed.",
+      "implicates": [
+        "kin.acceleration",
+        "f.area-graph"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Area under a sloping v–t line from u to v?",
+        "back": "A rectangle u·t plus a triangle ½(v − u)t."
+      }
+    },
+    {
+      "tag": "slope-instead-of-area",
+      "description": "Uses the slope of a v–t graph when the area is asked.",
+      "implicates": [
+        "kin.acceleration",
+        "f.slope"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "What does the area under a v–t graph give?",
+        "back": "The displacement. The slope gives the acceleration."
+      }
+    },
+    {
+      "tag": "missing-half",
+      "description": "Drops the ½ in the braking-distance formula.",
+      "implicates": [
+        "kin.suvat",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Braking distance from u at deceleration a?",
+        "back": "u² ÷ (2a)."
+      }
+    },
+    {
+      "tag": "dropped-square",
+      "description": "Uses u instead of u² in the braking-distance formula.",
+      "implicates": [
+        "kin.suvat",
+        "f.powers"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Double the speed: braking distance?",
+        "back": "Four times as large: s = u² ÷ (2a)."
+      }
+    },
+    {
+      "tag": "time-instead-of-distance",
+      "description": "Gives the stopping time u ÷ a when the distance is asked.",
+      "implicates": [
+        "kin.suvat"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Stopping time or stopping distance: u ÷ a or u² ÷ (2a)?",
+        "back": "u ÷ a is the time; u² ÷ (2a) is the distance."
+      }
+    }
+  ]
+}

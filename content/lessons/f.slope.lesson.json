@@ -1,0 +1,163 @@
+{
+  "id": "f.slope.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.slope",
+  "kind": "micro-lesson",
+  "title": "Slope as a rate of change",
+  "minutes": 5,
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -5,
+        5
+      ],
+      "yRange": [
+        -6,
+        6
+      ],
+      "functions": [
+        {
+          "id": "L",
+          "expr": "m*x + 1"
+        }
+      ],
+      "params": {
+        "m": {
+          "value": 1,
+          "min": -3,
+          "max": 3,
+          "step": 0.5,
+          "label": "slope m"
+        }
+      }
+    },
+    "instructions": "Drag points or sliders where you see them; the description below names every value."
+  },
+  "steps": [
+    {
+      "text": "This line rises 1 unit for every 1 unit across: its slope is 1.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": 0,
+          "x2": 2
+        }
+      }
+    },
+    {
+      "text": "Slope = rise ÷ run, the change in y divided by the change in x.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": -2,
+          "x2": 1
+        }
+      }
+    },
+    {
+      "text": "Make the slope 2: the line rises twice as fast.",
+      "cue": [
+        {
+          "cue": "set-param",
+          "args": {
+            "name": "m",
+            "value": 2
+          }
+        },
+        {
+          "cue": "slope-triangle",
+          "args": {
+            "fn": "L",
+            "x1": 0,
+            "x2": 1
+          }
+        }
+      ]
+    },
+    {
+      "text": "A negative slope falls from left to right. Steepness is the size of the slope, |m|.",
+      "cue": [
+        {
+          "cue": "set-param",
+          "args": {
+            "name": "m",
+            "value": -2
+          }
+        },
+        {
+          "cue": "slope-triangle",
+          "args": {
+            "fn": "L",
+            "x1": 0,
+            "x2": 1
+          }
+        }
+      ]
+    }
+  ],
+  "alternate": {
+    "title": "Slope as speed",
+    "steps": [
+      {
+        "text": "On a distance–time graph, slope is speed: metres gained per second.",
+        "cue": [
+          {
+            "cue": "set-param",
+            "args": {
+              "name": "m",
+              "value": 1.5
+            }
+          },
+          {
+            "cue": "slope-triangle",
+            "args": {
+              "fn": "L",
+              "x1": 0,
+              "x2": 2
+            }
+          }
+        ]
+      },
+      {
+        "text": "A steeper line means a faster rate of change.",
+        "cue": {
+          "cue": "set-param",
+          "args": {
+            "name": "m",
+            "value": 3
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: slope = rise ÷ run = Δy ÷ Δx; its sign gives the direction and its size the steepness.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": 0,
+          "x2": 2
+        }
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A straight line whose slope can be changed with a slider.",
+    "nonDragAlternative": "Use the sliders or their arrow keys; the description below the graph gives every value."
+  }
+}

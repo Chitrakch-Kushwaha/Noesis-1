@@ -1,0 +1,193 @@
+{
+  "id": "f.trig-ratios.e.ratio-value",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.trig-ratios"
+  ],
+  "primarySkillId": "f.trig-ratios",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 60,
+  "parameters": {
+    "tri": {
+      "kind": "choice",
+      "values": [
+        "3,4,5",
+        "4,3,5",
+        "5,12,13",
+        "12,5,13",
+        "8,15,17"
+      ]
+    },
+    "k": {
+      "kind": "choice",
+      "values": [
+        1,
+        2
+      ]
+    },
+    "fn": {
+      "kind": "choice",
+      "values": [
+        "sin",
+        "cos",
+        "tan"
+      ]
+    }
+  },
+  "solver": "f.ratioValue",
+  "intro": "Ratios from side lengths.",
+  "answer": {
+    "tolerance": {
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "ratio-swap"
+      ],
+      "match": {
+        "buggySolver": "swapped"
+      }
+    },
+    {
+      "tags": [
+        "ratio-inverted"
+      ],
+      "match": {
+        "buggySolver": "inverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{text}}"
+  ],
+  "widget": {
+    "type": "triangle-explorer",
+    "instructions": "The side lengths are labelled. θ is at A; the right angle is at C.",
+    "config": {
+      "mode": "triangle",
+      "hypotenuse": "{{c}}",
+      "angleDeg": "{{angA}}",
+      "marked": "A",
+      "editable": false,
+      "showRoles": true,
+      "showValues": true
+    }
+  },
+  "consequence": [
+    {
+      "cue": "highlight-side",
+      "args": {
+        "sides": [
+          "opposite",
+          "adjacent"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "In right triangle ABC (right angle at C), AC = {{a}}, BC = {{b}} and AB = {{c}}. θ is the angle at A.",
+    "What is {{fn}} θ? (A fraction such as 3/5 is fine.)"
+  ],
+  "input": {
+    "label": "Value",
+    "placeholder": "for example 3/5",
+    "keypad": "maths"
+  },
+  "answerText": "{{text}}",
+  "hints": [
+    {
+      "text": "Label the sides for θ at A: opposite, adjacent, hypotenuse.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite",
+            "adjacent",
+            "hypotenuse"
+          ]
+        }
+      }
+    },
+    {
+      "text": "sin = opposite ÷ hypotenuse; cos = adjacent ÷ hypotenuse; tan = opposite ÷ adjacent."
+    },
+    {
+      "text": "For θ at A: opposite = BC, adjacent = AC, hypotenuse = AB."
+    }
+  ],
+  "feedback": {
+    "ratio-swap": {
+      "text": "You used the other side over the hypotenuse. Check which side is opposite θ and which is adjacent.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite",
+            "adjacent"
+          ]
+        }
+      }
+    },
+    "ratio-inverted": {
+      "text": "Your fraction is upside down. Each ratio has the hypotenuse (or, for tan, the adjacent side) on the bottom."
+    },
+    "generic": {
+      "text": "Name the sides relative to θ, then pick the ratio's two sides."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "For θ at A: opposite = BC = {{b}}, adjacent = AC = {{a}}, hypotenuse = AB = {{c}}.",
+      "cue": [
+        {
+          "cue": "show-ratios"
+        },
+        {
+          "cue": "highlight-side",
+          "args": {
+            "sides": [
+              "opposite",
+              "adjacent",
+              "hypotenuse"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "text": "{{fn}} θ = {{text}}."
+    }
+  ],
+  "flashcards": {
+    "ratio-swap": {
+      "front": "sin θ or cos θ: which uses the side adjacent to θ?",
+      "back": "cos θ = adjacent ÷ hypotenuse; sin θ = opposite ÷ hypotenuse."
+    },
+    "ratio-inverted": {
+      "front": "Is sin θ = hypotenuse ÷ opposite?",
+      "back": "No: sin θ = opposite ÷ hypotenuse (always at most 1)."
+    },
+    "generic": {
+      "front": "SOH CAH TOA?",
+      "back": "sin = O/H, cos = A/H, tan = O/A."
+    }
+  },
+  "accessibility": {
+    "altText": "Right triangle ABC with sides AC = {{a}}, BC = {{b}}, AB = {{c}} and θ at A.",
+    "nonDragAlternative": "The figure cannot be changed in this question; type your answer in the box."
+  }
+}

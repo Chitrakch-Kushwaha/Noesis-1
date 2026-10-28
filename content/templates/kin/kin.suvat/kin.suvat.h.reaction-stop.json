@@ -1,0 +1,184 @@
+{
+  "id": "kin.suvat.h.reaction-stop",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.suvat"
+  ],
+  "primarySkillId": "kin.suvat",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "u": {
+      "kind": "choice",
+      "values": [
+        12,
+        15,
+        20,
+        25
+      ]
+    },
+    "tr": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        0.7,
+        1
+      ]
+    },
+    "a": {
+      "kind": "choice",
+      "values": [
+        5,
+        6,
+        8
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "kin.reactionStop",
+  "intro": "Thinking distance plus braking distance.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "reaction-distance-ignored"
+      ],
+      "match": {
+        "buggySolver": "brakingOnly"
+      }
+    },
+    {
+      "tags": [
+        "missing-half-suvat"
+      ],
+      "match": {
+        "buggySolver": "missingHalf"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "car",
+          "label": "car",
+          "x0": 0,
+          "v0": "{{u}}",
+          "a": "{{-a}}"
+        }
+      ],
+      "duration": "{{T}}",
+      "xRange": [
+        0,
+        "{{xmax}}"
+      ],
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "stop-at",
+      "args": {
+        "x": "$value",
+        "label": "stopping where you said"
+      }
+    }
+  ],
+  "stem": [
+    "A driver moving at {{u}} m/s sees a hazard. After a reaction time of {{tr}} s she brakes at a steady {{a}} m/s².",
+    "How far does the car travel from the moment she sees the hazard until it stops?"
+  ],
+  "input": {
+    "label": "Stopping distance",
+    "placeholder": "for example 40 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Split the stop into the reaction time and the braking.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "During the reaction time the speed is still {{u}} m/s."
+    },
+    {
+      "text": "Braking: v² = u² − 2as with v = 0."
+    }
+  ],
+  "feedback": {
+    "reaction-distance-ignored": {
+      "text": "During the {{tr}} s reaction time the car still moves at full speed. Add that thinking distance.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    "missing-half-suvat": {
+      "text": "Check the braking distance: from v² = u² − 2as with v = 0, s = u² ÷ (2a)."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "Thinking distance (u × t_r) + braking distance (u² ÷ 2a)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Thinking distance: {{u}} × {{tr}} = {{react}} m."
+    },
+    {
+      "text": "Braking distance: {{u}}² ÷ (2 × {{a}}) = {{brake}} m. Total {{ans}} m.",
+      "cue": {
+        "cue": "flag",
+        "args": {
+          "x": "{{ans}}",
+          "label": "stops"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "reaction-distance-ignored": {
+      "front": "Stopping distance with a reaction time?",
+      "back": "Thinking distance u·t_r plus braking distance u² ÷ 2a."
+    },
+    "missing-half-suvat": {
+      "front": "Braking distance from u at deceleration a?",
+      "back": "u² ÷ (2a): the 2 comes from v² = u² + 2as."
+    },
+    "generic": {
+      "front": "Stopping distance with a reaction time?",
+      "back": "u·t_r + u² ÷ (2a)."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with a car that keeps moving during the reaction time.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

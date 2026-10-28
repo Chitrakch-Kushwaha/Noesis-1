@@ -1,0 +1,179 @@
+{
+  "id": "mip.vector-addition.e.opposite",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.vector-addition"
+  ],
+  "primarySkillId": "mip.vector-addition",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        5,
+        6,
+        8,
+        10
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.oppositeResultant",
+  "intro": "A quick check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "magnitudes-added"
+      ],
+      "match": {
+        "buggySolver": "added"
+      }
+    }
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 12,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "east",
+          "agent": "none",
+          "magnitude": "{{a}}",
+          "angleDeg": 0,
+          "tone": "a"
+        },
+        {
+          "id": "b",
+          "kind": "vector",
+          "label": "west",
+          "agent": "none",
+          "magnitude": "{{b}}",
+          "angleDeg": 180,
+          "tone": "b"
+        }
+      ],
+      "showResultant": false
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Place the arrows tip to tail: the second one walks back along the first."
+      }
+    }
+  ],
+  "stem": [
+    "Two forces act on a crate: {{a}} N to the east and {{b}} N to the west.",
+    "What is the magnitude of their resultant, in newtons?"
+  ],
+  "input": {
+    "label": "Resultant (N)",
+    "placeholder": "for example 4",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Do the forces help each other or oppose each other?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Opposite directions: subtract the magnitudes."
+    },
+    {
+      "text": "The resultant points the way of the larger force."
+    }
+  ],
+  "feedback": {
+    "magnitudes-added": {
+      "text": "These forces point in opposite directions, so they partly cancel.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    },
+    "generic": {
+      "text": "Opposite vectors: subtract magnitudes."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Opposite directions, so the resultant is {{a}} − {{b}}."
+    },
+    {
+      "text": "= {{ans}} N to the east.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "R",
+            "kind": "vector",
+            "label": "resultant",
+            "agent": "none",
+            "magnitude": "{{ans}}",
+            "angleDeg": 0
+          }
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "magnitudes-added": {
+      "front": "Do vector magnitudes add when the vectors are perpendicular?",
+      "back": "No. |a + b| = √(a² + b²) for perpendicular vectors."
+    },
+    "generic": {
+      "front": "Resultant of opposite vectors?",
+      "back": "|a − b|, in the direction of the larger."
+    }
+  },
+  "accessibility": {
+    "altText": "Two arrows: {{a}} N east and {{b}} N west.",
+    "nonDragAlternative": "Select an arrow and type its size and direction in Precise controls; type your answer in the box."
+  }
+}

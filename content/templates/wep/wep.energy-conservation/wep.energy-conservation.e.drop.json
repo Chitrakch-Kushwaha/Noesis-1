@@ -1,0 +1,168 @@
+{
+  "id": "wep.energy-conservation.e.drop",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.energy-conservation"
+  ],
+  "primarySkillId": "wep.energy-conservation",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "h": {
+      "kind": "choice",
+      "values": [
+        2.5,
+        5,
+        10,
+        15,
+        20,
+        30,
+        45
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.dropSpeed",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "drop-no-root"
+      ],
+      "match": {
+        "buggySolver": "noRoot"
+      }
+    },
+    {
+      "tags": [
+        "drop-missing-two"
+      ],
+      "match": {
+        "buggySolver": "missingTwo"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "b",
+          "label": "ball (downward positive)",
+          "x0": 0,
+          "v0": 0,
+          "a": 9.8
+        }
+      ],
+      "duration": "{{sqrt(2*h/9.8)}}",
+      "hideNumbers": true
+    },
+    "instructions": "Press Play; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "you",
+          "label": "steady at your speed",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A ball is dropped from rest from a height of {{h}} m. Ignore air resistance; g = 9.8 m/s².",
+    "How fast is it moving just before it hits the ground?"
+  ],
+  "input": {
+    "label": "Speed",
+    "placeholder": "for example 14 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "Potential energy turns into kinetic energy as it falls.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "mgh = ½mv²."
+    },
+    {
+      "text": "Solve for v; the mass cancels."
+    }
+  ],
+  "feedback": {
+    "drop-no-root": {
+      "text": "mgh = ½mv² gives v² = 2gh. Take the square root."
+    },
+    "drop-missing-two": {
+      "text": "mgh = ½mv², so v² = 2gh: keep the 2."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "v = √(2gh)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "mgh = ½mv², so v² = 2 × 9.8 × {{h}}."
+    },
+    {
+      "text": "v = {{ans}} m/s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "drop-no-root": {
+      "front": "Speed after falling h from rest?",
+      "back": "v = √(2gh)."
+    },
+    "drop-missing-two": {
+      "front": "mgh = ½mv² gives v = ?",
+      "back": "√(2gh)."
+    },
+    "generic": {
+      "front": "Speed after falling h from rest?",
+      "back": "√(2gh)."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with the ball falling.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

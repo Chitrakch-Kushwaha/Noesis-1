@@ -1,0 +1,164 @@
+{
+  "id": "f.circle.e.arc",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.circle"
+  ],
+  "primarySkillId": "f.circle",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "r": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        6
+      ]
+    },
+    "deg": {
+      "kind": "choice",
+      "values": [
+        30,
+        60,
+        90,
+        120
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.arcLength",
+  "intro": "A foundation check.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "arc-degrees"
+      ],
+      "match": {
+        "buggySolver": "degreesUsed"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{cm|raw}} cm",
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -8,
+        8
+      ],
+      "yRange": [
+        -8,
+        8
+      ],
+      "functions": [
+        {
+          "id": "top",
+          "expr": "sqrt({{r}}^2 - x^2)"
+        },
+        {
+          "id": "bot",
+          "expr": "-sqrt({{r}}^2 - x^2)"
+        }
+      ]
+    },
+    "instructions": "The circle is drawn as its upper and lower halves."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Arc length = radius × angle in radians."
+      }
+    }
+  ],
+  "stem": [
+    "A circle has radius {{r}} cm.",
+    "How long is the arc that subtends {{deg}}° at the centre?"
+  ],
+  "input": {
+    "label": "Arc length",
+    "placeholder": "for example 6.3 cm",
+    "keypad": "none"
+  },
+  "answerText": "{{cm}} cm",
+  "hints": [
+    {
+      "text": "s = rθ, with θ in radians.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "top"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Convert: θ = {{deg}} × π ÷ 180."
+    },
+    {
+      "text": "Multiply by r."
+    }
+  ],
+  "feedback": {
+    "arc-degrees": {
+      "text": "s = rθ needs θ in radians: {{deg}}° = {{thr}} rad."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "s = rθ (θ in radians)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "θ = {{deg}}° = {{thr}} rad."
+    },
+    {
+      "text": "s = {{r}} × {{thr}} = {{cm}} cm.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "s = rθ"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "arc-degrees": {
+      "front": "Arc length s = rθ: θ in?",
+      "back": "Radians."
+    },
+    "generic": {
+      "front": "Arc length?",
+      "back": "s = rθ, θ in radians."
+    }
+  },
+  "accessibility": {
+    "altText": "A circle of radius {{r}}.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

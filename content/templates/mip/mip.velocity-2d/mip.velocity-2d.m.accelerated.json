@@ -1,0 +1,197 @@
+{
+  "id": "mip.velocity-2d.m.accelerated",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.velocity-2d"
+  ],
+  "primarySkillId": "mip.velocity-2d",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        2,
+        4
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        3,
+        6,
+        8
+      ]
+    },
+    "t": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.distanceAccelerated",
+  "intro": "Uniform acceleration in a plane.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "missing-half-suvat"
+      ],
+      "match": {
+        "buggySolver": "missingHalf"
+      }
+    },
+    {
+      "tags": [
+        "magnitudes-added"
+      ],
+      "match": {
+        "buggySolver": "componentsAdded"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 12,
+      "vectors": [
+        {
+          "id": "v",
+          "kind": "vector",
+          "label": "initial velocity",
+          "agent": "none",
+          "magnitude": "{{v}}",
+          "angleDeg": 90,
+          "tone": "b"
+        },
+        {
+          "id": "acc",
+          "kind": "vector",
+          "label": "acceleration",
+          "agent": "none",
+          "magnitude": "{{a}}",
+          "angleDeg": 0,
+          "tone": "a"
+        }
+      ],
+      "showResultant": false
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Treat x and y separately: each obeys its own equation of motion."
+      }
+    }
+  ],
+  "stem": [
+    "A particle starts at the origin with velocity {{v}} m/s along +y and has a constant acceleration of {{a}} m/s² along +x.",
+    "How far is it from the origin after {{t}} s?"
+  ],
+  "input": {
+    "label": "Distance",
+    "placeholder": "for example 20 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Treat the x and y motions separately.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "v",
+            "acc"
+          ]
+        }
+      }
+    },
+    {
+      "text": "x = ½aₓt² (from rest along x); y = v_y t (no acceleration along y)."
+    },
+    {
+      "text": "Then combine with Pythagoras."
+    }
+  ],
+  "feedback": {
+    "missing-half-suvat": {
+      "text": "Along x it starts from rest, so x = ½aₓt². You left out the ½."
+    },
+    "magnitudes-added": {
+      "text": "x and y are perpendicular displacements: combine them with Pythagoras, not by adding."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "Find x and y separately, then √(x² + y²)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "x = ½ × {{a}} × {{t}}² = {{x}} m; y = {{v}} × {{t}} = {{y}} m."
+    },
+    {
+      "text": "Distance = √({{x}}² + {{y}}²) = {{ans}} m.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "r",
+            "kind": "vector",
+            "label": "position",
+            "agent": "none",
+            "magnitude": "{{ans}}",
+            "angleDeg": "{{ang}}"
+          }
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "missing-half-suvat": {
+      "front": "Braking distance from u at deceleration a?",
+      "back": "u² ÷ (2a): the 2 comes from v² = u² + 2as."
+    },
+    "magnitudes-added": {
+      "front": "Do vector magnitudes add when the vectors are perpendicular?",
+      "back": "No. |a + b| = √(a² + b²) for perpendicular vectors."
+    },
+    "generic": {
+      "front": "Motion with perpendicular velocity and acceleration?",
+      "back": "Treat each direction separately: x = ½at², y = vt; distance √(x² + y²)."
+    }
+  },
+  "accessibility": {
+    "altText": "The initial velocity (up) and the acceleration (right) drawn on a grid.",
+    "nonDragAlternative": "The board only illustrates the vectors; type your answer in the box."
+  }
+}

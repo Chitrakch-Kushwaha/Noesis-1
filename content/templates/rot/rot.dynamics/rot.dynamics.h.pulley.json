@@ -1,0 +1,162 @@
+{
+  "id": "rot.dynamics.h.pulley",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.dynamics",
+    "lom.connected-bodies"
+  ],
+  "primarySkillId": "rot.dynamics",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "M": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.pulleyMass",
+  "intro": "A heavy pulley.",
+  "answer": {
+    "dimension": "acceleration",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "pulley-inertia-ignored"
+      ],
+      "match": {
+        "buggySolver": "freeFall"
+      }
+    },
+    {
+      "tags": [
+        "pulley-ring"
+      ],
+      "match": {
+        "buggySolver": "ringPulley"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s^2"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "disc",
+        "mass": "{{M}}",
+        "size": 0.2,
+        "torque": "{{T*0.2}}",
+        "omega0": 0,
+        "duration": 3
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "If the block fell at g, the cord would be slack and the pulley wouldn't turn."
+      }
+    }
+  ],
+  "stem": [
+    "A {{m}} kg block hangs from a light cord wound round a uniform disc pulley of mass {{M}} kg that turns freely on a fixed axle. Take g = 9.8 m/s².",
+    "What is the block's acceleration as it falls?"
+  ],
+  "input": {
+    "label": "Acceleration",
+    "placeholder": "for example 4 m/s^2",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s^2",
+  "hints": [
+    {
+      "text": "Write F = ma for the block and τ = Iα for the pulley.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "mg − T = ma and T R = ½MR² × (a ÷ R)."
+    },
+    {
+      "text": "Eliminate T."
+    }
+  ],
+  "feedback": {
+    "pulley-inertia-ignored": {
+      "text": "The cord's tension slows the block: the pulley needs a torque to speed up."
+    },
+    "pulley-ring": {
+      "text": "A disc pulley has I = ½MR², so its effective mass in the equation is M/2."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a acceleration."
+    },
+    "generic": {
+      "text": "a = mg ÷ (m + M/2)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Block: mg − T = ma. Pulley: T = ½Ma."
+    },
+    {
+      "text": "a = {{m}} × 9.8 ÷ ({{m}} + {{M}}/2) = {{ans}} m/s² (tension {{T}} N).",
+      "cue": {
+        "cue": "play"
+      }
+    }
+  ],
+  "flashcards": {
+    "pulley-inertia-ignored": {
+      "front": "A mass hangs from a cord round a heavy disc pulley: is a = g?",
+      "back": "No: a = mg ÷ (m + M/2)."
+    },
+    "pulley-ring": {
+      "front": "Disc pulley's effective mass in a = mg ÷ (m + …)?",
+      "back": "M/2, from I = ½MR²."
+    },
+    "generic": {
+      "front": "Block on a cord round a disc pulley: a?",
+      "back": "mg ÷ (m + M/2)."
+    }
+  },
+  "accessibility": {
+    "altText": "A disc pulley turning as the block falls.",
+    "nonDragAlternative": "Use Play; type your answer in the box."
+  }
+}

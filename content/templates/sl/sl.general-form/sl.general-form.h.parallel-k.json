@@ -1,0 +1,212 @@
+{
+  "id": "sl.general-form.h.parallel-k",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "sl",
+  "skillIds": [
+    "sl.general-form",
+    "sl.slope"
+  ],
+  "primarySkillId": "sl.general-form",
+  "difficulty": "hard",
+  "format": "number",
+  "estimatedSeconds": 110,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        -1,
+        -2,
+        4
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        -1,
+        -3,
+        6
+      ]
+    },
+    "c": {
+      "kind": "int",
+      "min": -4,
+      "max": 4
+    }
+  },
+  "solver": "sl.parallelK",
+  "intro": "Lines in general form.",
+  "answer": {
+    "tolerance": {
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "general-form-slope-sign"
+      ],
+      "match": {
+        "buggySolver": "slopeSign"
+      }
+    },
+    {
+      "tags": [
+        "slope-inverted"
+      ],
+      "match": {
+        "buggySolver": "slopeInverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{k|raw}}"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "instructions": "Drag k with its slider: the second line turns. Parallel lines never meet.",
+    "config": {
+      "xRange": [
+        -6,
+        6
+      ],
+      "yRange": [
+        -6,
+        6
+      ],
+      "functions": [
+        {
+          "id": "L1",
+          "expr": "{{m|raw}}*x + {{cy|raw}}",
+          "label": "given line"
+        },
+        {
+          "id": "L2",
+          "expr": "(6 - k*x)/3",
+          "label": "kx + 3y − 6 = 0"
+        }
+      ],
+      "points": [],
+      "params": {
+        "k": {
+          "value": 1,
+          "min": -12,
+          "max": 12,
+          "step": 0.5,
+          "label": "k"
+        }
+      }
+    }
+  },
+  "consequence": [
+    {
+      "cue": "set-param",
+      "args": {
+        "name": "k",
+        "value": "$value"
+      }
+    }
+  ],
+  "stem": [
+    "The line {{a}}x + {{b}}y + {{c}} = 0 is given.",
+    "For what value of k is the line kx + 3y − 6 = 0 parallel to it?"
+  ],
+  "input": {
+    "label": "k",
+    "placeholder": "for example 4",
+    "keypad": "maths"
+  },
+  "answerText": "k = {{k}}",
+  "hints": [
+    {
+      "text": "Parallel lines have equal slopes. Find each slope from its general form.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "L1"
+          ]
+        }
+      }
+    },
+    {
+      "text": "For Ax + By + C = 0 the slope is −A ÷ B."
+    },
+    {
+      "text": "Set −k ÷ 3 equal to −a ÷ b and solve for k."
+    }
+  ],
+  "feedback": {
+    "general-form-slope-sign": {
+      "text": "Check the sign: Ax + By + C = 0 gives y = −(A/B)x − C/B, so the slope is −A/B. Watch your line: it crosses the given one.",
+      "cue": {
+        "cue": "set-param",
+        "args": {
+          "name": "k",
+          "value": "$value"
+        }
+      }
+    },
+    "slope-inverted": {
+      "text": "Your ratio is upside down: the slope is −A ÷ B (x-coefficient on top)."
+    },
+    "generic": {
+      "text": "Make the two slopes equal."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Slope of the given line: −{{a}} ÷ {{b}} = {{mText}}.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "L1"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Slope of kx + 3y − 6 = 0: −k ÷ 3. Parallel: −k ÷ 3 = {{mText}}, so k = {{k}}.",
+      "cue": {
+        "cue": "set-param",
+        "args": {
+          "name": "k",
+          "value": "{{k}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "general-form-slope-sign": {
+      "front": "Slope of Ax + By + C = 0?",
+      "back": "−A ÷ B."
+    },
+    "slope-inverted": {
+      "front": "Is the slope of Ax + By + C = 0 equal to −B/A?",
+      "back": "No: −A/B."
+    },
+    "generic": {
+      "front": "Parallel lines in general form?",
+      "back": "Equal slopes: A₁/B₁ = A₂/B₂."
+    }
+  },
+  "accessibility": {
+    "altText": "The given line and a second line kx + 3y − 6 = 0 that turns as k changes.",
+    "nonDragAlternative": "Use the k slider or its arrow keys; type your answer in the box."
+  }
+}

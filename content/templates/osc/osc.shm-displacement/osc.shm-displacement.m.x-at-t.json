@@ -1,0 +1,157 @@
+{
+  "id": "osc.shm-displacement.m.x-at-t",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.shm-displacement"
+  ],
+  "primarySkillId": "osc.shm-displacement",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "A": {
+      "kind": "choice",
+      "values": [
+        0.04,
+        0.08,
+        0.12
+      ]
+    },
+    "T": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        6,
+        8
+      ]
+    },
+    "t": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        1.5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.xAtTime",
+  "intro": "Where is it now?",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "shm-missing-2pi"
+      ],
+      "match": {
+        "buggySolver": "missing2pi"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": "{{4*pi^2/T^2}}",
+      "amplitude": "{{A}}"
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "marker",
+      "args": {
+        "t": "{{t}}"
+      }
+    }
+  ],
+  "stem": [
+    "A particle in SHM has amplitude {{A}} m and period {{T}} s, starting from x = +{{A}} m at t = 0.",
+    "What is its displacement at t = {{t}} s?"
+  ],
+  "input": {
+    "label": "Displacement",
+    "placeholder": "for example 0.04 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Starting at +A means x = A cos ωt.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "t": "{{t}}"
+        }
+      }
+    },
+    {
+      "text": "ω = 2π ÷ T."
+    },
+    {
+      "text": "x = A cos(2πt ÷ T); use radians (or {{phase}}°)."
+    }
+  ],
+  "feedback": {
+    "shm-missing-2pi": {
+      "text": "ω = 2π ÷ T, so the phase is 2πt ÷ T radians."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "x = A cos(2πt ÷ T)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Phase at t = {{t}} s: 2π × {{t}} ÷ {{T}} rad = {{phase}}°."
+    },
+    {
+      "text": "x = {{A}} × cos {{phase}}° = {{ans}} m.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "t": "{{t}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "shm-missing-2pi": {
+      "front": "x(t) with period T?",
+      "back": "A cos(2πt ÷ T) (ω = 2π ÷ T)."
+    },
+    "generic": {
+      "front": "x(t) starting from +A?",
+      "back": "A cos(2πt ÷ T)."
+    }
+  },
+  "accessibility": {
+    "altText": "A spring oscillator with its x–t graph.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

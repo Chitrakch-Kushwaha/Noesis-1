@@ -1,0 +1,184 @@
+{
+  "id": "cur.emf.m.internal-resistance-current",
+  "version": 2,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": [],
+    "migratedFrom": "src/questions/templates.ts cur.emf.m.internal-resistance-current@1 (Phase 1 diagnostic; same review status)"
+  },
+  "chapterId": "cur",
+  "skillIds": [
+    "cur.emf",
+    "cur.drift-ohm"
+  ],
+  "primarySkillId": "cur.emf",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "E": {
+      "kind": "choice",
+      "values": [
+        6,
+        9,
+        12
+      ]
+    },
+    "r": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        1.5,
+        2
+      ]
+    },
+    "R": {
+      "kind": "int",
+      "min": 2,
+      "max": 10
+    }
+  },
+  "constraints": [],
+  "solver": "cur.internalCurrent",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "dimension": "current",
+    "tolerance": {
+      "relative": 0.01
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "ignores-internal-resistance"
+      ],
+      "match": {
+        "buggySolver": "ignoresInternal"
+      }
+    },
+    {
+      "tags": [
+        "only-internal-resistance"
+      ],
+      "match": {
+        "buggySolver": "onlyInternal"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{I*1000|raw}} mA",
+    "{{E|raw}}/{{Rt|raw}} A"
+  ],
+  "widget": {
+    "type": "figure",
+    "instructions": "The circuit diagram highlights what your answer leaves out, and follows each step of the worked solution.",
+    "config": {
+      "figure": "circuit",
+      "E": "{{E}}",
+      "r": "{{r}}",
+      "R": "{{R}}",
+      "showVoltmeter": false
+    }
+  },
+  "consequence": {
+    "cue": "student",
+    "args": {
+      "value": "$value",
+      "tags": "$tags"
+    }
+  },
+  "stem": [
+    "A cell of emf {{E}} V and internal resistance {{r}} Ω is connected across a {{R}} Ω resistor.",
+    "What current flows in the circuit?"
+  ],
+  "input": {
+    "label": "Current",
+    "placeholder": "for example 1.5 A",
+    "keypad": "none"
+  },
+  "answerText": "{{I}} A",
+  "hints": [
+    {
+      "text": "The current has to pass through two resistances. Where is the second one?"
+    },
+    {
+      "text": "The internal resistance is in series with the external resistor.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 0
+        }
+      }
+    },
+    {
+      "text": "I = E ÷ (R + r) = {{E}} ÷ ({{R}} + {{r}})."
+    }
+  ],
+  "feedback": {
+    "ignores-internal-resistance": {
+      "text": "You divided by the external resistor only. The current also flows through the cell's own internal resistance, highlighted inside the cell."
+    },
+    "only-internal-resistance": {
+      "text": "You used only the internal resistance. The current also passes through the external resistor."
+    },
+    "dimension-mismatch": {
+      "text": "Current is measured in amperes. Check your unit."
+    },
+    "generic": {
+      "text": "Add up every resistance the current passes through, then divide the emf by the total."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The cell's internal resistance r and the external resistor R are in series.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 0
+        }
+      }
+    },
+    {
+      "text": "Total resistance = R + r = {{R}} + {{r}} = {{Rt}} Ω.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 1
+        }
+      }
+    },
+    {
+      "text": "I = E ÷ (R + r) = {{E}} ÷ {{Rt}} = {{I}} A.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 2
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "ignores-internal-resistance": {
+      "front": "A cell has emf E and internal resistance r. What current flows through an external resistor R?",
+      "back": "I = E/(R + r). The internal resistance is in series with R."
+    },
+    "only-internal-resistance": {
+      "front": "When is the current E/r?",
+      "back": "Only when the terminals are shorted (R = 0). Otherwise I = E/(R + r)."
+    },
+    "generic": {
+      "front": "Current from a real cell into a resistor R?",
+      "back": "I = E/(R + r)."
+    }
+  },
+  "accessibility": {
+    "altText": "Circuit: a cell of emf {{E}} V with internal resistance {{r}} Ω drawn inside it, connected to a {{R}} Ω resistor and an ammeter."
+  }
+}

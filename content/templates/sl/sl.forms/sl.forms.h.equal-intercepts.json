@@ -1,0 +1,201 @@
+{
+  "id": "sl.forms.h.equal-intercepts",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "sl",
+  "skillIds": [
+    "sl.forms"
+  ],
+  "primarySkillId": "sl.forms",
+  "difficulty": "hard",
+  "format": "equation",
+  "estimatedSeconds": 120,
+  "parameters": {
+    "px": {
+      "kind": "int",
+      "min": -3,
+      "max": 4
+    },
+    "py": {
+      "kind": "int",
+      "min": -3,
+      "max": 4
+    }
+  },
+  "solver": "sl.equalIntercepts",
+  "intro": "The intercept form.",
+  "answer": {
+    "variables": [
+      "x",
+      "y"
+    ],
+    "box": {
+      "x": [
+        -6,
+        6
+      ],
+      "y": [
+        -6,
+        6
+      ]
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "intercepts-opposite-sign"
+      ],
+      "match": {
+        "buggySolver": "oppositeSigns"
+      }
+    },
+    {
+      "tags": [
+        "point-as-intercepts"
+      ],
+      "match": {
+        "buggySolver": "pointAsIntercepts"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "y = -x + {{s}}",
+    "x/{{s}} + y/{{s}} = 1"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "instructions": "Drag the intercept a with its slider: the line x/a + y/a = 1 cuts both axes at a. Make it pass through P.",
+    "config": {
+      "xRange": [
+        -6,
+        6
+      ],
+      "yRange": [
+        -6,
+        6
+      ],
+      "functions": [
+        {
+          "id": "trial",
+          "expr": "a - x",
+          "label": "x/a + y/a = 1"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "label": "P",
+          "x": "{{px}}",
+          "y": "{{py}}"
+        }
+      ],
+      "params": {
+        "a": {
+          "value": 1,
+          "min": -6,
+          "max": 8,
+          "step": 0.5,
+          "label": "intercept a"
+        }
+      }
+    }
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Substitute P into your equation: does it hold?"
+      }
+    }
+  ],
+  "stem": [
+    "A line passes through P({{px}}, {{py}}) and cuts off equal, non-zero intercepts on the two axes.",
+    "Find its equation."
+  ],
+  "input": {
+    "label": "Equation",
+    "placeholder": "for example x + y = 3",
+    "keypad": "maths"
+  },
+  "answerText": "x + y = {{s}}",
+  "hints": [
+    {
+      "text": "Intercept form: x/a + y/b = 1. Equal intercepts mean a = b.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "P"
+          ]
+        }
+      }
+    },
+    {
+      "text": "So the line is x/a + y/a = 1, i.e. x + y = a. Substitute P to find a."
+    },
+    {
+      "text": "a = {{px}} + ({{py}})."
+    }
+  ],
+  "feedback": {
+    "intercepts-opposite-sign": {
+      "text": "Equal intercepts means the same signed value on both axes, so the line is x + y = a, slope −1. Your line has slope +1 (intercepts of opposite sign)."
+    },
+    "point-as-intercepts": {
+      "text": "P's coordinates aren't the intercepts. The intercepts are equal (a and a) and P lies on the line."
+    },
+    "generic": {
+      "text": "Write x + y = a and make P satisfy it."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Equal intercepts a: x/a + y/a = 1, so x + y = a.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "P"
+          ]
+        }
+      }
+    },
+    {
+      "text": "P lies on it: a = {{px}} + ({{py}}) = {{s}}. The line is x + y = {{s}}.",
+      "cue": {
+        "cue": "set-param",
+        "args": {
+          "name": "a",
+          "value": "{{s}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "intercepts-opposite-sign": {
+      "front": "A line with equal intercepts a on both axes?",
+      "back": "x + y = a (slope −1)."
+    },
+    "point-as-intercepts": {
+      "front": "Is a point on a line the same as its intercepts?",
+      "back": "No: intercepts are where the line cuts the axes."
+    },
+    "generic": {
+      "front": "Intercept form of a line?",
+      "back": "x/a + y/b = 1."
+    }
+  },
+  "accessibility": {
+    "altText": "The point P({{px}}, {{py}}) and a trial line with equal intercepts a.",
+    "nonDragAlternative": "Use the a slider or its arrow keys; type your answer in the box."
+  }
+}

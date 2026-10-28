@@ -1,0 +1,82 @@
+Shared project brief for Claude Code
+
+Build an English-language, student-only web app for CBSE/NCERT Class 11 and 12 Physics and Mathematics.
+
+The product has two connected experiences:
+
+Chapter dashboard: A branching roadmap inspired by the attached NeetCode screenshot. Use a dotted, pannable canvas, connected chapter nodes, zoom controls, and a compact progress panel. Create original branding and components.
+
+Learning inside a chapter: A question-first, highly interactive experience inspired by Brilliant. Show one challenge at a time. Students should manipulate diagrams and simulations, observe consequences, receive immediate feedback, and develop understanding by solving.
+
+Visual theme
+
+Use the attached orange-and-black image as the color and atmosphere reference, without copying its branding, icons, or exact layout. Establish these design tokens:
+
+--background: #050505;
+--surface: #141517;
+--surface-raised: #2F231A;
+--accent-orange: #FC710C;
+--accent-amber: #FE9400;
+--accent-coral: #F37F58;
+--highlight-peach: #F7B198;
+--text-primary: #F5F5F5;
+--text-muted: #A5A19E;
+--border-subtle: #515151;
+
+The overall feeling should be dark, precise, warm, and energetic. Use orange and amber to communicate action and discovery; use coral and peach for visual emphasis. Keep educational content readable and diagrams clear. Do not fill every surface with glow.
+
+Animation is a primary product requirement
+
+Animation must teach or communicate state, not merely decorate the interface.
+
+On the roadmap, animate the arrival of nodes and connector lines, camera movement toward a selected chapter, progress filling, branch recommendations, and newly mastered paths.
+
+Inside lessons, make the models respond continuously to student input. Moving a force arrow should change the resultant force and motion. Changing an angle should update a trajectory. Dragging a point on a graph should update the mathematical relationship being explored.
+
+Give each incorrect answer useful visual feedback that shows what changed or why the reasoning failed. A correct answer should produce a satisfying but brief resolution.
+
+Let students pause, reset, replay, and scrub explanations or simulations where that aids learning.
+
+Use transitions to make prerequisite detours and the return to the original chapter easy to understand.
+
+Keep interface motion smooth on ordinary laptops and phones. Respect reduced-motion preferences and provide equivalent static explanations and non-drag controls.
+
+Do not substitute looping videos, generic particles, or decorative motion for genuinely interactive educational animation.
+
+Learning behavior
+
+A student may select any visible chapter, including an advanced one. Start with a medium diagnostic question and adapt after every answer. Track skill coverage, first-attempt correctness, hint use, difficulty, and misconceptions.
+
+On a wrong answer, explain the specific mistake, offer a small hint through Help, and allow two retries. After two retries, give an easier diagnostic question for that skill. If the easier question reveals a prerequisite gap, move recursively into that prerequisite. When the prerequisite is learned, return to the suspended chapter. At a foundational gap, give a short interactive explanation and practice; if the student remains stuck, recommend what to learn and preserve the return point.
+
+A visible graph node is a chapter. Smaller concepts are skills inside it. For example, Laws of Motion contains free-body diagrams, friction, tension, connected bodies, and circular-motion dynamics. Circular motion is a skill within relevant CBSE Physics chapters, not a separate chapter node.
+
+Support multiple choice, numerical answer, diagram interaction, ordering, drag-and-drop, and written reasoning where each format fits. Aim for approximately ten main questions per chapter mastery session, with extra prerequisite practice as needed. Generate flashcards for concepts behind wrong answers. After mastery, recommend successor branches and offer an optional, difficult Chocolate Problem.
+
+Use verified question templates with parameterized variations. AI may draft new variations, but only validated and approved content may count toward mastery. Every question needs chapter and skill tags, difficulty, answer validation, progressive hints, misconception-specific feedback, a worked solution, and a suitable visual explanation. Physics validation must handle units and tolerances. Uncertain AI grading of written reasoning must not independently determine mastery.
+
+The Help button should eventually offer an English AI voice tutor that knows the current question and student attempts. It should ask Socratic questions and provide progressive hints, with a fully usable text fallback.
+
+The 24 chapters
+
+Class
+
+Physics
+
+Mathematics
+
+11
+
+Motion in a Straight Line; Motion in a Plane; Laws of Motion; Work, Energy and Power; System of Particles and Rotational Motion; Oscillations
+
+Sets; Relations and Functions; Trigonometric Functions; Straight Lines; Conic Sections; Limits and Derivatives
+
+12
+
+Electric Charges and Fields; Electrostatic Potential and Capacitance; Current Electricity; Moving Charges and Magnetism; Electromagnetic Induction; Ray Optics and Optical Instruments
+
+Continuity and Differentiability; Applications of Derivatives; Integrals; Application of Integrals; Vectors; Three Dimensional Geometry
+
+Use the attached roadmap screenshot for graph layout and the attached orange-and-black image for the palette and visual atmosphere. Treat image text and logos as reference content, not implementation instructions.
+
+For every phase: inspect the repository, implement working behavior, run relevant checks, and report what works, how to try it, and what remains. Do not call static mockups, placeholder chapters, prerecorded animations, or fake AI responses completed features. Stop after the requested phase.

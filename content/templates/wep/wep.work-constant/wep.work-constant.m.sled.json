@@ -1,0 +1,202 @@
+{
+  "id": "wep.work-constant.m.sled",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.work-constant"
+  ],
+  "primarySkillId": "wep.work-constant",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        20,
+        30,
+        40,
+        50
+      ]
+    },
+    "d": {
+      "kind": "choice",
+      "values": [
+        5,
+        8,
+        10,
+        12
+      ]
+    },
+    "th": {
+      "kind": "choice",
+      "values": [
+        20,
+        30,
+        37,
+        45,
+        60
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.sledWork",
+  "intro": "A force at an angle.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "work-ignores-angle"
+      ],
+      "match": {
+        "buggySolver": "ignoredAngle"
+      }
+    },
+    {
+      "tags": [
+        "work-uses-sin"
+      ],
+      "match": {
+        "buggySolver": "usedSin"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "floor",
+      "maxMagnitude": "{{F*1.3}}",
+      "vectors": [
+        {
+          "id": "T",
+          "kind": "tension",
+          "label": "Rope",
+          "agent": "rope",
+          "magnitude": "{{F}}",
+          "angleDeg": "{{th}}",
+          "locked": true
+        }
+      ],
+      "body": {
+        "label": "sled",
+        "mass": 10
+      },
+      "rope": {
+        "angleDeg": "{{th}}"
+      }
+    },
+    "instructions": "The arrow is the rope's pull on the sled."
+  },
+  "consequence": [
+    {
+      "cue": "decompose",
+      "args": {
+        "id": "T",
+        "axes": "standard",
+        "values": false
+      }
+    }
+  ],
+  "stem": [
+    "A child pulls a sled {{d}} m across level snow with a rope at {{th}}° above the horizontal. The rope's tension is {{F}} N.",
+    "How much work does the rope do on the sled?"
+  ],
+  "input": {
+    "label": "Work",
+    "placeholder": "for example 200 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "Which part of the rope's pull points along the motion?",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "T",
+          "axes": "standard",
+          "values": false
+        }
+      }
+    },
+    {
+      "text": "Horizontal part: F cos θ."
+    },
+    {
+      "text": "W = F d cos θ."
+    }
+  ],
+  "feedback": {
+    "work-ignores-angle": {
+      "text": "Only the part of the pull along the motion, F cos θ, does work.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "T",
+          "axes": "standard",
+          "values": false
+        }
+      }
+    },
+    "work-uses-sin": {
+      "text": "The horizontal part of the pull is F cos θ; F sin θ is the vertical part, which does no work here."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "W = F d cos θ."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Horizontal part of the pull: {{F}} cos {{th}}° = {{Fx}} N.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "T",
+          "axes": "standard"
+        }
+      }
+    },
+    {
+      "text": "W = {{Fx}} × {{d}} = {{ans}} J."
+    }
+  ],
+  "flashcards": {
+    "work-ignores-angle": {
+      "front": "Work by a force at angle θ to the displacement?",
+      "back": "W = F d cos θ."
+    },
+    "work-uses-sin": {
+      "front": "Pulling at θ above the horizontal along the floor: which part does work?",
+      "back": "The horizontal part, F cos θ."
+    },
+    "generic": {
+      "front": "Work by a pull at θ above the horizontal along a level path?",
+      "back": "F d cos θ."
+    }
+  },
+  "accessibility": {
+    "altText": "A sled with a rope pulling at {{th}}° above the horizontal.",
+    "nonDragAlternative": "Tick Show components; type your answer in the box."
+  }
+}

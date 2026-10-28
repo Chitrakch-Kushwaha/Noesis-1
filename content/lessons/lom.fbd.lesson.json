@@ -1,0 +1,36 @@
+{
+  "id": "lom.fbd.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "lom.fbd",
+  "kind": "explainer",
+  "title": "Every arrow needs an agent",
+  "minutes": 1,
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Step through the explanation, then press Play to see what the forces do to the sliding box.",
+    "config": {
+      "scene": "floor", "body": { "label": "box", "mass": 2 }, "initialVelocity": { "x": 2, "y": 0 }, "predict": true, "predictSeconds": 1.2, "maxMagnitude": 26,
+      "vectors": []
+    }
+  },
+  "steps": [
+    { "text": "A box slides to the right after a push has ended. Before drawing any arrow, ask: what is pushing or pulling, and is it touching the box?", "cue": { "cue": "note", "args": { "text": "No agent, no force." } } },
+    { "text": "Gravity acts without touching: the Earth pulls the box down with its weight.", "cue": { "cue": "add-vector", "args": { "vector": { "id": "W", "kind": "weight", "label": "Weight (Earth)", "agent": "Earth", "magnitude": 19.6, "angleDeg": -90 } } } },
+    { "text": "The floor touches the box: it pushes up (the normal force) and rubs against the sliding box (friction, backwards).", "cue": [{ "cue": "add-vector", "args": { "vector": { "id": "N", "kind": "normal", "label": "Normal (floor)", "agent": "floor", "magnitude": 19.6, "angleDeg": 90 } } }, { "cue": "add-vector", "args": { "vector": { "id": "f", "kind": "friction", "label": "Friction (floor)", "agent": "floor", "magnitude": 5.9, "angleDeg": 180 } } }] },
+    { "text": "Nothing else touches the box, so there is no 'force of motion'. It keeps moving by inertia while friction slows it. Press Play.", "cue": { "cue": "predict" } }
+  ],
+  "accessibility": {
+    "altText": "A box sliding right on a floor. Forces are added one at a time: weight, normal force and friction.",
+    "nonDragAlternative": "Step through with Next; the description below the board lists each force and its agent."
+  }
+}

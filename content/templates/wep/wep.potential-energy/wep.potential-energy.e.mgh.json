@@ -1,0 +1,177 @@
+{
+  "id": "wep.potential-energy.e.mgh",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.potential-energy"
+  ],
+  "primarySkillId": "wep.potential-energy",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        5,
+        10,
+        12
+      ]
+    },
+    "h": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.gravPE",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "pe-forgot-g"
+      ],
+      "match": {
+        "buggySolver": "forgotG"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "free",
+      "maxMagnitude": "{{m*12}}",
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{m*9.8}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "L",
+          "kind": "applied",
+          "label": "Lift",
+          "agent": "hand",
+          "magnitude": "{{m*9.8}}",
+          "angleDeg": 90,
+          "locked": true
+        }
+      ],
+      "body": {
+        "label": "bag",
+        "mass": "{{m}}"
+      }
+    },
+    "instructions": "The lift balances the weight as the bag is raised slowly."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "W"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A {{m}} kg bag is lifted {{h}} m onto a shelf. Take g = 9.8 m/s².",
+    "By how much does its gravitational potential energy increase?"
+  ],
+  "input": {
+    "label": "Increase in PE",
+    "placeholder": "for example 100 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "The lift does work against the weight.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W",
+            "L"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Weight = mg; it is lifted through h."
+    },
+    {
+      "text": "ΔPE = mgh."
+    }
+  ],
+  "feedback": {
+    "pe-forgot-g": {
+      "text": "Gravitational PE is mgh: include g = 9.8 m/s²."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "ΔPE = mgh."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Work against the weight: mg × h.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "L"
+          ]
+        }
+      }
+    },
+    {
+      "text": "ΔPE = {{m}} × 9.8 × {{h}} = {{ans}} J."
+    }
+  ],
+  "flashcards": {
+    "pe-forgot-g": {
+      "front": "Gravitational PE gained by m raised h?",
+      "back": "mgh."
+    },
+    "generic": {
+      "front": "Gain in gravitational PE?",
+      "back": "mgh."
+    }
+  },
+  "accessibility": {
+    "altText": "A bag with its weight and the lifting force drawn.",
+    "nonDragAlternative": "The board only illustrates the forces; type your answer in the box."
+  }
+}

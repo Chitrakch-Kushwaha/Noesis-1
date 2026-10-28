@@ -1,0 +1,224 @@
+{
+  "id": "lom.circular-dynamics.e.what-provides",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.circular-dynamics",
+    "lom.friction"
+  ],
+  "primarySkillId": "lom.circular-dynamics",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 60,
+  "parameters": {
+    "r": {
+      "kind": "choice",
+      "values": [
+        20,
+        30,
+        50
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        8,
+        10,
+        12
+      ]
+    }
+  },
+  "solver": "lom.centripetalSource",
+  "intro": "A quick check on turning.",
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The car is seen from behind as it turns left; the centre of the turn is to the left. Press Play to see which way the net force pushes it.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "car",
+        "mass": 1000
+      },
+      "predict": true,
+      "predictSeconds": 1,
+      "maxMagnitude": 12000,
+      "showResultant": true,
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": 9800,
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "road",
+          "magnitude": 9800,
+          "angleDeg": 90,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "stem": [
+    "A car drives round a flat, level curve of radius {{r}} m at a steady {{v}} m/s.",
+    "Which force pulls the car towards the centre of the curve?"
+  ],
+  "options": [
+    {
+      "id": "friction",
+      "text": "Sideways friction from the road on the tyres"
+    },
+    {
+      "id": "centrifugal",
+      "text": "Centrifugal force",
+      "tags": [
+        "centrifugal-force-real"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Nothing pushes the car outward: no agent supplies a 'centrifugal force'."
+        }
+      }
+    },
+    {
+      "id": "engine",
+      "text": "The engine's forward driving force",
+      "tags": [
+        "tangential-force-provides-centripetal"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "A forward force changes the speed, not the direction."
+        }
+      }
+    },
+    {
+      "id": "normal",
+      "text": "The normal force from the road",
+      "tags": [
+        "normal-provides-centripetal"
+      ],
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N"
+          ]
+        }
+      }
+    }
+  ],
+  "answerText": "Sideways friction from the road",
+  "hints": [
+    {
+      "text": "Turning means accelerating towards the centre, so some real force must point that way. Which forces does the car feel, and from what agents?"
+    },
+    {
+      "text": "On a level road the weight and the normal force are both vertical. Can a vertical force pull the car sideways?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W",
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Only the road's grip on the tyres can act sideways, towards the centre."
+    }
+  ],
+  "feedback": {
+    "centrifugal-force-real": {
+      "text": "No agent pushes the car outward. What you feel as being 'thrown out' is your body continuing straight (inertia) while the car turns."
+    },
+    "tangential-force-provides-centripetal": {
+      "text": "The engine's force acts along the direction of travel. It can change the speed, but not the direction."
+    },
+    "normal-provides-centripetal": {
+      "text": "On a level road the normal force is vertical, so it can't pull the car sideways. (On a banked road it can help.)",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "N"
+          ]
+        }
+      }
+    },
+    "generic": {
+      "text": "Find the force that points towards the centre and has a real agent."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Vertically, weight and normal force balance: the car neither rises nor sinks.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W",
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "text": "To turn, the car needs a net force towards the centre: here only the road's friction on the tyres acts sideways. Without grip (ice), the car would slide straight on.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "f",
+            "kind": "friction",
+            "label": "Friction (towards centre)",
+            "agent": "road",
+            "magnitude": 4000,
+            "angleDeg": 180
+          }
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "centrifugal-force-real": {
+      "front": "Is there an outward 'centrifugal force' on a turning car?",
+      "back": "Not in the road's frame of reference: no agent supplies it. The inward friction is what turns the car."
+    },
+    "tangential-force-provides-centripetal": {
+      "front": "Can a forward driving force make a car turn?",
+      "back": "No. A force along the motion changes speed; turning needs a force towards the centre."
+    },
+    "normal-provides-centripetal": {
+      "front": "On a level curve, does the normal force turn the car?",
+      "back": "No, it is vertical. Sideways friction does."
+    },
+    "generic": {
+      "front": "What turns a car on a flat road?",
+      "back": "Sideways static friction from the road, towards the centre."
+    }
+  },
+  "accessibility": {
+    "altText": "A car seen from behind on a level road, with its weight and the normal force drawn. The centre of the turn is to the left.",
+    "nonDragAlternative": "Choose an answer with the radio buttons; the board only illustrates the forces."
+  }
+}

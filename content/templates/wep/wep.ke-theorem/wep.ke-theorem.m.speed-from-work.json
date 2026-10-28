@@ -1,0 +1,180 @@
+{
+  "id": "wep.ke-theorem.m.speed-from-work",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.ke-theorem"
+  ],
+  "primarySkillId": "wep.ke-theorem",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        10,
+        20,
+        30
+      ]
+    },
+    "d": {
+      "kind": "choice",
+      "values": [
+        5,
+        8,
+        10
+      ]
+    },
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.speedFromWork",
+  "intro": "Work turns into kinetic energy.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "work-energy-missing-two"
+      ],
+      "match": {
+        "buggySolver": "missingTwo"
+      }
+    },
+    {
+      "tags": [
+        "forgot-root-energy"
+      ],
+      "match": {
+        "buggySolver": "noRoot"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "t",
+          "label": "trolley",
+          "x0": 0,
+          "v0": 0,
+          "a": "{{F/m}}"
+        }
+      ],
+      "duration": "{{sqrt(2*d*m/F)}}",
+      "hideNumbers": true
+    },
+    "instructions": "Press Play; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "you",
+          "label": "steady at your speed",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A {{m}} kg trolley starts from rest on a smooth floor. A constant {{F}} N horizontal force pushes it {{d}} m.",
+    "How fast is it moving then?"
+  ],
+  "input": {
+    "label": "Speed",
+    "placeholder": "for example 8 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "The work done becomes kinetic energy.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "W = F d = ½mv² − 0."
+    },
+    {
+      "text": "Solve for v."
+    }
+  ],
+  "feedback": {
+    "work-energy-missing-two": {
+      "text": "From Fd = ½mv², v² = 2Fd ÷ m: keep the 2."
+    },
+    "forgot-root-energy": {
+      "text": "That is v², not v. Take the square root."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "F d = ½mv², so v = √(2Fd ÷ m)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Work done: {{F}} × {{d}} = {{W}} J = ½ × {{m}} × v²."
+    },
+    {
+      "text": "v = √(2 × {{W}} ÷ {{m}}) = {{ans}} m/s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "work-energy-missing-two": {
+      "front": "Speed after work W on a body from rest?",
+      "back": "v = √(2W ÷ m)."
+    },
+    "forgot-root-energy": {
+      "front": "From ½mv² = E, v = ?",
+      "back": "√(2E ÷ m)."
+    },
+    "generic": {
+      "front": "Speed after work W from rest?",
+      "back": "v = √(2W ÷ m)."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with a trolley speeding up from rest.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

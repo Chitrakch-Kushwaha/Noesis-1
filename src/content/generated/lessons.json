@@ -1,0 +1,2082 @@
+{
+  "generatedBy": "npm run content:validate",
+  "lessons": [
+    {
+      "lesson": {
+        "id": "f.angles.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.angles",
+        "kind": "micro-lesson",
+        "title": "Angles in triangles and with parallel lines",
+        "minutes": 4,
+        "widget": {
+          "type": "triangle-explorer",
+          "config": {
+            "mode": "triangle",
+            "hypotenuse": 5,
+            "angleDeg": 37,
+            "editable": true,
+            "showRoles": false
+          },
+          "instructions": "Drag corner B or use the slider to change the angles."
+        },
+        "steps": [
+          {
+            "text": "Change the angle at A: the angle at B changes too, because the three angles of a triangle always add to 180°.",
+            "cue": {
+              "cue": "sweep",
+              "args": {
+                "from": 25,
+                "to": 60
+              }
+            }
+          },
+          {
+            "text": "Here C is 90°, so A + B = 90°.",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "A + B + C = 180°"
+              }
+            }
+          },
+          {
+            "text": "When a line crosses two parallel lines, alternate angles (a Z shape) are equal and co-interior angles (a C shape) add to 180°.",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "Z: equal; C: add to 180°"
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "Tearing off the corners",
+          "steps": [
+            {
+              "text": "Tear off the three corners of any triangle and put them side by side: they make a straight line, 180°.",
+              "cue": {
+                "cue": "sweep",
+                "args": {
+                  "from": 30,
+                  "to": 50
+                }
+              }
+            },
+            {
+              "text": "That is why the third angle is 180° minus the other two.",
+              "cue": {
+                "cue": "note",
+                "args": {
+                  "text": "third angle = 180° − (A + B)"
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: triangle angles add to 180°; alternate angles are equal.",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "180°"
+              }
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A right triangle whose angle can be changed.",
+          "nonDragAlternative": "Use the angle slider and the buttons; the description gives every angle."
+        }
+      },
+      "hash": "sha256:6641406c9fbae5594c610928e9738caf416481be7b880b99294b48b185497c87",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.area-graph.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.area-graph",
+        "kind": "micro-lesson",
+        "title": "Area under a straight-line graph",
+        "minutes": 5,
+        "widget": {
+          "type": "graph-plot",
+          "config": {
+            "xRange": [
+              0,
+              6
+            ],
+            "yRange": [
+              0,
+              8
+            ],
+            "functions": [
+              {
+                "id": "L",
+                "expr": "1 + x"
+              }
+            ]
+          },
+          "instructions": "Drag points or sliders where you see them; the description below names every value."
+        },
+        "steps": [
+          {
+            "text": "The area between a graph and the x-axis often means something: under a speed–time graph it is the distance.",
+            "cue": {
+              "cue": "area",
+              "args": {
+                "top": "L",
+                "from": 0,
+                "to": 2
+              }
+            }
+          },
+          {
+            "text": "Under a sloping straight line from x = 1 to x = 4 the region is a trapezium.",
+            "cue": {
+              "cue": "area",
+              "args": {
+                "top": "L",
+                "from": 1,
+                "to": 4,
+                "showValue": false
+              }
+            }
+          },
+          {
+            "text": "Its area is ½ × (sum of the parallel sides) × width = ½ × (2 + 5) × 3 = 10.5.",
+            "cue": {
+              "cue": "area",
+              "args": {
+                "top": "L",
+                "from": 1,
+                "to": 4
+              }
+            }
+          },
+          {
+            "text": "Watch the area sweep out as x grows.",
+            "cue": {
+              "cue": "sweep-area",
+              "args": {
+                "top": "L",
+                "from": 0,
+                "to": 5
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "Rectangle plus triangle",
+          "steps": [
+            {
+              "text": "Split the trapezium into a rectangle under the lower height…",
+              "cue": {
+                "cue": "area",
+                "args": {
+                  "top": 2,
+                  "from": 1,
+                  "to": 4
+                }
+              }
+            },
+            {
+              "text": "…plus a triangle on top: 3 × 2 + ½ × 3 × 3 = 10.5, the same answer.",
+              "cue": {
+                "cue": "area",
+                "args": {
+                  "top": "L",
+                  "from": 1,
+                  "to": 4
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: area under a straight line = trapezium ½(y₁ + y₂) × width, or rectangle + triangle.",
+            "cue": {
+              "cue": "area",
+              "args": {
+                "top": "L",
+                "from": 1,
+                "to": 4
+              }
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A straight line above the x-axis.",
+          "nonDragAlternative": "Use the sliders or their arrow keys; the description below the graph gives every value."
+        }
+      },
+      "hash": "sha256:45524f174ce9d8ce381d6e93c2e48ec8481d4da6a20e3c7ea0d91eaf79673c58",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.circle.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.circle",
+        "kind": "micro-lesson",
+        "title": "Circle measurement: arc length and area",
+        "minutes": 5,
+        "widget": {
+          "type": "graph-plot",
+          "config": {
+            "xRange": [
+              -6,
+              6
+            ],
+            "yRange": [
+              -6,
+              6
+            ],
+            "functions": [
+              {
+                "id": "top",
+                "expr": "sqrt(16 - x^2)"
+              },
+              {
+                "id": "bot",
+                "expr": "-sqrt(16 - x^2)"
+              }
+            ]
+          },
+          "instructions": "Drag points or sliders where you see them; the description below names every value."
+        },
+        "steps": [
+          {
+            "text": "This circle has radius 4. Its circumference is 2πr ≈ 25.1.",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "top",
+                  "bot"
+                ]
+              }
+            }
+          },
+          {
+            "text": "An angle at the centre measured in radians gives the arc length directly: s = rθ. A quarter turn is π/2 rad, so the arc is 4 × π/2 ≈ 6.28.",
+            "cue": {
+              "cue": "marker",
+              "args": {
+                "x": 0,
+                "y": 4,
+                "label": "quarter arc"
+              }
+            }
+          },
+          {
+            "text": "Degrees must be converted: θ (rad) = θ (deg) × π ÷ 180.",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "180° = π rad"
+              }
+            }
+          },
+          {
+            "text": "The area inside is πr² ≈ 50.3 square units.",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "A = πr²"
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "Unrolling the circle",
+          "steps": [
+            {
+              "text": "Roll the circle along a line: one turn covers 2πr, the circumference.",
+              "cue": {
+                "cue": "note",
+                "args": {
+                  "text": "one turn = 2πr"
+                }
+              }
+            },
+            {
+              "text": "A fraction of a turn covers the same fraction of 2πr: that is s = rθ.",
+              "cue": {
+                "cue": "marker",
+                "args": {
+                  "x": 4,
+                  "y": 0,
+                  "label": "start"
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: C = 2πr, s = rθ (θ in radians), A = πr².",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "top",
+                  "bot"
+                ]
+              }
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A circle of radius 4 on a grid.",
+          "nonDragAlternative": "The graph is for reference; the steps describe every quantity."
+        }
+      },
+      "hash": "sha256:b23c7c913838bcd3657762faed142ff371270f6cc2a99b356b40cefd21c82938",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.coord.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.coord",
+        "kind": "micro-lesson",
+        "title": "The coordinate plane: distance and midpoint",
+        "minutes": 5,
+        "widget": {
+          "type": "graph-plot",
+          "config": {
+            "xRange": [
+              -2,
+              8
+            ],
+            "yRange": [
+              -2,
+              8
+            ],
+            "functions": [
+              {
+                "id": "L",
+                "expr": "1 + 4/3*(x - 1)",
+                "tone": "muted"
+              }
+            ],
+            "points": [
+              {
+                "id": "P",
+                "label": "P",
+                "x": 1,
+                "y": 1,
+                "draggable": true
+              },
+              {
+                "id": "Q",
+                "label": "Q",
+                "x": 4,
+                "y": 5
+              }
+            ]
+          },
+          "instructions": "Drag points or sliders where you see them; the description below names every value."
+        },
+        "steps": [
+          {
+            "text": "Every point is an (x, y) pair: P is at (1, 1) and Q at (4, 5).",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "P",
+                  "Q"
+                ]
+              }
+            }
+          },
+          {
+            "text": "Draw the right triangle between them: across 3, up 4.",
+            "cue": {
+              "cue": "slope-triangle",
+              "args": {
+                "fn": "L",
+                "x1": 1,
+                "x2": 4
+              }
+            }
+          },
+          {
+            "text": "The distance PQ is the hypotenuse: √(3² + 4²) = 5.",
+            "cue": {
+              "cue": "slope-triangle",
+              "args": {
+                "fn": "L",
+                "x1": 1,
+                "x2": 4
+              }
+            }
+          },
+          {
+            "text": "The midpoint averages the coordinates: ((1 + 4)/2, (1 + 5)/2) = (2.5, 3).",
+            "cue": {
+              "cue": "marker",
+              "args": {
+                "x": 2.5,
+                "y": 3,
+                "label": "midpoint"
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "Moving point by point",
+          "steps": [
+            {
+              "text": "Drag P: the gaps Δx and Δy change, and so does the distance √(Δx² + Δy²).",
+              "cue": {
+                "cue": "highlight",
+                "args": {
+                  "ids": [
+                    "P"
+                  ]
+                }
+              }
+            },
+            {
+              "text": "The midpoint is always halfway in x and halfway in y.",
+              "cue": {
+                "cue": "marker",
+                "args": {
+                  "x": 2.5,
+                  "y": 3,
+                  "label": "midpoint"
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: distance √(Δx² + Δy²); midpoint ((x₁ + x₂)/2, (y₁ + y₂)/2).",
+            "cue": {
+              "cue": "marker",
+              "args": {
+                "x": 2.5,
+                "y": 3,
+                "label": "midpoint"
+              }
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "Two points on a grid joined by a line.",
+          "nonDragAlternative": "Drag point P or use its arrow keys; the description gives every coordinate."
+        }
+      },
+      "hash": "sha256:473ae188e41aac80920277e35ab314ba80bf0dd8be4dcfcaf1543b4f3c0f3f19",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.force-intro.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.force-intro",
+        "kind": "micro-lesson",
+        "title": "Forces and motion",
+        "minutes": 4,
+        "widget": {
+          "type": "vector-board",
+          "config": {
+            "scene": "floor",
+            "maxMagnitude": 30,
+            "vectors": [
+              {
+                "id": "W",
+                "kind": "weight",
+                "label": "Weight",
+                "agent": "Earth",
+                "magnitude": 9.8,
+                "angleDeg": -90,
+                "locked": true
+              },
+              {
+                "id": "N",
+                "kind": "normal",
+                "label": "Normal",
+                "agent": "ice",
+                "magnitude": 9.8,
+                "angleDeg": 90,
+                "locked": true
+              },
+              {
+                "id": "P",
+                "kind": "applied",
+                "label": "Push",
+                "agent": "hand",
+                "magnitude": 3,
+                "angleDeg": 0
+              }
+            ],
+            "body": {
+              "label": "puck",
+              "mass": 1
+            },
+            "predict": true,
+            "allowEdit": true
+          },
+          "instructions": "Change a force with Precise controls and press Play to see the motion it predicts."
+        },
+        "steps": [
+          {
+            "text": "A force is a push or a pull with a size and a direction. Here the weight and the normal force balance.",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "W",
+                  "N"
+                ]
+              }
+            }
+          },
+          {
+            "text": "The push is unbalanced, so the puck accelerates. Press Play.",
+            "cue": {
+              "cue": "predict"
+            }
+          },
+          {
+            "text": "Remove the push and the puck would keep its velocity: no force is needed just to keep moving.",
+            "cue": {
+              "cue": "set",
+              "args": {
+                "id": "P",
+                "magnitude": 0,
+                "play": true
+              }
+            }
+          },
+          {
+            "text": "Mass is the amount of matter (kg); weight is the pull of gravity on it, mg (N).",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "W"
+                ]
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "Balanced and unbalanced",
+          "steps": [
+            {
+              "text": "Balanced forces: no change in motion. Unbalanced: the velocity changes in the direction of the net force.",
+              "cue": {
+                "cue": "set",
+                "args": {
+                  "id": "P",
+                  "magnitude": 5,
+                  "play": true
+                }
+              }
+            },
+            {
+              "text": "A bigger unbalanced force gives a bigger acceleration.",
+              "cue": {
+                "cue": "set",
+                "args": {
+                  "id": "P",
+                  "magnitude": 10,
+                  "play": true
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: unbalanced force → acceleration; balanced → constant velocity; weight = mg.",
+            "cue": {
+              "cue": "predict"
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A puck on ice with its weight, the normal force and a push.",
+          "nonDragAlternative": "Select a force and type its size in Precise controls, then press Play."
+        }
+      },
+      "hash": "sha256:a4c89e21b77950ac7efa3047d8fbd7e884360217ebfe452cfee6abcc845404b5",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.number-systems.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.number-systems",
+        "kind": "micro-lesson",
+        "title": "Number systems on the number line",
+        "minutes": 4,
+        "widget": {
+          "type": "number-line",
+          "config": {
+            "range": [
+              -6,
+              6
+            ],
+            "editable": true
+          },
+          "instructions": "Drag the ends of a piece, or use the buttons below the line."
+        },
+        "steps": [
+          {
+            "text": "Every real number has a place on the number line. Integers sit at the whole-number marks.",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "… −2, −1, 0, 1, 2 …"
+              }
+            }
+          },
+          {
+            "text": "Rational numbers are fractions p ÷ q of integers, like ½ or −3/4: they fill in between the integers.",
+            "cue": {
+              "cue": "test-point",
+              "args": {
+                "from": -0.75,
+                "to": 0.5
+              }
+            }
+          },
+          {
+            "text": "Some numbers, like √2 ≈ 1.414…, can't be written as a fraction: they are irrational, but they still have a place on the line.",
+            "cue": {
+              "cue": "test-point",
+              "args": {
+                "from": 0,
+                "to": 1.41421356
+              }
+            }
+          },
+          {
+            "text": "Distance on the line is always positive: from −3 to 2 is 2 − (−3) = 5.",
+            "cue": {
+              "cue": "test-point",
+              "args": {
+                "from": -3,
+                "to": 2
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "Numbers as steps",
+          "steps": [
+            {
+              "text": "Think of a number as a walk from 0: positive steps go right, negative steps go left.",
+              "cue": {
+                "cue": "test-point",
+                "args": {
+                  "from": 0,
+                  "to": -4
+                }
+              }
+            },
+            {
+              "text": "The distance between two numbers is how far you walk from one to the other, whatever the direction.",
+              "cue": {
+                "cue": "test-point",
+                "args": {
+                  "from": -4,
+                  "to": 3
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: integers, rationals (fractions) and irrationals (like √2) all sit on the real number line; distance = larger − smaller.",
+            "cue": {
+              "cue": "test-point",
+              "args": {
+                "from": -2,
+                "to": 3
+              }
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A number line from −6 to 6.",
+          "nonDragAlternative": "Use the buttons below the number line; the description below it gives every position."
+        }
+      },
+      "hash": "sha256:925543099fee02be3176973d56d46b1a064149b486f21968c515dae814462108",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.pythagoras.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.pythagoras",
+        "kind": "micro-lesson",
+        "title": "Pythagoras' theorem",
+        "minutes": 4,
+        "widget": {
+          "type": "triangle-explorer",
+          "config": {
+            "mode": "triangle",
+            "hypotenuse": 5,
+            "angleDeg": 37,
+            "editable": true,
+            "showRoles": true,
+            "showValues": true
+          },
+          "instructions": "Drag corner B or use the slider to change the angles."
+        },
+        "steps": [
+          {
+            "text": "In a right triangle the side opposite the right angle is the hypotenuse, always the longest.",
+            "cue": {
+              "cue": "highlight-side",
+              "args": {
+                "sides": [
+                  "hypotenuse"
+                ]
+              }
+            }
+          },
+          {
+            "text": "Pythagoras: hypotenuse² = (one side)² + (other side)². Here 3² + 4² = 9 + 16 = 25 = 5².",
+            "cue": {
+              "cue": "highlight-side",
+              "args": {
+                "sides": [
+                  "opposite",
+                  "adjacent"
+                ]
+              }
+            }
+          },
+          {
+            "text": "To find a shorter side, subtract: b² = c² − a².",
+            "cue": {
+              "cue": "highlight-side",
+              "args": {
+                "sides": [
+                  "hypotenuse"
+                ]
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "Squares on the sides",
+          "steps": [
+            {
+              "text": "Imagine a square on each side: the area of the big square equals the two small ones together.",
+              "cue": {
+                "cue": "show-values"
+              }
+            },
+            {
+              "text": "Change the angle: the sides change, but a² + b² always equals c².",
+              "cue": {
+                "cue": "sweep",
+                "args": {
+                  "from": 25,
+                  "to": 65
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: c² = a² + b²; the hypotenuse is opposite the right angle.",
+            "cue": {
+              "cue": "highlight-side",
+              "args": {
+                "sides": [
+                  "hypotenuse"
+                ]
+              }
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A right triangle with its side lengths.",
+          "nonDragAlternative": "Use the angle slider; the description gives every side length."
+        }
+      },
+      "hash": "sha256:fbc3c724a21a872b4b421d23a57f9d11f91d8a076ef37d9577f5d6a234bf669d",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.quadratic.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.quadratic",
+        "kind": "micro-lesson",
+        "title": "Solving quadratic equations",
+        "minutes": 6,
+        "widget": {
+          "type": "graph-plot",
+          "config": {
+            "xRange": [
+              -2,
+              7
+            ],
+            "yRange": [
+              -6,
+              10
+            ],
+            "functions": [
+              {
+                "id": "f",
+                "expr": "x^2 - 5*x + c"
+              }
+            ],
+            "params": {
+              "c": {
+                "value": 6,
+                "min": -2,
+                "max": 10,
+                "step": 0.5,
+                "label": "c"
+              }
+            }
+          },
+          "instructions": "Drag points or sliders where you see them; the description below names every value."
+        },
+        "steps": [
+          {
+            "text": "The roots of x² − 5x + 6 = 0 are where the parabola crosses the x-axis.",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "f"
+                ]
+              }
+            }
+          },
+          {
+            "text": "Factorise: x² − 5x + 6 = (x − 2)(x − 3). A product is zero only when one factor is, so x = 2 or x = 3.",
+            "cue": [
+              {
+                "cue": "marker",
+                "args": {
+                  "x": 2,
+                  "y": 0,
+                  "label": "2"
+                }
+              },
+              {
+                "cue": "marker",
+                "args": {
+                  "x": 3,
+                  "y": 0,
+                  "label": "3"
+                }
+              }
+            ]
+          },
+          {
+            "text": "The discriminant b² − 4ac tells you how many roots there are: here 25 − 24 = 1 > 0, two roots.",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "D = b² − 4ac"
+              }
+            }
+          },
+          {
+            "text": "Raise c: when D becomes negative the parabola no longer reaches the axis.",
+            "cue": {
+              "cue": "set-param",
+              "args": {
+                "name": "c",
+                "value": 8
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "The quadratic formula",
+          "steps": [
+            {
+              "text": "Any quadratic ax² + bx + c = 0 has x = (−b ± √(b² − 4ac)) ÷ (2a).",
+              "cue": {
+                "cue": "set-param",
+                "args": {
+                  "name": "c",
+                  "value": 6
+                }
+              }
+            },
+            {
+              "text": "For x² − 5x + 6: x = (5 ± 1) ÷ 2, so 3 or 2.",
+              "cue": {
+                "cue": "marker",
+                "args": {
+                  "x": 3,
+                  "y": 0,
+                  "label": "3"
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: roots are x-intercepts; factorise or use the formula; D = b² − 4ac counts them.",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "f"
+                ]
+              }
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A parabola whose constant term can be changed with a slider.",
+          "nonDragAlternative": "Use the sliders or their arrow keys; the description below the graph gives every value."
+        }
+      },
+      "hash": "sha256:84acf74dafb8e9ded0ed507241e31eb8b4dc1642830b43a166e357f02190ded7",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.rearrange.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.rearrange",
+        "kind": "micro-lesson",
+        "title": "Solving equations and rearranging formulas",
+        "minutes": 5,
+        "widget": {
+          "type": "graph-plot",
+          "config": {
+            "xRange": [
+              -1,
+              8
+            ],
+            "yRange": [
+              0,
+              25
+            ],
+            "functions": [
+              {
+                "id": "L",
+                "expr": "3*x + 4",
+                "label": "y = 3x + 4"
+              },
+              {
+                "id": "R",
+                "expr": "19 + 0*x",
+                "label": "y = 19"
+              }
+            ]
+          },
+          "instructions": "Drag points or sliders where you see them; the description below names every value."
+        },
+        "steps": [
+          {
+            "text": "To solve 3x + 4 = 19, find where the line y = 3x + 4 meets y = 19.",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "L",
+                  "R"
+                ]
+              }
+            }
+          },
+          {
+            "text": "Algebra does the same thing: undo each operation, doing the same to both sides. First subtract 4: 3x = 15.",
+            "cue": {
+              "cue": "marker",
+              "args": {
+                "x": 5,
+                "y": 19,
+                "label": "?"
+              }
+            }
+          },
+          {
+            "text": "Then divide both sides by 3: x = 5. The graphs meet at x = 5.",
+            "cue": {
+              "cue": "marker",
+              "args": {
+                "x": 5,
+                "y": 19,
+                "label": "x = 5"
+              }
+            }
+          },
+          {
+            "text": "Formulas rearrange the same way: v = u + at becomes at = v − u, then a = (v − u) ÷ t.",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "Undo + u, then undo × t."
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "A balance",
+          "steps": [
+            {
+              "text": "Think of the equation as a balance: whatever you do to one side you must do to the other to keep it level.",
+              "cue": {
+                "cue": "note",
+                "args": {
+                  "text": "3x + 4  =  19"
+                }
+              }
+            },
+            {
+              "text": "Take 4 from each side, then share each side into 3 equal parts.",
+              "cue": {
+                "cue": "note",
+                "args": {
+                  "text": "3x = 15, so x = 5"
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: undo operations in reverse order, doing the same to both sides.",
+            "cue": {
+              "cue": "marker",
+              "args": {
+                "x": 5,
+                "y": 19,
+                "label": "x = 5"
+              }
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A sloping line and a horizontal line on a graph.",
+          "nonDragAlternative": "Use the sliders or their arrow keys; the description below the graph gives every value."
+        }
+      },
+      "hash": "sha256:77bde8fa13e7888be92916e1bd1a7adce089aaef8907cb5dc1b9cefb2c007c05",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.slope.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.slope",
+        "kind": "micro-lesson",
+        "title": "Slope as a rate of change",
+        "minutes": 5,
+        "widget": {
+          "type": "graph-plot",
+          "config": {
+            "xRange": [
+              -5,
+              5
+            ],
+            "yRange": [
+              -6,
+              6
+            ],
+            "functions": [
+              {
+                "id": "L",
+                "expr": "m*x + 1"
+              }
+            ],
+            "params": {
+              "m": {
+                "value": 1,
+                "min": -3,
+                "max": 3,
+                "step": 0.5,
+                "label": "slope m"
+              }
+            }
+          },
+          "instructions": "Drag points or sliders where you see them; the description below names every value."
+        },
+        "steps": [
+          {
+            "text": "This line rises 1 unit for every 1 unit across: its slope is 1.",
+            "cue": {
+              "cue": "slope-triangle",
+              "args": {
+                "fn": "L",
+                "x1": 0,
+                "x2": 2
+              }
+            }
+          },
+          {
+            "text": "Slope = rise ÷ run, the change in y divided by the change in x.",
+            "cue": {
+              "cue": "slope-triangle",
+              "args": {
+                "fn": "L",
+                "x1": -2,
+                "x2": 1
+              }
+            }
+          },
+          {
+            "text": "Make the slope 2: the line rises twice as fast.",
+            "cue": [
+              {
+                "cue": "set-param",
+                "args": {
+                  "name": "m",
+                  "value": 2
+                }
+              },
+              {
+                "cue": "slope-triangle",
+                "args": {
+                  "fn": "L",
+                  "x1": 0,
+                  "x2": 1
+                }
+              }
+            ]
+          },
+          {
+            "text": "A negative slope falls from left to right. Steepness is the size of the slope, |m|.",
+            "cue": [
+              {
+                "cue": "set-param",
+                "args": {
+                  "name": "m",
+                  "value": -2
+                }
+              },
+              {
+                "cue": "slope-triangle",
+                "args": {
+                  "fn": "L",
+                  "x1": 0,
+                  "x2": 1
+                }
+              }
+            ]
+          }
+        ],
+        "alternate": {
+          "title": "Slope as speed",
+          "steps": [
+            {
+              "text": "On a distance–time graph, slope is speed: metres gained per second.",
+              "cue": [
+                {
+                  "cue": "set-param",
+                  "args": {
+                    "name": "m",
+                    "value": 1.5
+                  }
+                },
+                {
+                  "cue": "slope-triangle",
+                  "args": {
+                    "fn": "L",
+                    "x1": 0,
+                    "x2": 2
+                  }
+                }
+              ]
+            },
+            {
+              "text": "A steeper line means a faster rate of change.",
+              "cue": {
+                "cue": "set-param",
+                "args": {
+                  "name": "m",
+                  "value": 3
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: slope = rise ÷ run = Δy ÷ Δx; its sign gives the direction and its size the steepness.",
+            "cue": {
+              "cue": "slope-triangle",
+              "args": {
+                "fn": "L",
+                "x1": 0,
+                "x2": 2
+              }
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A straight line whose slope can be changed with a slider.",
+          "nonDragAlternative": "Use the sliders or their arrow keys; the description below the graph gives every value."
+        }
+      },
+      "hash": "sha256:6491a825c881b478126061df9d2c3ac9cfb3c5cbf2350dfe68a794cbcdac9a15",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.speed-time.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.speed-time",
+        "kind": "micro-lesson",
+        "title": "Speed, distance and time",
+        "minutes": 4,
+        "widget": {
+          "type": "motion-track",
+          "config": {
+            "mode": "1d",
+            "lanes": [
+              {
+                "id": "a",
+                "label": "walker",
+                "x0": 0,
+                "v0": 1.5,
+                "a": 0
+              },
+              {
+                "id": "b",
+                "label": "cyclist",
+                "x0": 0,
+                "v0": 5,
+                "a": 0
+              }
+            ],
+            "duration": 4,
+            "editable": [
+              "v0"
+            ]
+          },
+          "instructions": "Change a lane's speed with its controls, then press Play."
+        },
+        "steps": [
+          {
+            "text": "Speed tells you how many metres are covered each second. Press Play: the cyclist covers more metres every second.",
+            "cue": {
+              "cue": "play"
+            }
+          },
+          {
+            "text": "Distance = speed × time: after 4 s the cyclist at 5 m/s has gone 20 m.",
+            "cue": {
+              "cue": "flag",
+              "args": {
+                "x": 20,
+                "label": "20 m"
+              }
+            }
+          },
+          {
+            "text": "Rearranged: speed = distance ÷ time, and time = distance ÷ speed. Check the units: m ÷ (m/s) = s.",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "d = v t, v = d ÷ t, t = d ÷ v"
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "The distance–speed–time triangle",
+          "steps": [
+            {
+              "text": "Cover the quantity you want: d on top, v and t below.",
+              "cue": {
+                "cue": "note",
+                "args": {
+                  "text": "d over (v × t)"
+                }
+              }
+            },
+            {
+              "text": "Covering t leaves d over v: time = distance ÷ speed. Press Play and read when the walker reaches 6 m.",
+              "cue": [
+                {
+                  "cue": "flag",
+                  "args": {
+                    "x": 6,
+                    "label": "6 m"
+                  }
+                },
+                {
+                  "cue": "play"
+                }
+              ]
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: d = v × t; v = d ÷ t; t = d ÷ v. Keep the units consistent.",
+            "cue": {
+              "cue": "play"
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "Two lanes: a walker and a cyclist moving at steady speeds.",
+          "nonDragAlternative": "Type speeds in the lane controls and press Play; the description gives every position."
+        }
+      },
+      "hash": "sha256:210a50072d3cd16ac8ffb6db9f4619e4340706934d8ed80ad258c4e8d7899d8d",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.trig-identity.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.trig-identity",
+        "kind": "micro-lesson",
+        "title": "Standard angles and sin²θ + cos²θ = 1",
+        "minutes": 5,
+        "widget": {
+          "type": "triangle-explorer",
+          "config": {
+            "mode": "triangle",
+            "hypotenuse": 1,
+            "angleDeg": 37,
+            "editable": true,
+            "showRoles": true,
+            "showValues": true,
+            "showRatios": true
+          },
+          "instructions": "Drag corner B or use the slider to change the angles."
+        },
+        "steps": [
+          {
+            "text": "With a hypotenuse of 1, the opposite side is sin θ and the adjacent side is cos θ.",
+            "cue": [
+              {
+                "cue": "show-ratios"
+              },
+              {
+                "cue": "highlight-side",
+                "args": {
+                  "sides": [
+                    "opposite",
+                    "adjacent"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "text": "Pythagoras then says sin²θ + cos²θ = 1, for every angle.",
+            "cue": {
+              "cue": "sweep",
+              "args": {
+                "from": 20,
+                "to": 70
+              }
+            }
+          },
+          {
+            "text": "At 30°: sin = ½, cos = √3/2. At 45°: both 1/√2. At 60°: sin = √3/2, cos = ½.",
+            "cue": {
+              "cue": "set-angle",
+              "args": {
+                "deg": 30
+              }
+            }
+          },
+          {
+            "text": "So if you know sin θ for an acute angle, cos θ = √(1 − sin²θ).",
+            "cue": {
+              "cue": "set-angle",
+              "args": {
+                "deg": 37
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "Half an equilateral triangle",
+          "steps": [
+            {
+              "text": "Cut an equilateral triangle of side 2 in half: the sides are 1, √3 and 2, with angles 30°, 60°, 90°.",
+              "cue": {
+                "cue": "set-angle",
+                "args": {
+                  "deg": 30
+                }
+              }
+            },
+            {
+              "text": "Read the ratios from these sides: sin 30° = 1/2, cos 30° = √3/2.",
+              "cue": {
+                "cue": "highlight-side",
+                "args": {
+                  "sides": [
+                    "opposite",
+                    "hypotenuse"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: sin²θ + cos²θ = 1; sin 30° = ½, sin 45° = 1/√2, sin 60° = √3/2.",
+            "cue": {
+              "cue": "show-ratios"
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A right triangle with hypotenuse 1 and its sine and cosine shown.",
+          "nonDragAlternative": "Use the angle slider and the Mark θ buttons; the description gives every ratio."
+        }
+      },
+      "hash": "sha256:865778a06b4ac78d84dc7e3842e9cf28f2d3ad41614abda3164cfd1ae06f69ca",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.trig-ratios.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.trig-ratios",
+        "kind": "micro-lesson",
+        "title": "Trigonometric ratios in a right triangle",
+        "minutes": 6,
+        "widget": {
+          "type": "triangle-explorer",
+          "config": {
+            "mode": "triangle",
+            "hypotenuse": 5,
+            "angleDeg": 37,
+            "marked": "A",
+            "editable": true,
+            "showRoles": true
+          },
+          "instructions": "Drag corner B (or use the slider) to change the angle, and mark θ at A or B to see which sides are opposite and adjacent."
+        },
+        "steps": [
+          {
+            "text": "This is a right triangle with the right angle at C. The longest side, AB, is across from the right angle: it is always the **hypotenuse**.",
+            "cue": {
+              "cue": "highlight-side",
+              "args": {
+                "sides": [
+                  "hypotenuse"
+                ]
+              }
+            }
+          },
+          {
+            "text": "θ is the angle at A. The side across from θ is **opposite**. The other side that touches θ is **adjacent**.",
+            "cue": {
+              "cue": "highlight-side",
+              "args": {
+                "sides": [
+                  "opposite",
+                  "adjacent"
+                ]
+              }
+            }
+          },
+          {
+            "text": "Now move θ to corner B. Watch the labels: opposite and adjacent swap places, while the hypotenuse stays the same.",
+            "cue": [
+              {
+                "cue": "mark-angle",
+                "args": {
+                  "at": "B"
+                }
+              },
+              {
+                "cue": "highlight-side",
+                "args": {
+                  "sides": [
+                    "opposite",
+                    "adjacent"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "text": "Back at A, the ratios: sin θ = opposite ÷ hypotenuse, cos θ = adjacent ÷ hypotenuse, tan θ = opposite ÷ adjacent. Watch them change as θ sweeps.",
+            "cue": [
+              {
+                "cue": "mark-angle",
+                "args": {
+                  "at": "A"
+                }
+              },
+              {
+                "cue": "show-values"
+              },
+              {
+                "cue": "show-ratios"
+              },
+              {
+                "cue": "sweep",
+                "args": {
+                  "from": 20,
+                  "to": 60
+                }
+              }
+            ]
+          },
+          {
+            "text": "Your turn: drag corner B or use the slider, and mark θ at A or at B. Say which side is adjacent before you look at the labels.",
+            "cue": [
+              {
+                "cue": "highlight-side",
+                "args": {
+                  "sides": []
+                }
+              },
+              {
+                "cue": "note",
+                "args": {
+                  "text": "Your turn: mark θ, then name the sides."
+                }
+              }
+            ]
+          }
+        ],
+        "alternate": {
+          "title": "Shadows of a vector",
+          "widget": {
+            "type": "triangle-explorer",
+            "config": {
+              "mode": "vector",
+              "hypotenuse": 5,
+              "angleDeg": 37,
+              "marked": "A",
+              "editable": true,
+              "showRoles": true
+            },
+            "instructions": "A lamp shines straight down and straight across. Drag the vector's tip (or use the slider) and watch its shadows on the axes."
+          },
+          "steps": [
+            {
+              "text": "Here is a vector of length r at θ above the x-axis. Its shadow on the x-axis (lamp overhead) and on the y-axis (lamp to the side) are its two components.",
+              "cue": {
+                "cue": "shadows"
+              }
+            },
+            {
+              "text": "The x-shadow touches the angle θ at the origin: it is **adjacent**. So x = r cos θ.",
+              "cue": {
+                "cue": "highlight-side",
+                "args": {
+                  "sides": [
+                    "adjacent"
+                  ]
+                }
+              }
+            },
+            {
+              "text": "The y-shadow sits across from θ: it is **opposite**. So y = r sin θ. Sweep θ and watch the two shadows trade length.",
+              "cue": [
+                {
+                  "cue": "highlight-side",
+                  "args": {
+                    "sides": [
+                      "opposite"
+                    ]
+                  }
+                },
+                {
+                  "cue": "sweep",
+                  "args": {
+                    "from": 15,
+                    "to": 75
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: the hypotenuse is across from the right angle, the opposite side is across from θ, and the adjacent side touches θ. sin = opposite ÷ hypotenuse, cos = adjacent ÷ hypotenuse, tan = opposite ÷ adjacent.",
+            "cue": [
+              {
+                "cue": "highlight-side",
+                "args": {
+                  "sides": [
+                    "opposite",
+                    "adjacent",
+                    "hypotenuse"
+                  ]
+                }
+              },
+              {
+                "cue": "show-ratios"
+              }
+            ]
+          }
+        ],
+        "accessibility": {
+          "altText": "A right triangle ABC with the right angle at C and the angle θ marked at A. Each side is labelled opposite, adjacent or hypotenuse.",
+          "nonDragAlternative": "Use the angle slider and the Mark θ at A or Mark θ at B buttons; the description below the figure names each side."
+        }
+      },
+      "hash": "sha256:3465829fde62b90feb139b3a7e1ec846baa18ac9b3e0575e81bc932eaee0f27e",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "f.work-energy-intro.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "f.work-energy-intro",
+        "kind": "micro-lesson",
+        "title": "Work and energy",
+        "minutes": 4,
+        "widget": {
+          "type": "oscillator",
+          "config": {
+            "system": "pendulum",
+            "length": 1,
+            "amplitude": 0.3,
+            "periods": 1.5
+          },
+          "instructions": "Press Play: the bars show the energy changing form."
+        },
+        "steps": [
+          {
+            "text": "Work is done when a force moves something along its direction: W = F × d, measured in joules.",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "W = F × d"
+              }
+            }
+          },
+          {
+            "text": "Energy is the ability to do work. A raised object has potential energy; a moving one has kinetic energy.",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "energy"
+                ]
+              }
+            }
+          },
+          {
+            "text": "As the pendulum swings down, potential energy becomes kinetic energy; on the way up it changes back.",
+            "cue": {
+              "cue": "play"
+            }
+          },
+          {
+            "text": "Without friction the total stays the same: energy changes form but is not used up.",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "energy"
+                ]
+              }
+            }
+          }
+        ],
+        "alternate": {
+          "title": "A falling ball",
+          "steps": [
+            {
+              "text": "A dropped ball loses height and gains speed: potential energy becomes kinetic energy.",
+              "cue": {
+                "cue": "play"
+              }
+            },
+            {
+              "text": "Just before landing almost all the energy is kinetic.",
+              "cue": {
+                "cue": "highlight",
+                "args": {
+                  "ids": [
+                    "energy"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "recap": [
+          {
+            "text": "Recap: W = F d; PE ↔ KE; total energy is conserved.",
+            "cue": {
+              "cue": "play"
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A pendulum with kinetic and potential energy bars.",
+          "nonDragAlternative": "Use Play and the time slider; the description gives each energy."
+        }
+      },
+      "hash": "sha256:d66e38b56fa80a3f8680e753a781669fe25b4a605aad76402cdbb345c7a27906",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "lom.fbd.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "lom.fbd",
+        "kind": "explainer",
+        "title": "Every arrow needs an agent",
+        "minutes": 1,
+        "widget": {
+          "type": "vector-board",
+          "config": {
+            "scene": "floor",
+            "body": {
+              "label": "box",
+              "mass": 2
+            },
+            "initialVelocity": {
+              "x": 2,
+              "y": 0
+            },
+            "predict": true,
+            "predictSeconds": 1.2,
+            "maxMagnitude": 26,
+            "vectors": []
+          },
+          "instructions": "Step through the explanation, then press Play to see what the forces do to the sliding box."
+        },
+        "steps": [
+          {
+            "text": "A box slides to the right after a push has ended. Before drawing any arrow, ask: what is pushing or pulling, and is it touching the box?",
+            "cue": {
+              "cue": "note",
+              "args": {
+                "text": "No agent, no force."
+              }
+            }
+          },
+          {
+            "text": "Gravity acts without touching: the Earth pulls the box down with its weight.",
+            "cue": {
+              "cue": "add-vector",
+              "args": {
+                "vector": {
+                  "id": "W",
+                  "kind": "weight",
+                  "label": "Weight (Earth)",
+                  "agent": "Earth",
+                  "magnitude": 19.6,
+                  "angleDeg": -90
+                }
+              }
+            }
+          },
+          {
+            "text": "The floor touches the box: it pushes up (the normal force) and rubs against the sliding box (friction, backwards).",
+            "cue": [
+              {
+                "cue": "add-vector",
+                "args": {
+                  "vector": {
+                    "id": "N",
+                    "kind": "normal",
+                    "label": "Normal (floor)",
+                    "agent": "floor",
+                    "magnitude": 19.6,
+                    "angleDeg": 90
+                  }
+                }
+              },
+              {
+                "cue": "add-vector",
+                "args": {
+                  "vector": {
+                    "id": "f",
+                    "kind": "friction",
+                    "label": "Friction (floor)",
+                    "agent": "floor",
+                    "magnitude": 5.9,
+                    "angleDeg": 180
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "text": "Nothing else touches the box, so there is no 'force of motion'. It keeps moving by inertia while friction slows it. Press Play.",
+            "cue": {
+              "cue": "predict"
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A box sliding right on a floor. Forces are added one at a time: weight, normal force and friction.",
+          "nonDragAlternative": "Step through with Next; the description below the board lists each force and its agent."
+        }
+      },
+      "hash": "sha256:042db1913599759c2185732193939a9f8e7499415f5272aaa500906b99dd1da3",
+      "approved": false
+    },
+    {
+      "lesson": {
+        "id": "lom.resolve-forces.lesson",
+        "version": 1,
+        "status": "in-review",
+        "provenance": {
+          "origin": "human",
+          "author": "content-dev",
+          "createdAt": "2026-10-28",
+          "reviewedBy": null,
+          "reviewedAt": null,
+          "contentHash": null,
+          "reviewLog": []
+        },
+        "skillId": "lom.resolve-forces",
+        "kind": "explainer",
+        "title": "Resolving forces on a slope",
+        "minutes": 1,
+        "widget": {
+          "type": "vector-board",
+          "config": {
+            "scene": "incline",
+            "inclineDeg": 30,
+            "body": {
+              "label": "block",
+              "mass": 2
+            },
+            "maxMagnitude": 26,
+            "allowAxesToggle": true,
+            "showResultant": false,
+            "vectors": [
+              {
+                "id": "W",
+                "kind": "weight",
+                "label": "Weight",
+                "agent": "Earth",
+                "magnitude": 19.6,
+                "angleDeg": -90,
+                "locked": true
+              }
+            ]
+          },
+          "instructions": "Step through the explanation; tick Tilted axes at any time to compare the two sets of axes."
+        },
+        "steps": [
+          {
+            "text": "A block rests on a 30° slope. Its weight points straight down, but on a slope only two directions matter: along the slope and across it.",
+            "cue": {
+              "cue": "highlight",
+              "args": {
+                "ids": [
+                  "W"
+                ]
+              }
+            }
+          },
+          {
+            "text": "Turn the axes so that one runs along the slope and the other straight out of it.",
+            "cue": {
+              "cue": "tilted-axes"
+            }
+          },
+          {
+            "text": "Now the weight re-projects onto the new axes: mg sin θ along the slope and mg cos θ into it.",
+            "cue": {
+              "cue": "decompose",
+              "args": {
+                "id": "W",
+                "axes": "tilted"
+              }
+            }
+          },
+          {
+            "text": "The plank pushes back only against the part pressing into it, so the normal force is mg cos θ, not mg.",
+            "cue": {
+              "cue": "add-vector",
+              "args": {
+                "vector": {
+                  "id": "N",
+                  "kind": "normal",
+                  "label": "Normal",
+                  "agent": "plank",
+                  "magnitude": 16.97,
+                  "angleDeg": 120
+                }
+              }
+            }
+          }
+        ],
+        "accessibility": {
+          "altText": "A block on a slope at 30° with its weight drawn straight down.",
+          "nonDragAlternative": "Tick Tilted axes; the description below the board lists each force and its components."
+        }
+      },
+      "hash": "sha256:9a0fc240737135d992a5c3f47f9cf790449b7109108920ced61da0b4d4eb2b6a",
+      "approved": false
+    }
+  ]
+}

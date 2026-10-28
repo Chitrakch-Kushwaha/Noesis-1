@@ -1,0 +1,36 @@
+{
+  "id": "lom.resolve-forces.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "lom.resolve-forces",
+  "kind": "explainer",
+  "title": "Resolving forces on a slope",
+  "minutes": 1,
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Step through the explanation; tick Tilted axes at any time to compare the two sets of axes.",
+    "config": {
+      "scene": "incline", "inclineDeg": 30, "body": { "label": "block", "mass": 2 }, "maxMagnitude": 26, "allowAxesToggle": true, "showResultant": false,
+      "vectors": [{ "id": "W", "kind": "weight", "label": "Weight", "agent": "Earth", "magnitude": 19.6, "angleDeg": -90, "locked": true }]
+    }
+  },
+  "steps": [
+    { "text": "A block rests on a 30° slope. Its weight points straight down, but on a slope only two directions matter: along the slope and across it.", "cue": { "cue": "highlight", "args": { "ids": ["W"] } } },
+    { "text": "Turn the axes so that one runs along the slope and the other straight out of it.", "cue": { "cue": "tilted-axes" } },
+    { "text": "Now the weight re-projects onto the new axes: mg sin θ along the slope and mg cos θ into it.", "cue": { "cue": "decompose", "args": { "id": "W", "axes": "tilted" } } },
+    { "text": "The plank pushes back only against the part pressing into it, so the normal force is mg cos θ, not mg.", "cue": { "cue": "add-vector", "args": { "vector": { "id": "N", "kind": "normal", "label": "Normal", "agent": "plank", "magnitude": 16.97, "angleDeg": 120 } } } }
+  ],
+  "accessibility": {
+    "altText": "A block on a slope at 30° with its weight drawn straight down.",
+    "nonDragAlternative": "Tick Tilted axes; the description below the board lists each force and its components."
+  }
+}

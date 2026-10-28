@@ -1,0 +1,70 @@
+{
+  "$comment": "Configurable thresholds for the adaptive engine. Read and validated at runtime by src/domain/config.ts; an invalid file fails the build and the unit tests. Changing a value must not require code changes. See docs/04-adaptive-engine.md for meaning.",
+  "version": 1,
+  "difficulty": {
+    "levels": ["easy", "medium", "hard"],
+    "start": "medium",
+    "afterIndependentCorrect": "stepUp",
+    "afterAssistedCorrect": "stay",
+    "afterExhaustedAttempts": "stepDownForNextMain",
+    "mainQuestionFloor": "medium"
+  },
+  "attempts": {
+    "retriesAfterFirst": 2,
+    "invalidInputConsumesAttempt": false,
+    "indeterminateCheckConsumesAttempt": false
+  },
+  "hints": {
+    "maxLevels": 3,
+    "finalAnswerNeverInHintLevelBelow": 3
+  },
+  "session": {
+    "mainQuestionTarget": 10,
+    "mainQuestionCap": 16,
+    "avoidTemplateRepeatWithinSession": true,
+    "freshVariantWhenTemplatesRunOut": true,
+    "minHardOpportunities": 3
+  },
+  "mastery": {
+    "windowSize": 10,
+    "minIndependentCorrectInWindow": 8,
+    "requireRequiredSkillCoverage": true,
+    "coverageScope": "session",
+    "coverageCountsOnly": "independentCorrect",
+    "minHardIndependentCorrectInWindow": 2,
+    "aiGradedItemsCount": false
+  },
+  "skillState": {
+    "independentWhen": { "independentCorrect": 2, "minDifficulty": "medium", "lookback": 4 },
+    "flagGapAfterExhaustedAttempts": 1
+  },
+  "diagnostic": {
+    "easyDiagnosticDifficulty": "easy",
+    "maxProbesBeforeDetour": 2,
+    "probeDifficulty": "easy"
+  },
+  "detour": {
+    "maxDepth": 4,
+    "maxSiblingDetoursPerSuspendedQuestion": 2,
+    "miniMastery": { "questions": 3, "minIndependentCorrect": 2, "lastMustBeIndependent": true, "maxQuestions": 6 },
+    "returnQuestion": "freshVariantSameTemplateSameDifficulty",
+    "returnQuestionCountsAsMain": false
+  },
+  "foundation": {
+    "practiceQuestions": 3,
+    "minIndependentCorrect": 2,
+    "maxMicroLessonRepeatsPerVisit": 1
+  },
+  "stuck": {
+    "tryAgainPerVisit": 1
+  },
+  "flashcards": {
+    "createOn": ["exhaustedAttempts", "misconceptionTagged"],
+    "leitnerBoxes": 5,
+    "intervalsDays": [1, 2, 4, 8, 16]
+  },
+  "studentClass": {
+    "askOnFirstLaunch": true,
+    "defaultWhenUnset": 11
+  }
+}

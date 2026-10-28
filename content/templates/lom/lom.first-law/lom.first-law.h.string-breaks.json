@@ -1,0 +1,153 @@
+{
+  "id": "lom.first-law.h.string-breaks",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.first-law",
+    "mip.ucm"
+  ],
+  "primarySkillId": "lom.first-law",
+  "difficulty": "hard",
+  "format": "single-choice",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "r": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        0.8,
+        1
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "lom.stringBreaks",
+  "intro": "Inertia in a circle.",
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "circle",
+      "circle": {
+        "radius": "{{r}}",
+        "speed": "{{v}}"
+      },
+      "showValues": false
+    },
+    "instructions": "Press Play: the orange arrow is the velocity and the peach arrow the acceleration."
+  },
+  "stem": [
+    "A stone is whirled in a horizontal circle of radius {{r}} m at {{v}} m/s on a string. Viewed from above, the string snaps.",
+    "Ignoring gravity's effect on the horizontal motion, which path does the stone take next?"
+  ],
+  "options": [
+    {
+      "id": "tangent",
+      "text": "A straight line along the tangent at the point of release"
+    },
+    {
+      "id": "radial",
+      "text": "Straight outwards, away from the centre",
+      "tags": [
+        "centrifugal-flyout"
+      ],
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "v"
+          ]
+        }
+      }
+    },
+    {
+      "id": "curve",
+      "text": "A curve that keeps bending, gradually straightening",
+      "tags": [
+        "curved-after-release"
+      ]
+    }
+  ],
+  "answerText": "Along the tangent in a straight line",
+  "hints": [
+    {
+      "text": "Which force kept the stone on the circle?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Which way is the stone moving at the instant the string snaps?"
+    },
+    {
+      "text": "With no net force, Newton's first law says what about its velocity?"
+    }
+  ],
+  "feedback": {
+    "centrifugal-flyout": {
+      "text": "Nothing pushes the stone outward. At release it already moves along the tangent, and with no sideways force it keeps going straight that way."
+    },
+    "curved-after-release": {
+      "text": "Only the string's pull curved the path. Once it snaps, no sideways force acts, so the path is straight at once."
+    },
+    "generic": {
+      "text": "After release, no horizontal force acts: constant velocity along the tangent."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Just before release the velocity is along the tangent.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "v"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The string's inward pull was the only horizontal force; without it the velocity stays constant, so the stone moves straight along that tangent."
+    }
+  ],
+  "flashcards": {
+    "centrifugal-flyout": {
+      "front": "A whirled stone's string breaks. Which way does it go?",
+      "back": "Along the tangent, in a straight line: no force acts sideways any more."
+    },
+    "curved-after-release": {
+      "front": "Does a released stone keep curving?",
+      "back": "No. With no inward force it moves in a straight line (first law)."
+    },
+    "generic": {
+      "front": "A whirled stone's string snaps. Path?",
+      "back": "A straight line along the tangent at release (first law)."
+    }
+  },
+  "accessibility": {
+    "altText": "A stone moving round a circle with its velocity along the tangent.",
+    "nonDragAlternative": "Choose an answer with the radio buttons; press Play to see the circular motion before release."
+  }
+}

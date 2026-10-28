@@ -1,0 +1,176 @@
+{
+  "id": "mip.velocity-2d.e.speed",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.velocity-2d"
+  ],
+  "primarySkillId": "mip.velocity-2d",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "vx": {
+      "kind": "choice",
+      "values": [
+        3,
+        6,
+        5,
+        8
+      ]
+    },
+    "vy": {
+      "kind": "choice",
+      "values": [
+        4,
+        8,
+        12,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.speedFromComponents",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "magnitudes-added"
+      ],
+      "match": {
+        "buggySolver": "added"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 16,
+      "vectors": [
+        {
+          "id": "x",
+          "kind": "vector",
+          "label": "vₓ",
+          "agent": "none",
+          "magnitude": "{{vx}}",
+          "angleDeg": 0,
+          "tone": "a"
+        },
+        {
+          "id": "y",
+          "kind": "vector",
+          "label": "v_y",
+          "agent": "none",
+          "magnitude": "{{vy}}",
+          "angleDeg": 90,
+          "tone": "b"
+        }
+      ],
+      "unit": "m/s"
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "x",
+          "y"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A drone's velocity has components {{vx}} m/s east and {{vy}} m/s north.",
+    "What is its speed?"
+  ],
+  "input": {
+    "label": "Speed",
+    "placeholder": "for example 5 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "The two components are perpendicular.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "x",
+            "y"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Speed = magnitude of the velocity vector."
+    },
+    {
+      "text": "|v| = √(vₓ² + v_y²)."
+    }
+  ],
+  "feedback": {
+    "magnitudes-added": {
+      "text": "The components are at right angles, so the speed comes from Pythagoras, not their sum."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "|v| = √(vₓ² + v_y²)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "|v| = √({{vx}}² + {{vy}}²)."
+    },
+    {
+      "text": "= {{ans}} m/s, at {{ang}}° north of east.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "x",
+            "y"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "magnitudes-added": {
+      "front": "Do vector magnitudes add when the vectors are perpendicular?",
+      "back": "No. |a + b| = √(a² + b²) for perpendicular vectors."
+    },
+    "generic": {
+      "front": "Speed from velocity components?",
+      "back": "√(vₓ² + v_y²)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two perpendicular velocity components on a grid with their resultant.",
+    "nonDragAlternative": "Select an arrow and type its size in Precise controls; type your answer in the box."
+  }
+}

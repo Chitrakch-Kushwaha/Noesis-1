@@ -1,0 +1,312 @@
+{
+  "$comment": "Misconception catalogue. 'implicates' lists skills whose weakness this misconception is evidence of; the detour planner intersects it with the prerequisite closure of the failed skill. Awaiting named human review with the templates that use these tags.",
+  "chapter": "osc",
+  "status": "in-review",
+  "misconceptions": [
+    {
+      "tag": "period-for-frequency",
+      "description": "Gives the period when the frequency is asked.",
+      "implicates": [
+        "osc.periodic"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Frequency from period?",
+        "back": "f = 1 ÷ T."
+      }
+    },
+    {
+      "tag": "frequency-for-period",
+      "description": "Gives oscillations per second when the period is asked.",
+      "implicates": [
+        "osc.periodic"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "n oscillations in t seconds: period?",
+        "back": "T = t ÷ n."
+      }
+    },
+    {
+      "tag": "in-phase-difference",
+      "description": "Uses the difference of the periods as the time to be in phase again.",
+      "implicates": [
+        "osc.periodic"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Two pendulums T₁ < T₂: next time in phase?",
+        "back": "When the faster one has made one extra oscillation: T₁T₂ ÷ (T₂ − T₁)."
+      }
+    },
+    {
+      "tag": "shm-phase-sin-cos",
+      "description": "Uses sin φ for x(0) when x = A cos(ωt + φ).",
+      "implicates": [
+        "osc.shm-displacement",
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "x = A cos(ωt + φ): x at t = 0?",
+        "back": "A cos φ."
+      }
+    },
+    {
+      "tag": "shm-amplitude-for-x",
+      "description": "Gives the amplitude as the displacement at an instant.",
+      "implicates": [
+        "osc.shm-displacement"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is x(0) always A?",
+        "back": "Only if φ = 0: x(0) = A cos φ."
+      }
+    },
+    {
+      "tag": "shm-missing-2pi",
+      "description": "Uses cos(t ÷ T) instead of cos(2πt ÷ T).",
+      "implicates": [
+        "osc.shm-displacement",
+        "trg.radian"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "x(t) with period T?",
+        "back": "A cos(2πt ÷ T) (ω = 2π ÷ T)."
+      }
+    },
+    {
+      "tag": "phase-arcsin",
+      "description": "Uses the inverse sine to find a phase in x = A cos(ωt + φ).",
+      "implicates": [
+        "osc.shm-displacement"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "x(0) = A cos φ: φ = ?",
+        "back": "cos⁻¹(x₀ ÷ A), with its sign set by the direction of motion."
+      }
+    },
+    {
+      "tag": "phase-direction-ignored",
+      "description": "Ignores the direction of motion when choosing the phase.",
+      "implicates": [
+        "osc.shm-displacement"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Two phases give the same x(0). How to choose?",
+        "back": "Use the velocity: v(0) = −Aω sin φ."
+      }
+    },
+    {
+      "tag": "vmax-amax-confusion",
+      "description": "Mixes up Aω (maximum speed) and Aω² (maximum acceleration).",
+      "implicates": [
+        "osc.shm-velocity-acceleration"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Maximum speed and acceleration in SHM?",
+        "back": "v_max = Aω, a_max = Aω²."
+      }
+    },
+    {
+      "tag": "shm-speed-linear",
+      "description": "Uses ω x or ω(A − x) for the speed at x.",
+      "implicates": [
+        "osc.shm-velocity-acceleration"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Speed at displacement x in SHM?",
+        "back": "v = ω √(A² − x²)."
+      }
+    },
+    {
+      "tag": "shm-forgot-2pi",
+      "description": "Uses f instead of ω = 2πf.",
+      "implicates": [
+        "osc.shm-velocity-acceleration",
+        "trg.radian"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "ω from f?",
+        "back": "ω = 2πf."
+      }
+    },
+    {
+      "tag": "spring-cm-not-converted",
+      "description": "Uses centimetres in F = kx.",
+      "implicates": [
+        "osc.force-law",
+        "f.si-units"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "F = kx with x in cm?",
+        "back": "Convert x to metres."
+      }
+    },
+    {
+      "tag": "spring-period-inverted",
+      "description": "Writes T = 2π√(k ÷ m).",
+      "implicates": [
+        "osc.force-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Period of a spring–mass system?",
+        "back": "T = 2π√(m ÷ k)."
+      }
+    },
+    {
+      "tag": "spring-period-no-2pi",
+      "description": "Leaves out 2π in the spring period.",
+      "implicates": [
+        "osc.force-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "T for a spring–mass system?",
+        "back": "2π√(m ÷ k)."
+      }
+    },
+    {
+      "tag": "springs-series-parallel",
+      "description": "Mixes up the combination rules for springs.",
+      "implicates": [
+        "osc.force-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Two identical springs side by side (parallel): k_eff?",
+        "back": "2k (in series: k/2)."
+      }
+    },
+    {
+      "tag": "springs-single",
+      "description": "Ignores the second spring.",
+      "implicates": [
+        "osc.force-law"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Does a second parallel spring change the period?",
+        "back": "Yes: k_eff = 2k, so T falls by √2."
+      }
+    },
+    {
+      "tag": "shm-energy-missing-half",
+      "description": "Writes the energy of SHM as kA².",
+      "implicates": [
+        "osc.energy"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Total energy of SHM?",
+        "back": "½kA²."
+      }
+    },
+    {
+      "tag": "shm-energy-not-squared",
+      "description": "Uses A instead of A² in the energy.",
+      "implicates": [
+        "osc.energy"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Double the amplitude: energy?",
+        "back": "×4 (E = ½kA²)."
+      }
+    },
+    {
+      "tag": "pe-for-ke-shm",
+      "description": "Gives the potential energy when the kinetic energy is asked.",
+      "implicates": [
+        "osc.energy"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "KE at displacement x in SHM?",
+        "back": "½k(A² − x²)."
+      }
+    },
+    {
+      "tag": "half-amplitude-equal-energy",
+      "description": "Thinks KE = PE at half the amplitude.",
+      "implicates": [
+        "osc.energy"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Where is KE = PE in SHM?",
+        "back": "x = A ÷ √2."
+      }
+    },
+    {
+      "tag": "pendulum-inverted",
+      "description": "Writes T = 2π√(g ÷ L).",
+      "implicates": [
+        "osc.spring-pendulum"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Period of a simple pendulum?",
+        "back": "T = 2π√(L ÷ g)."
+      }
+    },
+    {
+      "tag": "pendulum-no-root",
+      "description": "Leaves out the square root in the pendulum period.",
+      "implicates": [
+        "osc.spring-pendulum"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Quadruple L: period?",
+        "back": "Doubles: T ∝ √L."
+      }
+    },
+    {
+      "tag": "pendulum-length-not-squared",
+      "description": "Uses T instead of T² when solving for L.",
+      "implicates": [
+        "osc.spring-pendulum",
+        "f.rearrange"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Length for a period T?",
+        "back": "L = gT² ÷ (4π²)."
+      }
+    },
+    {
+      "tag": "pendulum-g-inverted",
+      "description": "Expects a pendulum to swing faster where g is smaller.",
+      "implicates": [
+        "osc.spring-pendulum"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "g six times smaller: period?",
+        "back": "√6 times longer."
+      }
+    },
+    {
+      "tag": "pendulum-g-linear",
+      "description": "Scales the period linearly with g.",
+      "implicates": [
+        "osc.spring-pendulum"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "T depends on g how?",
+        "back": "T ∝ 1 ÷ √g."
+      }
+    }
+  ]
+}

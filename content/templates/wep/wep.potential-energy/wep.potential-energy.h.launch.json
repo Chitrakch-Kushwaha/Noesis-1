@@ -1,0 +1,177 @@
+{
+  "id": "wep.potential-energy.h.launch",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.potential-energy",
+    "wep.energy-conservation"
+  ],
+  "primarySkillId": "wep.potential-energy",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "k": {
+      "kind": "choice",
+      "values": [
+        200,
+        400,
+        800
+      ]
+    },
+    "xcm": {
+      "kind": "choice",
+      "values": [
+        5,
+        10,
+        20
+      ]
+    },
+    "m": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.5,
+        2
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.springLaunch",
+  "intro": "Spring energy into motion.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "spring-launch-root"
+      ],
+      "match": {
+        "buggySolver": "forgotRoot"
+      }
+    },
+    {
+      "tags": [
+        "spring-missing-half"
+      ],
+      "match": {
+        "buggySolver": "missingHalfEnergy"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "system": "spring",
+      "periods": 0.5,
+      "mass": "{{m}}",
+      "k": "{{k}}",
+      "amplitude": "{{x}}"
+    },
+    "instructions": "Press Play: the bars show kinetic and potential energy as the block oscillates."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "energy"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A {{m}} kg block is pushed against a spring (k = {{k}} N/m), compressing it by {{xcm}} cm on a smooth floor, and released.",
+    "How fast does the block leave the spring?"
+  ],
+  "input": {
+    "label": "Speed",
+    "placeholder": "for example 3 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "The spring's stored energy all becomes kinetic energy.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    },
+    {
+      "text": "½kx² = ½mv²."
+    },
+    {
+      "text": "v = x √(k ÷ m), x in metres."
+    }
+  ],
+  "feedback": {
+    "spring-launch-root": {
+      "text": "From ½kx² = ½mv², v² = kx²/m: take the square root."
+    },
+    "spring-missing-half": {
+      "text": "Both energies have a ½: ½kx² = ½mv², so they cancel."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "½kx² = ½mv², so v = x√(k/m)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Stored energy: ½ × {{k}} × {{x}}² = {{E}} J."
+    },
+    {
+      "text": "½ × {{m}} × v² = {{E}}, so v = {{ans}} m/s.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "spring-launch-root": {
+      "front": "Speed from a spring compressed by x?",
+      "back": "½kx² = ½mv², so v = x√(k ÷ m)."
+    },
+    "spring-missing-half": {
+      "front": "Energy stored in a spring stretched by x?",
+      "back": "½kx²: the area of the triangle under F = kx."
+    },
+    "generic": {
+      "front": "Launch speed from a spring?",
+      "back": "v = x√(k ÷ m)."
+    }
+  },
+  "accessibility": {
+    "altText": "A block on a spring with energy bars.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

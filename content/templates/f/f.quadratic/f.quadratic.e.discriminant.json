@@ -1,0 +1,175 @@
+{
+  "id": "f.quadratic.e.discriminant",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.quadratic"
+  ],
+  "primarySkillId": "f.quadratic",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        -5,
+        -3,
+        4,
+        6
+      ]
+    },
+    "c": {
+      "kind": "choice",
+      "values": [
+        -2,
+        1,
+        2
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.discriminant",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "discriminant-sign"
+      ],
+      "match": {
+        "buggySolver": "plusSign"
+      }
+    },
+    {
+      "tags": [
+        "discriminant-square"
+      ],
+      "match": {
+        "buggySolver": "notSquared"
+      }
+    }
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -5,
+        5
+      ],
+      "yRange": [
+        -10,
+        10
+      ],
+      "functions": [
+        {
+          "id": "f",
+          "expr": "{{a}}*x^2 + {{b}}*x + {{c}}"
+        }
+      ]
+    },
+    "instructions": "The sign of the discriminant decides how often the graph meets the x-axis."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Positive: two crossings; zero: one touch; negative: none."
+      }
+    }
+  ],
+  "stem": [
+    "For {{a}}x² + ({{b}})x + ({{c}}) = 0, what is the discriminant?"
+  ],
+  "input": {
+    "label": "Discriminant",
+    "placeholder": "for example 17",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "The discriminant appears under the square root in the quadratic formula.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "f"
+          ]
+        }
+      }
+    },
+    {
+      "text": "D = b² − 4ac."
+    },
+    {
+      "text": "Watch the signs of b and c."
+    }
+  ],
+  "feedback": {
+    "discriminant-sign": {
+      "text": "The discriminant is b² − 4ac (minus)."
+    },
+    "discriminant-square": {
+      "text": "Square b: b² − 4ac."
+    },
+    "generic": {
+      "text": "D = b² − 4ac."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "D = ({{b}})² − 4 × {{a}} × ({{c}})."
+    },
+    {
+      "text": "= {{ans}}.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Count the x-axis crossings."
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "discriminant-sign": {
+      "front": "Discriminant of ax² + bx + c?",
+      "back": "b² − 4ac."
+    },
+    "discriminant-square": {
+      "front": "Discriminant?",
+      "back": "b² − 4ac."
+    },
+    "generic": {
+      "front": "Discriminant?",
+      "back": "b² − 4ac."
+    }
+  },
+  "accessibility": {
+    "altText": "A parabola.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

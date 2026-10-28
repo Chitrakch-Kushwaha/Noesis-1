@@ -1,0 +1,143 @@
+{
+  "id": "mip.projectile.e.top",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.projectile"
+  ],
+  "primarySkillId": "mip.projectile",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "u": {
+      "kind": "choice",
+      "values": [
+        10,
+        15,
+        20
+      ]
+    },
+    "ang": {
+      "kind": "choice",
+      "values": [
+        30,
+        45,
+        60
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.velocityAtTop",
+  "intro": "A quick check.",
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "2d",
+      "projectile": {
+        "speed": "{{u}}",
+        "angleDeg": "{{ang}}"
+      },
+      "hideNumbers": true
+    },
+    "instructions": "Press Play and pause at the top of the path."
+  },
+  "stem": [
+    "A ball is kicked at {{u}} m/s at {{ang}}° above the ground. Ignore air resistance.",
+    "What is its velocity at the highest point of its path?"
+  ],
+  "options": [
+    {
+      "id": "horizontal",
+      "text": "Horizontal, {{ux}} m/s"
+    },
+    {
+      "id": "zero",
+      "text": "Zero: it stops for an instant",
+      "tags": [
+        "zero-velocity-at-top"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "If it stopped at the top, it would fall straight down from there. Play the flight and watch."
+        }
+      }
+    },
+    {
+      "id": "vertical",
+      "text": "Vertical and small",
+      "tags": [
+        "vertical-velocity-at-top"
+      ]
+    }
+  ],
+  "answerText": "Horizontal, {{ux}} m/s",
+  "hints": [
+    {
+      "text": "Which part of the velocity changes during flight?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Gravity changes only the vertical velocity."
+    },
+    {
+      "text": "At the top, the vertical velocity is momentarily zero."
+    }
+  ],
+  "feedback": {
+    "zero-velocity-at-top": {
+      "text": "Only the vertical part of the velocity is zero at the top. The horizontal part never changes."
+    },
+    "vertical-velocity-at-top": {
+      "text": "At the top the ball stops rising, so it has no vertical velocity at all."
+    },
+    "generic": {
+      "text": "At the top, only the horizontal velocity remains."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Horizontally there is no force, so vₓ = u cos θ = {{ux}} m/s throughout.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "At the top v_y = 0, so the velocity is {{ux}} m/s horizontally.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "zero-velocity-at-top": {
+      "front": "Velocity of a projectile at the top?",
+      "back": "Horizontal, equal to u cos θ. Only the vertical part is zero."
+    },
+    "vertical-velocity-at-top": {
+      "front": "Direction of a projectile's velocity at the top?",
+      "back": "Horizontal."
+    },
+    "generic": {
+      "front": "Velocity at the top of a projectile's path?",
+      "back": "Horizontal, u cos θ."
+    }
+  },
+  "accessibility": {
+    "altText": "A ball's path as a projectile.",
+    "nonDragAlternative": "Choose an answer with the radio buttons; press Play to see the flight."
+  }
+}

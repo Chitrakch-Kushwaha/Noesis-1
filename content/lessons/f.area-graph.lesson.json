@@ -1,0 +1,129 @@
+{
+  "id": "f.area-graph.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.area-graph",
+  "kind": "micro-lesson",
+  "title": "Area under a straight-line graph",
+  "minutes": 5,
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        6
+      ],
+      "yRange": [
+        0,
+        8
+      ],
+      "functions": [
+        {
+          "id": "L",
+          "expr": "1 + x"
+        }
+      ]
+    },
+    "instructions": "Drag points or sliders where you see them; the description below names every value."
+  },
+  "steps": [
+    {
+      "text": "The area between a graph and the x-axis often means something: under a speed–time graph it is the distance.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "L",
+          "from": 0,
+          "to": 2
+        }
+      }
+    },
+    {
+      "text": "Under a sloping straight line from x = 1 to x = 4 the region is a trapezium.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "L",
+          "from": 1,
+          "to": 4,
+          "showValue": false
+        }
+      }
+    },
+    {
+      "text": "Its area is ½ × (sum of the parallel sides) × width = ½ × (2 + 5) × 3 = 10.5.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "L",
+          "from": 1,
+          "to": 4
+        }
+      }
+    },
+    {
+      "text": "Watch the area sweep out as x grows.",
+      "cue": {
+        "cue": "sweep-area",
+        "args": {
+          "top": "L",
+          "from": 0,
+          "to": 5
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "Rectangle plus triangle",
+    "steps": [
+      {
+        "text": "Split the trapezium into a rectangle under the lower height…",
+        "cue": {
+          "cue": "area",
+          "args": {
+            "top": 2,
+            "from": 1,
+            "to": 4
+          }
+        }
+      },
+      {
+        "text": "…plus a triangle on top: 3 × 2 + ½ × 3 × 3 = 10.5, the same answer.",
+        "cue": {
+          "cue": "area",
+          "args": {
+            "top": "L",
+            "from": 1,
+            "to": 4
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: area under a straight line = trapezium ½(y₁ + y₂) × width, or rectangle + triangle.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "L",
+          "from": 1,
+          "to": 4
+        }
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A straight line above the x-axis.",
+    "nonDragAlternative": "Use the sliders or their arrow keys; the description below the graph gives every value."
+  }
+}

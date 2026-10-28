@@ -1,0 +1,247 @@
+{
+  "id": "lom.fbd.e.box-sliding",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.fbd",
+    "lom.first-law"
+  ],
+  "primarySkillId": "lom.fbd",
+  "difficulty": "easy",
+  "format": "diagram",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "mu": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.3,
+        0.4
+      ]
+    }
+  },
+  "solver": "lom.fbdSliding",
+  "intro": "Every arrow needs an agent.",
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Add each force with Precise controls and choose who exerts it. Ask of every arrow: what is pushing or pulling? Press Play to see what your diagram predicts.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "box",
+        "mass": "{{m}}"
+      },
+      "initialVelocity": {
+        "x": 2,
+        "y": 0
+      },
+      "predict": true,
+      "predictSeconds": 1.2,
+      "maxMagnitude": "{{maxF}}",
+      "magnitudeStep": 0.5,
+      "allowAdd": true,
+      "agents": [
+        "Earth",
+        "floor",
+        "hand",
+        "none"
+      ],
+      "kinds": [
+        {
+          "kind": "weight",
+          "label": "Weight"
+        },
+        {
+          "kind": "normal",
+          "label": "Normal"
+        },
+        {
+          "kind": "friction",
+          "label": "Friction"
+        },
+        {
+          "kind": "applied",
+          "label": "Push"
+        },
+        {
+          "kind": "motion",
+          "label": "Force of motion"
+        }
+      ],
+      "vectors": []
+    }
+  },
+  "resolution": {
+    "cue": "student-diagram",
+    "args": {
+      "correct": [
+        {
+          "id": "sW",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90
+        },
+        {
+          "id": "sN",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "floor",
+          "magnitude": "{{W}}",
+          "angleDeg": 90
+        },
+        {
+          "id": "sF",
+          "kind": "friction",
+          "label": "Friction",
+          "agent": "floor",
+          "magnitude": "{{f}}",
+          "angleDeg": 180
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "predict"
+    }
+  ],
+  "stem": [
+    "A {{m}} kg box slides to the right across a rough floor (μ = {{mu}}). The push that started it has ended. Take g = 9.8 m/s².",
+    "Draw every force acting on the box now."
+  ],
+  "answerText": "Weight {{W}} N down, normal {{W}} N up, friction {{f}} N to the left.",
+  "hints": [
+    {
+      "text": "List what touches the box now: only the floor. Gravity acts too."
+    },
+    {
+      "text": "The floor gives two forces: one perpendicular to it and one along it, opposing the sliding.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "Weight down, normal up (equal here), friction μN to the left. The push has ended, so it is not on the diagram."
+    }
+  ],
+  "feedback": {
+    "extra-force-of-motion": {
+      "text": "Nothing is pushing the box now. It keeps moving by inertia while friction slows it. Every arrow needs an agent touching the box (or gravity).",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "What is pushing or pulling? No agent, no force."
+        }
+      }
+    },
+    "missing-weight": {
+      "text": "Every body near the Earth has a weight, mg, straight down."
+    },
+    "missing-normal": {
+      "text": "The floor pushes up on the box; without it the box would sink."
+    },
+    "missing-friction": {
+      "text": "The rough floor opposes the sliding. Without friction your diagram predicts the box never slows down."
+    },
+    "friction-direction-opposes-force": {
+      "text": "Friction opposes the sliding, so it points left, against the motion."
+    },
+    "normal-direction": {
+      "text": "The normal force is perpendicular to the floor: straight up."
+    },
+    "weight-magnitude": {
+      "text": "Weight = mg = {{m}} × 9.8 = {{W}} N."
+    },
+    "double-counted-force": {
+      "text": "Each agent gives each kind of force once. Remove the duplicate."
+    },
+    "generic": {
+      "text": "Name the agent of every arrow: Earth and floor only."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Gravity: weight {{W}} N down, from the Earth.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "sW",
+            "kind": "weight",
+            "label": "Weight",
+            "agent": "Earth",
+            "magnitude": "{{W}}",
+            "angleDeg": -90
+          }
+        }
+      }
+    },
+    {
+      "text": "The floor: a normal force {{W}} N up, and kinetic friction μN = {{f}} N to the left, opposing the sliding.",
+      "cue": [
+        {
+          "cue": "add-vector",
+          "args": {
+            "vector": {
+              "id": "sN",
+              "kind": "normal",
+              "label": "Normal",
+              "agent": "floor",
+              "magnitude": "{{W}}",
+              "angleDeg": 90
+            }
+          }
+        },
+        {
+          "cue": "add-vector",
+          "args": {
+            "vector": {
+              "id": "sF",
+              "kind": "friction",
+              "label": "Friction",
+              "agent": "floor",
+              "magnitude": "{{f}}",
+              "angleDeg": 180
+            }
+          }
+        }
+      ]
+    },
+    {
+      "text": "Nothing else touches the box. The net force is friction alone, so the box slows down. Press Play.",
+      "cue": {
+        "cue": "predict"
+      }
+    }
+  ],
+  "flashcards": {
+    "generic": {
+      "front": "A box slides after the push ends. Which forces act?",
+      "back": "Weight, the normal force and friction (backwards). The push has gone."
+    }
+  },
+  "accessibility": {
+    "altText": "A box sliding right on a floor. No forces are drawn yet.",
+    "nonDragAlternative": "Use Add force with a type and an agent, then type each size and direction in Precise controls."
+  }
+}

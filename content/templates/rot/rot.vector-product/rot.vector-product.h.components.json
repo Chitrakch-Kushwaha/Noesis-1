@@ -1,0 +1,182 @@
+{
+  "id": "rot.vector-product.h.components",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.vector-product"
+  ],
+  "primarySkillId": "rot.vector-product",
+  "difficulty": "hard",
+  "format": "number",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "a1": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        -1
+      ]
+    },
+    "a2": {
+      "kind": "choice",
+      "values": [
+        2,
+        -1,
+        4
+      ]
+    },
+    "b1": {
+      "kind": "choice",
+      "values": [
+        3,
+        -2,
+        1
+      ]
+    },
+    "b2": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        -3
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.crossZ",
+  "intro": "From components.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "cross-as-dot"
+      ],
+      "match": {
+        "buggySolver": "dotInstead"
+      }
+    },
+    {
+      "tags": [
+        "cross-order"
+      ],
+      "match": {
+        "buggySolver": "orderSwapped"
+      }
+    }
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 6,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "a",
+          "agent": "none",
+          "magnitude": "{{sqrt(a1^2 + a2^2)}}",
+          "angleDeg": 0,
+          "tone": "a"
+        }
+      ],
+      "showResultant": false
+    },
+    "instructions": "The vectors lie in the plane of the screen; their cross product points into or out of the screen."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Check the order: a × b = −(b × a)."
+      }
+    }
+  ],
+  "stem": [
+    "a = {{a1}}î + {{a2}}ĵ and b = {{b1}}î + {{b2}}ĵ.",
+    "a × b = c k̂. What is c?"
+  ],
+  "input": {
+    "label": "c",
+    "placeholder": "for example −5",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Expand using î × ĵ = k̂, ĵ × î = −k̂ and î × î = ĵ × ĵ = 0.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "î × ĵ = k̂"
+        }
+      }
+    },
+    {
+      "text": "Only the mixed terms survive."
+    },
+    {
+      "text": "c = a₁b₂ − a₂b₁."
+    }
+  ],
+  "feedback": {
+    "cross-as-dot": {
+      "text": "That is a · b. For the cross product's z-component use a₁b₂ − a₂b₁."
+    },
+    "cross-order": {
+      "text": "You computed b × a. Keep the order: c = a₁b₂ − a₂b₁."
+    },
+    "generic": {
+      "text": "(a₁î + a₂ĵ) × (b₁î + b₂ĵ) = (a₁b₂ − a₂b₁) k̂."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "a × b = {{a1}}×{{b2}} (î × ĵ) + {{a2}}×{{b1}} (ĵ × î)."
+    },
+    {
+      "text": "c = {{a1}} × {{b2}} − {{a2}} × {{b1}} = {{ans}}.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "c = a₁b₂ − a₂b₁"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "cross-as-dot": {
+      "front": "z-component of (a₁, a₂) × (b₁, b₂)?",
+      "back": "a₁b₂ − a₂b₁."
+    },
+    "cross-order": {
+      "front": "î × ĵ or ĵ × î: which is +k̂?",
+      "back": "î × ĵ = k̂; ĵ × î = −k̂."
+    },
+    "generic": {
+      "front": "z-component of a × b in the plane?",
+      "back": "a₁b₂ − a₂b₁."
+    }
+  },
+  "accessibility": {
+    "altText": "The vector a drawn on a grid.",
+    "nonDragAlternative": "Type your answer in the box."
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "id": "wep.potential-energy.m.spring",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.potential-energy"
+  ],
+  "primarySkillId": "wep.potential-energy",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "k": {
+      "kind": "choice",
+      "values": [
+        200,
+        400,
+        500,
+        800
+      ]
+    },
+    "xcm": {
+      "kind": "choice",
+      "values": [
+        2,
+        5,
+        8,
+        10
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.springPE",
+  "intro": "Energy stored in a spring.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "spring-unit-not-converted"
+      ],
+      "match": {
+        "buggySolver": "notConverted"
+      }
+    },
+    {
+      "tags": [
+        "spring-missing-half"
+      ],
+      "match": {
+        "buggySolver": "missingHalf"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "system": "spring",
+      "periods": 1.5,
+      "mass": 1,
+      "k": "{{k}}",
+      "amplitude": "{{x}}"
+    },
+    "instructions": "Press Play: the bars show kinetic and potential energy as the block oscillates."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "energy"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A spring with k = {{k}} N/m is compressed by {{xcm}} cm.",
+    "How much elastic potential energy does it store?"
+  ],
+  "input": {
+    "label": "Stored energy",
+    "placeholder": "for example 0.4 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "Stored energy is the area under F = kx up to the compression.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Use x in metres: {{xcm}} cm = {{x}} m."
+    },
+    {
+      "text": "U = ½kx²."
+    }
+  ],
+  "feedback": {
+    "spring-unit-not-converted": {
+      "text": "Convert {{xcm}} cm to metres before squaring."
+    },
+    "spring-missing-half": {
+      "text": "Elastic PE is ½kx²: include the ½."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "U = ½kx² with x in metres."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "x = {{xcm}} cm = {{x}} m."
+    },
+    {
+      "text": "U = ½ × {{k}} × {{x}}² = {{ans}} J.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "spring-unit-not-converted": {
+      "front": "Spring energy with x in cm and k in N/m?",
+      "back": "Convert x to metres first."
+    },
+    "spring-missing-half": {
+      "front": "Energy stored in a spring stretched by x?",
+      "back": "½kx²: the area of the triangle under F = kx."
+    },
+    "generic": {
+      "front": "Energy stored in a spring compressed by x?",
+      "back": "½kx² (x in metres)."
+    }
+  },
+  "accessibility": {
+    "altText": "A block on a spring with energy bars.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

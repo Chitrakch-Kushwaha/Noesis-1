@@ -1,0 +1,259 @@
+{
+  "id": "set.operations.m.difference-intersection",
+  "version": 2,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": [],
+    "migratedFrom": "src/questions/templates.ts set.operations.m.difference-intersection@1 (Phase 1 diagnostic; same review status)"
+  },
+  "chapterId": "set",
+  "skillIds": [
+    "set.operations",
+    "set.venn"
+  ],
+  "primarySkillId": "set.operations",
+  "difficulty": "medium",
+  "format": "set",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "k": {
+      "kind": "int",
+      "min": 1,
+      "max": 999999
+    },
+    "op": {
+      "kind": "choice",
+      "values": [
+        "difference",
+        "intersection"
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "set.operations",
+  "intro": "This question helps us find the best place for you to begin.",
+  "misconceptionRules": [
+    {
+      "tags": [
+        "difference-order-reversed"
+      ],
+      "match": {
+        "buggySolver": "reversed"
+      }
+    },
+    {
+      "tags": [
+        "difference-vs-intersection"
+      ],
+      "match": {
+        "buggySolver": "intersectionForDifference"
+      }
+    },
+    {
+      "tags": [
+        "union-instead"
+      ],
+      "match": {
+        "buggySolver": "unionInstead"
+      }
+    },
+    {
+      "tags": [
+        "difference-not-removed"
+      ],
+      "match": {
+        "buggySolver": "notRemoved"
+      }
+    },
+    {
+      "tags": [
+        "difference-instead"
+      ],
+      "match": {
+        "buggySolver": "differenceForIntersection"
+      }
+    }
+  ],
+  "widget": {
+    "type": "figure",
+    "instructions": "The Venn diagram places every element in its region. After you answer, it marks which of your elements belong.",
+    "config": {
+      "figure": "venn",
+      "A": "{{A}}",
+      "B": "{{B}}",
+      "U": "{{U}}",
+      "op": "{{op}}"
+    }
+  },
+  "consequence": {
+    "cue": "student",
+    "args": {
+      "value": "$value",
+      "tags": "$tags"
+    }
+  },
+  "stem": [
+    "Let A = {{Astr}} and B = {{Bstr}}.",
+    "Write A − B in roster form."
+  ],
+  "input": {
+    "label": "A − B",
+    "placeholder": "for example {2, 5, 9}",
+    "keypad": "set"
+  },
+  "answerText": "{{ansStr}}",
+  "hints": [
+    {
+      "text": "A − B keeps the elements of one set and removes the others. Which set do you start from?"
+    },
+    {
+      "text": "Start with A. Remove every element that is also in B.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 0
+        }
+      }
+    },
+    {
+      "text": "Cross out {{interStr}} from A."
+    }
+  ],
+  "feedback": {
+    "difference-order-reversed": {
+      "text": "That's B − A: elements of B that are not in A. A − B starts from A."
+    },
+    "difference-vs-intersection": {
+      "text": "That's the overlap, A ∩ B. A − B is what's left of A after removing the overlap."
+    },
+    "union-instead": {
+      "text": "That's A ∪ B, everything in either set. This question asks for something smaller."
+    },
+    "difference-not-removed": {
+      "text": "That's all of A. Remove the elements that A shares with B."
+    },
+    "difference-instead": {
+      "text": "That's A − B. The intersection is the overlap: elements in both sets."
+    },
+    "generic": {
+      "text": "Place each element in the Venn diagram first, then read off the region you need."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Elements in both A and B: {{interStr}}.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 0
+        }
+      }
+    },
+    {
+      "text": "Remove them from A: {{Astr}} → {{ansStr}}.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 1
+        }
+      }
+    },
+    {
+      "text": "A − B = {{ansStr}}.",
+      "cue": {
+        "cue": "solution-step",
+        "args": {
+          "step": 2
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "difference-order-reversed": {
+      "front": "Is A − B the same as B − A?",
+      "back": "No. A − B: in A but not in B. B − A: in B but not in A."
+    },
+    "difference-vs-intersection": {
+      "front": "A − B vs A ∩ B?",
+      "back": "A ∩ B is the overlap. A − B is the part of A outside the overlap."
+    },
+    "union-instead": {
+      "front": "A ∪ B, A ∩ B, A − B: which is the largest?",
+      "back": "A ∪ B (everything in either set). A ∩ B and A − B are parts of it."
+    },
+    "difference-not-removed": {
+      "front": "Forming A − B, what do you remove from A?",
+      "back": "Every element that A shares with B."
+    },
+    "difference-instead": {
+      "front": "A ∩ B in words?",
+      "back": "Elements belonging to A and to B."
+    },
+    "generic": {
+      "front": "How do you read a set operation off a Venn diagram?",
+      "back": "Place every element in its region, then shade the region the operation describes."
+    }
+  },
+  "variants": {
+    "param": "op",
+    "cases": {
+      "intersection": {
+        "stem": [
+          "Let A = {{Astr}} and B = {{Bstr}}.",
+          "Write A ∩ B in roster form."
+        ],
+        "input": {
+          "label": "A ∩ B",
+          "placeholder": "for example {2, 5, 9}",
+          "keypad": "set"
+        },
+        "hints": [
+          {
+            "text": "A ∩ B contains elements that satisfy a condition about both sets. Which condition?"
+          },
+          {
+            "text": "Keep only the elements that appear in A and in B.",
+            "cue": {
+              "cue": "solution-step",
+              "args": {
+                "step": 1
+              }
+            }
+          },
+          {
+            "text": "Look at the overlap of the two circles."
+          }
+        ],
+        "workedSolution": [
+          {
+            "text": "Go through A = {{Astr}} and keep each element that is also in B.",
+            "cue": {
+              "cue": "solution-step",
+              "args": {
+                "step": 0
+              }
+            }
+          },
+          {
+            "text": "A ∩ B = {{ansStr}}.",
+            "cue": {
+              "cue": "solution-step",
+              "args": {
+                "step": 1
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "accessibility": {
+    "altText": "Venn diagram of sets A = {{Astr}} and B = {{Bstr}} inside the universal set {1, …, 10}."
+  }
+}

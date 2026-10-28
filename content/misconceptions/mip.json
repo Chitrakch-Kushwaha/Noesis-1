@@ -1,0 +1,306 @@
+{
+  "$comment": "Misconception catalogue. 'implicates' lists skills whose weakness this misconception is evidence of; the detour planner (src/engine/planner.ts) intersects it with the prerequisite closure of the failed skill. Awaiting named human review with the templates that use these tags.",
+  "chapter": "mip",
+  "status": "in-review",
+  "misconceptions": [
+    {
+      "tag": "sin-cos-swap",
+      "description": "Uses sin for the component adjacent to the angle (and cos for the opposite one).",
+      "implicates": [
+        "mip.resolution",
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Force F at θ above the x-axis: x-component?",
+        "back": "F cos θ (adjacent). The y-component is F sin θ."
+      }
+    },
+    {
+      "tag": "tan-for-component",
+      "description": "Multiplies by tan θ to get a component.",
+      "implicates": [
+        "mip.resolution",
+        "f.trig-ratios"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Does F tan θ give a component of F?",
+        "back": "No. tan θ = F_y ÷ F_x relates the components to each other."
+      }
+    },
+    {
+      "tag": "component-sign-dropped",
+      "description": "Gives a component's size without its sign.",
+      "implicates": [
+        "mip.resolution",
+        "f.coord"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "A force points west of north. Sign of its x-component (east positive)?",
+        "back": "Negative."
+      }
+    },
+    {
+      "tag": "magnitudes-added",
+      "description": "Adds vector magnitudes regardless of direction.",
+      "implicates": [
+        "mip.vector-addition",
+        "mip.vector-basics"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Do vector magnitudes add when the vectors are perpendicular?",
+        "back": "No. |a + b| = √(a² + b²) for perpendicular vectors."
+      }
+    },
+    {
+      "tag": "magnitudes-subtracted",
+      "description": "Subtracts magnitudes for vectors that are not opposite.",
+      "implicates": [
+        "mip.vector-addition"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "When does |a + b| = |a| − |b|?",
+        "back": "Only when a and b point in opposite directions."
+      }
+    },
+    {
+      "tag": "forgot-double-angle",
+      "description": "Uses sin θ instead of sin 2θ in the range formula.",
+      "implicates": [
+        "mip.projectile",
+        "f.trig-identity"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Range of a projectile?",
+        "back": "R = u² sin 2θ ÷ g."
+      }
+    },
+    {
+      "tag": "used-time-to-apex",
+      "description": "Uses the time to the top instead of the whole flight time.",
+      "implicates": [
+        "mip.projectile",
+        "mip.velocity-2d"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Is the time to the top the whole flight time?",
+        "back": "No, it's half of it (on level ground)."
+      }
+    },
+    {
+      "tag": "ignored-horizontal-component",
+      "description": "Uses the launch speed instead of its horizontal component.",
+      "implicates": [
+        "mip.projectile",
+        "mip.resolution"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Which velocity component carries a projectile sideways?",
+        "back": "The horizontal one, u cos θ, constant without air resistance."
+      }
+    },
+    {
+      "tag": "scalar-vector-confusion",
+      "description": "Treats a scalar (speed, mass, time) as a vector, or the reverse.",
+      "implicates": [
+        "mip.vector-basics"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Which needs a direction: speed or displacement?",
+        "back": "Displacement (a vector). Speed, mass and time are scalars."
+      }
+    },
+    {
+      "tag": "negative-magnitude",
+      "description": "Gives a negative magnitude for a vector multiplied by a negative number.",
+      "implicates": [
+        "mip.vector-basics"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Magnitude of −3a?",
+        "back": "3|a|. The minus sign reverses the direction; a magnitude is never negative."
+      }
+    },
+    {
+      "tag": "unit-vector-not-normalised",
+      "description": "Uses a component of a vector as the component of its unit vector.",
+      "implicates": [
+        "mip.vector-basics",
+        "mip.resolution"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Unit vector along a = (aₓ, a_y)?",
+        "back": "â = a ÷ |a|: divide each component by the magnitude."
+      }
+    },
+    {
+      "tag": "normalised-by-sum",
+      "description": "Divides by the sum of the components instead of the magnitude.",
+      "implicates": [
+        "mip.vector-basics",
+        "f.pythagoras"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "To make a unit vector, divide by…?",
+        "back": "The magnitude √(aₓ² + a_y²), not aₓ + a_y."
+      }
+    },
+    {
+      "tag": "perpendicular-formula-misapplied",
+      "description": "Uses √(a² + b²) for vectors that are not at right angles.",
+      "implicates": [
+        "mip.vector-addition"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Resultant of a and b at angle θ?",
+        "back": "R = √(a² + b² + 2ab cos θ); √(a² + b²) only when θ = 90°."
+      }
+    },
+    {
+      "tag": "cosine-law-sign",
+      "description": "Uses a minus sign in the resultant formula for the angle between the vectors.",
+      "implicates": [
+        "mip.vector-addition",
+        "f.trig-identity"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Sign of 2ab cos θ in the resultant formula?",
+        "back": "Plus, when θ is the angle between a and b placed tail to tail."
+      }
+    },
+    {
+      "tag": "drift-ratio-inverted",
+      "description": "Inverts the speed ratio when finding a boat's drift downstream.",
+      "implicates": [
+        "mip.velocity-2d"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Drift of a boat steering straight across?",
+        "back": "drift = v_river × (width ÷ v_boat)."
+      }
+    },
+    {
+      "tag": "drift-uses-resultant",
+      "description": "Uses the boat's resultant speed for the drift.",
+      "implicates": [
+        "mip.velocity-2d"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Which speed carries the boat downstream?",
+        "back": "Only the river's: the crossing time is width ÷ v_boat."
+      }
+    },
+    {
+      "tag": "zero-velocity-at-top",
+      "description": "Thinks a projectile is momentarily at rest at the top of its path.",
+      "implicates": [
+        "mip.projectile"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Velocity of a projectile at the top?",
+        "back": "Horizontal, equal to u cos θ. Only the vertical part is zero."
+      }
+    },
+    {
+      "tag": "vertical-velocity-at-top",
+      "description": "Thinks the velocity at the top is vertical.",
+      "implicates": [
+        "mip.projectile"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Direction of a projectile's velocity at the top?",
+        "back": "Horizontal."
+      }
+    },
+    {
+      "tag": "forgot-root-fall-time",
+      "description": "Forgets the square root in the fall time √(2h/g).",
+      "implicates": [
+        "mip.projectile",
+        "kin.free-fall"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Fall time from height h?",
+        "back": "t = √(2h ÷ g)."
+      }
+    },
+    {
+      "tag": "range-formula-misapplied",
+      "description": "Uses the level-ground range formula for a horizontal launch from a height.",
+      "implicates": [
+        "mip.projectile"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Horizontal launch from a height h: how far out does it land?",
+        "back": "x = u √(2h ÷ g); the u² sin 2θ ÷ g formula is for launch and landing at the same height."
+      }
+    },
+    {
+      "tag": "centripetal-v-over-r",
+      "description": "Uses v ÷ r (the angular speed) for the centripetal acceleration.",
+      "implicates": [
+        "mip.ucm"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Centripetal acceleration?",
+        "back": "a = v² ÷ r (v ÷ r is ω, in rad/s)."
+      }
+    },
+    {
+      "tag": "centripetal-v2r",
+      "description": "Multiplies v² by r instead of dividing.",
+      "implicates": [
+        "mip.ucm"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Does a tighter turn need more or less centripetal acceleration?",
+        "back": "More: a = v² ÷ r grows as r shrinks."
+      }
+    },
+    {
+      "tag": "speed-for-acceleration",
+      "description": "Gives the speed 2πr ÷ T when the acceleration is asked.",
+      "implicates": [
+        "mip.ucm"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Centripetal acceleration from the period?",
+        "back": "a = 4π²r ÷ T²; 2πr ÷ T is the speed."
+      }
+    },
+    {
+      "tag": "centripetal-scaling",
+      "description": "Scales the centripetal acceleration linearly with speed or ignores the radius.",
+      "implicates": [
+        "mip.ucm"
+      ],
+      "visualCue": null,
+      "flashcard": {
+        "front": "Double the speed and halve the radius: centripetal acceleration?",
+        "back": "8 times: a ∝ v² ÷ r."
+      }
+    }
+  ]
+}

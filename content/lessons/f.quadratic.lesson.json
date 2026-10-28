@@ -1,0 +1,143 @@
+{
+  "id": "f.quadratic.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.quadratic",
+  "kind": "micro-lesson",
+  "title": "Solving quadratic equations",
+  "minutes": 6,
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -2,
+        7
+      ],
+      "yRange": [
+        -6,
+        10
+      ],
+      "functions": [
+        {
+          "id": "f",
+          "expr": "x^2 - 5*x + c"
+        }
+      ],
+      "params": {
+        "c": {
+          "value": 6,
+          "min": -2,
+          "max": 10,
+          "step": 0.5,
+          "label": "c"
+        }
+      }
+    },
+    "instructions": "Drag points or sliders where you see them; the description below names every value."
+  },
+  "steps": [
+    {
+      "text": "The roots of x² − 5x + 6 = 0 are where the parabola crosses the x-axis.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "f"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Factorise: x² − 5x + 6 = (x − 2)(x − 3). A product is zero only when one factor is, so x = 2 or x = 3.",
+      "cue": [
+        {
+          "cue": "marker",
+          "args": {
+            "x": 2,
+            "y": 0,
+            "label": "2"
+          }
+        },
+        {
+          "cue": "marker",
+          "args": {
+            "x": 3,
+            "y": 0,
+            "label": "3"
+          }
+        }
+      ]
+    },
+    {
+      "text": "The discriminant b² − 4ac tells you how many roots there are: here 25 − 24 = 1 > 0, two roots.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "D = b² − 4ac"
+        }
+      }
+    },
+    {
+      "text": "Raise c: when D becomes negative the parabola no longer reaches the axis.",
+      "cue": {
+        "cue": "set-param",
+        "args": {
+          "name": "c",
+          "value": 8
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "The quadratic formula",
+    "steps": [
+      {
+        "text": "Any quadratic ax² + bx + c = 0 has x = (−b ± √(b² − 4ac)) ÷ (2a).",
+        "cue": {
+          "cue": "set-param",
+          "args": {
+            "name": "c",
+            "value": 6
+          }
+        }
+      },
+      {
+        "text": "For x² − 5x + 6: x = (5 ± 1) ÷ 2, so 3 or 2.",
+        "cue": {
+          "cue": "marker",
+          "args": {
+            "x": 3,
+            "y": 0,
+            "label": "3"
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: roots are x-intercepts; factorise or use the formula; D = b² − 4ac counts them.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "f"
+          ]
+        }
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A parabola whose constant term can be changed with a slider.",
+    "nonDragAlternative": "Use the sliders or their arrow keys; the description below the graph gives every value."
+  }
+}

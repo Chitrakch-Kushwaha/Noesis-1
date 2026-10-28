@@ -1,0 +1,203 @@
+{
+  "id": "sl.angle-between.h.acute-tan",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "sl",
+  "skillIds": [
+    "sl.angle-between",
+    "sl.slope"
+  ],
+  "primarySkillId": "sl.angle-between",
+  "difficulty": "hard",
+  "format": "number",
+  "estimatedSeconds": 120,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        -3,
+        -2,
+        -1,
+        0.5,
+        1,
+        2,
+        3
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        -3,
+        -2,
+        -0.5,
+        0,
+        0.5,
+        1,
+        2
+      ]
+    }
+  },
+  "solver": "sl.acuteAngle",
+  "intro": "The angle between two lines.",
+  "answer": {
+    "tolerance": {
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "angle-formula-missing-modulus"
+      ],
+      "match": {
+        "buggySolver": "missingModulus"
+      }
+    },
+    {
+      "tags": [
+        "angle-formula-sign"
+      ],
+      "match": {
+        "buggySolver": "signInDenominator"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{t|raw}}"
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "instructions": "Both lines pass through the origin. They make two angles, θ and 180° − θ: the acute one is asked for.",
+    "config": {
+      "xRange": [
+        -6,
+        6
+      ],
+      "yRange": [
+        -6,
+        6
+      ],
+      "functions": [
+        {
+          "id": "L1",
+          "expr": "{{m1|raw}}*x",
+          "label": "L₁"
+        },
+        {
+          "id": "L2",
+          "expr": "{{m2|raw}}*x",
+          "label": "L₂"
+        }
+      ],
+      "points": []
+    }
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Two lines make two angles: θ and 180° − θ."
+      }
+    }
+  ],
+  "stem": [
+    "Line L₁ has slope {{m1}} and line L₂ has slope {{m2}}.",
+    "Find tan θ, where θ is the acute angle between them."
+  ],
+  "input": {
+    "label": "tan θ",
+    "placeholder": "for example 7/4",
+    "keypad": "maths"
+  },
+  "answerText": "tan θ = {{t}} (θ ≈ {{deg|int}}°)",
+  "hints": [
+    {
+      "text": "Two crossing lines make two angles that add to 180°. The acute one has a positive tangent.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "L1",
+            "L2"
+          ]
+        }
+      }
+    },
+    {
+      "text": "tan θ = |(m₂ − m₁) ÷ (1 + m₁m₂)|."
+    },
+    {
+      "text": "Compute (m₂ − m₁) ÷ (1 + m₁m₂), then take its absolute value."
+    }
+  ],
+  "feedback": {
+    "angle-formula-missing-modulus": {
+      "text": "A negative tangent belongs to the obtuse angle, 180° − θ. The acute angle needs the absolute value.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Your value is tan of the obtuse angle."
+        }
+      }
+    },
+    "angle-formula-sign": {
+      "text": "Check the denominator: it is 1 + m₁m₂, not 1 − m₁m₂."
+    },
+    "sign-error": {
+      "text": "The acute angle has a positive tangent: take the absolute value."
+    },
+    "generic": {
+      "text": "Use tan θ = |(m₂ − m₁) ÷ (1 + m₁m₂)|."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "m₂ − m₁ = {{num}}; 1 + m₁m₂ = {{den}}; ratio = {{raw}}.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "L1",
+            "L2"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The ratio is negative, so it is tan of the obtuse angle. The acute angle has tan θ = {{t}} (θ ≈ {{deg|int}}°; the other angle is {{obtuse|int}}°).",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Acute angle ≈ {{deg|int}}°"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "angle-formula-missing-modulus": {
+      "front": "Why the modulus in tan θ = |(m₂ − m₁)/(1 + m₁m₂)|?",
+      "back": "Without it you may get tan of the obtuse angle (negative). The acute angle's tangent is positive."
+    },
+    "angle-formula-sign": {
+      "front": "Denominator of the angle-between-lines formula?",
+      "back": "1 + m₁m₂."
+    },
+    "generic": {
+      "front": "Acute angle between lines of slopes m₁, m₂?",
+      "back": "tan θ = |(m₂ − m₁)/(1 + m₁m₂)|."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lines through the origin with slopes {{m1}} and {{m2}}.",
+    "nonDragAlternative": "The graph is for exploring; type your answer in the box."
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "id": "f.slope.e.steeper",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.slope"
+  ],
+  "primarySkillId": "f.slope",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        -3,
+        -2,
+        0.5,
+        1
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        -1,
+        1.5,
+        2.5
+      ]
+    }
+  },
+  "constraints": [
+    "abs(m1) != abs(m2)"
+  ],
+  "solver": "f.steeper",
+  "intro": "A foundation check.",
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -4,
+        4
+      ],
+      "yRange": [
+        -6,
+        6
+      ],
+      "functions": [
+        {
+          "id": "A",
+          "expr": "{{m1}}*x",
+          "label": "A"
+        },
+        {
+          "id": "B",
+          "expr": "{{m2}}*x",
+          "label": "B"
+        }
+      ]
+    },
+    "instructions": "The graph is for exploring; drag points or sliders where you see them."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "A",
+          "B"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "Line A has slope {{m1}} and line B has slope {{m2}}.",
+    "Which line is steeper?"
+  ],
+  "options": [
+    {
+      "id": "a",
+      "text": "Line A"
+    },
+    {
+      "id": "b",
+      "text": "Line B"
+    }
+  ],
+  "answerText": "The line with the larger |slope|",
+  "hints": [
+    {
+      "text": "Steepness doesn't depend on whether the line rises or falls.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "A",
+            "B"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Compare the sizes of the slopes, ignoring the signs."
+    },
+    {
+      "text": "The larger |m| is steeper."
+    }
+  ],
+  "feedback": {
+    "generic": {
+      "text": "Steepness is |m|."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Compare |{{m1}}| and |{{m2}}|.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "A",
+            "B"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The line with the larger size of slope is steeper."
+    }
+  ],
+  "flashcards": {
+    "generic": {
+      "front": "Steeper line?",
+      "back": "The one with the larger |slope|."
+    }
+  },
+  "accessibility": {
+    "altText": "Two straight lines through the origin.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

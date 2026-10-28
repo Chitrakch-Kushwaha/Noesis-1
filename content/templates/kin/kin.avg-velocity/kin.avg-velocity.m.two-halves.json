@@ -1,0 +1,174 @@
+{
+  "id": "kin.avg-velocity.m.two-halves",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "kin",
+  "skillIds": [
+    "kin.avg-velocity"
+  ],
+  "primarySkillId": "kin.avg-velocity",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "v1": {
+      "kind": "choice",
+      "values": [
+        10,
+        12,
+        20,
+        30
+      ]
+    },
+    "v2": {
+      "kind": "choice",
+      "values": [
+        15,
+        20,
+        30,
+        60
+      ]
+    }
+  },
+  "constraints": [
+    "v1 != v2"
+  ],
+  "solver": "kin.halvesAverage",
+  "intro": "Averages can mislead.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "arithmetic-mean-speed"
+      ],
+      "match": {
+        "buggySolver": "arithmeticMean"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "a",
+          "label": "first half",
+          "x0": 0,
+          "v0": "{{v1}}",
+          "a": 0
+        },
+        {
+          "id": "b",
+          "label": "second half",
+          "x0": 0,
+          "v0": "{{v2}}",
+          "a": 0
+        }
+      ],
+      "duration": 4,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "you",
+          "label": "steady at your average",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A car covers the first half of a trip at {{v1}} m/s and the second half (the same distance) at {{v2}} m/s.",
+    "What is its average speed for the whole trip?"
+  ],
+  "input": {
+    "label": "Average speed",
+    "placeholder": "for example 12 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "Pick a trip length, say 2d. How long does each half take?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Average speed = total distance ÷ total time."
+    },
+    {
+      "text": "Time for each half is d ÷ v; add them before dividing."
+    }
+  ],
+  "feedback": {
+    "arithmetic-mean-speed": {
+      "text": "Averaging the two speeds treats the halves as equal times. The car spends longer on the slower half, so the average is lower.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "Total distance ÷ total time; work out the time for each half."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Let each half be d. Times: d/{{v1}} and d/{{v2}}."
+    },
+    {
+      "text": "Average = 2d ÷ (d/{{v1}} + d/{{v2}}) = 2 × {{v1}} × {{v2}} ÷ ({{v1}} + {{v2}}) = {{ans}} m/s, less than the mean {{mean}} m/s.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "More time is spent at the slower speed."
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "arithmetic-mean-speed": {
+      "front": "Half the distance at v₁, half at v₂: average speed?",
+      "back": "2v₁v₂ ÷ (v₁ + v₂), not (v₁ + v₂) ÷ 2: more time is spent at the slower speed."
+    },
+    "generic": {
+      "front": "Equal distances at two speeds?",
+      "back": "Average speed = 2v₁v₂ ÷ (v₁ + v₂)."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes showing the car's speeds on the two halves.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

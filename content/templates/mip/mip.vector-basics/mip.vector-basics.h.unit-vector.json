@@ -1,0 +1,159 @@
+{
+  "id": "mip.vector-basics.h.unit-vector",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.vector-basics"
+  ],
+  "primarySkillId": "mip.vector-basics",
+  "difficulty": "hard",
+  "format": "number",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "ax": {
+      "kind": "choice",
+      "values": [
+        3,
+        -3,
+        5,
+        6,
+        -8
+      ]
+    },
+    "ay": {
+      "kind": "choice",
+      "values": [
+        4,
+        -4,
+        12,
+        8
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.unitVectorX",
+  "intro": "Unit vectors.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "unit-vector-not-normalised"
+      ],
+      "match": {
+        "buggySolver": "notNormalised"
+      }
+    },
+    {
+      "tags": [
+        "normalised-by-sum"
+      ],
+      "match": {
+        "buggySolver": "normalisedBySum"
+      }
+    }
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 16,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "a",
+          "agent": "none",
+          "magnitude": "{{mag}}",
+          "angleDeg": "{{ang}}",
+          "tone": "a"
+        }
+      ],
+      "unit": "units"
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "consequence": [
+    {
+      "cue": "components"
+    }
+  ],
+  "stem": [
+    "The vector a = {{ax}}î + {{ay}}ĵ.",
+    "What is the x-component of the unit vector â in the direction of a?"
+  ],
+  "input": {
+    "label": "x-component of â",
+    "placeholder": "for example 0.6",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "A unit vector points the same way as a but has length 1.",
+      "cue": {
+        "cue": "components"
+      }
+    },
+    {
+      "text": "â = a ÷ |a|."
+    },
+    {
+      "text": "Find |a| first with Pythagoras."
+    }
+  ],
+  "feedback": {
+    "unit-vector-not-normalised": {
+      "text": "A unit vector has length 1. Divide each component by |a|."
+    },
+    "normalised-by-sum": {
+      "text": "Divide by the magnitude √(aₓ² + a_y²), not by the sum of the components."
+    },
+    "generic": {
+      "text": "â = a ÷ |a|; divide each component by the magnitude."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "|a| = √({{ax}}² + {{ay}}²) = {{mag}}."
+    },
+    {
+      "text": "x-component of â = {{ax}} ÷ {{mag}} = {{ans}} (and the y-component is {{uy}}).",
+      "cue": {
+        "cue": "components"
+      }
+    }
+  ],
+  "flashcards": {
+    "unit-vector-not-normalised": {
+      "front": "Unit vector along a = (aₓ, a_y)?",
+      "back": "â = a ÷ |a|: divide each component by the magnitude."
+    },
+    "normalised-by-sum": {
+      "front": "To make a unit vector, divide by…?",
+      "back": "The magnitude √(aₓ² + a_y²), not aₓ + a_y."
+    },
+    "generic": {
+      "front": "Unit vector along a?",
+      "back": "â = a ÷ |a|."
+    }
+  },
+  "accessibility": {
+    "altText": "A vector on a grid with components {{ax}} and {{ay}}.",
+    "nonDragAlternative": "Tick Show components; type your answer in the box."
+  }
+}

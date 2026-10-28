@@ -1,0 +1,194 @@
+{
+  "id": "wep.scalar-product.e.from-angle",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.scalar-product"
+  ],
+  "primarySkillId": "wep.scalar-product",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "A": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "B": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        6
+      ]
+    },
+    "th": {
+      "kind": "choice",
+      "values": [
+        0,
+        60,
+        120,
+        180
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.dotFromAngle",
+  "intro": "A quick check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "ignored-angle"
+      ],
+      "match": {
+        "buggySolver": "ignoredAngle"
+      }
+    },
+    {
+      "tags": [
+        "dot-uses-sin"
+      ],
+      "match": {
+        "buggySolver": "usedSin"
+      }
+    }
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 12,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "a",
+          "agent": "none",
+          "magnitude": "{{A}}",
+          "angleDeg": 0,
+          "tone": "a"
+        },
+        {
+          "id": "b",
+          "kind": "vector",
+          "label": "b",
+          "agent": "none",
+          "magnitude": "{{B}}",
+          "angleDeg": "{{th}}",
+          "tone": "b"
+        }
+      ],
+      "showResultant": false
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "consequence": [
+    {
+      "cue": "project",
+      "args": {
+        "a": "a",
+        "b": "b"
+      }
+    }
+  ],
+  "stem": [
+    "Vectors a and b have magnitudes {{A}} and {{B}}, with an angle of {{th}}° between them.",
+    "What is a · b?"
+  ],
+  "input": {
+    "label": "a · b",
+    "placeholder": "for example 6",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Project b onto a: how long is its shadow along a?",
+      "cue": {
+        "cue": "project",
+        "args": {
+          "a": "a",
+          "b": "b"
+        }
+      }
+    },
+    {
+      "text": "a · b = |a| × (component of b along a)."
+    },
+    {
+      "text": "a · b = |a||b| cos θ."
+    }
+  ],
+  "feedback": {
+    "ignored-angle": {
+      "text": "Only the part of b along a counts: multiply by cos {{th}}°.",
+      "cue": {
+        "cue": "project",
+        "args": {
+          "a": "a",
+          "b": "b"
+        }
+      }
+    },
+    "dot-uses-sin": {
+      "text": "The scalar product uses cos θ, not sin θ."
+    },
+    "generic": {
+      "text": "a · b = |a||b| cos θ."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "a · b = {{A}} × {{B}} × cos {{th}}°.",
+      "cue": {
+        "cue": "project",
+        "args": {
+          "a": "a",
+          "b": "b"
+        }
+      }
+    },
+    {
+      "text": "= {{ans}}."
+    }
+  ],
+  "flashcards": {
+    "ignored-angle": {
+      "front": "a · b for vectors at angle θ?",
+      "back": "|a||b| cos θ: only the part of one vector along the other counts."
+    },
+    "dot-uses-sin": {
+      "front": "Scalar product: sin or cos?",
+      "back": "cos θ: a · b = |a||b| cos θ."
+    },
+    "generic": {
+      "front": "Scalar product from magnitudes and angle?",
+      "back": "|a||b| cos θ."
+    }
+  },
+  "accessibility": {
+    "altText": "Two vectors a and b at {{th}}° to each other.",
+    "nonDragAlternative": "Select a vector and type its size and direction in Precise controls; type your answer in the box."
+  }
+}

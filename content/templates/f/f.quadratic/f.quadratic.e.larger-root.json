@@ -1,0 +1,157 @@
+{
+  "id": "f.quadratic.e.larger-root",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.quadratic"
+  ],
+  "primarySkillId": "f.quadratic",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "p": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "q": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.largerRoot",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "root-sign"
+      ],
+      "match": {
+        "buggySolver": "signSlip"
+      }
+    }
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -1,
+        8
+      ],
+      "yRange": [
+        -8,
+        10
+      ],
+      "functions": [
+        {
+          "id": "f",
+          "expr": "x^2 - {{s}}*x + {{pr}}"
+        }
+      ]
+    },
+    "instructions": "The roots are where the graph crosses the x-axis."
+  },
+  "consequence": [
+    {
+      "cue": "marker",
+      "args": {
+        "x": "$value",
+        "y": 0,
+        "label": "your root",
+        "tone": "bad"
+      }
+    }
+  ],
+  "stem": [
+    "Solve x² − {{s}}x + {{pr}} = 0.",
+    "What is the larger root?"
+  ],
+  "input": {
+    "label": "Larger root",
+    "placeholder": "for example 5",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Find two numbers that multiply to {{pr}} and add to {{s}}.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "f"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Factorise as (x − p)(x − q) = 0."
+    },
+    {
+      "text": "Each bracket can be zero."
+    }
+  ],
+  "feedback": {
+    "root-sign": {
+      "text": "(x − {{small}})(x − {{ans}}) = 0 gives x = {{small}} or x = {{ans}}: positive roots."
+    },
+    "generic": {
+      "text": "Factorise and set each factor to zero."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "x² − {{s}}x + {{pr}} = (x − {{small}})(x − {{ans}})."
+    },
+    {
+      "text": "Roots {{small}} and {{ans}}: the larger is {{ans}}.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "x": "{{ans}}",
+          "y": 0,
+          "label": "root"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "root-sign": {
+      "front": "Roots of (x − p)(x − q) = 0?",
+      "back": "x = p and x = q."
+    },
+    "generic": {
+      "front": "Roots of x² − (p + q)x + pq = 0?",
+      "back": "x = p and x = q."
+    }
+  },
+  "accessibility": {
+    "altText": "A parabola crossing the x-axis twice.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "id": "mip.resolution.h.west-of-north",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.resolution",
+    "f.trig-ratios"
+  ],
+  "primarySkillId": "mip.resolution",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 140,
+  "parameters": {
+    "F": {
+      "kind": "choice",
+      "values": [
+        20,
+        30,
+        40,
+        50,
+        60
+      ]
+    },
+    "alpha": {
+      "kind": "choice",
+      "values": [
+        20,
+        30,
+        37,
+        50,
+        60
+      ]
+    }
+  },
+  "solver": "mip.componentFromNorth",
+  "intro": "Here the angle is measured from north.",
+  "answer": {
+    "dimension": "force",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "component-sign-dropped"
+      ],
+      "match": {
+        "buggySolver": "signDropped"
+      }
+    },
+    {
+      "tags": [
+        "sin-cos-swap"
+      ],
+      "match": {
+        "buggySolver": "usedCos"
+      }
+    },
+    {
+      "tags": [
+        "tan-for-component"
+      ],
+      "match": {
+        "buggySolver": "usedTan"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{Fx|raw}} N"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "East is +x and north is +y. Tick Components to split the force along the axes.",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": "{{maxM}}",
+      "unit": "N",
+      "showResultant": false,
+      "vectors": [
+        {
+          "id": "F",
+          "kind": "force",
+          "label": "F",
+          "agent": "none",
+          "magnitude": "{{F}}",
+          "angleDeg": "{{angStd}}",
+          "locked": true
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "decompose",
+      "args": {
+        "id": "F",
+        "axes": "standard",
+        "values": false
+      }
+    }
+  ],
+  "stem": [
+    "A {{F}} N force acts at {{alpha}}° west of north. Take east as +x and north as +y.",
+    "What is its x-component? Include the sign."
+  ],
+  "input": {
+    "label": "x-component",
+    "placeholder": "for example −12 N",
+    "keypad": "none"
+  },
+  "answerText": "{{Fx}} N",
+  "hints": [
+    {
+      "text": "Sketch it: the force leans left of the north axis. Which way does its x-component point?",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "F",
+          "axes": "standard",
+          "values": false
+        }
+      }
+    },
+    {
+      "text": "The given angle is measured from the y-axis, so the x-component is the side opposite that angle."
+    },
+    {
+      "text": "F_x = −F sin α (negative, because it points west)."
+    }
+  ],
+  "feedback": {
+    "component-sign-dropped": {
+      "text": "The size is right, but the force leans west, so its x-component is negative.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "F",
+          "axes": "standard",
+          "values": false
+        }
+      }
+    },
+    "sin-cos-swap": {
+      "text": "The angle is measured from north, not from the x-axis. The x-component is opposite that angle: F sin α, with a minus sign for west."
+    },
+    "tan-for-component": {
+      "text": "tan relates the two components to each other. Use sin α for the side opposite the angle."
+    },
+    "sign-error": {
+      "text": "Check the direction: west of north means the force has a westward (negative x) part."
+    },
+    "dimension-mismatch": {
+      "text": "A component of a force is a force, in newtons."
+    },
+    "generic": {
+      "text": "Find which side is opposite the {{alpha}}° angle, then decide its sign."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The force is {{alpha}}° from the +y axis, leaning west.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "F",
+          "axes": "standard"
+        }
+      }
+    },
+    {
+      "text": "The x-component is opposite the angle: size F sin α = {{F}} × sin {{alpha}}° = {{mag}} N. It points west, so F_x = {{Fx}} N (and F_y = +{{Fy}} N)."
+    }
+  ],
+  "flashcards": {
+    "component-sign-dropped": {
+      "front": "A force points west of north. Sign of its x-component (east positive)?",
+      "back": "Negative."
+    },
+    "sin-cos-swap": {
+      "front": "Force F at θ above the x-axis: x-component?",
+      "back": "F cos θ (adjacent). The y-component is F sin θ."
+    },
+    "tan-for-component": {
+      "front": "Does F tan θ give a component of F?",
+      "back": "No. tan θ = F_y ÷ F_x relates the components to each other."
+    },
+    "generic": {
+      "front": "Angle measured from the y-axis: which ratio gives F_x?",
+      "back": "sin (the x-component is opposite that angle)."
+    }
+  },
+  "accessibility": {
+    "altText": "A {{F}} N force on a grid, {{alpha}}° to the west of the north axis.",
+    "nonDragAlternative": "Tick Components and read the description; type your answer in the box."
+  }
+}

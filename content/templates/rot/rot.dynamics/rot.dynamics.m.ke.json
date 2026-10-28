@@ -1,0 +1,154 @@
+{
+  "id": "rot.dynamics.m.ke",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.dynamics"
+  ],
+  "primarySkillId": "rot.dynamics",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "M": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        10
+      ]
+    },
+    "R": {
+      "kind": "choice",
+      "values": [
+        0.2,
+        0.3,
+        0.5
+      ]
+    },
+    "w": {
+      "kind": "choice",
+      "values": [
+        10,
+        20,
+        30
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.discKE",
+  "intro": "Rotational kinetic energy.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "rot-ke-missing-half"
+      ],
+      "match": {
+        "buggySolver": "missingHalf"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "disc",
+        "mass": "{{M}}",
+        "size": "{{R}}",
+        "torque": 0,
+        "omega0": "{{w}}",
+        "duration": 3
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Like ½mv², rotational KE has a ½: ½Iω²."
+      }
+    }
+  ],
+  "stem": [
+    "A uniform disc of mass {{M}} kg and radius {{R}} m spins at {{w}} rad/s about its axis (I = ½MR²).",
+    "What is its rotational kinetic energy?"
+  ],
+  "input": {
+    "label": "Kinetic energy",
+    "placeholder": "for example 18 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "Find I first.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "I = ½MR²."
+    },
+    {
+      "text": "KE = ½Iω²."
+    }
+  ],
+  "feedback": {
+    "rot-ke-missing-half": {
+      "text": "Rotational KE is ½Iω²."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "KE = ½Iω²."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "I = ½ × {{M}} × {{R}}² = {{I}} kg m²."
+    },
+    {
+      "text": "KE = ½ × {{I}} × {{w}}² = {{ans}} J.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "rot-ke-missing-half": {
+      "front": "Rotational kinetic energy?",
+      "back": "½Iω²."
+    },
+    "generic": {
+      "front": "Rotational KE?",
+      "back": "½Iω²."
+    }
+  },
+  "accessibility": {
+    "altText": "A disc spinning at a steady rate.",
+    "nonDragAlternative": "Use Play; type your answer in the box."
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "id": "mip.projectile.m.range",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.projectile",
+    "mip.resolution"
+  ],
+  "primarySkillId": "mip.projectile",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "v": {
+      "kind": "int",
+      "min": 10,
+      "max": 25
+    },
+    "ang": {
+      "kind": "choice",
+      "values": [
+        15,
+        30,
+        40,
+        50,
+        60,
+        75
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.projectileRange",
+  "intro": "This question helps us find the best place for you to begin.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.01
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "forgot-double-angle"
+      ],
+      "match": {
+        "buggySolver": "forgotDoubleAngle"
+      }
+    },
+    {
+      "tags": [
+        "used-time-to-apex"
+      ],
+      "match": {
+        "buggySolver": "usedTimeToApex"
+      }
+    },
+    {
+      "tags": [
+        "ignored-horizontal-component"
+      ],
+      "match": {
+        "buggySolver": "ignoredHorizontalComponent"
+      }
+    }
+  ],
+  "widget": {
+    "type": "motion-track",
+    "instructions": "Press Play to launch the ball. Pause, step or scrub to follow its velocity arrow; the graphs show the horizontal and vertical parts separately.",
+    "config": {
+      "mode": "2d",
+      "projectile": {
+        "x0": 0,
+        "y0": 0,
+        "speed": "{{v}}",
+        "angleDeg": "{{ang}}",
+        "g": 9.8
+      },
+      "hideNumbers": true
+    }
+  },
+  "consequence": [
+    {
+      "cue": "flag",
+      "args": {
+        "x": "$value",
+        "label": "your answer",
+        "tone": "bad"
+      }
+    },
+    {
+      "cue": "land-at",
+      "args": {
+        "x": "$value"
+      }
+    }
+  ],
+  "stem": [
+    "A ball is kicked from level ground at {{v}} m/s, {{ang}}° above the horizontal. Ignore air resistance and take g = 9.8 m/s².",
+    "How far away does it land?"
+  ],
+  "input": {
+    "label": "Horizontal range",
+    "placeholder": "for example 25.5 m",
+    "keypad": "none"
+  },
+  "answerText": "{{R}} m",
+  "hints": [
+    {
+      "text": "Treat the horizontal and vertical motions separately. Which one decides how long the ball is in the air? Watch the two graphs as the ball flies.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Time of flight: t = 2u sin θ ÷ g. Horizontal speed stays u cos θ."
+    },
+    {
+      "text": "Range = u cos θ × 2u sin θ ÷ g = u² sin 2θ ÷ g."
+    }
+  ],
+  "feedback": {
+    "forgot-double-angle": {
+      "text": "The range uses sin 2θ, not sin θ: it comes from 2 sin θ cos θ, the time of flight times the horizontal speed."
+    },
+    "used-time-to-apex": {
+      "text": "That's the distance covered while rising to the top: half the flight. The ball takes as long again to come down."
+    },
+    "ignored-horizontal-component": {
+      "text": "Only the horizontal component u cos θ carries the ball sideways. The full speed u points partly upward."
+    },
+    "dimension-mismatch": {
+      "text": "Range is a distance. Check your unit."
+    },
+    "generic": {
+      "text": "Split the motion: the time in the air comes from the vertical part, the distance from the horizontal part. The coral flag marks your answer."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Horizontal speed: u cos θ = {{v}} cos {{ang}}° = {{vx}} m/s. It doesn't change.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Time of flight: t = 2u sin θ ÷ g = {{tf}} s."
+    },
+    {
+      "text": "Range = {{vx}} × {{tf}} = {{R}} m.",
+      "cue": [
+        {
+          "cue": "reveal"
+        },
+        {
+          "cue": "flag",
+          "args": {
+            "x": "{{R}}",
+            "label": "lands at {{R}} m",
+            "tone": "good"
+          }
+        },
+        {
+          "cue": "play"
+        }
+      ]
+    }
+  ],
+  "alternativeSolution": {
+    "title": "Using the range formula",
+    "steps": [
+      {
+        "text": "R = u² sin 2θ ÷ g = {{v}}² × sin {{2*ang}}° ÷ 9.8.",
+        "cue": {
+          "cue": "reveal"
+        }
+      },
+      {
+        "text": "= {{R}} m.",
+        "cue": [
+          {
+            "cue": "flag",
+            "args": {
+              "x": "{{R}}",
+              "label": "lands at {{R}} m",
+              "tone": "good"
+            }
+          },
+          {
+            "cue": "play"
+          }
+        ]
+      }
+    ]
+  },
+  "flashcards": {
+    "forgot-double-angle": {
+      "front": "Range of a projectile on level ground?",
+      "back": "R = u² sin 2θ / g."
+    },
+    "used-time-to-apex": {
+      "front": "Is the time to the top the whole flight time?",
+      "back": "No, it's half of it (on level ground)."
+    },
+    "ignored-horizontal-component": {
+      "front": "Which velocity component carries a projectile sideways?",
+      "back": "The horizontal one, u cos θ, constant without air resistance."
+    },
+    "generic": {
+      "front": "How do you find a projectile's range?",
+      "back": "Horizontal speed × time of flight."
+    }
+  },
+  "accessibility": {
+    "altText": "A ball launched from the ground at {{v}} m/s and {{ang}}°, with its path drawn as it flies.",
+    "nonDragAlternative": "Use the Play, Step and timeline controls; nothing needs dragging."
+  }
+}

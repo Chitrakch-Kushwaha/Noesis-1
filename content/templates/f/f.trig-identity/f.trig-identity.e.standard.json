@@ -1,0 +1,137 @@
+{
+  "id": "f.trig-identity.e.standard",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.trig-identity"
+  ],
+  "primarySkillId": "f.trig-identity",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "k": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.standardValue",
+  "intro": "A foundation check.",
+  "widget": {
+    "type": "triangle-explorer",
+    "config": {
+      "mode": "triangle",
+      "editable": false,
+      "hypotenuse": 2,
+      "angleDeg": 30,
+      "showRoles": true,
+      "showValues": true
+    },
+    "instructions": "The right angle is at C."
+  },
+  "stem": [
+    "What is sin 30°?"
+  ],
+  "options": [
+    {
+      "id": "half",
+      "text": "½"
+    },
+    {
+      "id": "r3",
+      "text": "√3/2",
+      "tags": [
+        "standard-value-swap"
+      ],
+      "cue": {
+        "cue": "mark-angle",
+        "args": {
+          "at": "B"
+        }
+      }
+    },
+    {
+      "id": "r2",
+      "text": "1/√2",
+      "tags": [
+        "standard-value-swap"
+      ]
+    }
+  ],
+  "answerText": "½",
+  "hints": [
+    {
+      "text": "Look at the 30° angle: which side is opposite it?",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite"
+          ]
+        }
+      }
+    },
+    {
+      "text": "In a 30°–60°–90° triangle the sides are 1, √3, 2."
+    },
+    {
+      "text": "sin = opposite ÷ hypotenuse."
+    }
+  ],
+  "feedback": {
+    "standard-value-swap": {
+      "text": "√3/2 is sin 60°. In the 30°–60°–90° triangle, the side opposite 30° is half the hypotenuse."
+    },
+    "generic": {
+      "text": "sin 30° = ½."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Opposite 30°: 1; hypotenuse: 2.",
+      "cue": {
+        "cue": "highlight-side",
+        "args": {
+          "sides": [
+            "opposite",
+            "hypotenuse"
+          ]
+        }
+      }
+    },
+    {
+      "text": "sin 30° = 1 ÷ 2 = ½."
+    }
+  ],
+  "flashcards": {
+    "standard-value-swap": {
+      "front": "sin 30°?",
+      "back": "½ (sin 60° = √3/2)."
+    },
+    "generic": {
+      "front": "sin 30°, sin 60°?",
+      "back": "½ and √3/2."
+    }
+  },
+  "accessibility": {
+    "altText": "A 30°–60°–90° triangle with side lengths.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

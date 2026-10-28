@@ -1,0 +1,196 @@
+{
+  "id": "mip.velocity-2d.h.river",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.velocity-2d"
+  ],
+  "primarySkillId": "mip.velocity-2d",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "w": {
+      "kind": "choice",
+      "values": [
+        60,
+        80,
+        100,
+        120
+      ]
+    },
+    "vb": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "vr": {
+      "kind": "choice",
+      "values": [
+        1,
+        1.5,
+        2
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.riverDrift",
+  "intro": "Crossing a flowing river.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "drift-ratio-inverted"
+      ],
+      "match": {
+        "buggySolver": "ratioInverted"
+      }
+    },
+    {
+      "tags": [
+        "drift-uses-resultant"
+      ],
+      "match": {
+        "buggySolver": "resultantSpeed"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 6,
+      "vectors": [
+        {
+          "id": "b",
+          "kind": "vector",
+          "label": "boat (relative to water)",
+          "agent": "none",
+          "magnitude": "{{vb}}",
+          "angleDeg": 90,
+          "tone": "a"
+        },
+        {
+          "id": "r",
+          "kind": "vector",
+          "label": "river",
+          "agent": "none",
+          "magnitude": "{{vr}}",
+          "angleDeg": 0,
+          "tone": "b"
+        }
+      ],
+      "unit": "m/s"
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "b",
+          "r"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A boat heads straight across a river {{w}} m wide at {{vb}} m/s relative to the water. The river flows at {{vr}} m/s.",
+    "How far downstream from the point opposite its start does it land?"
+  ],
+  "input": {
+    "label": "Drift",
+    "placeholder": "for example 40 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "How long does the crossing take? Only the boat's own velocity carries it across.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "b"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Crossing time = width ÷ v_boat."
+    },
+    {
+      "text": "Drift = v_river × crossing time."
+    }
+  ],
+  "feedback": {
+    "drift-ratio-inverted": {
+      "text": "The crossing time is width ÷ boat speed; during that time the river carries the boat at its own speed."
+    },
+    "drift-uses-resultant": {
+      "text": "Only the river's flow carries the boat downstream; use v_river × crossing time."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "Drift = v_river × (width ÷ v_boat)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Crossing time: {{w}} ÷ {{vb}} = {{t}} s."
+    },
+    {
+      "text": "Drift: {{vr}} × {{t}} = {{ans}} m downstream (the boat's speed over the ground is {{speed}} m/s).",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "r"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "drift-ratio-inverted": {
+      "front": "Drift of a boat steering straight across?",
+      "back": "drift = v_river × (width ÷ v_boat)."
+    },
+    "drift-uses-resultant": {
+      "front": "Which speed carries the boat downstream?",
+      "back": "Only the river's: the crossing time is width ÷ v_boat."
+    },
+    "generic": {
+      "front": "Boat steering straight across a river: drift?",
+      "back": "v_river × width ÷ v_boat."
+    }
+  },
+  "accessibility": {
+    "altText": "The boat's velocity across the river and the river's flow, drawn as two arrows.",
+    "nonDragAlternative": "The board only illustrates the velocities; type your answer in the box."
+  }
+}

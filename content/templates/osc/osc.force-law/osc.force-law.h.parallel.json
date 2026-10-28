@@ -1,0 +1,164 @@
+{
+  "id": "osc.force-law.h.parallel",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.force-law"
+  ],
+  "primarySkillId": "osc.force-law",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        2
+      ]
+    },
+    "k": {
+      "kind": "choice",
+      "values": [
+        25,
+        50,
+        100
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.parallelSprings",
+  "intro": "Two springs.",
+  "answer": {
+    "dimension": "time",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "springs-series-parallel"
+      ],
+      "match": {
+        "buggySolver": "seriesFormula"
+      }
+    },
+    {
+      "tags": [
+        "springs-single"
+      ],
+      "match": {
+        "buggySolver": "singleSpring"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} s"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": "{{m}}",
+      "k": "{{keff}}",
+      "amplitude": 0.1
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "ghost",
+      "args": {
+        "key": "k",
+        "value": "{{k}}",
+        "label": "one spring alone"
+      }
+    }
+  ],
+  "stem": [
+    "A {{m}} kg block is attached to two identical springs (k = {{k}} N/m each) side by side, both stretched equally when it moves.",
+    "What is the period of its oscillation?"
+  ],
+  "input": {
+    "label": "Period",
+    "placeholder": "for example 0.4 s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} s",
+  "hints": [
+    {
+      "text": "When the block moves x, each spring pulls back kx.",
+      "cue": {
+        "cue": "ghost",
+        "args": {
+          "key": "k",
+          "value": "{{k}}",
+          "label": "one spring alone"
+        }
+      }
+    },
+    {
+      "text": "Total restoring force 2kx: k_eff = 2k."
+    },
+    {
+      "text": "T = 2π√(m ÷ k_eff)."
+    }
+  ],
+  "feedback": {
+    "springs-series-parallel": {
+      "text": "Side by side, both springs push back together: k_eff = 2k (end to end would give k/2)."
+    },
+    "springs-single": {
+      "text": "Both springs act on the block, so it is stiffer than one spring alone."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a time."
+    },
+    "generic": {
+      "text": "Parallel springs: k_eff = k₁ + k₂."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "k_eff = 2 × {{k}} = {{keff}} N/m."
+    },
+    {
+      "text": "T = 2π√({{m}} ÷ {{keff}}) = {{ans}} s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "springs-series-parallel": {
+      "front": "Two identical springs side by side (parallel): k_eff?",
+      "back": "2k (in series: k/2)."
+    },
+    "springs-single": {
+      "front": "Does a second parallel spring change the period?",
+      "back": "Yes: k_eff = 2k, so T falls by √2."
+    },
+    "generic": {
+      "front": "Two identical springs side by side: k_eff?",
+      "back": "2k."
+    }
+  },
+  "accessibility": {
+    "altText": "A block on springs with its x–t graph.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

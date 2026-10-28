@@ -1,0 +1,149 @@
+{
+  "id": "osc.shm-velocity-acceleration.e.vmax",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.shm-velocity-acceleration"
+  ],
+  "primarySkillId": "osc.shm-velocity-acceleration",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "A": {
+      "kind": "choice",
+      "values": [
+        0.05,
+        0.1,
+        0.2
+      ]
+    },
+    "T": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        2
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.vmax",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "vmax-amax-confusion"
+      ],
+      "match": {
+        "buggySolver": "amaxInstead"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": "{{4*pi^2/T^2}}",
+      "amplitude": "{{A}}"
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "v"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A mass oscillates in SHM with amplitude {{A}} m and period {{T}} s.",
+    "What is its maximum speed?"
+  ],
+  "input": {
+    "label": "Maximum speed",
+    "placeholder": "for example 0.6 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s",
+  "hints": [
+    {
+      "text": "Where is the speed greatest?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "phasor"
+          ]
+        }
+      }
+    },
+    {
+      "text": "At the centre, with v_max = Aω."
+    },
+    {
+      "text": "ω = 2π ÷ T."
+    }
+  ],
+  "feedback": {
+    "vmax-amax-confusion": {
+      "text": "Aω² is the maximum acceleration. The maximum speed is Aω."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a velocity."
+    },
+    "generic": {
+      "text": "v_max = Aω."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "ω = 2π ÷ {{T}} = {{w}} rad/s."
+    },
+    {
+      "text": "v_max = {{A}} × {{w}} = {{ans}} m/s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "vmax-amax-confusion": {
+      "front": "Maximum speed and acceleration in SHM?",
+      "back": "v_max = Aω, a_max = Aω²."
+    },
+    "generic": {
+      "front": "Maximum speed in SHM?",
+      "back": "Aω."
+    }
+  },
+  "accessibility": {
+    "altText": "A spring oscillator with its reference circle.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

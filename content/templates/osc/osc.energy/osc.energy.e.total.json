@@ -1,0 +1,169 @@
+{
+  "id": "osc.energy.e.total",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.energy"
+  ],
+  "primarySkillId": "osc.energy",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "k": {
+      "kind": "choice",
+      "values": [
+        100,
+        200,
+        400
+      ]
+    },
+    "Acm": {
+      "kind": "choice",
+      "values": [
+        5,
+        10,
+        20
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.totalEnergy",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "shm-energy-missing-half"
+      ],
+      "match": {
+        "buggySolver": "missingHalf"
+      }
+    },
+    {
+      "tags": [
+        "shm-energy-not-squared"
+      ],
+      "match": {
+        "buggySolver": "notSquared"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": "{{k}}",
+      "amplitude": "{{A}}"
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "energy"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A spring–mass oscillator has k = {{k}} N/m and amplitude {{Acm}} cm.",
+    "What is its total mechanical energy?"
+  ],
+  "input": {
+    "label": "Energy",
+    "placeholder": "for example 1 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "At the end of its swing the mass is momentarily at rest.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    },
+    {
+      "text": "So all the energy is stored in the spring there."
+    },
+    {
+      "text": "E = ½kA², A in metres."
+    }
+  ],
+  "feedback": {
+    "shm-energy-missing-half": {
+      "text": "At the ends all the energy is spring energy, ½kA²."
+    },
+    "shm-energy-not-squared": {
+      "text": "The energy depends on the amplitude squared."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "E = ½kA²."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "A = {{A}} m."
+    },
+    {
+      "text": "E = ½ × {{k}} × {{A}}² = {{ans}} J.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "shm-energy-missing-half": {
+      "front": "Total energy of SHM?",
+      "back": "½kA²."
+    },
+    "shm-energy-not-squared": {
+      "front": "Double the amplitude: energy?",
+      "back": "×4 (E = ½kA²)."
+    },
+    "generic": {
+      "front": "Total energy of SHM?",
+      "back": "½kA²."
+    }
+  },
+  "accessibility": {
+    "altText": "A spring oscillator with energy bars.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

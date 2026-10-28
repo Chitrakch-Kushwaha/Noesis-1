@@ -1,0 +1,304 @@
+{
+  "id": "lom.fbd.m.box-pulled-by-rope",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.fbd",
+    "lom.friction",
+    "lom.resolve-forces"
+  ],
+  "primarySkillId": "lom.fbd",
+  "difficulty": "medium",
+  "format": "diagram",
+  "estimatedSeconds": 180,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "T": {
+      "kind": "int",
+      "min": 10,
+      "max": 20
+    },
+    "ang": {
+      "kind": "choice",
+      "values": [
+        20,
+        30,
+        40
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "lom.fbdRope",
+  "intro": "This question helps us find the best place for you to begin.",
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Add each force with Precise controls, choose who exerts it, then drag its tip (or type its size and direction). The amber arrow is the net force; press Play to see the motion your diagram predicts.",
+    "config": {
+      "scene": "floor",
+      "rope": {
+        "angleDeg": "{{ang}}"
+      },
+      "body": {
+        "label": "box",
+        "mass": "{{m}}"
+      },
+      "initialVelocity": {
+        "x": 1.5,
+        "y": 0
+      },
+      "predict": true,
+      "predictSeconds": 1.5,
+      "maxMagnitude": "{{maxF}}",
+      "magnitudeStep": 0.5,
+      "allowAdd": true,
+      "agents": [
+        "Earth",
+        "floor",
+        "rope",
+        "hand",
+        "none"
+      ],
+      "kinds": [
+        {
+          "kind": "weight",
+          "label": "Weight"
+        },
+        {
+          "kind": "normal",
+          "label": "Normal"
+        },
+        {
+          "kind": "tension",
+          "label": "Tension"
+        },
+        {
+          "kind": "friction",
+          "label": "Friction"
+        },
+        {
+          "kind": "applied",
+          "label": "Push"
+        },
+        {
+          "kind": "motion",
+          "label": "Force of motion"
+        }
+      ],
+      "vectors": []
+    }
+  },
+  "consequence": [
+    {
+      "cue": "compare",
+      "args": {
+        "vectors": [],
+        "label": "the real box: constant 1.5 m/s"
+      }
+    },
+    {
+      "cue": "predict"
+    }
+  ],
+  "resolution": {
+    "cue": "student-diagram",
+    "args": {
+      "correct": "{{correctVectors}}"
+    }
+  },
+  "stem": [
+    "A {{m}} kg box is pulled across a rough floor by a rope at {{ang}}° above the horizontal. The rope's tension is {{T}} N and the box moves at a constant 1.5 m/s. Take g = 9.8 m/s².",
+    "Draw every force acting on the box, with its direction and size."
+  ],
+  "answerText": "Weight {{W}} N down (Earth); normal force {{N}} N up (floor); tension {{T}} N at {{ang}}° (rope); friction {{f}} N backwards (floor)",
+  "hints": [
+    {
+      "text": "List what touches the box: the floor and the rope. Gravity acts too. Each gives one or two forces."
+    },
+    {
+      "text": "Constant speed means the net force is zero. Watch the amber net-force arrow and press Play: the box should neither speed up nor slow down.",
+      "cue": {
+        "cue": "predict"
+      }
+    },
+    {
+      "text": "Vertically: N + T sin {{ang}}° = mg. Horizontally: friction = T cos {{ang}}°."
+    }
+  ],
+  "feedback": {
+    "missing-normal": {
+      "text": "Without the normal force, your diagram predicts the box sinks through the floor: watch it drift away from the real box. The floor pushes up on the box."
+    },
+    "missing-weight": {
+      "text": "Every body near the Earth has a weight, pulling straight down."
+    },
+    "missing-tension": {
+      "text": "The rope pulls the box along its own direction, {{ang}}° above the horizontal."
+    },
+    "missing-friction": {
+      "text": "Without friction, the rope's forward pull would make the box speed up, as your prediction shows. The rough floor opposes the sliding."
+    },
+    "extra-force-of-motion": {
+      "text": "The box keeps moving because of inertia; there is no separate 'force of motion', and nothing pushes it. Every force needs an agent touching the box (or gravity)."
+    },
+    "normal-equals-weight": {
+      "text": "The rope pulls partly upward, so the floor doesn't need to push as hard: N = mg − T sin {{ang}}° = {{N}} N."
+    },
+    "constant-velocity-unbalanced": {
+      "text": "At constant velocity the forces balance, so friction equals the rope's horizontal pull, T cos {{ang}}° = {{f}} N. Your prediction shows the box speeding up or slowing down."
+    },
+    "normal-direction": {
+      "text": "The normal force is perpendicular to the floor, straight up."
+    },
+    "tension-direction": {
+      "text": "Tension acts along the rope, at {{ang}}° above the horizontal."
+    },
+    "friction-direction": {
+      "text": "Friction on a sliding box points opposite its motion, backwards."
+    },
+    "weight-magnitude": {
+      "text": "Weight = mg = {{m}} × 9.8 = {{W}} N."
+    },
+    "double-counted-force": {
+      "text": "Each agent gives each kind of force only once. Remove the duplicate."
+    },
+    "force-direction": {
+      "text": "Check the direction of each force."
+    },
+    "force-magnitude": {
+      "text": "Check the sizes: constant speed means the forces balance."
+    },
+    "extra-force": {
+      "text": "One of your forces has no matching interaction. Check every force has a real agent."
+    },
+    "generic": {
+      "text": "Press Play: if the forces are right, the box keeps moving at a constant speed."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Weight: {{W}} N straight down, from the Earth.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "sW",
+            "kind": "weight",
+            "label": "Weight",
+            "agent": "Earth",
+            "magnitude": "{{W}}",
+            "angleDeg": -90
+          }
+        }
+      }
+    },
+    {
+      "text": "Tension: {{T}} N along the rope, {{ang}}° above the horizontal.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "sT",
+            "kind": "tension",
+            "label": "Tension",
+            "agent": "rope",
+            "magnitude": "{{T}}",
+            "angleDeg": "{{ang}}"
+          }
+        }
+      }
+    },
+    {
+      "text": "Normal force: the forces balance vertically, so N = mg − T sin {{ang}}° = {{N}} N, up.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "sN",
+            "kind": "normal",
+            "label": "Normal",
+            "agent": "floor",
+            "magnitude": "{{N}}",
+            "angleDeg": 90
+          }
+        }
+      }
+    },
+    {
+      "text": "Friction: the forces balance horizontally, so f = T cos {{ang}}° = {{f}} N, backwards. The net force is zero: press Play to see constant velocity.",
+      "cue": [
+        {
+          "cue": "add-vector",
+          "args": {
+            "vector": {
+              "id": "sF",
+              "kind": "friction",
+              "label": "Friction",
+              "agent": "floor",
+              "magnitude": "{{f}}",
+              "angleDeg": 180
+            }
+          }
+        },
+        {
+          "cue": "predict"
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "missing-normal": {
+      "front": "A box on a floor: which force stops it sinking into the floor?",
+      "back": "The normal force from the floor, perpendicular to the surface."
+    },
+    "missing-friction": {
+      "front": "A box pulled at constant speed on a rough floor: what balances the pull?",
+      "back": "Kinetic friction from the floor, opposite the motion."
+    },
+    "extra-force-of-motion": {
+      "front": "Is there a 'force of motion' on a moving box?",
+      "back": "No. Motion continues by inertia; only forces with agents act."
+    },
+    "normal-equals-weight": {
+      "front": "A rope pulls a box partly upward. Is N = mg?",
+      "back": "No. N = mg − T sin θ: the rope carries part of the weight."
+    },
+    "constant-velocity-unbalanced": {
+      "front": "Constant velocity: what is the net force?",
+      "back": "Zero. All forces balance (Newton's first law)."
+    },
+    "missing-weight": {
+      "front": "Which force acts on every body near the Earth?",
+      "back": "Its weight, mg, straight down."
+    },
+    "missing-tension": {
+      "front": "Which way does a rope pull?",
+      "back": "Along the rope, away from the body."
+    },
+    "generic": {
+      "front": "Steps for a free-body diagram?",
+      "back": "Gravity first, then one force per contact; check the net force matches the motion."
+    }
+  },
+  "accessibility": {
+    "altText": "A box on a floor with a rope attached at {{ang}}° above the horizontal. The box is moving right at 1.5 m/s. No forces are drawn yet.",
+    "nonDragAlternative": "Use Add force with a type and an agent, then type each size and direction in Precise controls."
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "id": "f.circle.e.area",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.circle"
+  ],
+  "primarySkillId": "f.circle",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "r": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.circleArea",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "area-circumference-confusion"
+      ],
+      "match": {
+        "buggySolver": "circumference"
+      }
+    },
+    {
+      "tags": [
+        "area-diameter"
+      ],
+      "match": {
+        "buggySolver": "diameterSquared"
+      }
+    }
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -8,
+        8
+      ],
+      "yRange": [
+        -8,
+        8
+      ],
+      "functions": [
+        {
+          "id": "top",
+          "expr": "sqrt({{r}}^2 - x^2)"
+        },
+        {
+          "id": "bot",
+          "expr": "-sqrt({{r}}^2 - x^2)"
+        }
+      ]
+    },
+    "instructions": "The circle is drawn as its upper and lower halves."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Area is in square units: πr²."
+      }
+    }
+  ],
+  "stem": [
+    "What is the area of a circle of radius {{r}} cm, in cm²?"
+  ],
+  "input": {
+    "label": "Area (cm²)",
+    "placeholder": "for example 28.3",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Area measures the space inside, in square units.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "top",
+            "bot"
+          ]
+        }
+      }
+    },
+    {
+      "text": "A = πr²."
+    },
+    {
+      "text": "Square the radius, then multiply by π."
+    }
+  ],
+  "feedback": {
+    "area-circumference-confusion": {
+      "text": "2πr is the circumference (a length). Area is πr²."
+    },
+    "area-diameter": {
+      "text": "Use the radius, not the diameter: πr²."
+    },
+    "generic": {
+      "text": "A = πr²."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "A = π × {{r}}²."
+    },
+    {
+      "text": "= {{ans}} cm² (the circumference is {{C}} cm).",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "A = πr²"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "area-circumference-confusion": {
+      "front": "Area of a circle?",
+      "back": "πr² (2πr is the circumference)."
+    },
+    "area-diameter": {
+      "front": "Area of a circle of diameter d?",
+      "back": "π(d/2)²."
+    },
+    "generic": {
+      "front": "Area of a circle?",
+      "back": "πr²."
+    }
+  },
+  "accessibility": {
+    "altText": "A circle of radius {{r}}.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

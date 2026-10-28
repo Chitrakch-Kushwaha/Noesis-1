@@ -1,0 +1,175 @@
+{
+  "id": "mip.vector-basics.m.scaled",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.vector-basics"
+  ],
+  "primarySkillId": "mip.vector-basics",
+  "difficulty": "medium",
+  "format": "number",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "A": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "k": {
+      "kind": "choice",
+      "values": [
+        -3,
+        -2,
+        -0.5,
+        2,
+        3
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.scaledMagnitude",
+  "intro": "Multiplying a vector by a number.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "negative-magnitude"
+      ],
+      "match": {
+        "buggySolver": "signedMagnitude"
+      }
+    }
+  ],
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 20,
+      "vectors": [
+        {
+          "id": "a",
+          "kind": "vector",
+          "label": "a",
+          "agent": "none",
+          "magnitude": "{{A}}",
+          "angleDeg": 45,
+          "tone": "a"
+        }
+      ],
+      "unit": "units"
+    },
+    "instructions": "Drag a vector's tip, or select it and type its size and direction in Precise controls."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Lengths are never negative: what does the minus sign do to the arrow instead?"
+      }
+    }
+  ],
+  "stem": [
+    "Vector a has magnitude {{A}} units and points north-east.",
+    "What is the magnitude of the vector ({{k}})a?"
+  ],
+  "input": {
+    "label": "Magnitude",
+    "placeholder": "for example 8",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "Multiplying by k scales the length by |k|.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a"
+          ]
+        }
+      }
+    },
+    {
+      "text": "A negative k also reverses the direction."
+    },
+    {
+      "text": "Magnitude = |k| × |a|."
+    }
+  ],
+  "feedback": {
+    "negative-magnitude": {
+      "text": "A magnitude is never negative. A negative multiplier reverses the direction and scales the length by its size.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "y",
+            "kind": "vector",
+            "label": "your answer as a length",
+            "agent": "none",
+            "magnitude": "{{A}}",
+            "angleDeg": 225
+          }
+        }
+      }
+    },
+    "generic": {
+      "text": "|ka| = |k| |a|."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "|({{k}})a| = |{{k}}| × {{A}} = {{ans}} units."
+    },
+    {
+      "text": "{{k}} < 0 reverses the arrow (it would point south-west); otherwise the direction is unchanged.",
+      "cue": {
+        "cue": "add-vector",
+        "args": {
+          "vector": {
+            "id": "ka",
+            "kind": "vector",
+            "label": "ka",
+            "agent": "none",
+            "magnitude": "{{ans}}",
+            "angleDeg": "{{angK}}"
+          }
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "negative-magnitude": {
+      "front": "Magnitude of −3a?",
+      "back": "3|a|. The minus sign reverses the direction; a magnitude is never negative."
+    },
+    "generic": {
+      "front": "Magnitude of k a?",
+      "back": "|k| × |a|; a negative k flips the direction."
+    }
+  },
+  "accessibility": {
+    "altText": "A vector a of {{A}} units pointing north-east.",
+    "nonDragAlternative": "Select the vector and type its size and direction in Precise controls; type your answer in the box."
+  }
+}

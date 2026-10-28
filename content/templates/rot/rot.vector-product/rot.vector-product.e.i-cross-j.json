@@ -1,0 +1,172 @@
+{
+  "id": "rot.vector-product.e.i-cross-j",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.vector-product"
+  ],
+  "primarySkillId": "rot.vector-product",
+  "difficulty": "easy",
+  "format": "single-choice",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "s": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.ixj",
+  "intro": "A quick check.",
+  "widget": {
+    "type": "vector-board",
+    "config": {
+      "scene": "grid",
+      "maxMagnitude": 8,
+      "vectors": [
+        {
+          "id": "i",
+          "kind": "vector",
+          "label": "î",
+          "agent": "none",
+          "magnitude": "{{s}}",
+          "angleDeg": 0,
+          "tone": "a"
+        },
+        {
+          "id": "j",
+          "kind": "vector",
+          "label": "ĵ",
+          "agent": "none",
+          "magnitude": "{{s}}",
+          "angleDeg": 90,
+          "tone": "b"
+        }
+      ],
+      "showResultant": false
+    },
+    "instructions": "The vectors lie in the plane of the screen; their cross product points into or out of the screen."
+  },
+  "stem": [
+    "î points along +x and ĵ along +y, in the plane of the screen.",
+    "Which way does î × ĵ point?"
+  ],
+  "options": [
+    {
+      "id": "k",
+      "text": "Out of the screen (+k̂)"
+    },
+    {
+      "id": "mk",
+      "text": "Into the screen (−k̂)",
+      "tags": [
+        "cross-order"
+      ],
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Curl your fingers from the FIRST vector to the second."
+        }
+      }
+    },
+    {
+      "id": "plane",
+      "text": "Diagonally between î and ĵ",
+      "tags": [
+        "cross-in-plane"
+      ],
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "i",
+            "j"
+          ]
+        }
+      }
+    }
+  ],
+  "answerText": "Out of the screen, +k̂",
+  "hints": [
+    {
+      "text": "The cross product is perpendicular to both vectors.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "i",
+            "j"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Use the right-hand rule: curl your fingers from the first vector to the second."
+    },
+    {
+      "text": "Your thumb gives the direction."
+    }
+  ],
+  "feedback": {
+    "cross-order": {
+      "text": "That is ĵ × î. Curl the fingers of your right hand from î to ĵ: the thumb points out of the screen."
+    },
+    "cross-in-plane": {
+      "text": "A cross product is perpendicular to both vectors, so it can't lie in their plane."
+    },
+    "generic": {
+      "text": "Right-hand rule: î × ĵ = k̂."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Curl from î to ĵ (anticlockwise as seen).",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "i",
+            "j"
+          ]
+        }
+      }
+    },
+    {
+      "text": "The thumb points out of the screen: î × ĵ = k̂."
+    }
+  ],
+  "flashcards": {
+    "cross-order": {
+      "front": "î × ĵ or ĵ × î: which is +k̂?",
+      "back": "î × ĵ = k̂; ĵ × î = −k̂."
+    },
+    "cross-in-plane": {
+      "front": "Where does a × b point for a and b in the xy-plane?",
+      "back": "Along ±z, perpendicular to both (right-hand rule)."
+    },
+    "generic": {
+      "front": "î × ĵ?",
+      "back": "k̂ (out of the xy-plane); ĵ × î = −k̂."
+    }
+  },
+  "accessibility": {
+    "altText": "Two perpendicular unit vectors î and ĵ.",
+    "nonDragAlternative": "Choose an answer with the radio buttons."
+  }
+}

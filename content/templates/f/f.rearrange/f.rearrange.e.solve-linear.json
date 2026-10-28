@@ -1,0 +1,196 @@
+{
+  "id": "f.rearrange.e.solve-linear",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.rearrange"
+  ],
+  "primarySkillId": "f.rearrange",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "a": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        1,
+        3,
+        5,
+        7
+      ]
+    },
+    "c": {
+      "kind": "choice",
+      "values": [
+        11,
+        13,
+        17,
+        23,
+        27
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.solveLinear",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "rearrange-sign"
+      ],
+      "match": {
+        "buggySolver": "signSlip"
+      }
+    },
+    {
+      "tags": [
+        "rearrange-order"
+      ],
+      "match": {
+        "buggySolver": "orderSlip"
+      }
+    }
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -2,
+        10
+      ],
+      "yRange": [
+        0,
+        40
+      ],
+      "functions": [
+        {
+          "id": "L",
+          "expr": "{{a}}*x + {{b}}",
+          "label": "y = {{a}}x + {{b}}"
+        },
+        {
+          "id": "R",
+          "expr": "{{c}} + 0*x",
+          "label": "y = {{c}}"
+        }
+      ]
+    },
+    "instructions": "The solution is where the two graphs meet."
+  },
+  "consequence": [
+    {
+      "cue": "marker",
+      "args": {
+        "x": "$value",
+        "y": "{{c}}",
+        "label": "your x",
+        "tone": "bad"
+      }
+    }
+  ],
+  "stem": [
+    "Solve {{a}}x + {{b}} = {{c}}."
+  ],
+  "input": {
+    "label": "x",
+    "placeholder": "for example 4",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "The solution is where y = {{a}}x + {{b}} meets y = {{c}}.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "L",
+            "R"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Subtract {{b}} from both sides first."
+    },
+    {
+      "text": "Then divide both sides by {{a}}."
+    }
+  ],
+  "feedback": {
+    "rearrange-sign": {
+      "text": "Subtract {{b}} from both sides (not add): {{a}}x = {{c}} − {{b}}.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "Do the same to both sides."
+        }
+      }
+    },
+    "rearrange-order": {
+      "text": "Remove the + {{b}} first, then divide by {{a}}."
+    },
+    "generic": {
+      "text": "Undo the operations in reverse order."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "{{a}}x = {{c}} − {{b}} = {{cb}}."
+    },
+    {
+      "text": "x = {{cb}} ÷ {{a}} = {{ans}}.",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "x": "{{ans}}",
+          "y": "{{c}}",
+          "label": "solution"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "rearrange-sign": {
+      "front": "Solve 3x + 4 = 19.",
+      "back": "Subtract 4 from both sides first: 3x = 15, x = 5."
+    },
+    "rearrange-order": {
+      "front": "ax + b = c: first step?",
+      "back": "Subtract b from both sides, then divide by a."
+    },
+    "generic": {
+      "front": "Solve ax + b = c.",
+      "back": "x = (c − b) ÷ a."
+    }
+  },
+  "accessibility": {
+    "altText": "A sloping line and a horizontal line.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "id": "wep.ke-theorem.h.braking",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.ke-theorem",
+    "wep.work-constant"
+  ],
+  "primarySkillId": "wep.ke-theorem",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "v": {
+      "kind": "choice",
+      "values": [
+        10,
+        15,
+        20,
+        25
+      ]
+    },
+    "mu": {
+      "kind": "choice",
+      "values": [
+        0.4,
+        0.5,
+        0.6,
+        0.8
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.brakingByWork",
+  "intro": "Friction removes the kinetic energy.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "work-energy-missing-two"
+      ],
+      "match": {
+        "buggySolver": "missingTwo"
+      }
+    },
+    {
+      "tags": [
+        "ke-not-squared"
+      ],
+      "match": {
+        "buggySolver": "notSquared"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "car",
+          "label": "car",
+          "x0": 0,
+          "v0": "{{v}}",
+          "a": "{{-mu*9.8}}"
+        }
+      ],
+      "duration": "{{v/(mu*9.8)}}",
+      "hideNumbers": true,
+      "stopAtRest": true
+    },
+    "instructions": "Press Play; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "stop-at",
+      "args": {
+        "x": "$value",
+        "label": "stopping where you said"
+      }
+    }
+  ],
+  "stem": [
+    "A car moving at {{v}} m/s locks its brakes and skids to a stop on a level road (μk = {{mu}}). Take g = 9.8 m/s².",
+    "Using the work–energy theorem, how far does it skid?"
+  ],
+  "input": {
+    "label": "Skid distance",
+    "placeholder": "for example 30 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "All the car's kinetic energy is removed by the work done by friction.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Friction does work −μmg × d."
+    },
+    {
+      "text": "Set μmgd = ½mv²; the mass cancels."
+    }
+  ],
+  "feedback": {
+    "work-energy-missing-two": {
+      "text": "μmgd = ½mv², so d = v² ÷ (2μg): keep the 2."
+    },
+    "ke-not-squared": {
+      "text": "Kinetic energy depends on v², so square the speed."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "μmgd = ½mv², so d = v² ÷ (2μg)."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Work by friction = change in KE: −μmgd = 0 − ½mv²."
+    },
+    {
+      "text": "d = {{v}}² ÷ (2 × {{mu}} × 9.8) = {{ans}} m.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "work-energy-missing-two": {
+      "front": "Speed after work W on a body from rest?",
+      "back": "v = √(2W ÷ m)."
+    },
+    "ke-not-squared": {
+      "front": "Doubling the speed does what to KE?",
+      "back": "Multiplies it by 4: KE = ½mv²."
+    },
+    "generic": {
+      "front": "Skid distance by the work–energy theorem?",
+      "back": "d = v² ÷ (2μg)."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with a car braking to a stop.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "id": "rot.angular-kinematics.h.fan-stop",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.angular-kinematics"
+  ],
+  "primarySkillId": "rot.angular-kinematics",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "w0": {
+      "kind": "choice",
+      "values": [
+        10,
+        20,
+        30,
+        40
+      ]
+    },
+    "n": {
+      "kind": "choice",
+      "values": [
+        5,
+        10,
+        20,
+        25
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.fanStop",
+  "intro": "Slowing to a stop.",
+  "answer": {
+    "dimension": "angular-acceleration",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "revs-not-converted"
+      ],
+      "match": {
+        "buggySolver": "revsNotConverted"
+      }
+    },
+    {
+      "tags": [
+        "rot-missing-half"
+      ],
+      "match": {
+        "buggySolver": "missingTwo"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} rad/s^2"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "disc",
+        "mass": 1,
+        "size": 0.6,
+        "torque": "{{-ans*0.18}}",
+        "omega0": "{{w0}}",
+        "duration": "{{w0/ans}}"
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A fan spinning at {{w0}} rad/s is switched off and slows uniformly, making {{n}} revolutions before it stops.",
+    "What is the size of its angular deceleration?"
+  ],
+  "input": {
+    "label": "Angular deceleration",
+    "placeholder": "for example 1.6 rad/s^2",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} rad/s^2",
+  "hints": [
+    {
+      "text": "Which rotational equation links ω, ω₀, α and θ?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "ω² = ω₀² − 2αθ with ω = 0."
+    },
+    {
+      "text": "θ in radians: {{n}} rev × 2π."
+    }
+  ],
+  "feedback": {
+    "revs-not-converted": {
+      "text": "In ω² = ω₀² + 2αθ, θ must be in radians: {{n}} rev = 2π × {{n}} rad."
+    },
+    "rot-missing-half": {
+      "text": "0 = ω₀² − 2αθ gives α = ω₀² ÷ (2θ)."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a angular acceleration."
+    },
+    "generic": {
+      "text": "α = ω₀² ÷ (2θ), θ in radians."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "θ = 2π × {{n}} = {{theta}} rad."
+    },
+    {
+      "text": "α = {{w0}}² ÷ (2 × {{theta}}) = {{ans}} rad/s².",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "revs-not-converted": {
+      "front": "Units of θ in ω² = ω₀² + 2αθ?",
+      "back": "Radians: 1 revolution = 2π rad."
+    },
+    "rot-missing-half": {
+      "front": "Angle turned from rest at constant α?",
+      "back": "θ = ½αt²."
+    },
+    "generic": {
+      "front": "Angular deceleration to stop in θ?",
+      "back": "α = ω₀² ÷ (2θ), θ in rad."
+    }
+  },
+  "accessibility": {
+    "altText": "A disc slowing to a stop.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

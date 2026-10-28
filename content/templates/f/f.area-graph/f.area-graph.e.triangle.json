@@ -1,0 +1,173 @@
+{
+  "id": "f.area-graph.e.triangle",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.area-graph"
+  ],
+  "primarySkillId": "f.area-graph",
+  "difficulty": "easy",
+  "format": "number",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "b": {
+      "kind": "choice",
+      "values": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    "h": {
+      "kind": "choice",
+      "values": [
+        3,
+        5,
+        6,
+        9
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.triangleArea",
+  "intro": "A foundation check.",
+  "answer": {
+    "tolerance": {
+      "relative": 0.005,
+      "absolute": 0.006
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "triangle-no-half"
+      ],
+      "match": {
+        "buggySolver": "noHalf"
+      }
+    }
+  ],
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        0,
+        "{{b+1}}"
+      ],
+      "yRange": [
+        0,
+        "{{h+2}}"
+      ],
+      "functions": [
+        {
+          "id": "L",
+          "expr": "{{h/b}}*x",
+          "domain": [
+            0,
+            "{{b}}"
+          ]
+        }
+      ]
+    },
+    "instructions": "The graph is for exploring; drag points or sliders where you see them."
+  },
+  "consequence": [
+    {
+      "cue": "area",
+      "args": {
+        "top": "L",
+        "from": 0,
+        "to": "{{b}}",
+        "showValue": false
+      }
+    }
+  ],
+  "stem": [
+    "A graph is a straight line from (0, 0) up to ({{b}}, {{h}}).",
+    "What is the area between the line and the x-axis from x = 0 to x = {{b}}?"
+  ],
+  "input": {
+    "label": "Area",
+    "placeholder": "for example 15",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}}",
+  "hints": [
+    {
+      "text": "What shape is under the line?",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "L",
+          "from": 0,
+          "to": "{{b}}",
+          "showValue": false
+        }
+      }
+    },
+    {
+      "text": "A right triangle with base {{b}} and height {{h}}."
+    },
+    {
+      "text": "Area = ½ × base × height."
+    }
+  ],
+  "feedback": {
+    "triangle-no-half": {
+      "text": "The region is a triangle: its area is half the rectangle's.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "L",
+          "from": 0,
+          "to": "{{b}}",
+          "showValue": false
+        }
+      }
+    },
+    "generic": {
+      "text": "Area = ½bh."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Base {{b}}, height {{h}}."
+    },
+    {
+      "text": "Area = ½ × {{b}} × {{h}} = {{ans}}.",
+      "cue": {
+        "cue": "area",
+        "args": {
+          "top": "L",
+          "from": 0,
+          "to": "{{b}}"
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "triangle-no-half": {
+      "front": "Area of a triangle?",
+      "back": "½ × base × height."
+    },
+    "generic": {
+      "front": "Area of a triangle?",
+      "back": "½ × base × height."
+    }
+  },
+  "accessibility": {
+    "altText": "A straight line from the origin.",
+    "nonDragAlternative": "The visual is for reference; type your answer in the box."
+  }
+}

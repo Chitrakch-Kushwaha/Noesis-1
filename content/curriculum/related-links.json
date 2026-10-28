@@ -1,0 +1,14 @@
+{
+  "$comment": "Related-concept links. Drawn as dotted connectors with the label 'Related'. They NEVER gate, recommend detours, trigger remediation, or count as prerequisites, and they are undirected. A related link may not duplicate a hard prerequisite edge between the same two chapters (validator rule). Deliberately excludes Integrals—Work, Energy and Power, and any two-way Vectors/Motion in a Plane prerequisite.",
+  "version": 2,
+  "links": [
+    { "a": "lim", "b": "kin", "note": "A derivative is an instantaneous rate; velocity is the rate of change of position." },
+    { "a": "trg", "b": "mip", "note": "Resolving a vector uses sine and cosine of its direction angle." },
+    { "a": "trg", "b": "osc", "note": "SHM displacement is a sinusoidal function of time." },
+    { "a": "vec", "b": "mip", "note": "Vector Algebra formalises the vectors first met in Motion in a Plane." },
+    { "a": "vec", "b": "mcm", "note": "The magnetic force on a moving charge is a vector product." },
+    { "a": "aod", "b": "kin", "note": "Rates of change and extrema appear as velocity, acceleration and turning points of motion." },
+    { "a": "con", "b": "opt", "note": "Parabolic and spherical reflecting surfaces are conic sections." },
+    { "a": "osc", "b": "emi", "note": "An AC generator's emf varies sinusoidally in time, like SHM displacement. Not a prerequisite: the generator needs angular velocity and the cosine of the coil angle, not SHM." }
+  ]
+}

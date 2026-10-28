@@ -1,0 +1,145 @@
+{
+  "id": "f.coord.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.coord",
+  "kind": "micro-lesson",
+  "title": "The coordinate plane: distance and midpoint",
+  "minutes": 5,
+  "widget": {
+    "type": "graph-plot",
+    "config": {
+      "xRange": [
+        -2,
+        8
+      ],
+      "yRange": [
+        -2,
+        8
+      ],
+      "functions": [
+        {
+          "id": "L",
+          "expr": "1 + 4/3*(x - 1)",
+          "tone": "muted"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "label": "P",
+          "x": 1,
+          "y": 1,
+          "draggable": true
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "x": 4,
+          "y": 5
+        }
+      ]
+    },
+    "instructions": "Drag points or sliders where you see them; the description below names every value."
+  },
+  "steps": [
+    {
+      "text": "Every point is an (x, y) pair: P is at (1, 1) and Q at (4, 5).",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "P",
+            "Q"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Draw the right triangle between them: across 3, up 4.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": 1,
+          "x2": 4
+        }
+      }
+    },
+    {
+      "text": "The distance PQ is the hypotenuse: √(3² + 4²) = 5.",
+      "cue": {
+        "cue": "slope-triangle",
+        "args": {
+          "fn": "L",
+          "x1": 1,
+          "x2": 4
+        }
+      }
+    },
+    {
+      "text": "The midpoint averages the coordinates: ((1 + 4)/2, (1 + 5)/2) = (2.5, 3).",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "x": 2.5,
+          "y": 3,
+          "label": "midpoint"
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "Moving point by point",
+    "steps": [
+      {
+        "text": "Drag P: the gaps Δx and Δy change, and so does the distance √(Δx² + Δy²).",
+        "cue": {
+          "cue": "highlight",
+          "args": {
+            "ids": [
+              "P"
+            ]
+          }
+        }
+      },
+      {
+        "text": "The midpoint is always halfway in x and halfway in y.",
+        "cue": {
+          "cue": "marker",
+          "args": {
+            "x": 2.5,
+            "y": 3,
+            "label": "midpoint"
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: distance √(Δx² + Δy²); midpoint ((x₁ + x₂)/2, (y₁ + y₂)/2).",
+      "cue": {
+        "cue": "marker",
+        "args": {
+          "x": 2.5,
+          "y": 3,
+          "label": "midpoint"
+        }
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "Two points on a grid joined by a line.",
+    "nonDragAlternative": "Drag point P or use its arrow keys; the description gives every coordinate."
+  }
+}

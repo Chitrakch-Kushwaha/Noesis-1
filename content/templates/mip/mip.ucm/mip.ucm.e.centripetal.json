@@ -1,0 +1,164 @@
+{
+  "id": "mip.ucm.e.centripetal",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "mip",
+  "skillIds": [
+    "mip.ucm"
+  ],
+  "primarySkillId": "mip.ucm",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "v": {
+      "kind": "choice",
+      "values": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    "r": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        5,
+        8
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "mip.centripetal",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "acceleration",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "centripetal-v-over-r"
+      ],
+      "match": {
+        "buggySolver": "vOverR"
+      }
+    },
+    {
+      "tags": [
+        "centripetal-v2r"
+      ],
+      "match": {
+        "buggySolver": "vSquaredTimesR"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m/s^2"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "circle",
+      "circle": {
+        "radius": "{{r}}",
+        "speed": "{{v}}"
+      },
+      "showValues": false
+    },
+    "instructions": "Press Play: the orange arrow is the velocity and the peach arrow the acceleration."
+  },
+  "stem": [
+    "A toy train runs at a steady {{v}} m/s round a circular track of radius {{r}} m.",
+    "What is its centripetal acceleration?"
+  ],
+  "input": {
+    "label": "Acceleration",
+    "placeholder": "for example 9 m/s^2",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m/s^2",
+  "hints": [
+    {
+      "text": "Which way does the acceleration point?",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Towards the centre, with size v² ÷ r."
+    },
+    {
+      "text": "Square the speed first."
+    }
+  ],
+  "feedback": {
+    "centripetal-v-over-r": {
+      "text": "v ÷ r is the angular speed ω (rad/s). The acceleration is v² ÷ r.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "a"
+          ]
+        }
+      }
+    },
+    "centripetal-v2r": {
+      "text": "A larger radius means a gentler turn, so divide by r."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a acceleration."
+    },
+    "generic": {
+      "text": "a = v² ÷ r towards the centre."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "a = v² ÷ r = {{v}}² ÷ {{r}}."
+    },
+    {
+      "text": "= {{ans}} m/s² towards the centre.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "centripetal-v-over-r": {
+      "front": "Centripetal acceleration?",
+      "back": "a = v² ÷ r (v ÷ r is ω, in rad/s)."
+    },
+    "centripetal-v2r": {
+      "front": "Does a tighter turn need more or less centripetal acceleration?",
+      "back": "More: a = v² ÷ r grows as r shrinks."
+    },
+    "generic": {
+      "front": "Centripetal acceleration?",
+      "back": "v² ÷ r, towards the centre."
+    }
+  },
+  "accessibility": {
+    "altText": "A body moving round a circle with its velocity and acceleration arrows.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

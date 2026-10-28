@@ -1,0 +1,165 @@
+{
+  "id": "f.speed-time.e.time",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "f",
+  "skillIds": [
+    "f.speed-time"
+  ],
+  "primarySkillId": "f.speed-time",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "d": {
+      "kind": "choice",
+      "values": [
+        100,
+        120,
+        200,
+        300
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        10,
+        20
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "f.timeFromSpeed",
+  "intro": "A foundation check.",
+  "answer": {
+    "dimension": "time",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "speed-time-multiply"
+      ],
+      "match": {
+        "buggySolver": "multiplied"
+      }
+    },
+    {
+      "tags": [
+        "speed-time-inverted"
+      ],
+      "match": {
+        "buggySolver": "inverted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "r",
+          "label": "runner",
+          "x0": 0,
+          "v0": "{{v}}",
+          "a": 0
+        }
+      ],
+      "duration": "{{d/v}}",
+      "hideNumbers": true
+    },
+    "instructions": "Press Play to run the motion."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "Check the units of your answer: m ÷ (m/s) = s."
+      }
+    }
+  ],
+  "stem": [
+    "A runner covers {{d}} m at a steady {{v}} m/s.",
+    "How long does it take?"
+  ],
+  "input": {
+    "label": "Time",
+    "placeholder": "for example 20 s",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} s",
+  "hints": [
+    {
+      "text": "Speed tells you the metres covered each second.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "How many seconds to cover {{d}} m?"
+    },
+    {
+      "text": "time = distance ÷ speed."
+    }
+  ],
+  "feedback": {
+    "speed-time-multiply": {
+      "text": "time = distance ÷ speed. Multiplying gives m²/s, not seconds."
+    },
+    "speed-time-inverted": {
+      "text": "Check the units: m ÷ (m/s) gives seconds, so divide the distance by the speed."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a time."
+    },
+    "generic": {
+      "text": "t = d ÷ v."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "t = {{d}} ÷ {{v}}."
+    },
+    {
+      "text": "= {{ans}} s.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "speed-time-multiply": {
+      "front": "Time from distance and speed?",
+      "back": "time = distance ÷ speed."
+    },
+    "speed-time-inverted": {
+      "front": "Units check: km ÷ (km/h) gives?",
+      "back": "hours: so time = d ÷ v."
+    },
+    "generic": {
+      "front": "Time from distance and speed?",
+      "back": "t = d ÷ v."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with a runner at steady speed.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

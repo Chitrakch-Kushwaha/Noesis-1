@@ -1,0 +1,151 @@
+{
+  "id": "osc.energy.h.equal-share",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "osc",
+  "skillIds": [
+    "osc.energy"
+  ],
+  "primarySkillId": "osc.energy",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "Acm": {
+      "kind": "choice",
+      "values": [
+        4,
+        5,
+        6,
+        8,
+        10,
+        12,
+        15,
+        20
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "osc.equalEnergies",
+  "intro": "Half and half.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "half-amplitude-equal-energy"
+      ],
+      "match": {
+        "buggySolver": "halfAmplitude"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "oscillator",
+    "config": {
+      "periods": 2,
+      "showValues": false,
+      "system": "spring",
+      "mass": 1,
+      "k": 10,
+      "amplitude": "{{A}}"
+    },
+    "instructions": "Press Play to watch the oscillation; the graph shows x against time and the circle is its reference circle."
+  },
+  "consequence": [
+    {
+      "cue": "highlight",
+      "args": {
+        "ids": [
+          "energy"
+        ]
+      }
+    }
+  ],
+  "stem": [
+    "A body oscillates in SHM with amplitude {{Acm}} cm.",
+    "At what displacement are its kinetic and potential energies equal?"
+  ],
+  "input": {
+    "label": "Displacement",
+    "placeholder": "for example 0.05 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "When KE = PE, each is half the total.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    },
+    {
+      "text": "½kx² = ½ × ½kA²."
+    },
+    {
+      "text": "x² = A² ÷ 2."
+    }
+  ],
+  "feedback": {
+    "half-amplitude-equal-energy": {
+      "text": "PE grows with x², so at A/2 the PE is only a quarter of the total. Set ½kx² = ½ × ½kA²."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "x = A ÷ √2."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "½kx² = ¼kA², so x² = A² ÷ 2."
+    },
+    {
+      "text": "x = {{A}} ÷ √2 = {{ans}} m.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "energy"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "half-amplitude-equal-energy": {
+      "front": "Where is KE = PE in SHM?",
+      "back": "x = A ÷ √2."
+    },
+    "generic": {
+      "front": "Where is KE = PE in SHM?",
+      "back": "x = A ÷ √2."
+    }
+  },
+  "accessibility": {
+    "altText": "A spring oscillator with energy bars.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

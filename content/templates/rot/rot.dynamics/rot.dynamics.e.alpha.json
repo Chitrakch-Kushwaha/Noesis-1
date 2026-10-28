@@ -1,0 +1,145 @@
+{
+  "id": "rot.dynamics.e.alpha",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.dynamics"
+  ],
+  "primarySkillId": "rot.dynamics",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "tau": {
+      "kind": "choice",
+      "values": [
+        2,
+        4,
+        6,
+        10
+      ]
+    },
+    "I": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        2,
+        4
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.alpha",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "angular-acceleration",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "alpha-multiplied"
+      ],
+      "match": {
+        "buggySolver": "multiplied"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} rad/s^2"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "rotor",
+      "rotor": {
+        "shape": "disc",
+        "mass": "{{2*I/0.25}}",
+        "size": 0.5,
+        "torque": "{{tau}}",
+        "omega0": 0,
+        "duration": 3
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "A net torque of {{tau}} N m acts on a wheel with moment of inertia {{I}} kg m².",
+    "What is its angular acceleration?"
+  ],
+  "input": {
+    "label": "Angular acceleration",
+    "placeholder": "for example 3 rad/s^2",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} rad/s^2",
+  "hints": [
+    {
+      "text": "The rotational form of F = ma.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "τ = Iα."
+    },
+    {
+      "text": "α = τ ÷ I."
+    }
+  ],
+  "feedback": {
+    "alpha-multiplied": {
+      "text": "τ = Iα, so α = τ ÷ I: a larger I means a smaller α."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a angular acceleration."
+    },
+    "generic": {
+      "text": "α = τ ÷ I."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "τ = Iα, so α = {{tau}} ÷ {{I}}."
+    },
+    {
+      "text": "= {{ans}} rad/s².",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "alpha-multiplied": {
+      "front": "Angular acceleration from τ and I?",
+      "back": "α = τ ÷ I."
+    },
+    "generic": {
+      "front": "Angular acceleration?",
+      "back": "α = τ ÷ I."
+    }
+  },
+  "accessibility": {
+    "altText": "A wheel under a constant torque.",
+    "nonDragAlternative": "Use the torque slider and Play; type your answer in the box."
+  }
+}

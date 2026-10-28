@@ -1,0 +1,266 @@
+{
+  "id": "lom.resolve-forces.h.horizontal-hold",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.resolve-forces",
+    "lom.fbd"
+  ],
+  "primarySkillId": "lom.resolve-forces",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 180,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "theta": {
+      "kind": "choice",
+      "values": [
+        20,
+        25,
+        30,
+        35,
+        40
+      ]
+    }
+  },
+  "solver": "lom.horizontalHold",
+  "intro": "A harder one: the push is not along the slope.",
+  "answer": {
+    "dimension": "force",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "horizontal-push-treated-as-parallel"
+      ],
+      "match": {
+        "buggySolver": "treatedAsParallel"
+      }
+    },
+    {
+      "tags": [
+        "sin-cos-swap-incline"
+      ],
+      "match": {
+        "buggySolver": "usedCos"
+      }
+    },
+    {
+      "tags": [
+        "tan-inverted"
+      ],
+      "match": {
+        "buggySolver": "invertedTan"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{F|raw}} N"
+  ],
+  "widget": {
+    "type": "vector-board",
+    "instructions": "Adjust the horizontal push and press Play: the block should stay still. Tilted axes show each force's parts along and across the slope.",
+    "config": {
+      "scene": "incline",
+      "inclineDeg": "{{theta}}",
+      "body": {
+        "label": "block",
+        "mass": "{{m}}"
+      },
+      "predict": true,
+      "predictSeconds": 1.2,
+      "maxMagnitude": "{{maxM}}",
+      "allowAxesToggle": true,
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "plank",
+          "magnitude": "{{N}}",
+          "angleDeg": "{{angN}}",
+          "locked": true
+        },
+        {
+          "id": "F",
+          "kind": "applied",
+          "label": "Horizontal push",
+          "agent": "hand",
+          "magnitude": 1,
+          "angleDeg": 0
+        }
+      ]
+    }
+  },
+  "consequence": [
+    {
+      "cue": "set",
+      "args": {
+        "id": "F",
+        "magnitude": "$value",
+        "play": true
+      }
+    }
+  ],
+  "stem": [
+    "A {{m}} kg block rests on a smooth plank tilted at {{theta}}°. It is held still by a horizontal push F (pointing towards the slope). Take g = 9.8 m/s².",
+    "How large must F be?"
+  ],
+  "input": {
+    "label": "Horizontal push F",
+    "placeholder": "for example 14 N",
+    "keypad": "none"
+  },
+  "answerText": "{{F}} N",
+  "hints": [
+    {
+      "text": "Along the slope only two forces have parts: the weight and the push. Which way does each part point?",
+      "cue": {
+        "cue": "tilted-axes"
+      }
+    },
+    {
+      "text": "The horizontal push makes angle θ with the slope, so its part up the slope is F cos θ. The weight's part down the slope is mg sin θ.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "F",
+          "axes": "tilted",
+          "values": false
+        }
+      }
+    },
+    {
+      "text": "Balance them: F cos θ = mg sin θ, so F = mg tan θ."
+    }
+  ],
+  "feedback": {
+    "horizontal-push-treated-as-parallel": {
+      "text": "You treated the push as if it acted along the slope. It is horizontal, so only F cos θ of it acts up the slope. Play your value: the block slides.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "F",
+          "axes": "tilted",
+          "values": false
+        }
+      }
+    },
+    "sin-cos-swap-incline": {
+      "text": "Check which part of the weight acts along the slope: mg sin θ, not mg cos θ.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "W",
+          "axes": "tilted",
+          "values": false
+        }
+      }
+    },
+    "tan-inverted": {
+      "text": "Your ratio is upside down. F cos θ = mg sin θ gives F = mg sin θ ÷ cos θ = mg tan θ."
+    },
+    "dimension-mismatch": {
+      "text": "F is a force: give it in newtons."
+    },
+    "generic": {
+      "text": "Resolve along the slope: the push's part up the slope must balance the weight's part down it. Watch what your value does."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Resolve along the slope (tilted axes). The normal force has no part along it.",
+      "cue": [
+        {
+          "cue": "tilted-axes"
+        },
+        {
+          "cue": "decompose",
+          "args": {
+            "id": "W",
+            "axes": "tilted"
+          }
+        }
+      ]
+    },
+    {
+      "text": "Weight down the slope: mg sin {{theta}}° = {{along}} N. Push up the slope: F cos {{theta}}°.",
+      "cue": {
+        "cue": "decompose",
+        "args": {
+          "id": "F",
+          "axes": "tilted",
+          "values": false
+        }
+      }
+    },
+    {
+      "text": "At rest these balance: F = mg tan {{theta}}° = {{F}} N. Press Play: the block stays still.",
+      "cue": [
+        {
+          "cue": "set",
+          "args": {
+            "id": "F",
+            "magnitude": "{{F}}"
+          }
+        },
+        {
+          "cue": "predict"
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "horizontal-push-treated-as-parallel": {
+      "front": "A horizontal push F on a θ slope: how much acts along the slope?",
+      "back": "F cos θ (and F sin θ presses into the slope)."
+    },
+    "sin-cos-swap-incline": {
+      "front": "Which component of weight acts along a slope of angle θ?",
+      "back": "mg sin θ along the slope; mg cos θ perpendicular to it."
+    },
+    "tan-inverted": {
+      "front": "F cos θ = mg sin θ. What is F?",
+      "back": "F = mg tan θ."
+    },
+    "generic": {
+      "front": "Smooth slope, horizontal push holding a block still?",
+      "back": "F = mg tan θ."
+    }
+  },
+  "accessibility": {
+    "altText": "A block on a smooth slope at {{theta}}°, with its weight, the normal force and a small horizontal push drawn.",
+    "nonDragAlternative": "Select the push and type its size in Precise controls, then press Play."
+  }
+}

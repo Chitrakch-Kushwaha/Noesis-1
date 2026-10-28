@@ -1,0 +1,222 @@
+{
+  "id": "lom.momentum-conservation.h.head-on",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.momentum-conservation"
+  ],
+  "primarySkillId": "lom.momentum-conservation",
+  "difficulty": "hard",
+  "format": "quantity",
+  "estimatedSeconds": 150,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        6
+      ]
+    },
+    "u1": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    "u2s": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "solver": "lom.headOn",
+  "intro": "Directions matter in this one.",
+  "answer": {
+    "dimension": "velocity",
+    "tolerance": {
+      "relative": 0.02
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "momentum-direction-ignored"
+      ],
+      "match": {
+        "buggySolver": "directionIgnored"
+      }
+    },
+    {
+      "tags": [
+        "averages-velocities"
+      ],
+      "match": {
+        "buggySolver": "averagedVelocities"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{v|raw}} m/s"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "instructions": "Press Play to watch the carts approach each other. Rightward is positive. After they stick, the pair moves with your answer's velocity.",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "A",
+          "label": "cart A",
+          "x0": -10,
+          "v0": "{{u1}}",
+          "a": 0
+        },
+        {
+          "id": "B",
+          "label": "cart B",
+          "x0": 10,
+          "v0": "{{u2}}",
+          "a": 0
+        }
+      ],
+      "duration": 2,
+      "xRange": [
+        -16,
+        16
+      ],
+      "hideNumbers": true
+    }
+  },
+  "consequence": [
+    {
+      "cue": "ghost-lane",
+      "args": {
+        "lane": {
+          "id": "hy",
+          "label": "A + B at your velocity",
+          "x0": 0,
+          "v0": "$value",
+          "a": 0
+        }
+      }
+    },
+    {
+      "cue": "play"
+    }
+  ],
+  "stem": [
+    "Cart A ({{m1}} kg) moves right at {{u1}} m/s. Cart B ({{m2}} kg) moves left at {{absU2}} m/s. They collide head-on and stick together.",
+    "What is their velocity just after the collision? Take rightward as positive (give a negative value for leftward)."
+  ],
+  "input": {
+    "label": "Velocity (right positive)",
+    "placeholder": "for example −1.2 m/s",
+    "keypad": "none"
+  },
+  "answerText": "{{v}} m/s ({{dir}})",
+  "hints": [
+    {
+      "text": "Momentum is a vector. With rightward positive, what sign does cart B's velocity have?",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Total momentum before = m_A u_A + m_B u_B, with u_B negative. It is the same just after."
+    },
+    {
+      "text": "Divide the total momentum by the total mass; the sign tells you the direction."
+    }
+  ],
+  "feedback": {
+    "momentum-direction-ignored": {
+      "text": "You added the momenta as if both carts moved the same way. Cart B moves left, so its momentum is negative and partly cancels A's."
+    },
+    "averages-velocities": {
+      "text": "Averaging velocities ignores the masses. Use total momentum ÷ total mass."
+    },
+    "sign-error": {
+      "text": "Check the direction: compare the size of A's rightward momentum with B's leftward momentum."
+    },
+    "dimension-mismatch": {
+      "text": "Give a velocity in m/s."
+    },
+    "generic": {
+      "text": "Write each momentum with its sign, add them, and divide by the total mass."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Rightward positive: p_A = {{m1}} × {{u1}} = {{p1}} kg m/s; p_B = {{m2}} × ({{u2}}) = {{p2}} kg m/s.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "Total: {{ptot}} kg m/s, shared by {{M}} kg after sticking: v = {{ptot}} ÷ {{M}} = {{v}} m/s, so the pair moves {{dir}}.",
+      "cue": [
+        {
+          "cue": "ghost-lane",
+          "args": {
+            "lane": {
+              "id": "hs",
+              "label": "A + B together",
+              "x0": 0,
+              "v0": "{{v}}",
+              "a": 0
+            }
+          }
+        },
+        {
+          "cue": "play"
+        }
+      ]
+    }
+  ],
+  "flashcards": {
+    "momentum-direction-ignored": {
+      "front": "Two carts move towards each other. Do their momenta add?",
+      "back": "They partly cancel: momentum is a vector, so give each a sign."
+    },
+    "averages-velocities": {
+      "front": "Two carts stick together. Is their speed the average of the two speeds?",
+      "back": "No. Use momentum: (m₁ + m₂) v = m₁u₁ + m₂u₂."
+    },
+    "generic": {
+      "front": "Head-on sticking collision?",
+      "back": "v = (m₁u₁ + m₂u₂) ÷ (m₁ + m₂), with signs for direction."
+    }
+  },
+  "accessibility": {
+    "altText": "Two lanes: cart A moving right and cart B moving left, towards each other.",
+    "nonDragAlternative": "Use Play, Step and the time slider to run the animation; type your answer in the box."
+  }
+}

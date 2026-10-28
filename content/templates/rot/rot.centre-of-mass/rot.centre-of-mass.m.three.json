@@ -1,0 +1,201 @@
+{
+  "id": "rot.centre-of-mass.m.three",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "rot",
+  "skillIds": [
+    "rot.centre-of-mass"
+  ],
+  "primarySkillId": "rot.centre-of-mass",
+  "difficulty": "medium",
+  "format": "quantity",
+  "estimatedSeconds": 100,
+  "parameters": {
+    "m1": {
+      "kind": "choice",
+      "values": [
+        1,
+        2
+      ]
+    },
+    "m2": {
+      "kind": "choice",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    "m3": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "b": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "c": {
+      "kind": "choice",
+      "values": [
+        1,
+        2
+      ]
+    },
+    "h": {
+      "kind": "choice",
+      "values": [
+        2,
+        3,
+        6
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "rot.comThree",
+  "intro": "Three masses in a plane.",
+  "answer": {
+    "dimension": "length",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "com-unweighted"
+      ],
+      "match": {
+        "buggySolver": "unweighted"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} m"
+  ],
+  "widget": {
+    "type": "rigid-body",
+    "config": {
+      "mode": "com",
+      "com": {
+        "masses": [
+          {
+            "id": "a",
+            "label": "A",
+            "m": "{{m1}}",
+            "x": 0,
+            "y": 0,
+            "editable": false
+          },
+          {
+            "id": "b",
+            "label": "B",
+            "m": "{{m2}}",
+            "x": "{{b}}",
+            "y": 0,
+            "editable": false
+          },
+          {
+            "id": "c",
+            "label": "C",
+            "m": "{{m3}}",
+            "x": "{{c}}",
+            "y": "{{h}}",
+            "editable": false
+          }
+        ]
+      },
+      "showValues": false
+    },
+    "instructions": "Use the controls below the figure to explore; press Play for motion."
+  },
+  "consequence": [
+    {
+      "cue": "com"
+    }
+  ],
+  "stem": [
+    "Masses {{m1}} kg at (0, 0), {{m2}} kg at ({{b}}, 0) and {{m3}} kg at ({{c}}, {{h}}) m form a triangle.",
+    "What is the y-coordinate of their centre of mass?"
+  ],
+  "input": {
+    "label": "y-coordinate",
+    "placeholder": "for example 1.2 m",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} m",
+  "hints": [
+    {
+      "text": "Only one mass is off the x-axis.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "c"
+          ]
+        }
+      }
+    },
+    {
+      "text": "y_cm = Σ m y ÷ Σ m."
+    },
+    {
+      "text": "Two of the y-values are zero."
+    }
+  ],
+  "feedback": {
+    "com-unweighted": {
+      "text": "Weight each y-coordinate by its mass: Σ m y ÷ Σ m.",
+      "cue": {
+        "cue": "com"
+      }
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a length."
+    },
+    "generic": {
+      "text": "y_cm = Σmy ÷ Σm."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Σm = {{M}} kg; Σmy = {{m3}} × {{h}}."
+    },
+    {
+      "text": "y_cm = {{ans}} m (and x_cm = {{xc}} m).",
+      "cue": {
+        "cue": "com"
+      }
+    }
+  ],
+  "flashcards": {
+    "com-unweighted": {
+      "front": "Centre of mass of unequal masses?",
+      "back": "Weight each position by its mass: Σmx ÷ Σm."
+    },
+    "generic": {
+      "front": "Centre of mass in a plane?",
+      "back": "x_cm = Σmx ÷ Σm, y_cm = Σmy ÷ Σm."
+    }
+  },
+  "accessibility": {
+    "altText": "Three point masses forming a triangle.",
+    "nonDragAlternative": "The figure only shows the masses; type your answer in the box."
+  }
+}

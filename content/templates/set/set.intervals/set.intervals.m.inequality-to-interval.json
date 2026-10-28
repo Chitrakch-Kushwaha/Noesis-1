@@ -1,0 +1,168 @@
+{
+  "id": "set.intervals.m.inequality-to-interval",
+  "version": 2,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": [],
+    "migratedFrom": "src/questions/templates.ts set.intervals.m.inequality-to-interval@1 (Phase 1 diagnostic; same review status)"
+  },
+  "chapterId": "set",
+  "skillIds": [
+    "set.intervals"
+  ],
+  "primarySkillId": "set.intervals",
+  "difficulty": "medium",
+  "format": "interval",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "a": {
+      "kind": "int",
+      "min": -6,
+      "max": 4
+    },
+    "w": {
+      "kind": "int",
+      "min": 2,
+      "max": 7
+    },
+    "pattern": {
+      "kind": "choice",
+      "values": [
+        "lt-le",
+        "le-lt",
+        "lt-lt",
+        "le-le",
+        "gt",
+        "le-only"
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "set.intervalFromInequality",
+  "intro": "This question helps us find the best place for you to begin.",
+  "widget": {
+    "type": "number-line",
+    "instructions": "Drag the endpoints, or focus one and use the arrow keys. Enter or Space switches between included and not included. Typing in the answer box moves the line too.",
+    "config": {
+      "range": [
+        -10,
+        12
+      ],
+      "step": 1,
+      "maxPieces": 2,
+      "pieces": [
+        {
+          "lo": -9,
+          "hi": -8,
+          "loClosed": true,
+          "hiClosed": true
+        }
+      ]
+    }
+  },
+  "stem": [
+    "Write the set {x ∈ ℝ : {{cond}}} as an interval."
+  ],
+  "input": {
+    "label": "Interval",
+    "placeholder": "for example (−1, 4]",
+    "keypad": "interval"
+  },
+  "answerText": "{{text}}",
+  "hints": [
+    {
+      "text": "Mark the endpoints on the number line. Is each endpoint included or not?"
+    },
+    {
+      "text": "Use [ or ] when the endpoint is included (≤ or ≥) and ( or ) when it is not (< or >). Watch the test point: it lights up exactly where the condition holds.",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": -10,
+          "to": 12
+        }
+      }
+    },
+    {
+      "text": "∞ is never included, so it always takes a round bracket."
+    }
+  ],
+  "feedback": {
+    "open-closed-confusion": {
+      "text": "The endpoints are right, but check which ones are included. ≤ and ≥ include the endpoint (square bracket, filled dot); < and > don't (round bracket, hollow dot). The ringed endpoint is the one to fix.",
+      "cue": {
+        "cue": "highlight-endpoints",
+        "args": {
+          "mismatches": "$details.endpointMismatches"
+        }
+      }
+    },
+    "infinity-closed": {
+      "text": "∞ is not a number you can reach, so it can never be included. Use a round bracket next to it."
+    },
+    "wrong-endpoints": {
+      "text": "Check the endpoints against the inequality. Each endpoint should be one of the numbers in the condition, or ±∞."
+    },
+    "missing-piece": {
+      "text": "This set is a single interval. Check your endpoints."
+    },
+    "extra-piece": {
+      "text": "This set is a single interval, without gaps."
+    },
+    "generic": {
+      "text": "Mark the endpoints first, then decide on each bracket."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "The condition is {{cond}}.",
+      "cue": {
+        "cue": "show-target",
+        "args": {
+          "union": "{{union}}"
+        }
+      }
+    },
+    {
+      "text": "Endpoints: {{loText}} ({{loState}}) and {{hiText}} ({{hiState}}). Watch the test point: it is in the set exactly where the condition holds.",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": -10,
+          "to": 12
+        }
+      }
+    },
+    {
+      "text": "As an interval: {{text}}."
+    }
+  ],
+  "flashcards": {
+    "open-closed-confusion": {
+      "front": "Which bracket goes with ≤ and which with <?",
+      "back": "≤ or ≥ → square bracket [ ]; < or > → round bracket ( )."
+    },
+    "infinity-closed": {
+      "front": "Can an interval be written [3, ∞]?",
+      "back": "No. ∞ is never included: write [3, ∞)."
+    },
+    "wrong-endpoints": {
+      "front": "Where do an interval's endpoints come from?",
+      "back": "From the numbers in the inequality, or ±∞ when one side is unbounded."
+    },
+    "generic": {
+      "front": "Convert a < x ≤ b to interval notation.",
+      "back": "(a, b]"
+    }
+  },
+  "accessibility": {
+    "altText": "A number line from −10 to 12 with one interval you can move and resize.",
+    "nonDragAlternative": "Type the interval in the answer box, or use From, To and included in Precise controls."
+  }
+}

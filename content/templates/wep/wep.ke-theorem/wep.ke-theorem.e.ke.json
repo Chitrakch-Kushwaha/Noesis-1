@@ -1,0 +1,165 @@
+{
+  "id": "wep.ke-theorem.e.ke",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "wep",
+  "skillIds": [
+    "wep.ke-theorem"
+  ],
+  "primarySkillId": "wep.ke-theorem",
+  "difficulty": "easy",
+  "format": "quantity",
+  "estimatedSeconds": 50,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        2,
+        4,
+        1000
+      ]
+    },
+    "v": {
+      "kind": "choice",
+      "values": [
+        3,
+        4,
+        10,
+        20
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "wep.kineticEnergy",
+  "intro": "A quick check.",
+  "answer": {
+    "dimension": "energy",
+    "tolerance": {
+      "relative": 0.015
+    }
+  },
+  "misconceptionRules": [
+    {
+      "tags": [
+        "ke-missing-half"
+      ],
+      "match": {
+        "buggySolver": "missingHalf"
+      }
+    },
+    {
+      "tags": [
+        "ke-not-squared"
+      ],
+      "match": {
+        "buggySolver": "notSquared"
+      }
+    }
+  ],
+  "acceptExamples": [
+    "{{ans|raw}} J"
+  ],
+  "widget": {
+    "type": "motion-track",
+    "config": {
+      "mode": "1d",
+      "lanes": [
+        {
+          "id": "b",
+          "label": "object",
+          "x0": 0,
+          "v0": "{{v}}",
+          "a": 0
+        }
+      ],
+      "duration": 3,
+      "hideNumbers": true
+    },
+    "instructions": "Press Play; scrub the time slider to inspect any instant."
+  },
+  "consequence": [
+    {
+      "cue": "note",
+      "args": {
+        "text": "KE grows with the square of the speed: double v, four times the KE."
+      }
+    }
+  ],
+  "stem": [
+    "An object of mass {{m}} kg moves at {{v}} m/s.",
+    "What is its kinetic energy?"
+  ],
+  "input": {
+    "label": "Kinetic energy",
+    "placeholder": "for example 50 J",
+    "keypad": "none"
+  },
+  "answerText": "{{ans}} J",
+  "hints": [
+    {
+      "text": "Kinetic energy depends on mass and speed.",
+      "cue": {
+        "cue": "play"
+      }
+    },
+    {
+      "text": "KE = ½mv²."
+    },
+    {
+      "text": "Square the speed before multiplying."
+    }
+  ],
+  "feedback": {
+    "ke-missing-half": {
+      "text": "Kinetic energy is ½mv²: you left out the ½."
+    },
+    "ke-not-squared": {
+      "text": "Square the speed: KE = ½mv²."
+    },
+    "dimension-mismatch": {
+      "text": "Check the unit: the answer is a energy."
+    },
+    "generic": {
+      "text": "KE = ½mv²."
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "KE = ½ × {{m}} × {{v}}²."
+    },
+    {
+      "text": "= {{ans}} J.",
+      "cue": {
+        "cue": "reveal"
+      }
+    }
+  ],
+  "flashcards": {
+    "ke-missing-half": {
+      "front": "Kinetic energy?",
+      "back": "½mv²."
+    },
+    "ke-not-squared": {
+      "front": "Doubling the speed does what to KE?",
+      "back": "Multiplies it by 4: KE = ½mv²."
+    },
+    "generic": {
+      "front": "Kinetic energy?",
+      "back": "½mv²."
+    }
+  },
+  "accessibility": {
+    "altText": "One lane with the object moving at a steady speed.",
+    "nonDragAlternative": "Use Play and the time slider; type your answer in the box."
+  }
+}

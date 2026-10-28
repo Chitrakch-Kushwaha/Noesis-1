@@ -1,0 +1,190 @@
+{
+  "id": "lom.third-law.m.action-reaction-pairs",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-27",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "chapterId": "lom",
+  "skillIds": [
+    "lom.third-law",
+    "lom.fbd"
+  ],
+  "primarySkillId": "lom.third-law",
+  "difficulty": "medium",
+  "format": "multi-choice",
+  "estimatedSeconds": 90,
+  "parameters": {
+    "m": {
+      "kind": "choice",
+      "values": [
+        0.5,
+        1,
+        1.5,
+        2,
+        2.5,
+        3
+      ]
+    }
+  },
+  "constraints": [],
+  "solver": "lom.thirdLaw",
+  "intro": "This question helps us find the best place for you to begin.",
+  "widget": {
+    "type": "vector-board",
+    "instructions": "The board shows the two forces acting on the book. Both act on the same body.",
+    "config": {
+      "scene": "floor",
+      "body": {
+        "label": "book",
+        "mass": "{{m}}"
+      },
+      "maxMagnitude": "{{W+4}}",
+      "allowEdit": false,
+      "vectors": [
+        {
+          "id": "W",
+          "kind": "weight",
+          "label": "Weight",
+          "agent": "Earth",
+          "magnitude": "{{W}}",
+          "angleDeg": -90,
+          "locked": true
+        },
+        {
+          "id": "N",
+          "kind": "normal",
+          "label": "Normal",
+          "agent": "table",
+          "magnitude": "{{W}}",
+          "angleDeg": 90,
+          "locked": true
+        }
+      ]
+    }
+  },
+  "stem": [
+    "A {{m}} kg book rests on a table.",
+    "Which of these are Newton's third-law (action–reaction) pairs? Choose every correct pair."
+  ],
+  "options": [
+    {
+      "id": "a",
+      "text": "The Earth pulls the book down; the book pulls the Earth up"
+    },
+    {
+      "id": "b",
+      "text": "The table pushes the book up; the book pushes the table down"
+    },
+    {
+      "id": "c",
+      "text": "The Earth pulls the book down; the table pushes the book up",
+      "tags": [
+        "third-law-pair-on-same-body"
+      ],
+      "cue": [
+        {
+          "cue": "highlight",
+          "args": {
+            "ids": [
+              "W",
+              "N"
+            ]
+          }
+        },
+        {
+          "cue": "note",
+          "args": {
+            "text": "Both highlighted forces act on the book."
+          }
+        }
+      ]
+    },
+    {
+      "id": "d",
+      "text": "The book pushes the table down; the Earth pulls the table down",
+      "tags": [
+        "third-law-different-interaction"
+      ]
+    }
+  ],
+  "answerText": "The Earth–book gravitational pair and the table–book contact pair",
+  "hints": [
+    {
+      "text": "An action–reaction pair comes from one interaction between two bodies."
+    },
+    {
+      "text": "The two forces of a pair act on different bodies, so they can never cancel each other.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W",
+            "N"
+          ]
+        }
+      }
+    },
+    {
+      "text": "Gravity pair: Earth on book and book on Earth. Contact pair: table on book and book on table."
+    }
+  ],
+  "feedback": {
+    "third-law-pair-on-same-body": {
+      "text": "The weight and the normal force both act on the book, so they are not a third-law pair. They balance here because the book is at rest, by Newton's first law."
+    },
+    "third-law-different-interaction": {
+      "text": "A third-law pair is one interaction seen from both sides: the same kind of force, acting on the two bodies involved. These two forces come from different interactions."
+    },
+    "missed-correct-option": {
+      "text": "There is more than one pair. Look for each interaction: gravity between the Earth and the book, and contact between the table and the book."
+    },
+    "generic": {
+      "text": "For each option, ask: is it one interaction between two bodies, with one force on each?"
+    }
+  },
+  "workedSolution": [
+    {
+      "text": "Gravity: the Earth pulls the book down and the book pulls the Earth up, with equal size {{W}} N. That is one pair."
+    },
+    {
+      "text": "Contact: the table pushes the book up and the book pushes the table down, with equal size. That is the second pair."
+    },
+    {
+      "text": "The weight and the normal force both act on the book. They balance because the book is at rest, not because of the third law.",
+      "cue": {
+        "cue": "highlight",
+        "args": {
+          "ids": [
+            "W",
+            "N"
+          ]
+        }
+      }
+    }
+  ],
+  "flashcards": {
+    "third-law-pair-on-same-body": {
+      "front": "Are weight and normal force on a book an action–reaction pair?",
+      "back": "No. Third-law pairs act on different bodies. The pair of the book's weight is the book's pull on the Earth."
+    },
+    "third-law-different-interaction": {
+      "front": "What do the two forces of a third-law pair have in common?",
+      "back": "Same interaction and type, equal size, opposite directions, acting on the two different bodies."
+    },
+    "generic": {
+      "front": "How do you find a force's third-law partner?",
+      "back": "Swap the bodies: 'A on B' pairs with 'B on A', same kind of force."
+    }
+  },
+  "accessibility": {
+    "altText": "A book on a table with its weight ({{W}} N) drawn down and the normal force from the table drawn up.",
+    "nonDragAlternative": "Nothing needs dragging: choose pairs with the checkboxes. The forces on the board are fixed and described in text."
+  }
+}

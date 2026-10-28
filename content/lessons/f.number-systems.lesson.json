@@ -1,0 +1,111 @@
+{
+  "id": "f.number-systems.lesson",
+  "version": 1,
+  "status": "in-review",
+  "provenance": {
+    "origin": "human",
+    "author": "content-dev",
+    "createdAt": "2026-10-28",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "contentHash": null,
+    "reviewLog": []
+  },
+  "skillId": "f.number-systems",
+  "kind": "micro-lesson",
+  "title": "Number systems on the number line",
+  "minutes": 4,
+  "widget": {
+    "type": "number-line",
+    "config": {
+      "range": [
+        -6,
+        6
+      ],
+      "editable": true
+    },
+    "instructions": "Drag the ends of a piece, or use the buttons below the line."
+  },
+  "steps": [
+    {
+      "text": "Every real number has a place on the number line. Integers sit at the whole-number marks.",
+      "cue": {
+        "cue": "note",
+        "args": {
+          "text": "… −2, −1, 0, 1, 2 …"
+        }
+      }
+    },
+    {
+      "text": "Rational numbers are fractions p ÷ q of integers, like ½ or −3/4: they fill in between the integers.",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": -0.75,
+          "to": 0.5
+        }
+      }
+    },
+    {
+      "text": "Some numbers, like √2 ≈ 1.414…, can't be written as a fraction: they are irrational, but they still have a place on the line.",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": 0,
+          "to": 1.41421356
+        }
+      }
+    },
+    {
+      "text": "Distance on the line is always positive: from −3 to 2 is 2 − (−3) = 5.",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": -3,
+          "to": 2
+        }
+      }
+    }
+  ],
+  "alternate": {
+    "title": "Numbers as steps",
+    "steps": [
+      {
+        "text": "Think of a number as a walk from 0: positive steps go right, negative steps go left.",
+        "cue": {
+          "cue": "test-point",
+          "args": {
+            "from": 0,
+            "to": -4
+          }
+        }
+      },
+      {
+        "text": "The distance between two numbers is how far you walk from one to the other, whatever the direction.",
+        "cue": {
+          "cue": "test-point",
+          "args": {
+            "from": -4,
+            "to": 3
+          }
+        }
+      }
+    ]
+  },
+  "recap": [
+    {
+      "text": "Recap: integers, rationals (fractions) and irrationals (like √2) all sit on the real number line; distance = larger − smaller.",
+      "cue": {
+        "cue": "test-point",
+        "args": {
+          "from": -2,
+          "to": 3
+        }
+      }
+    }
+  ],
+  "accessibility": {
+    "altText": "A number line from −6 to 6.",
+    "nonDragAlternative": "Use the buttons below the number line; the description below it gives every position."
+  }
+}
